@@ -31,6 +31,19 @@
   
   
 
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-Q0DT8B8VJW', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
   
 
 <link rel="alternate" href="/atom.xml" title="丛烨-shimmerjordan" type="application/atom+xml">
@@ -75,7 +88,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.3k</span>
+            <span class="post-count">5</span>
         </span>
     </span>
 
@@ -84,130 +97,31 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">8 分钟</span>
+            <span class="post-count">1 分钟</span>
         </span>
     </span>
 </div>
  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>I have a number of static websites on hand, including a CV, an anniversary website, a small blog and miniature functional static pages such as QR code generation that need to be deployed on the internet. The best option would undoubtedly be to deploy on a private cloud server, but the functionality of these sites does not justify renting an expensive server for them. In this context, here is a solution for webpage deployment based on github or bitbucket.</p>
-<a id="more"></a>
-
-<h1 id="Overview-of-steps"><a href="#Overview-of-steps" class="headerlink" title="Overview of steps"></a>Overview of steps</h1><ul>
-<li>Find an available mailbox;</li>
-<li>Sign up for bitbucket or github using your email address;</li>
-<li>Configuring local SSH;</li>
-<li>Create a cloud repository with a specific name;</li>
-<li>Push local repositories to the cloud;</li>
-<li>[Option] Binding personal domains.</li>
-</ul>
-<h1 id="Find-an-available-mailbox"><a href="#Find-an-available-mailbox" class="headerlink" title="Find an available mailbox"></a>Find an available mailbox</h1><p>Of course I can use my personal email, but it is tied to my mobile number and I don’t want to receive relevant tweets or ads. I only use this email address to register for github or bitbucket for the time being and will not need it again once my account is registered. So I opted for a temporary email address provided by a third party (NO PHONE NUMBER NEEDED), and here are some of the things I gathered and tried:</p>
-<ul>
-<li><p><a target="_blank" rel="noopener" href="https://www.snapmail.cc/">Snapmail</a>: Always available, but emails will be automatically deleted after 4 hours. I used this email address to successfully sign up for bitbucket and deployed <a target="_blank" rel="noopener" href="https://abadanniversary2.bitbucket.io/">https://abadanniversary2.bitbucket.io</a>. </p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://linshiyouxiang.net/">临时邮箱 - 十秒钟内收到邮件</a>: A very good temporary email provider, I have used this site to register for many forums that require email logins for temporary use. But the email here doesn’t seem to register with bitbucket, at least not for me. Also this email address is prompted with “Your account has been flagged. Because of that, your profile is hidden from github” after registering for github, you can appeal here but given the time cost and the need for temporary use, I’ve opted out.</p>
-</li>
-</ul>
-<blockquote>
-<p>There are other free temporary mailboxes or alternate mailboxes that do not require a mobile number to be registered, which will be added here in the future after testing.</p>
-</blockquote>
-<h1 id="Sign-up-for-bitbucket-or-github-using-your-email-address"><a href="#Sign-up-for-bitbucket-or-github-using-your-email-address" class="headerlink" title="Sign up for bitbucket or github using your email address"></a>Sign up for bitbucket or github using your email address</h1><p>This step should not be difficult, make sure that your github account is not flagged. If it is, please send an email requesting to be unblocked or change your registered email address.</p>
-<h1 id="Configuring-local-SSH"><a href="#Configuring-local-SSH" class="headerlink" title="Configuring local SSH"></a>Configuring local SSH</h1><h2 id="1-Open-the-git-Bash"><a href="#1-Open-the-git-Bash" class="headerlink" title="1. Open the git Bash"></a>1. Open the git Bash</h2><p>Open a git Bash command window anywhere and type the following command to access the .ssh directory:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~&#x2F;.ssh</span><br></pre></td></tr></table></figure>
-<p>If the path does not exist, you will need to manually create this folder in <code>C:\Users\yourAccountName\.ssh</code>.</p>
-<h2 id="2-Generate-SSH-for-different-accounts"><a href="#2-Generate-SSH-for-different-accounts" class="headerlink" title="2. Generate SSH for different accounts"></a>2. Generate SSH for different accounts</h2><p>Generate the corresponding ssh with the following command, and run as many lines of the corresponding command as the number of accounts needed for ssh.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;theEmailRegisted@email.com&quot; -f &quot;githubForWeb_id_rsa&quot;</span><br><span class="line">$ ssh-keygen -t rsa -C &quot;theEmailRegisted@email.com&quot; -f &quot;bitbucketTemp_id_rsa&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="3-Copy-the-public-key-to-platforms-such-as-github"><a href="#3-Copy-the-public-key-to-platforms-such-as-github" class="headerlink" title="3. Copy the public key to platforms such as github"></a>3. Copy the public key to platforms such as github</h2><ul>
-<li>Execute the command <code>cat githubForWeb_id_rsa.pub</code> and copy the second line to the end to the ssh of github and save it.</li>
-<li>Or you can simply open the file directory and find the corresponding public key file <code>githubForWeb_id_rsa.pub</code>, then open the file with an editor and copy all its contents to the SSH settings of your account.</li>
-</ul>
-<p>The same operation can be used to add SSH keys for platforms such as bitbucket, gitee, etc.</p>
-<h2 id="4-Create-config-file-to-resolve-ssh-conflicts"><a href="#4-Create-config-file-to-resolve-ssh-conflicts" class="headerlink" title="4. Create config file to resolve ssh conflicts"></a>4. Create config file to resolve ssh conflicts</h2><p>Execute the command <code>vi config</code> in the .ssh folder and add the following to the file</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># github</span><br><span class="line">Host myWebOnGithub</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;githubForWeb_id_rsa</span><br><span class="line"></span><br><span class="line"># bitbucket</span><br><span class="line">Host myWebOnBitbucket.org</span><br><span class="line">HostName bitbucket.org</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;bitbucketTemp_id_rsa</span><br></pre></td></tr></table></figure>
-<p>Once the configuration is complete, use <code>:wq</code> to save and exit the editor. You can change the Host and HostName as required, and you can just create a new <code>config</code> file in the folder and right click to edit it.</p>
-<h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><p>Test each of the following codes separately:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@myWebOnGithub</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@myWebOnBitbucket.org</span><br></pre></td></tr></table></figure>
-<p>If there is no problem it will say that the login was successful, but it may say something like <code>but GitHub does not provide shell access</code>. This does not affect the connection and means that the configuration has been successful.</p>
-<h1 id="Create-a-cloud-repository-with-a-specific-name"><a href="#Create-a-cloud-repository-with-a-specific-name" class="headerlink" title="Create a cloud repository with a specific name"></a>Create a cloud repository with a specific name</h1><p>Create a repository in github named <code>username.github.io</code>, e.g. if the username is <code>AbAdAnniversary</code>, you need to create a repository named <code>AbAdAnniversary.github.io</code>.</p>
-<p>If you are using bitbucket, the repository name needs to be <code>username.bitbucket.io</code>; the same naming convention applies to platforms such as gitee</p>
-<h1 id="Push-local-repositories-to-the-cloud"><a href="#Push-local-repositories-to-the-cloud" class="headerlink" title="Push local repositories to the cloud"></a>Push local repositories to the cloud</h1><p>With git installed correctly, start git Bash from the root of your local repository.</p>
-<ul>
-<li><p>Type <code>git init</code> on the command line to turn the folder into a manageable Git repository;</p>
-</li>
-<li><p>Then you can add the file via <code>git add . </code>(note the “.” with spaces in it, “.” means that all the directories under this folder are committed. You can also add a file to the cache by <code>git add filename</code>);</p>
-</li>
-<li><p>[Option] You can then check the current status by using the git status command;</p>
-</li>
-<li><p>Then, use the command <code>git commit -m &quot;write your comments here&quot;</code> to commit the file to the local repository;</p>
-</li>
-<li><p>Connecting to a remote warehouse:</p>
-<ul>
-<li><p>Test the corresponding SSH with the command <code>ssh -T git@myWebOnBitbucket.org</code>;</p>
-</li>
-<li><p>Linked remote and local repositories now, Enter the following command in the local repository Git Bash:</p>
-<p><code>$ git remote add origin git@github.com:username/repositoryName.git</code> The git address after origin can be obtained via clone from the cloud repository, both SSH and HTTP methods are available. SSH is preferred.</p>
-</li>
-</ul>
-</li>
-<li><p>Once the association is done we can push all the content from the local repository to the remote repository:</p>
-<p><code>$ git push -u origin master</code></p>
-</li>
-</ul>
-<p>If the remote repository contains files that are not in the local repository, a direct push will report an error. For example, when creating a new repository, “Initialize this repository with a README” is checked, but the local repository does not have this file. Here you can pull the contents of the remote repository locally, merge it and commit it:</p>
-<ul>
-<li><code>$ git pull --rebase origin master</code></li>
-<li><code>$ git push -u origin master</code></li>
-</ul>
-<p>This can also be pushed through tools such as sourcetree, where we can first clone from the remote repository and then push, while taking care to set the SSH Key for sourcetree to ensure write access.</p>
-<h1 id="Option-Binding-personal-domains"><a href="#Option-Binding-personal-domains" class="headerlink" title="[Option] Binding personal domains"></a>[Option] Binding personal domains</h1><h2 id="Adding-DNS-records"><a href="#Adding-DNS-records" class="headerlink" title="Adding DNS records"></a>Adding DNS records</h2><p>Open the console in the Personal Domain Name Service platform you purchased, click on Resolve Domain Name (DNS) and create the following DNS record:</p>
-<center>
-    <img style="border-radius: 0.3125em;
-    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="https://s3.ax1x.com/2021/01/25/sqg9pD.png">
-    <br>
-    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
-    display: inline-block;
-    color: #999;
-    padding: 2px;">The red arrows point out the necessary DNS (First & second), the rest are baidu's and google's webmaster statistics tools</div>
-</center>
-
-<p>Note the types of these two DNSs. For the record of type A, fill in @ for Name (here I’m using CloudFlare so I’m filling in my personal domain address) and the ip address for username.github.io for content. This ip can be obtained by <code>ping username.github.io</code>. Since my username of github is shimmerjordan, I put shimmerjordan here.</p>
-<h2 id="Adding-CNAME-file"><a href="#Adding-CNAME-file" class="headerlink" title="Adding CNAME file"></a>Adding CNAME file</h2><p>Create a new CNAME file in the local repository root directory and edit its contents to your personal domain name. In my case, for example, the CNAME file will read shimmerjordan.site. be sure to note that the CNAME file does not have any suffixes. Then push it to the remote repository.</p>
-<h2 id="Go-to-github-settings-and-bind-the-domain-name"><a href="#Go-to-github-settings-and-bind-the-domain-name" class="headerlink" title="Go to github settings and bind the domain name"></a>Go to github settings and bind the domain name</h2><p>In the repository settings, pull down to the bottom and find GitHub Pages, select the appropriate source branch and fill in the Custom domain with your personal domain name. Finally, check Enforce HTTPS if required and select Theme Chooser.</p>
-<center>
-    <img style="border-radius: 0.3125em;
-    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="https://s3.ax1x.com/2021/01/25/sqRclD.png" width=70%>
-    <br>
-    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
-    display: inline-block;
-    color: #999;
-    padding: 2px;">My Case</div>
-</center>
-
-<p>Click save to complete the domain binding.</p>
-<h1 id="Attachment"><a href="#Attachment" class="headerlink" title="Attachment"></a>Attachment</h1><p>This is all I have done, and here are the current pages I have successfully deployed by this method:</p>
-<ul>
-<li><p><a target="_blank" rel="noopener" href="https://shimmerjordan.site/">My blog</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://qiaodanju.bitbucket.io/">My CV</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://ruichenzhao.bitbucket.io/">My grilfriend’s CV</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://abadanniversary2.bitbucket.io/">A little surprise for our second anniversary</a></p>
-</li>
-</ul>
- 
+  <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Congratulations, wrong guess." data-whm="Do you really want to see it?">
+  <script id="hbeData" type="hbeData" data-hmacdigest="42864d0dfaecb98c7abd522955db302579c93380d1e5eb790e1856bce6a01a99">073467ca4f930af409eaa941e6bda085e8d292cf5fe9f89eedc4dd3d47dbd0257715dd0a22dd316fd6eb61639d2d7611cee6f280bfd37b16db41ff29aeb227a6dcf02c5a24645ce56888c93e4e89714e859631e058052f7843f402d91ced687d1ad5603594adf849cac700042da5690031acade18ebe995728e8b90a10e2c2f0203971780e90adffd53c70046af911d882d25069455a41d3bda8d46de6933e3fa4bc1febbea020f03ff25f9fb6da437345e4dd60d34311de60b2b6b11b415d032c745db5a8ade0da50c35a9a46633639915818fb213cc95932710a343b3e596f94f9920e8ba19bd93b48c2b8f76637b5b5a2d3b2488653b787cf803a39229dd1da9034fb687aac14905dcedff9022a5d3658b7d2efa8f8d9b1bd58a1faa813248baead853d3e8d119d6df2727c4d1839903af27a2d58107e797e72a500599cb2fae9ff071b8d9d46558e003d5e8460cc7d646f45728e88c9fbf178ab6ca7776b2e906a2dd25141be6444f070bb9cdf76044398ed4fe6e7f8266c74132e3fb702c84edfb1dc1af0caf57c2b174508ba05ffee47a88efd64623b648de6e3f32fd5810d9b47fe5cdf376467b8cd3bb1b5b81cffb62b3aeabcf45a568269cb15e09155cfcb3fa42ba7d986d6d5532d40ae92bd3a366a1cdb56336b42aa09c876f05ad331a098625d2b0c1430811a864cfbc2781441f416071658bfedfd8ac3e24bc3758ebc5ccb66bcfdff83bbe46d8c198964e33adf4dc2db4993927fb783fc656ff8da4e2971e2b2e486fcc35782708a29f63b065e388a3162eabb7647a8b21291289790ca6b31d65e61b947795753b0cad9b95c178b84464b3b28336c5bd45bd209567261b89ae8f6bad2bdcde5434ffbeb4b4e3c6941e9075e72ad6ac2ae8194511ff7d85fdeb578d7fc0d853e2eac1ceb713096ee7e33df1b8f07c2534cfc2a25357cd5ea6bc2bcb2cef551356533f55b9ea521df6b25ace212a4015b65b3ea25f7bfda7ae19b70caaafd05c8a5ccabc0baafc59d8b19b5adb8aff424fb1688690b5a46823afaf5fcd79ae4221e64c90ca92fb05662b10f0f26715fa8487a96aea1c4d3bb6ec4b7670397c2e9de3f046bef972a8dd92d1b7b8524625fad21a603e8f3a672eb104f53b8a2b8e1f0bde9dcad40c58d6386592e6bb06d2f6066f40cb7a15a758ea24ebbca9c0958e9ce736eda9f33dfdd33892247bb0eadb4efb073794513a45d51649088048d7018afeea90623e5a95a70d32ced6e24ca5cb5c14823daaa7c123a6d85f2a1674679baecbcef82eb62139df68b22d9aaa32d702a6e1b8915542a5309423f9419457bad18b3f728cd0ad7fd49537b60bea6d445fd9e384cde39656515100c79e94a6a7586bd22b0e0badc401fb7db840f6d3e694fabcd5f0900959697bb12ef339f25e907d6790309f6911590b87693d4ac94454f680cd8869ff17a912b2bc1c129442e76936e90683cdd10d80c2208869bb5e6acd23e462a73ebe11ba5fa0347f9bff598ccf9b6a19dec80231bec581345058bf6cc9998c16b857a4a14e4fdceb4dc624ff152e64747b5bfa416ae30031974cf2b8ccdd00e183b518ef18dabb3bd47cbb0bea173f848b693a3b56a43876d3660b089310ed25a6f996f686cf22715688c47431d5ae4f9f897f91a53023eab1005364eabc36df173d51cdf5448d4915b7856fef15ce1ae4e653a5ff705599392064eed6e2bc0fa017e7d44abc56dc6f5ab810fe1e50c01fcc9e65f2d964668853d37605900a3af15c55375be74739d78395f4c73a867b861a2d189524d8728dea47a7ab3b3beb26f00214dbba8a516ea144190fab4f8a2546b3b2ad01f6a8e1a9990c14a1f281b93d8d7458106dc5ff647e1f61dbc2fdbef44174a3f5869384fc1d60593f14c74c5e9ee89f78a9f8755f950dab5461922b49b0eb06121f9df3c326072ca02f1f3b14c0303c64ad72318c6b10dee8312099f9e7f07d13ecea82e4a781b3012c960f8d083c6830f1429f3a5672201f58196beeeed1059230d54cb051c580b3f65e3a62b4a89d7763807941bf3f6134593399b04d05892125b120755e828ec5256bd0ffb6ec845d4868afc7034a99bb55f132bf2ddd7477713da8ae278aae786544bd8e1a5d623017ac1b9adc8eb070bfeb9c9965211e337e0fa54ec66d60298af55c148f4d869b6860376571f215f8899c31ef0a65337a06b092a3fa0aee359ba2ff9d716ebebe0f3c4dc08c5361a17fa5a35c47e2c335158f4b9289c6c26ad4120257dddc6b2bfe798a3bdde03a5ab27d2ed03de4899beeb5ce26230c6b3f9b0bcdde2a4ed4f8f3098fdbe9e689326b9f6f960003ca77c33fd6a2af1d110fb3f7c80d0a04951e021e117fc4ed8e803f23293b7df92b1c695d76d78231b0202daf78b227e09f3fa936d7cf56786e3cd01244005b9c329e3eeec472dc6edd96d86a34abc29072d78c4986c098ddeabcfe85df8a8784a42e4d53544c42ba450a2be3463656d261bdd5a9e70d50944f8b5fdd5a77239c8fd1b30a7cc6cc21a1c77eb9dfb90b44c2e6896b23351395e7106e3f7d2427cf89322fceacb9bd4b29ef97b8b2bf04843fbf3b2f8b1e4382489cfbea7f9c1716ead6c660a2549c1ae7a17d08b905df825a2e4f2235d11b043bfc523fbad36761608f12e0e1f9681bd7bc064664cbb942e2b5831fec65777329d19fd7fd4dba2c372e33ad885ebbbeca7aeedf896ad739618e14b0bfcde192745402f9977e99ef025429eef4b06c1991056680562e92c1d096b48cbc3ef4f8f274dc63818a9da6c4d243076ddc24f6903374197ee6f7c2b8f264938dd9e1cff0808491287a38575f745b06e5d679ed5f5a261eed573204a309be9d1f325b64b9441ab6e80d686237be6f1f5b3d86a89b0aa9027eaac6b1fb91cb5d18d92b6f0378f93f3739241f612b21ccf4f5f3daef31e69ad31603585024121dcddd6f453e11d8be1459244ebeb91622c9d5fc4af7b99212acf4f189604f95df2521b0b8604e595ad1dedd46ba69ccd4c397ecb6ad5e0583b33fbd1e04298e0af5b125ced43ba4602a62b7cab4855c7c1c4ac5e2c0bb1d532d3fddeb6fb475ef35d6c1765585b1a33e10d5e78dc40945d18bfa300689f5b0928cae8e3cb89ca18a28c2488cca8003be0adbf420d2fc4a4ee71c5309132e3e64ddc9b93b3ccefaf0408ad74b4f0d1d9187a4963f5b26d1098d9644a8f35af3c24537e60dccc81caf67d3348cc8cfa27e88ef1197348117c0ee2bca156daec62bf2e5f76fac1a5cdaf41c7b95c30ad68f5d53386e720db8d3374d036cdacce37f41faf9400b9f237645b052f9a125571d54274349ffa773060ae824ebd76a06665d64d0e667eb1a3227aaf3cd4cedbfa0cfc29055eb4799e6837b4622ac973c85c063d6fff5eb9e8fa10f92a70bb906f5e10c45d8e7a1bb433cf05ee2c1339c3d5213a1db7efcd6bb0ee107c17617805688bb6a601a4190ce36a4a7b9344904e60b84bcf176e69c3c092a758675ca38a81eaecb321cc104a80dbc4bce6298615a79fc15d80cced59a70738d6864cac14decfe6729d71021158fe9f45cba2968a9cd3cba48a41edc2915688e3bdaa786491bc8ef53267794509bd13b829d445ffe8d826237c1ed167ca78746238ee934885a9d8b443ad9c9917b9cfe2f2c3d753583022ab96613404bf9c25e356a806568fcf529768f7fec4f1b80610bd40f935416008f4647719c714764d3cfcc8ab89d0cec2924196abf1fce70bf1e85f09a1e29e55b45dbad2db42f9848fa85c1c6addc975c03694de701dc4f25e0897eb8a5922fd830357281023d4e684f56c5507c246ce6529f9dfee3c9d3f68f32f894807f358b51e2d0c8e500ff3e707f855ea41bad9e74d23bc662da91d1bf18260a60d63b3468ac7b21600ae85d9306dbf4ceac19dcfc91a22e5029e5779dc8bc5c3e63f61da0ded1d1872d69c15ce17f0ef206b30ac3042b3100e3a4a70ecbed8b46fd74554e9b9b91ddbaa63caf24d63774c3415f988a3efd9f1126faf396005e5bc385af39aca6dae8458b27ecbd8e795ae99f2e749172dd654382cdc5fcee4939a4842c170ccebdd6b1fc91b61118ad4bea83b9c0e8920492b8a73b67395f1eb40900ca871970b5675d5537986d08bf7de0a8de413ed1955b01c0e9ea2fd60d70ce9c857827d6952b1a858290ae4374b5b54875b5a4c7c065d0967f4c8b58fc04204c7dc62ec8cc8d125e94438797a583a9a20d8128365b082af84576f5cb384b0ea5cb49be6e1ea390498e6d4a6b0d5c4185dfebc8cfcd4230942f99b71d9882f98009dc4214b76565c5fc67b5f3e57230d354c4e10429d0e8a629e9ca7a2bb6bdbe6186e342969c59f9c512d2c40c4207f418ee1b43ae6659760215f3ad844b56fec6b2834703c58f919925dcdb03de8ecf2646c5fd067728f455f512bd815147c3757123a43d52a2133f2c0dcbaaa91be27e22545e8bf70ba2fbd37f0eed883349d77dc481640bc28943dc11d44fa7d5660063b924855f405948ae45ca2f2936d0e0b4c9a4fa052d1332c2b4dddbb93788b0a6f26b2812d5e0c9fbf5c03363eae6441ac8decd60af6620aa3879b5bdf773e06302179b31058afdcde87f5e008d4b86dbb9cf30ffb11222f68703bae094742cac50e698ac45cbcb0690b5e6a8769b69e703a161710ef21394ad2eb6981d5030a6ff8490dd2bdc9ea03dd94bd735be27de6d1a5bbd35038e979469b48156dffc6ee6642f11d3d6656e0e9d268b007de1b762425a3cb6898d2150cb858116cb6bc3fcbf5a15b3da13e9d1530ff4a77650d96aedd4eec2d8b1685cf372fc5c0a5c8db47b28953b43c91f26c6d861e9a7748558354ffca9b2200630fd2b66197065be9b44a5ed924f7e01602599d38b483fe0b10ef229189daccdef17534d74cf3bb237420dd2a6409818f11c94e2543532887eee2747fd4597a5d140cc481b747232c45930b7bb6f3ac9f0c1dff5d345545e0aa7f1e4fc69066aeacb5365c9b3b09ebe3c7748bb91d593c61d677a47094a0fbd8e08a282b8f1cc48bac5159f66b715d4bf591e18cb382d6d49137e876a9d3e5cc9d340f19e799f7637458d119745122fed4124a019d601c80103325eff46c6d6eb7d4a2505182467c00a188bc29014baca3dbaea96a4909fc8ddceab68e712d7cdc35afab8542e3a9414e3b8b5217327a4b3db491e6a526594a1edf7b45dc7a0f8101ad0fd3f70eeb9b1c82929c583a3a92da1b34e26aca7d288146b99c0aedf834dac7c7fe7679edc542068065d58338a4986851817d1b3d17a172e9e0ef5b1df9e3107107322646d8c89769fa859f46539f9b7af3680543523a439260a40c648a088bf77079b687bb8d19d7173dfc10496852ce57b3fdddc7e483eb605d1ecc51baafbcb5ec0f05c4af4611e8ba84b529cdc20a3f8dc79a6d0c0122fd28147d8a68e93ef8d818217a5f702bf1f3c726835ed2611cc5eb6c6ae1e701f058d2f3d7f60058bcf75a6c4806d1e234dd2a77b1f4bf1d428f28ae30eaeba9fa704997615e419177a464fdc5e5155c8b1ddfaa929364992c1080d3dd5468031dbae807cbfe248f7ade0780f51bab36b4e2ed6b11e0627989c87e8bf60482fda1082abee9fee98dc39f17d26dfe6b45432af7ed23ba7bc4c5508aa9c04eb27060b8370003e490e564b109b3bfd832d18df66228f1a47e9e4b37a0192d7f0cdf16495138f6b7f5482046a5325d5e6e74cc252e20c5d0e71665c47153b5b450906b0a17c036462d079f8e22dc96a47d72fe13d5d1d61aa9d4f1f4a7982ea148095bda5904ca012295d70576d46d108ab569365066a5613a93e26a5a32fe9437510890d557df0ed45836a6b18fc6b6cd5ceff619ada257a1242298408adae81509e889c58cca80b7a4d3915f50acdc209c1e11d7b1f0ffccf9d24cdd16546ec4c75e1869afe82b93323e17c09b098ced0355aff5010aa45b2983e4a91b2053a4720fcffb150cd2b16ea4d753c6d31b75b8ea3cb86d615e1825aeec21a49d403207a2bf260761f8880551dbd915771678370793a7ec737703bbeb3f6a6b5074a506d557c12e5996fd235408ae616a7e17571aeb3b7fe303c10b035c6a9915759d084adddde76c504a08c0a05407c9da821c070ba4bfd4b9f429aa9b8776e7f7398980c8ae29ed2effac5d774bf442de00c680e713f5937326c03eb89cc91fde478e5a74ff05cbd5da5f6f5f9f15554665266a0b179939f1842f24c1948fafeb570bf868bd7c8175fdb300165f2ef88d5aade4f5c44473515a70018dc62b4e4a99e028972a724624726acd415d141e82e91919fdbdc0f1c8f80a574425f96000226a66227de71204d6609705fad377a291bc3adb9fe692cde81aab2cd32ee0ec2179d717801de302ea90e0e6d79018d1ef89e4fc37c3c74fe7b80febb409f70251c8311a852918cdfbb7eacbaac29ec9b56339df72f1e387beb25fad783354bc3d10cff30903e8b8182b06be4c2b5c8b4302c77e5caae3b9cf80fd5cd8f7aa5db7a969525e2444d6d8dbbf028c3051011738e25673f9bde94d737b68d2ebddd57e9e318295a1f627bfb0036aa43eb2904ce8a400138d23978374aec297f7f68592865dc341570416c58679fb35bdd134c72bb8b984fb42979c117a8b78037f4cbdb169332b6dc07e980365b80ae69f34006d9f14d765180903c829e8ed123b66941401094f8a8ae5e405a259b17130c2982c4ad127a0236a415942febcab2a6148dff2ada6fb838db805f9ab6da97a2685919adb112ed0b001937ec62b23fbe82c06b7e2f82545cabeaeab2554d9c29abdc1a61809fe73699347794c75f91cb1ad64bd1664ea0f85d8c66dda74c13b79ed574c097f9222506ade0b873331313bef8de8e7d38af1ba89a8764adf5406453354cdd504f25b51a8694706fbe6570e5aa3487394c6c7bc9b273c72bad79b17d88c244ffe9560e3484c4b1977832d0c515835180197cfd6faf3bded813ed382f020d96419199826c2b65483762fc64e4a1a433e1e78fc42b5cf62b34064fcbb2226096ff9b0e695fb166fbb9734c69755c582e7634c9d209e5558489d09755ed06c1676dddef6ef7f5ac30630a64551daa5a6e3d776c8a064377e709478d67b47ddd53ff5367e9bb1deb8d5fe17c266e075d1cd36367e4b3d51dc7e1733083f5d5ab8165ea5a50d53ecdbcc68f5ffdd3867cbe335a914828afecc68820f5f6739adcf456e4b35d54ad88e1710994c1a6f3bffc18af2694569082341b823c6404b8c46800dd7754560b913020f2afcd775c6106d53346e0c591125fb47bc49578d85b8d7e3a0d1289b52bd745a1faa64d466dcafa85fa7b94879d6d9df14b1bf79326023724514ac0ba795a0cee7251e232c58a8d1cfebb62817c973cb4ec8cb3d7b343cca80cab7283cc2a819fbd439822272867d52966412a14c5b1973349791704b1a0b3ba022b06b7193eb8ba27e8d5b57b8d769d05f2353a7e3bfa08d8ef383c327475fe0bc2c71338431c3bb5daf881e67358cb87c0846d7ab6e93db16fe175125f95b5be7452b1133320db4633baa8e51c18c9eee261f360426b80b236367123e09df88bb781e94d7860dbdc81ec1923aa3618e249f77df342c063cb0f6412bf495cb5f5ab5036210d5bd343adcfc98c0004b02485c6a1f659c936a0de140ce163f12dcfed645781c9c67197d1bf53044b550ca20c1ee7a9209eafd6e36a7b6eed896a1578badb14ed95538435414462800eb8d6c07cc8d26dc0fae22bbfea0ed19fb75e4aca65399c1f3ec4d5b49d6189e3add2aa66385d69ab7804917431fb3a66106b9c55c8d7965d6b8f51a3f93c7d6eb10aa02ec68445ba47529f9cfe14fbd156d9e603666a7e6903c5fad7203d20d8db250b8a3b3e9978181cfa8ba810a8e7d8f3c40623dad3351a28370c29f582ffd2ff28c66d75fa64c7999b79b66e0cfa9cb7a9e397e06160cb1b3275299ff7244070762c7afaf94d21c5e009ef0f4338b6e3971e7dfa619ea7af803e59206270da1ec4b8bdd8d7359e4822532d7cfe5c8628f90ee42dc76136356b1d0f740e733b42ee3a715a8e209d32b00a02029cbe74e08708a967845d2154fe3a7f4b12fc039f0ad6811cb076057e242d9573d9c329e30feb8d42cb02766a224a22f79ebff48323e7688f7715586fa2f7bb7eba6e1df074b3bff9ff23a0ac66de14f8f6656b7b900212f6622afc43b7a071f9d2bc1f8e69814244e4b35c406ddc6190a21664b3d1cf6b451757cd0277d77745985d89f701900425d1de076c8affc9cde834d51fa68f8ff9020f8c0c1f177738f6c05ae51d3626003058276aedc53efaef75efd69c89b9bb8ada1a5796ab4ab862402f37f8ced214df5945c499dd027a64f1cf4ae857be47ad29c8c8e459369c02b6c7afd040b7e8ffac53eabd86ec713584de0345a28672229b286cfdace8b9a24e17db8b05231bd9afc038b569334828145db9e216158b3d8cb1ae055a39d3cf85d4d80bf23709e5144b2c69f528b48e0cda4b407e19e82b6a3eb041bc465cfbb3604b38c944fdf6f2358436462767c2c41fc9c2b0996144af972dbd3ec7dc10aed8bd030f2c34910728115ce9f7b78a86a54a87a39a909a7d22e2987ef94cc7deac302c95de8d7fe4ec7d6680d630988b35ddf3ea69c277c100c258de7f2808226953160d5543023ef1f3e124d88b64abee324b7d2dae5b6d9169d265613d061afe55080790933794df5b612bc9e81cc4b1f163b9c86fc40308c56ecba59905424ce30f7e8ddcd99227c24cf5be99e74d21a65437f35f7636f0b14206fa908d1dbcd35d62deeee48561348daa342791faea11ae64aa643871b30eaf72eb211aeaf840ebe9e3e31bf488b5535454f3d7e6b273a3f9e37c09291d222984baf4a13a186fb2e39ec8eb551a66fc4a16443baa9ea2940955b9a1399e5242d289d054cce87f2fba1456cc656cd2431ff86a2258f36081455642c9105c170d8e6e04aaa2c57f08195d062e49b0dcda21b47ae1708143d6a2c8fc5d0e9e0135a6be65835d22f1e26dd44e509d7948fd7ac8a9f410e51e8275428f82f38dfe61ef4d220dcbab0a05b723fb45480d57ec2fc0ee19404abb823db97065f36d7dcab78cdbcb6fdd3b174670cc81d7171ac6971e3d2080514368f855b5e64c9de9355a6f8e116b951567ff3edeb2f11e75fcd7bfaeecd8098ceb8836dc4957752b13d5ad8346ae9e99f97979ff9903de0d4d35ce83395c4195720c8093e994f1734a1b5b5466d09050963f18b40779c8a5afdd423adac1fbff857a271e1280cf5b1cbf63c663b5f58f8e033b7fc03640b8bb3ac473814fcac56ec8e4e09d2d6046a696410c0838f1894dc3ce19557824072a82c2c38961ccd7f15f7f255bc2d61cb7979a93c4294086aa0e29101d744cd94bbdb74180869d8311b4333a4df481c88c6e729572bd0fecce5c71c0950cb2bc07677a523e6b432861e517ac7af9648902aeec9217a44cb46e1062015b6ec4610010c98488dece44b65c1e2fcc7b80b90c1f75ac3ffc65ec4459d961c04e9a08c5fd2035f71fba65a46cf74f2cf260b08f61c6589638ba1f56a52a8531233c69d557b568cc1fec36a8bbaec54f4338599bd823e6794e69bf33d0786e4b07bc17aff1fc5014464e77405d09c6d24a7ae6f11ce02a0808bb2699a55ac0f6cf2a97c300d62750f0851d5b47a762659269c76dd5e81fbf19fe64f7f2e38cdb31a1ec598e28b227fc6e2b112d1bc8df55034d98af38ab2b9c49617b4ebb197f20217667ae3a4e9c4e2a5a38e7241be22ef4e0583c41c82855769d7c2b5d8f6dc2204c018bd0ca6a074c965f330745e823898962fffdc058c5dc769fff12eb672b517a79136007018030e7e86b845e6891e1192df670635dd094bf4ec44d5eeac64b32a2930dac073859841b2b56fa46770563662aa22b407282fbde53992a9a3d132a4ee513223975f54442655dc8303ba23423f1de7d64ec209f41d43b42a611a4e0dfe73af8e8bd291b434f1b1b146cf964fc927eff34c79ec9b3565c3a1136ee8cd21273061f8d74e41e1c91e581ee144a042f2d7c2de968c648950937647b6af552de248ae44c8b7d63e32e53ae3f1612ca94817b5a56191c5f696b290182e6f2ac61a3dbb874683b8bac2373636b20af0a81e3117e88b1c2f6bd44ba6a09546aa865e87fb6a79bc94d26ad8021eb86632983866cdca44b967abfe246fc7908484b940b21e99e14c260d971d77d1e07ab1ce129930d341555beb5d8e8ee650e3b1ec370c7cff33e83b48e8cacd6393f360ba6de3a1e736e00d321b2f639dea78293d7eacdcb339832551a3b691914e781851cc5a16a4b58e58a25e5661a63c85bbb1325ed6d89b09c52936ca8c2d90af7647a22b610e57ca990ef6e0d632afd448b77b292d92bd3e38dd72bccf2b44692028358e4c2692b652cf30e31b280eeeff407b0131097201f2da850442339bad96c7b206800275812338db521b114255d613c8d374b658b782e46b86fd92c5989fb43abb2543a5d7bbcba1cbebd0dffdbd32d81399a036f307578763cdff69eb00a298be9e0665ba8c470d0adef5cc9109f8ae797fb0a48bcddf05449c6e107fcbb295b7a391e5a1398273aab60d82d6f5af64623c7b988447f3da6564b554cf6831adf8190405d7ade330c05c06777e4b20f973453e720040ec0251b3c5011e9d92cc3594b2a2b968e156df46c43d80aec340bde835c81990d4ca1dfada0349d2fc4d2cc3cb201eb6867ba207e5941010406c88694188ac248e51af474c5cec6d3f12ce9ad26f29bd44e08ab7fd173527dde6f3e15c7047d580fc64b1375e6b3df3b0de119e5ea6080c7e8f1faf566758c201f7ea067750bbbe1812022e7c5e578130a3d88ec167846786d89ef0a3cac265ca06a7fa50fb34ce56a1ee07214d9e258b7a9740a63b8cb1bb591221a931f1db333798b079793ab0e82f82274c24df28267a6c913ec5c8a2f10ec8984f2e411896e5d0376796b0a5ff64ff8c02e72ac779aa72d9b3fd9b841ed9972752c5ef3fd6343da3096bac20d34d8d590c27ed53eb2ac0ccca5ff2165a7ea31769a5fb4b2f80a7ab6c36bd318f4dc20df9995b87d535d47ee09cb0a95ace49c8761dfba24d5fa21a4d92711fd53baa529a98b1df0407182b731c540d743f5a434573527e7a7d9beeea2704634aaf91f4471f2d8bb1018767e06df23ffc53aeba7618de56132e178e2087ea8a3d7c2639d3ae10788ef59a5d527dc951db3a5a8b9c13e03b91839bf719510c4afb35248c21fcc4702de43e4a0cd125b30280d29d6701b4c65d1fcdf3fc675264b40eba20fb951adc2e78cc58b3a4f7ef1eb07ab345c880000d92748b1c067e54b072fbab03f53f084f67d7b81abf822554647c390b99058c5e144aa9928dc29d7c29b3d24527aa472c1d4b8c3167e606ff4e18f67ee9693cf81048fd881c514050514a4e8cd7ac8143b2fd858a313b4e1cbaff69a80570a046c939b08a1224f4fd3502b54d1cf729cd2023a6077e387b4ff4ccb31c8b8bf56e10cf02e357648599e7a30959d402a2299a4e064a7c635f62ed91789d38cdba187908803ed022a9d31dc1147a37fb7f7c06571a0de57b5acc223a44148d7f8cb062769ab4dea0310bd4319bad0d8f3a74da1ee0ac9f45c1b006a3ff038e61f2e7e70149d33b0c0ef6bfb5dc89a1aac1f2a5a8ad4865c3f8c536576b3d208c9321ca57ee863c30ae1409987408d07b03c04adfd0fa7d4ee13029f0402d1faaf10bd184cb15114080cc7ecde499ddf2aad02d395a6bb47c67f9b507e7be745dfa6e45a53e414b2b064e9dd893c2035e3fddfa3ad0f04ab953f09c5d8dd218cab260c785dbf3e3cef8120a1d90045afd2a32cb4e73638b975ef842fdaaa6705e160e6e6eb441605dc718ee1737e50b43d6a475870a41ff9099518873275726ae483bea9e51c38490614c7fabea2f56100bc935c6f034f117e155afc55c4b259b40c4067f21b30a4e06b7dfde5af91c4156f004444a7ba627312e319da601323864848c7eee5af6cfe3118e8fd286c57d7295623bd80f73c92b536c2baf29917f87912ec0f2e466e8a648c8df2ab65df8885bfc3ec499d4232838624dd73020763655fb3a9d8bd177f5719ad489ad2dd084642ab52670a850da2331cd75d096f679eeaefa2512ebb417d5af3156851c02ec37a919062ccc87e3ced67943c5570191f411e566958da8c183ed748fdb4a13a6bffffb8550a65211d0f9a28c65b2b9796f423fcfed61bf66014e3c1b25a8354214da9f2cb6af2d3f3a407a7a785a6f8b91a3ff6468fb3e8f6a7b3686165aa28eed28ec6a5178fc6593768aa012da4805e70a7ddfdf24b2feb32f7ecdd4c4d78079a0790a239356fb367e37ac030bccf1a64ca83923582f8d868ff8367c4e2450944da89169814478a89389c667da0150c9e3015ad1dd8c69884a874875dc5b858039a9b7dd356f93f6d011da7e85fe24468c5217d109654f0fd1c3736333e080c26d43712c0166b687d3286e3f005e1536ac0e5f60da9be3dda9c2859ad192ec2a89199f8285c920242c6149cbfd35994dfe23845b0fae090c07f359da6891929c19f4495c525c4d5d62614f82b3c6a9ab0e7ce7009a4ed636528487aec8430cbfbe51bfa39a5767bc06932af6111ad6794b0e142b4139ff5f07165ab923c0aa5f6c4ea33e264baf0b37eabe68098d6d0f63e68ce92f54b9356d8232eec608d0702690c3af994a5e9bda2f2954ade2dd9db2a9c988d512d9aa8c7c8f0259826b1babc84c26e6fc7fdcd29d5c0570124f5dfc78a1d7eafa30eb06bb28fe62223d1c2adf7e74f0104a6d7388fe9990cbe51e03721e63176d4f754df365bd262e53f247b0f9e7d310fa52a93f54eee16ed4a05af87359a5ca555899f186bee2a09f92ae6028927db80c59f35f9f49e70e429e836aa861b39659936a9571dfcaaca57a8128b853ddbf3e3c91283bd99e38e7edda0351a4f2e111c5b0c7105d5495b621ca3b4cc8b39d5c762f9a602fa939818828373771256970f5cacacca23523927d0b06c4b1f8fcc1f2ba12c6275d1b7bffc84716123661d7fce036db9ae3722d2c0492b90cd12e9570584c195ba288510014223df0c3aac3f321e7f6460df1b66fb35104ea99277f9b51f137cb32994b81058cb6bc3ecf45adb89bb31328ba49228ed3d779dc783dcd40e5c7f943ac14265e2386000ce9a647d3f1a2096551925bc82b7c374b7d0e306c0dac71039bfca9d9d3bd874657e43261a328cfcdf0816f23bc455ffdaec694d1b853dd902cc14759e9fec6eb4eee55d4aff10dbf3b7d350bf6de3963e6866cb26295eb837fb559b90a8c3868f3580d2880a1461d4fc10f38e9d20ebfd2f8c35e941012667acd64a1e0957a635fc92d2e2544ff944dc34994e446292f650f3d2f5815d9d7a45f121009a3d7e91039070b17b4d2e76576bdb83cea84a52fa58bed4d06a67a71d6aa660bfb5a932461a40715e42049ce0fa5157c85341d73394a7c6c0d63c7c0286334ee273bf2e6af0d0bf6b80ec2ddbe09fc9506d91774e6c000a087146b6cc95f9cc5427c83c857659f22d9be4f6871a54c1a2361cde1cf4ab86b623a4ecef513542181690003cee093354ca0767c3dfb4d58e2601e3cf28a18b6c5d72c23b5c867c44dd0b190730d5ffb17246654c1ba3fef14dded001df250e3222ebebde567fb3d5f6e028a53a8bc145c1be8e015fcf887350dc28bcda1ae6e94a6b1e0f50878bd45af47c05526cf5222d3471d3e5b3b1fb54c43eb5f079a27962c7d5e9fdbfea8ba0a4cc7cc0291144fe1fc8011b1477503eb3e8124b2f805141ca888087f84ce89e6944ca157436cfc0192ce5e3546f743462b825fef754c1f80258a2f34bd6632c9a1fd48440a03d287de4e9eaa06a3c383baededdb9d6115e1488a9d5ef59ee12bdfa42f9fa6ca86c0a979ab34476a1100af09c5a51ef919329a1130548a1a876587c28c7df6613d14391cfeadeb2e133ab16065bb6aec5ed7036c1e5dcaeffa68c6bf7e50976dae001968b0b8514b70f35f1992bda6c546b26fd677d945cadd97d848f0c2ff1b1488152916531e3e4234bd069f24ddf92922e616f0d3e1e3615cb5410447d014d7555b98fff24f38b0c4961f8666c7a6a1022512c7b9f5c98d5773efeb8df0382305e8037b928b7731b84e9618442887b04689bf0dff8485774c59d7eb8a41f4cb2e2a1ebfc8b59913ae37cc5200f938994a85c644c4f39da125dfd63307650712761303d9c1a70c5a2a733cdce10ea5c93b91247de32a9cc3dfb8dc01a4abbd8bd0c515e2b2ce36ac7a5970bd4b9b3adc746071802d8393c495956fdfc469a67cb6ab335d053b3191f41c779336b392f5201f584999e30688d6fa4eb6c09ba2232f494b230205b657dcbe79f3cd1665c10bab9117c32aa2a3a2d9c1ccad9bc620cf18e60e7cbae3169fe9e370bc8cca62481e82590210f3d54a7353d01b751cf122d085a0b2229e94272021a7293cc86bf735c6ce3a6b46be445f339ebab785ea84fe4526a0a045f3b1c0ab04716207a931db6408435180415a5d33d98d419d14241bd38fe4e33f0faeea05f8315ec4df841f588651fe4f2ec0b923599969e7a0be1282067378be29559e43d5496fca2b0b67ee3680fb25bf27f040aa15370eebfebe2a632890e174ed9e41f94a13fe48d40b4a7aff1dfd17c3406a54a703cba8f30852f461c1b8053a4c937480f1458aa9232fe77bd9476adf86d22292f0c5297970d20293ff128a8f30d5f527a19cbf8a55296cf2b4bbb8f354d5bdd05c4a87205c6a2f3bd5a04a951c11b12be7b93f58371a9ecfd0adbc40579becf412288feb7be2641161d076fc95e3de32b8504da3a35cc48700420227e4f3797d26d9baef004b4bb4df944e4c406ee20ea40e4d4ad68ce8c6421f98bf067cfec77f4b21b381d964542007e70709f3a8b8c7a2e87df948730c5b0179b03296a0547cb58c5739b7d0550664df3b43fe9f08dceaa18614cab084e2199d60fc30513f49f43a7e26a8131f72f03f30922cedfaf5d494ff55205162162f2135b821d12217e7096288a039630545e141c51c92f9e30669f0269cfd9925d1795ae86160e76db8b58414e046b5958af654888727eddfc6ae1fe6ddfad618ae0491238fa6a0fa92ee6eebab977185ca5eda1f0cad68c5179618bd7f7e3462f0009bc39da9d288c6ce1206c80e6d11f24eb4caf034922ce89d5a4c338fc5b6141ec7d8150076e06d2662082282cb68cac84e6d9201949b722969e7128974305b90275db2b8450b610179fd588b3af16ba2e3791c7de375b60cc2e10d1349295bf0d40ed187dde68a382ca9482962c25b9968251105ee081f6d5f97e4f462078b926ef57cd3aee28ca9c2d2a9afd2c4a3bacd082a1ec41700d3d32d40440b06d87be9989e5edac0aa253a7e7efbee6cc1af7c4fb1491a2c06111b7843953fd9b5b17e0127146678a29d86e3b6080ebd661241cee9a863b8647dcc6fa0423260803a853eceea1619b41948706bb91031205acfa2f1e5af0ca9b7184d186a5ca80ca448251c811811fed983c759a6fd1f1600178d7187eaa7295ccffada0b574b56334fda294f2afa2b924bd4e7de1a367944ce474206940a2117ed35721b4dfa53699282ee3974457bf92fdee6fc1df02bd54790e4fde21be8a7f7372893ed6e4aec12b12f4923d918529e57a5a82446ab02d2904c6a4188c6ec38f47226bd14e0a61ef3a5aaedc87aa0e38b65a8c59f1291f6da4d36a2ecabc199f929f7855625b6e965a52f6a51e6e491372449a42dc5ffe1bd069fbb27e95971600d5950777c03f64ac8a7f782eead78dd04f5ca21b59806009c536bad128f6a294e1c8cacfb2065e0a41514088020a8d5607421d99b8b6bdc7d9e600a23ca4a1e98eca27cb261d65e72b7b8927ec929be55817f3daf1ba37ddeaf647c38fd97209fdad339a31f2e3226b54789bdc55409917b64b922f709bfad4d09d83a46f59bd48a7aa3708135852ac11c1dd433013ad4684de5969696be6f05b574aba07651de6d1a5772defb17e2c18f2de0e6ea334c60519a7b2070441d33cd1368ae50e22666e8031b5abd7be4dbd9a2ed2cca8175df8a2b9d67d75e60cdce575fb6fd088ed8416564fbf35ba5bdec3f7620b169c8aefd8fefe53419835cd563f7c2824b4ddcfba5a7a5f95d148d41e2a7fe79f8dcf6943030624810229afa6967c0d4d05de715040867c911ded560340fa412cb0ce98f939a46590c6b448dfa4bd4e3feac58cbe31696203739a8eec679294b6c7b715d511268b11b30b40a2449bcc044f0900959b835cc7d7a859d685c09da056ebca2aad47f6e54751bed5424cefd8abc927e25ac24129a38f6277ba680413bd95714ab46eab02c2bbf91649d9e2ca3a15fd0a8a16be2ce74db399e35e24b8d0e4c16c44fa4533fee032e44a6df7c97301ab9fa44af47b0eb4a40e6ca775972292963c33e759cde47e2a54a77d153de74188d333e1b2f5e48b8858e274bff896a2a934cc33e8076a813f199e324bb6d63855a1588bb4a723913c1bf3f465093a03e6a19bed4905f7abac452b1e559760b986025bb9c27108f30a2feda348ebf9cddbba2b910f61deb66e1b5762950b87287ce19b53f2f5b795ac00e51967111ff8ff82c4f7517842fc1d01c275bf58823118fb8c95b9021c0d37d802a23e6dcbe16a17ea42e10f44a25342333ac85c60bc2b31f068f3aa9ba4b2b21a24b5fc68894aa8582f87760751a9652f35b751c36c9abd4849fe19eea93ced3b5c32190c099f6ea54b87cf5957b42127f65e7faf8dcb24c858e3746fcdef32ff604ba631ece3dc1d40cd9b501153d85d4fdbdcfc9b279f3f9adcd46bc42c071145a6c57a464c301ff67b58eb016708167000ed4bfd52d50617763ce1cb7fdb00b6264003b32f080b5af35afcd2867263c81383b2eb9292b9b6c832426653009cd52ecf07ed63f873a1e18f219ead15de52638256efb0729fec5f4556ad2f0e8c205d0b3eea3e2d7d3abcace4c1755abec7962b50c83acea55be1c6d0e8e257a6e61b3605fe609490b6655f00f5a8e4ee10c0860e82fffc1b8b961c2c16705f8c46c29cad66428f9cf3090c370b2f40787d6a7baee69aea4a717ea3625e7d2e486480044aee8f8e3ecb69bd585539cd8db8aa9019e24e5860e1b543f1d0527c38e8b403bbe7dc20ad91bb3396ce418f5bd281af58ad66e4fa21be68486ec018bc01259e39c75cdda5219707896415082a4ce41e04e7604ebde8f34f184fd6bb6a07d854f8521f55404e6bc5c2df4bf855e7c1b8a8c7384430757ebd9b811e21a98e9b8e75a9ee4bc430bb39033779501f9d15d9b69970711d2450c9861e44a902aafb11de30fba017b480d795f6127d87ba276659cf1b55d434dacff87b6ff0e8da5ecf6d9dc39fd7cbf683d983fd47a95fd83014e9e9a4b6bec5b432e530149e2cfe100139be44a80c3970776b12abd364a7ead627e5364b21df2f74027b12e6aa2e81b2f2a5ebd3cae1925fb05195e5a81f727cdb0a20911b542dfd77bf2273e70d6a87acb7ba8250ef88aca8d84c018e651acdb61b64ce93994d02e006703bb61cea971ac286ea5042bc8c59e99a69d3a46d4b23a0eec910f910df2e7067016b7bf6810e5aabf955aeb1ac5bb031dd2e588a561000992c8b93bb32a8d30b16be19ea7dc21cc2309cd97272e0fe380f566fa817a7d0efee219048df9afc66b1d21afb07da5cf9049be128843dadd77ba4fc75971b4cfcfca87a8f3dc5fb71b396d8c470ec50687fc2507b5f26e5bb1c24dbc182a31fa715374261ed98c8c6e99a5278c012082dbd37f7c046501bf7029fe70df8624ab3272bd602cfddcd11387530933fead77d3763ff705b11833a557de9e97f6593413f62ed7e1559cc59d7697af60a410d300fa8d45388a1188a8c7fd3bb9d3fe87d65ae69cfc66e78e169ac0da12d75dc08e47526119ad21acf3f436a8e5ba088a63784efca67e64db27b967272beab48b1d66c5dd518c6af3cc9387cf5548254a2a8dc893417327890982dffd8fe681c158259111df672bfb3547b3f8450febf2e4f27303adcedd323c2ff5048ffcd2cf43b6db9a77d71e69a3cdf1b8700b57b5b1ccd0d8989473b05d95abcaad19bcd7288ab3a4dd6d1d559a1c2ed3083e7f97c6fba94a96c99f7713812916e0aaae05e2ff0dc5d78e4c3e71a486c37913a06c7fe69801def1dc4a1a494f279d9490ac70f7052b01bb0b5072756a11b3b452e86bd1c9ff0b0e9d82c5607b1ca096dba8b8c392f4ae5fa37f570e94b371d352f89f4106af731c304f79d1a5a57a0f33ed4e92f54924bb7f7889559b50b7b3d6637a689eb98e13f1ee6fcd9e5bff252d411a598f2ef547df8d38cd4a46f72e656abfdc6134b307056875f68dffe85a5de1ca0e3bc7a390b50eed9725f30db3044abb29d5ef5b1da20a7ce0dbbfc8adbaa16c22bd7c48e5fe1b5db6fc82cb4ff6b60733924bd697b2634ea7079edd23024331bd1b80367f4a6494f59d4de3801d1381ca7e9f2b099d4b6e6d4c59f29dcb2a8c85d18fcfafcface7b5647abd18d6b43d1dca6023bd6535eda77fe00db71516bf39d1f2f349ebd796cbbf9d06522e3460ff4461ebfe148f7806e38f99fb6141c20a364b8cd74a2596b527145363f62b7549732731264a1b9690710dad31d6e271edaf76cf511a5b99fed6b547e8178321188af5b220e37190a16bb54aacd1bc45357543b7a70d718351205b17cdb12494e219969f94204e51a371ae43c66dfc0987d1401f4a247d772aa622103ee87448c4f94104fec20f72021ac12df7c8f2400499d5f57ab821caffca1aef851b29a1cd2ef224468ca3b29af6d4f2acb05d3125c3a6aab032debb226837541ffcd2326a56f75480cfe7b110ecb3c34c5a92a286dcdb469dfd65158e3916e82ce3f8c90b734ee4d42ec149e5dd92d6674dd9c8336e84a089f75546a28c0799b2ef8d1c88a18ecc8dfcb17eafd78a41053cf653bd8fb0ead4208b2fbb4f0d2fb8b9433abffb6e01f0990e0a1ae197fd59f2347ce6ba07bdd047d725cb5f97b8860b4569c5b1bd3c784f01ee63f9133eacbc5dcc1a5a5bdd8b1aa987415aae78f2f8bbbd4ca07364ba91433780bcc1e8cf54a23ebe802cb5dc37c3d770a50a617a3eecab51a64e0ab0b09c764c79b94f05caaa9a9b151ca88ac78b771fa2e1f0f3e287373fb996db656021dd2261dabcef9eed77902a65c876134c63e546ef03eb78154188772c499a5f98998a9556ca2f49075f27492af0d504822807846877d00e1f6c4ff1d7418840eae1103fc417e66b6a8e7b699db663279b6b1b3d32eb460f20dbc56a4b424c8c0c0470b3f40cb48411e6c838b8e406526fdfc54fa7a1f85cb5c532b9b4362c5ace334f16b683b03e4ef51f8efc6ce1b7d98dd3e68e75c233a280bd7e9bcf412dbef1a4d9877f9d0cbb11651b459e863fb95fdf0872e70b4a1cf79a9ecf63fc50ce40eaca92d494cc755ce1e2c12e87c5a1e96521771e3306286c9eca80183c4fccad114d7ac345e6caa87a73f25ed8d37f0a5c855afea545d662cf82143d9977df52132ef90b1421eeabe86dddf9709af2fd3838938f89e72155e9c1cb85404a61ee9940d62d35fccff9c9d0098f49302eb562b15a921f322d3a5619b5d79c8906f3126a39c9cc458fe2cae26a65e222ab045ddb24482e5e9ce69099a0b89496769887bb507892e2d6450cf5c9e52616760dd6be50aebe02aa5c374fefb4ca24cba83bce49fcecca4f06fb45e564dc777bd0de4074940938a3c3dc866d61a73765950a232d9efc2c21e94b4e8b2ebd57e057fb7427d86ed62ef280da70cb9ba3ee5ad24f73c036ad2fb00d54dd7e652c00fc43bacd5c31f133a8a30302c9f1a4c399f2208ef92a78b97d9bec57ec4126fb42</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hand over Your Token!</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css"> 
       <!-- reward -->
       
       <div id="reword-out">
@@ -290,15 +204,6 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/01/26/ckkdy7t5i001ehg44dkvh0hyb/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Hello World
-          
-        </div>
-      </a>
-    
     
       <a href="/2020/12/23/anniversary/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
@@ -317,11 +222,11 @@
 <script>
   new Valine({
     el: "#vcomments",
-    app_id: "",
-    app_key: "",
+    app_id: "StYfTMDp78X0EltFR16ve2q5-gzGzoHsz",
+    app_key: "G4RPxRpXG6RwdfpnJefOSnyy",
     path: window.location.pathname,
-    avatar: "monsterid",
-    placeholder: "给我的文章加点评论吧~",
+    avatar: "wavatar",
+    placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
     recordIP: true,
   });
   const infoEle = document.querySelector("#vcomments .info");
@@ -357,7 +262,84 @@
 
  
    
-     
+   
+<!-- minivaline评论 -->
+<div id="mvcomments-box">
+  <div id="mvcomments"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@latest"></script>
+<script>
+    new MiniValine(Object.assign({"enable":true,"mode":"DesertsP","placeholder":"Write a Comment","math":true,"md":true,"enableQQ":true,"NoRecordIP":false,"visitor":true,"maxNest":6,"pageSize":6,"adminEmailMd5":"de8a7aa53d07e6b6bceb45c64027763d","tagMeta":["管理员","小伙伴","访客"],"master":["de8a7aa53d07e6b6bceb45c64027763d"],"friends":["b5bd5d836c7a0091aa8473e79ed4c25e","adb7d1cd192658a55c0ad22a3309cecf","3ce1e6c77b4910f1871106cb30dc62b0","cfce8dc43725cc14ffcd9fb4892d5bfc"],"lang":null,"emoticonUrl":["https://cdn.jsdelivr.net/npm/alus@latest","https://cdn.jsdelivr.net/gh/MiniValine/qq@latest","https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest","https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest","https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest","https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"]}, {
+	  el: '#mvcomments',
+    }));
+  const infoEle = document.querySelector('#mvcomments .info');
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+      infoEle.childNodes.forEach(function (item) {
+          item.parentNode.removeChild(item);
+      });
+  }
+</script>
+<style>
+	#mvcomments-box {
+		padding: 5px 30px;
+	}
+	@media screen and (max-width: 800px) {
+		#mvcomments-box {
+		  padding: 5px 0px;
+		}
+	}
+	.darkmode .MiniValine *{
+		color: #f1f1f1!important;
+	}
+	.darkmode .commentTrigger{
+		background-color: #403e3e !important;
+	  }
+	.darkmode .MiniValine .vpage .more{
+		background: #21232F
+	}
+	.darkmode img{
+		filter: brightness(30%)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before{
+		background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after{
+		background: rgba(0,0,0,0.9)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre{
+		background: #282c34
+		border: 1px solid #282c34
+	}
+	.darkmode .MiniValine .vinputs-area .textarea-wrapper textarea{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper input{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .vextra-area .vsmile-icons{
+		background: transparent;
+	}
+	.darkmode .MiniValine .vinputs-wrap{
+		border-color: #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-wrap:hover{
+		border: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper{
+		border-bottom: 1px dashed #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper:hover{
+		border-bottom: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vbtn{
+		background-color: transparent!important;
+	}
+	.darkmode .MiniValine .vbtn:hover{
+		border: 1px dashed #2196f3;
+	}
+</style>
+
+    
 </article>
 
 </section>
@@ -366,7 +348,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2015-2021
+        2019-2021
         <i class="ri-heart-fill heart_icon"></i> 鞠桥丹-QIAODAN JU
       </li>
     </ul>
@@ -403,7 +385,7 @@
       <li>
         <!-- cnzz统计 -->
         
-        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279035150&amp;web_id=1279035150'></script>
         
       </li>
     </ul>
@@ -458,38 +440,6 @@
       <a class="nav-item-link" href="/2020/01/18/about">About</a>
     </li>
     
-    <li class="nav-item">
-      <a class="nav-item-link" href="/">主页</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/archives">归档</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/categories">分类</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags">标签</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" target="_blank" rel="noopener" href="http://shenyu-vip.lofter.com">摄影</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/friends">友链</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/2019/about">关于我</a>
-    </li>
-    
   </ul>
 </nav>
 <nav class="navbar navbar-bottom">
@@ -526,17 +476,17 @@
 <!-- #reward -->
 <div id="reward">
   <span class="close"><i class="ri-close-line"></i></span>
-  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯蓝莓汁吧~</p>
   <div class="reward-box">
     
     <div class="reward-item">
-      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <img class="reward-img" src="/images/alipay.jpg">
       <span class="reward-type">支付宝</span>
     </div>
     
     
     <div class="reward-item">
-      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <img class="reward-img" src="/images/wechat.jpg">
       <span class="reward-type">微信</span>
     </div>
     
@@ -684,6 +634,30 @@
 
 <!-- MathJax -->
 
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
 <!-- Katex -->
 
 <!-- busuanzi  -->
@@ -693,6 +667,10 @@
 
 
 <!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
 
 <!-- ClickBoom1 -->
 
@@ -762,6 +740,27 @@
 <!-- CanvasBackground -->
 
 
+<script src="/js/dz.js"></script>
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=22707008&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
     
   </div>
 </body>

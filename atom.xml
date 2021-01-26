@@ -6,7 +6,7 @@
   <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/"/>
-  <updated>2020-06-13T16:04:35.669Z</updated>
+  <updated>2021-01-26T12:36:47.015Z</updated>
   <id>https://github.com/shimmerjordan/shimmerjordan.github.io/</id>
   
   <author>
@@ -17,221 +17,14 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Spring工厂模式</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t5e0017hg44e6v11q1l/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t5e0017hg44e6v11q1l/</id>
-    <published>2021-01-26T11:56:10.185Z</published>
-    <updated>2020-06-13T16:04:35.669Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;工厂模式是一种在工程中广泛应用的设计模式，对代码的解耦合起到了很大的作用。实际上，我们可以将Spring理解成封装了我们工程中大量重复代码的一种工具。众所周知，Spring中最重要的组件就是IOC，而IOC中非常重要的部分就是应用了工厂模式的代码。而工厂模式依赖于Java的反射机制，所以，我们从反射机制讲起，一步步了解Spring的Bean工厂。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring/"/>
-    
-    
-    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
-    
-    <category term="设计模式" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring AOP与简单实例</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t7s0073hg44cwvjdwqu/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t7s0073hg44cwvjdwqu/</id>
-    <published>2021-01-26T11:56:10.180Z</published>
-    <updated>2020-06-14T09:11:41.483Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;在前面的文章&lt;a href=&quot;/2021/01/26/ckkdy7t4w000hhg44c5ih0hwy/&quot; title=&quot;IOC介绍及其简单实现&quot;&gt;IOC介绍及其简单实现&lt;/a&gt; 中介绍了Spring框架的处理内核之一IOC，这篇文章记录Spring中的另一特性AOP的相关知识。其中关于ApplicationContext的getBean方法笔记可见&lt;a href=&quot;/2021/01/26/ckkdy7t4r0008hg44ez1z3mws/&quot; title=&quot;ApplicationContext之getBean方法详解&quot;&gt;ApplicationContext之getBean方法详解&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring/"/>
-    
-    
-    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
-    
-    <category term="AOP" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/AOP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python可视化csv数据实例</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/py_csv_primary/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/py_csv_primary/</id>
-    <published>2021-01-26T11:56:10.167Z</published>
-    <updated>2020-06-17T14:29:09.744Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;​        Comma Separated Values，简称CSV，它是一种以逗号分隔数值的文件类型。在数据库或电子表格中，它是最常见的导入导出格式，它以一种简单而明了的方式存储和共享数据，CSV文件通常以纯文本的方式存储数据表。本篇文章记录了Python在csv格式的数据处理中的简单应用实例，并填补了一些曾经学习中的坑。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Python初级应用" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Python%E5%88%9D%E7%BA%A7%E5%BA%94%E7%94%A8/"/>
-    
-    
-    <category term="Python" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Python/"/>
-    
-    <category term="数据可视化" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mybatis注解开发入门</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t57000uhg4401iibw3m/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t57000uhg4401iibw3m/</id>
-    <published>2021-01-26T11:56:10.165Z</published>
-    <updated>2020-06-12T16:20:17.179Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;前面介绍了Mybatis基于xml文件的入门，这里以maven环境为例，对Mybatis注解开发做简单札记。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Web框架" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Web%E6%A1%86%E6%9E%B6/"/>
-    
-    
-    <category term="MyBaits" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/MyBaits/"/>
-    
-    <category term="Web开发" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Web%E5%BC%80%E5%8F%91/"/>
-    
-    <category term="框架" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E6%A1%86%E6%9E%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Lexian-mall项目结构搭建</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/lexian-mall-SpringCloud/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/lexian-mall-SpringCloud/</id>
-    <published>2021-01-26T11:56:10.154Z</published>
-    <updated>2020-06-30T07:52:09.598Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;这里记录lexian-mall项目的后端脚手架搭建，仅包含部分配置，在后续的开发中所添加的依赖不再赘述。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="lexian-mall实训" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/lexian-mall%E5%AE%9E%E8%AE%AD/"/>
-    
-    
-    <category term="Web开发" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Web%E5%BC%80%E5%8F%91/"/>
-    
-    <category term="SpringCloud" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringCloud/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Lexian-Mall电子商务平台</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t4x000jhg44cjjuh7pt/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t4x000jhg44cjjuh7pt/</id>
-    <published>2021-01-26T11:56:10.151Z</published>
-    <updated>2020-07-24T04:18:08.309Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h1&gt;&lt;p&gt;Neu中软国际实训 Lexian-Mall电子商务平台，包括基于SpringBoot的后端服务器、基于SpringCloud的后端服务器、基于Vue的CMS后台管理系统以及基于Uni-app的客户端。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Spring项目" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring%E9%A1%B9%E7%9B%AE/"/>
-    
-    
-    <category term="电商平台" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E7%94%B5%E5%95%86%E5%B9%B3%E5%8F%B0/"/>
-    
-    <category term="SpringBoot" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringBoot/"/>
-    
-    <category term="SpringCloud" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringCloud/"/>
-    
-    <category term="Redis" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Redis/"/>
-    
-    <category term="uni-app" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/uni-app/"/>
-    
-    <category term="Vue" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Vue/"/>
-    
-    <category term="CMS管理" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/CMS%E7%AE%A1%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IOC介绍及其简单实现</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t4w000hhg44c5ih0hwy/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t4w000hhg44c5ih0hwy/</id>
-    <published>2021-01-26T11:56:10.149Z</published>
-    <updated>2020-06-14T05:41:37.548Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;​        控制反转（Inversion of Control，英文缩写为IoC）是一个重要的面向对象编程的法则来削减计算机程序的耦合问题，也是轻量级的Spring框架的核心。 控制反转一般分为两种类型，依赖注入（Dependency Injection，简称DI）和依赖查找。依赖注入应用比较广泛，这里只介绍依赖注入。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Web框架" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Web%E6%A1%86%E6%9E%B6/"/>
-    
-    
-    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
-    
-    <category term="Web开发" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Web%E5%BC%80%E5%8F%91/"/>
-    
-    <category term="IOC" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/IOC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ApplicationContext之getBean方法详解</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t4r0008hg44ez1z3mws/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t4r0008hg44ez1z3mws/</id>
-    <published>2021-01-26T11:56:10.116Z</published>
-    <updated>2020-06-14T10:25:17.328Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;我们知道可以通过ApplicationContext的getBean方法来获取Spring容器中已初始化的bean。getBean一共有以下四种方法原型：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;getBean(String name)&lt;/li&gt;
-&lt;li&gt;getBean(Class&lt;T&gt; type)&lt;/li&gt;
-&lt;li&gt;getBean(String name,Class&lt;T&gt; type)&lt;/li&gt;
-&lt;li&gt;getBean(String name,Object[] args)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;下来我们分别来探讨以上四种方式获取bean的区别。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring/"/>
-    
-    
-    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
-    
-    <category term="AOP" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/AOP/"/>
-    
-    <category term="bean对象方法" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/bean%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t5i001ehg44dkvh0hyb/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t5i001ehg44dkvh0hyb/</id>
-    <published>2021-01-26T11:06:59.265Z</published>
-    <updated>2020-01-19T04:36:48.436Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>Tutorial for deploying static web pages for free</title>
     <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/24/freeWebpage/"/>
     <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/24/freeWebpage/</id>
     <published>2021-01-24T11:05:00.000Z</published>
-    <updated>2021-01-25T03:11:58.175Z</updated>
+    <updated>2021-01-26T12:36:47.015Z</updated>
     
     
-    <summary type="html">&lt;p&gt;I have a number of static websites on hand, including a CV, an anniversary website, a small blog and miniature functional static pages such as QR code generation that need to be deployed on the internet. The best option would undoubtedly be to deploy on a private cloud server, but the functionality of these sites does not justify renting an expensive server for them. In this context, here is a solution for webpage deployment based on github or bitbucket.&lt;/p&gt;</summary>
+    <summary type="html">Maybe You Need A Key To Continue Reading!</summary>
     
     
     
@@ -251,16 +44,10 @@
     <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/23/anniversary/"/>
     <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/23/anniversary/</id>
     <published>2020-12-23T13:28:26.000Z</published>
-    <updated>2021-01-25T11:38:02.688Z</updated>
+    <updated>2021-01-26T12:51:06.894Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Anniversary&quot;&gt;&lt;a href=&quot;#Anniversary&quot; class=&quot;headerlink&quot; title=&quot;Anniversary&quot;&gt;&lt;/a&gt;Anniversary&lt;/h1&gt;&lt;h2 id=&quot;2&quot;&gt;&lt;a href=&quot;#2&quot;</summary>
-        
-      
+    <summary type="html">Maybe You Need A Key To Continue Reading!</summary>
     
     
     
@@ -455,6 +242,58 @@
   </entry>
   
   <entry>
+    <title>Lexian-Mall电子商务平台</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/07/24/LexianMallIntro/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/07/24/LexianMallIntro/</id>
+    <published>2020-07-24T03:19:00.000Z</published>
+    <updated>2021-01-26T12:44:12.260Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h1&gt;&lt;p&gt;Neu中软国际实训 Lexian-Mall电子商务平台，包括基于SpringBoot的后端服务器、基于SpringCloud的后端服务器、基于Vue的CMS后台管理系统以及基于Uni-app的客户端。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Spring项目" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+    <category term="电商平台" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E7%94%B5%E5%95%86%E5%B9%B3%E5%8F%B0/"/>
+    
+    <category term="SpringBoot" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringBoot/"/>
+    
+    <category term="SpringCloud" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringCloud/"/>
+    
+    <category term="Redis" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Redis/"/>
+    
+    <category term="uni-app" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/uni-app/"/>
+    
+    <category term="Vue" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Vue/"/>
+    
+    <category term="CMS管理" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/CMS%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lexian-mall项目结构搭建</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/28/lexian-mall-SpringCloud/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/28/lexian-mall-SpringCloud/</id>
+    <published>2020-06-28T08:45:08.000Z</published>
+    <updated>2021-01-26T12:34:20.600Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;这里记录lexian-mall项目的后端脚手架搭建，仅包含部分配置，在后续的开发中所添加的依赖不再赘述。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="lexian-mall实训" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/lexian-mall%E5%AE%9E%E8%AE%AD/"/>
+    
+    
+    <category term="Web开发" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Web%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="SpringCloud" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringCloud/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Chrome浏览器规避cookie覆盖以及前端开发跨域问题解决</title>
     <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/27/multi-chrome/"/>
     <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/27/multi-chrome/</id>
@@ -482,7 +321,7 @@
     <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/25/SpringBoot&amp;SpringCloud/"/>
     <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/25/SpringBoot&amp;SpringCloud/</id>
     <published>2020-06-25T05:47:51.000Z</published>
-    <updated>2020-06-26T07:40:35.788Z</updated>
+    <updated>2021-01-26T12:46:42.826Z</updated>
     
     
     <summary type="html">&lt;p&gt;1、SpringBoot：一个快速开发框架，通过用MAVEN依赖的继承方式，帮助我们快速整合第三方常用框架，完全采用注解化（使用注解方式启动SpringMVC），简化XML配置，内置HTTP服务器（Tomcat，Jetty），最终以Java应用程序进行执行。&lt;/p&gt;
@@ -499,6 +338,166 @@
     <category term="SpringBoot" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringBoot/"/>
     
     <category term="SpringCloud" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringCloud/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Py爬虫+基于echart可视化csv数数据</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/19/pyecharts_tour_statistic/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/19/pyecharts_tour_statistic/</id>
+    <published>2020-06-18T16:04:06.000Z</published>
+    <updated>2020-06-21T05:20:17.034Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;​        前面一篇文章谈及了Python基于&lt;code&gt;matplotlib&lt;/code&gt;模块的csv数据可视化，这篇文章从更广度的数据角度，结合Python爬虫并利用&lt;code&gt;pyecharts&lt;/code&gt;这个更优雅的数据可视化模块，对从网络爬取的数据集进行可视化处理。由于Echart的可操作性，最终生成的可视化图像以html的形式展现以供检阅，文中也会贴出静态预览图。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Python初级应用" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Python%E5%88%9D%E7%BA%A7%E5%BA%94%E7%94%A8/"/>
+    
+    
+    <category term="Python - 数据可视化" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Python-%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    <category term="Python爬虫" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Python%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python可视化csv数据实例</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/17/py_csv_primary/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/17/py_csv_primary/</id>
+    <published>2020-06-17T12:21:00.000Z</published>
+    <updated>2021-01-26T12:33:39.193Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;​        Comma Separated Values，简称CSV，它是一种以逗号分隔数值的文件类型。在数据库或电子表格中，它是最常见的导入导出格式，它以一种简单而明了的方式存储和共享数据，CSV文件通常以纯文本的方式存储数据表。本篇文章记录了Python在csv格式的数据处理中的简单应用实例，并填补了一些曾经学习中的坑。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Python初级应用" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Python%E5%88%9D%E7%BA%A7%E5%BA%94%E7%94%A8/"/>
+    
+    
+    <category term="Python" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Python/"/>
+    
+    <category term="数据可视化" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IDEA中使用MyBatis-generator自动生成MyBatis代码</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/15/MyBaits-generator-IDEAPlugin/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/15/MyBaits-generator-IDEAPlugin/</id>
+    <published>2020-06-15T14:05:11.000Z</published>
+    <updated>2020-06-15T14:41:45.536Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;​        MyBaits-generator主要用于在SSM框架的项目中，自动生成实体类、dao、mapper.xml文件。&lt;a href=&quot;https://github.com/mybatis/generator&quot;&gt;mybatis-generator&lt;/a&gt;有三种用法：命令行、eclipse插件、maven插件。个人觉得maven插件最方便，可以在eclipse/intellij idea等ide上可以通用。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MyBaits" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/MyBaits/"/>
+    
+    
+    <category term="开发工具" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="IDEA" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/IDEA/"/>
+    
+    <category term="MyBaits" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/MyBaits/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IDEA常用快捷键整理</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/IDEAShortcut/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/IDEAShortcut/</id>
+    <published>2020-06-14T14:05:11.000Z</published>
+    <updated>2020-06-15T14:15:45.373Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt; IDEA确实是一个很好的一个开发工具，但是从Eclipse迁移来的我对IDEA的大部分快捷键并不熟悉，错用了很多Eclipse的快捷键。这里搜集资料结合实战经验，记录IDEA的部分常用快捷键。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="开发工具" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="开发工具" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="IDEA" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/IDEA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IDEA整合Maven+SSM框架</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/IDEAMavenSSM/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/IDEAMavenSSM/</id>
+    <published>2020-06-14T10:36:38.000Z</published>
+    <updated>2021-01-26T12:43:37.643Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;前面对于Spring、SpringMVC以及Mybatis的学习后，这里基于IDEA开发工具将SSM整合为Maven工程。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="SSM" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/SSM/"/>
+    
+    
+    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
+    
+    <category term="SpringMVC" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringMVC/"/>
+    
+    <category term="Mybatis" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Mybatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ApplicationContext之getBean方法详解</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/ApplicationContextGetBean/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/ApplicationContextGetBean/</id>
+    <published>2020-06-14T09:12:43.000Z</published>
+    <updated>2021-01-26T12:43:03.475Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;我们知道可以通过ApplicationContext的getBean方法来获取Spring容器中已初始化的bean。getBean一共有以下四种方法原型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;getBean(String name)&lt;/li&gt;
+&lt;li&gt;getBean(Class&lt;T&gt; type)&lt;/li&gt;
+&lt;li&gt;getBean(String name,Class&lt;T&gt; type)&lt;/li&gt;
+&lt;li&gt;getBean(String name,Object[] args)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下来我们分别来探讨以上四种方式获取bean的区别。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
+    
+    <category term="AOP" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/AOP/"/>
+    
+    <category term="bean对象方法" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/bean%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring AOP与简单实例</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/AOP-example/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/AOP-example/</id>
+    <published>2020-06-14T09:09:52.000Z</published>
+    <updated>2021-01-26T12:46:25.434Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在前面的文章&lt;a href=&quot;/2020/06/14/IOCIntroAndCompl/&quot; title=&quot;IOC介绍及其简单实现&quot;&gt;IOC介绍及其简单实现&lt;/a&gt; 中介绍了Spring框架的处理内核之一IOC，这篇文章记录Spring中的另一特性AOP的相关知识。其中关于ApplicationContext的getBean方法笔记可见&lt;a href=&quot;/2020/06/14/ApplicationContextGetBean/&quot; title=&quot;ApplicationContext之getBean方法详解&quot;&gt;ApplicationContext之getBean方法详解&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
+    
+    <category term="AOP" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/AOP/"/>
     
   </entry>
   
