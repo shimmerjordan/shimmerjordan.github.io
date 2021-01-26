@@ -31,21 +31,9 @@
   
   
 
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'G-Q0DT8B8VJW', 'auto');
-ga('send', 'pageview');
-
-</script>
-
-
-
   
 
+<link rel="alternate" href="/atom.xml" title="丛烨-shimmerjordan" type="application/atom+xml">
 </head>
 
 </html>
@@ -58,9 +46,14 @@ ga('send', 'pageview');
       
 <section class="cover">
     
+      
+      <a class="forkMe" href="https://github.com/Shen-Yu/hexo-theme-ayer"
+        target="_blank"><img width="149" height="149" src="/images/forkme.png"
+          class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+    
   <div class="cover-frame">
     <div class="bg-box">
-      <img src="/images/cover2.jpg" alt="image frame" />
+      <img src="/images/cover1.jpg" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
       <h1><a href="/">丛烨-shimmerjordan</a></h1>
@@ -103,6 +96,22 @@ ga('send', 'pageview');
   
 <div id="main">
   <section class="outer">
+  
+  <ul class="ads">
+    
+        <li>
+            <a target="_blank" rel="noopener" href="https://curl.qcloud.com/ezctH6FU">
+                <img src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/ten_1.jpg" width="300" alt="腾讯云限时秒杀">
+            </a>
+        </li>
+    
+        <li>
+            <a target="_blank" rel="noopener" href="https://curl.qcloud.com/kvO7hb43">
+                <img src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/ten_2.jpg" width="300" alt="云服务器全球购低至2折">
+            </a>
+        </li>
+    
+</ul>
   
   
   
@@ -153,6 +162,62 @@ ga('send', 'pageview');
     
     
     <article
+  id="post-CCF-201809-4-再卖菜"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/02/16/ckkdy7t4p0007hg44fas0faml/"
+    >CCF 201809-4 再卖菜</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/02/16/ckkdy7t4p0007hg44fas0faml/" class="article-date">
+  <time datetime="2020-02-16T05:40:55.000Z" itemprop="datePublished">2020-02-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">算法练习</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>出自CCF 201809-4 再卖菜，本文提供了两种思路解决此问题。主要涉及差分约束的解决策略以及搜索 + 剪枝操作方案。</p> 
+      <a class="article-more-link" href="/2020/02/16/ckkdy7t4p0007hg44fas0faml/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CCF/" rel="tag">CCF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SPFA/" rel="tag">SPFA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/" rel="tag">差分约束</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E5%89%AA%E6%9E%9D/" rel="tag">搜索剪枝</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/" rel="tag">算法练习</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-前向星与链式前向星"
   class="article article-type-post"
   itemscope
@@ -186,7 +251,7 @@ ga('send', 'pageview');
   <h1 id="前向星"><a href="#前向星" class="headerlink" title="前向星"></a>前向星</h1><p>前向星是以存储边的方式来存储图，先将边读入并存储在连续的数组中，然后按照边的起点进行排序，这样数组中起点相同的边就能够在数组中进行连续访问了。<br>其有点在于实现简单，易于理解。缺点是在读入边后需要对所有边进行一次排序，带来了时间开销，实用性也较差。因此只适合离线算法。  </p>
 <h1 id="链式前向星（实质为数组模拟链表）"><a href="#链式前向星（实质为数组模拟链表）" class="headerlink" title="链式前向星（实质为数组模拟链表）"></a>链式前向星（实质为数组模拟链表）</h1><p>链式前向星和邻接表类似，也是链式结构的结合，每个节点i均有一个链表，此链表内的数据均为以节点i为起点的所有边的集合（对比邻接表存的是顶点的集合），边的表示为一个四元组(to,w,next)，其中to代表该条边的有向点对(w,v)，w代表边上的权值，next指向下一条边。<br>调用的时候只要通过head[i]就能访问到由节点i出发的第一条边的编号，通过编号到edge数组进行索引可以得到边的具体信息，然后根据这条边的next域可以得到第二条边的编号，以此类推，直到next域为INF（这里的INF即head数组初始化的值，一般取-1即可）</p> 
       <a class="article-more-link" href="/2020/02/13/ckkdy7t5m001nhg44e6o6078c/"
-        >Read more...</a
+        >阅读更多...</a
       >
        
       <!-- reward -->
@@ -206,7 +271,6 @@ ga('send', 'pageview');
     
  
     
-  
 </article>
 
     
@@ -243,7 +307,7 @@ ga('send', 'pageview');
        
   <h1 id="SPFA算法介绍"><a href="#SPFA算法介绍" class="headerlink" title="SPFA算法介绍"></a>SPFA算法介绍</h1><p>SPFA算法全程为，Shortest Path Faster Algorithm，为Bellman-Ford算法的队列优化算分的别称，其最坏情况的复杂度与Bellman-Ford相同，为O(VE)<br>与BFS算法比较，复杂度相对稳定。但在稠密图中复杂度比迪杰斯特拉算法差。<br>对SPFA的一个很直观的理解就是由无权图的BFS转化而来。在无权图中，BFS首先到达的顶点所经历的路径一定是最短路(也就是经过的最少顶点数)，所以此时利用数组记录节点访问可以使每个顶点只进队一次。但在带权图中，最先到达的顶点所计算出来的路径不一定是最短路。一个解决方法是放弃数组，此时所需时间自然就是指数级的。所以我们不能放弃数组，而是在处理一个已经在队列中且当前所得的路径比原来更好的顶点时，直接更新最优解。  </p> 
       <a class="article-more-link" href="/2020/02/13/ckkdy7t5b0010hg44chbfbyxg/"
-        >Read more...</a
+        >阅读更多...</a
       >
        
       <!-- reward -->
@@ -263,7 +327,6 @@ ga('send', 'pageview');
     
  
     
-  
 </article>
 
     
@@ -304,7 +367,7 @@ ga('send', 'pageview');
 </ul>
 <p>这里我们选取<a target="_blank" rel="noopener" href="http://www.meizitu.com/a/pure.html">http://www.meizitu.com/a/pure.html</a>作为爬取的目标网站。因为这个网站好分析，爬取简单。</p> 
       <a class="article-more-link" href="/2020/02/02/ckkdy7t7p006vhg440e207nl2/"
-        >Read more...</a
+        >阅读更多...</a
       >
        
       <!-- reward -->
@@ -324,7 +387,6 @@ ga('send', 'pageview');
     
  
     
-  
 </article>
 
     
@@ -361,7 +423,7 @@ ga('send', 'pageview');
        
   <p>　　主要介绍基于32位的ubuntu饥荒服务器的搭建以及维护。  </p> 
       <a class="article-more-link" href="/2020/01/29/ckkdy7t5u0025hg44f7nsbv4f/"
-        >Read more...</a
+        >阅读更多...</a
       >
        
       <!-- reward -->
@@ -381,7 +443,6 @@ ga('send', 'pageview');
     
  
     
-  
 </article>
 
     
@@ -418,7 +479,7 @@ ga('send', 'pageview');
        
   <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>　　可用Ctrl+F查询所需物品名称（大部分代码名称已修改成联机中文MOD翻译）。<br>　　进入游戏后按“～”键调出控制台<br>　　输入c_give(“代码名称“，数量）——物品会按所输数量出现在物品栏，假若包裹放不下，会自动掉落在地上。此代码最方便，甚至还可以在鼠标指针处直接放置建筑类物品。<br>　　c_spawn(“XX”，数量)——放鼠标指针指示的地上<br>　　上帝模式：c_godmode()<br>　　饥饿值上限：GetPlayer().components.hunger:SetMax(500)<br>　　精神值上限：GetPlayer().components.sanity:SetMax(500)<br>　　生命值上限：GetPlayer().components.health:SetMaxHealth(300)<br>　　全物品直接制造：GetPlayer().components.builder:GiveAllRecipes()<br>　　删除物品：TheInput:GetWorldEntityUnderMouse():Remove()<br>　　传送：GetPlayer().Transform:SetPosition(坐标，例：0,0,0)<br>　　此列表已剔除一些对于联机无效的代码，测试过真实有效。 </p> 
       <a class="article-more-link" href="/2020/01/28/ckkdy7t8u0086hg44003nat38/"
-        >Read more...</a
+        >阅读更多...</a
       >
        
       <!-- reward -->
@@ -438,7 +499,6 @@ ga('send', 'pageview');
     
  
     
-  
 </article>
 
     
@@ -475,7 +535,7 @@ ga('send', 'pageview');
        
   <p>　　记录“蓝桥杯”等赛事的练习，包括真题以及小练等。</p> 
       <a class="article-more-link" href="/2020/01/21/ckkdy7t5t0022hg44e8hng59g/"
-        >Read more...</a
+        >阅读更多...</a
       >
        
       <!-- reward -->
@@ -495,66 +555,6 @@ ga('send', 'pageview');
     
  
     
-  
-</article>
-
-    
-    <article
-  id="post-甘拜下风"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/01/18/ckkdy7t5q001xhg44bgqrh1tl/"
-    >甘拜下风
-  <i class="article-topping">置顶</i>
-</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/01/18/ckkdy7t5q001xhg44bgqrh1tl/" class="article-date">
-  <time datetime="2020-01-18T15:52:52.000Z" itemprop="datePublished">2020-01-18</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/sentiment/">sentiment</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>你真的又访问我了，阿炳</p> 
-      <a class="article-more-link" href="/2020/01/18/ckkdy7t5q001xhg44bgqrh1tl/"
-        >Read more...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/exclusive-message/" rel="tag">exclusive message</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%83%85/" rel="tag">情</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%98%BF%E7%82%B3/" rel="tag">阿炳</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-  
 </article>
 
     
@@ -590,7 +590,7 @@ ga('send', 'pageview');
 </blockquote>
 <p>GitHub: <a href="https://github.com/shimmerjordan">shimmerjordan</a><br>Email: <a href="mailto:&#x73;&#104;&#x69;&#109;&#109;&#x65;&#114;&#97;&#100;&#97;&#x6e;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;">&#x73;&#104;&#x69;&#109;&#109;&#x65;&#114;&#97;&#100;&#97;&#x6e;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;</a><br>QQ: <a target="_blank" rel="noopener" href="http://wpa.qq.com/msgrd?v=3&uin=3274639179&site=qq&menu=yes">3274639179</a><br>微信: shimmer_in_corner</p> 
       <a class="article-more-link" href="/2020/01/18/about/"
-        >Read more...</a
+        >阅读更多...</a
       >
        
       <!-- reward -->
@@ -610,7 +610,6 @@ ga('send', 'pageview');
     
  
     
-  
 </article>
 
     
@@ -650,7 +649,7 @@ ga('send', 'pageview');
 <p>示例：</p>
 <p>这是 <em>斜体</em>，这是 <strong>粗体</strong>。</p> 
       <a class="article-more-link" href="/2020/01/18/ckkdy7t5q001vhg44c8yd5t7u/"
-        >Read more...</a
+        >阅读更多...</a
       >
        
       <!-- reward -->
@@ -670,7 +669,6 @@ ga('send', 'pageview');
     
  
     
-  
 </article>
 
     
@@ -691,7 +689,7 @@ ga('send', 'pageview');
     <ul>
       <li>
         Copyrights &copy;
-        2019-2021
+        2015-2021
         <i class="ri-heart-fill heart_icon"></i> 鞠桥丹-QIAODAN JU
       </li>
     </ul>
@@ -728,7 +726,7 @@ ga('send', 'pageview');
       <li>
         <!-- cnzz统计 -->
         
-        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279035150&amp;web_id=1279035150'></script>
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
         
       </li>
     </ul>
@@ -783,6 +781,38 @@ ga('send', 'pageview');
       <a class="nav-item-link" href="/2020/01/18/about">About</a>
     </li>
     
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="http://shenyu-vip.lofter.com">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
   </ul>
 </nav>
 <nav class="navbar navbar-bottom">
@@ -819,17 +849,17 @@ ga('send', 'pageview');
 <!-- #reward -->
 <div id="reward">
   <span class="close"><i class="ri-close-line"></i></span>
-  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯蓝莓汁吧~</p>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
   <div class="reward-box">
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/alipay.jpg">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
       <span class="reward-type">支付宝</span>
     </div>
     
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/wechat.jpg">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
       <span class="reward-type">微信</span>
     </div>
     
@@ -960,30 +990,6 @@ ga('send', 'pageview');
 
 <!-- MathJax -->
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-      tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-  });
-
-  MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-      for(i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-      }
-  });
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-  var ayerConfig = {
-    mathjax: true
-  }
-</script>
-
 <!-- Katex -->
 
 <!-- busuanzi  -->
@@ -993,10 +999,6 @@ ga('send', 'pageview');
 
 
 <!-- ClickLove -->
-
-
-<script src="/js/clickLove.js"></script>
-
 
 <!-- ClickBoom1 -->
 
@@ -1066,27 +1068,6 @@ ga('send', 'pageview');
 <!-- CanvasBackground -->
 
 
-<script src="/js/dz.js"></script>
-
-
-
-    
-    <div id="music">
-    
-    
-    
-    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
-        src="//music.163.com/outchain/player?type=2&id=22707008&auto=0&height=32"></iframe>
-</div>
-
-<style>
-    #music {
-        position: fixed;
-        right: 15px;
-        bottom: 0;
-        z-index: 998;
-    }
-</style>
     
   </div>
 </body>

@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>丛烨-shimmerjordan</title>
+  
+  <subtitle>We work in the darkness to serve the light</subtitle>
+  <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/"/>
+  <updated>2020-06-13T16:04:35.669Z</updated>
+  <id>https://github.com/shimmerjordan/shimmerjordan.github.io/</id>
+  
+  <author>
+    <name>鞠桥丹-QIAODAN JU</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring工厂模式</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t5e0017hg44e6v11q1l/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t5e0017hg44e6v11q1l/</id>
+    <published>2021-01-26T11:56:10.185Z</published>
+    <updated>2020-06-13T16:04:35.669Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;工厂模式是一种在工程中广泛应用的设计模式，对代码的解耦合起到了很大的作用。实际上，我们可以将Spring理解成封装了我们工程中大量重复代码的一种工具。众所周知，Spring中最重要的组件就是IOC，而IOC中非常重要的部分就是应用了工厂模式的代码。而工厂模式依赖于Java的反射机制，所以，我们从反射机制讲起，一步步了解Spring的Bean工厂。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
+    
+    <category term="设计模式" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring AOP与简单实例</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t7s0073hg44cwvjdwqu/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t7s0073hg44cwvjdwqu/</id>
+    <published>2021-01-26T11:56:10.180Z</published>
+    <updated>2020-06-14T09:11:41.483Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在前面的文章&lt;a href=&quot;/2021/01/26/ckkdy7t4w000hhg44c5ih0hwy/&quot; title=&quot;IOC介绍及其简单实现&quot;&gt;IOC介绍及其简单实现&lt;/a&gt; 中介绍了Spring框架的处理内核之一IOC，这篇文章记录Spring中的另一特性AOP的相关知识。其中关于ApplicationContext的getBean方法笔记可见&lt;a href=&quot;/2021/01/26/ckkdy7t4r0008hg44ez1z3mws/&quot; title=&quot;ApplicationContext之getBean方法详解&quot;&gt;ApplicationContext之getBean方法详解&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
+    
+    <category term="AOP" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/AOP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python可视化csv数据实例</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/py_csv_primary/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/py_csv_primary/</id>
+    <published>2021-01-26T11:56:10.167Z</published>
+    <updated>2020-06-17T14:29:09.744Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;​        Comma Separated Values，简称CSV，它是一种以逗号分隔数值的文件类型。在数据库或电子表格中，它是最常见的导入导出格式，它以一种简单而明了的方式存储和共享数据，CSV文件通常以纯文本的方式存储数据表。本篇文章记录了Python在csv格式的数据处理中的简单应用实例，并填补了一些曾经学习中的坑。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Python初级应用" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Python%E5%88%9D%E7%BA%A7%E5%BA%94%E7%94%A8/"/>
+    
+    
+    <category term="Python" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Python/"/>
+    
+    <category term="数据可视化" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis注解开发入门</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t57000uhg4401iibw3m/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t57000uhg4401iibw3m/</id>
+    <published>2021-01-26T11:56:10.165Z</published>
+    <updated>2020-06-12T16:20:17.179Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;前面介绍了Mybatis基于xml文件的入门，这里以maven环境为例，对Mybatis注解开发做简单札记。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Web框架" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Web%E6%A1%86%E6%9E%B6/"/>
+    
+    
+    <category term="MyBaits" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/MyBaits/"/>
+    
+    <category term="Web开发" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Web%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="框架" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E6%A1%86%E6%9E%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lexian-mall项目结构搭建</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/lexian-mall-SpringCloud/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/lexian-mall-SpringCloud/</id>
+    <published>2021-01-26T11:56:10.154Z</published>
+    <updated>2020-06-30T07:52:09.598Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;这里记录lexian-mall项目的后端脚手架搭建，仅包含部分配置，在后续的开发中所添加的依赖不再赘述。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="lexian-mall实训" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/lexian-mall%E5%AE%9E%E8%AE%AD/"/>
+    
+    
+    <category term="Web开发" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Web%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="SpringCloud" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringCloud/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lexian-Mall电子商务平台</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t4x000jhg44cjjuh7pt/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t4x000jhg44cjjuh7pt/</id>
+    <published>2021-01-26T11:56:10.151Z</published>
+    <updated>2020-07-24T04:18:08.309Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h1&gt;&lt;p&gt;Neu中软国际实训 Lexian-Mall电子商务平台，包括基于SpringBoot的后端服务器、基于SpringCloud的后端服务器、基于Vue的CMS后台管理系统以及基于Uni-app的客户端。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Spring项目" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+    <category term="电商平台" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E7%94%B5%E5%95%86%E5%B9%B3%E5%8F%B0/"/>
+    
+    <category term="SpringBoot" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringBoot/"/>
+    
+    <category term="SpringCloud" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringCloud/"/>
+    
+    <category term="Redis" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Redis/"/>
+    
+    <category term="uni-app" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/uni-app/"/>
+    
+    <category term="Vue" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Vue/"/>
+    
+    <category term="CMS管理" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/CMS%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IOC介绍及其简单实现</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t4w000hhg44c5ih0hwy/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t4w000hhg44c5ih0hwy/</id>
+    <published>2021-01-26T11:56:10.149Z</published>
+    <updated>2020-06-14T05:41:37.548Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;​        控制反转（Inversion of Control，英文缩写为IoC）是一个重要的面向对象编程的法则来削减计算机程序的耦合问题，也是轻量级的Spring框架的核心。 控制反转一般分为两种类型，依赖注入（Dependency Injection，简称DI）和依赖查找。依赖注入应用比较广泛，这里只介绍依赖注入。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Web框架" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Web%E6%A1%86%E6%9E%B6/"/>
+    
+    
+    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
+    
+    <category term="Web开发" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Web%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="IOC" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/IOC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ApplicationContext之getBean方法详解</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t4r0008hg44ez1z3mws/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t4r0008hg44ez1z3mws/</id>
+    <published>2021-01-26T11:56:10.116Z</published>
+    <updated>2020-06-14T10:25:17.328Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;我们知道可以通过ApplicationContext的getBean方法来获取Spring容器中已初始化的bean。getBean一共有以下四种方法原型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;getBean(String name)&lt;/li&gt;
+&lt;li&gt;getBean(Class&lt;T&gt; type)&lt;/li&gt;
+&lt;li&gt;getBean(String name,Class&lt;T&gt; type)&lt;/li&gt;
+&lt;li&gt;getBean(String name,Object[] args)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下来我们分别来探讨以上四种方式获取bean的区别。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
+    
+    <category term="AOP" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/AOP/"/>
+    
+    <category term="bean对象方法" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/bean%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t5i001ehg44dkvh0hyb/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/26/ckkdy7t5i001ehg44dkvh0hyb/</id>
+    <published>2021-01-26T11:06:59.265Z</published>
+    <updated>2020-01-19T04:36:48.436Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Tutorial for deploying static web pages for free</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/24/freeWebpage/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/24/freeWebpage/</id>
+    <published>2021-01-24T11:05:00.000Z</published>
+    <updated>2021-01-25T03:11:58.175Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;I have a number of static websites on hand, including a CV, an anniversary website, a small blog and miniature functional static pages such as QR code generation that need to be deployed on the internet. The best option would undoubtedly be to deploy on a private cloud server, but the functionality of these sites does not justify renting an expensive server for them. In this context, here is a solution for webpage deployment based on github or bitbucket.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="新手指北" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
+    
+    
+    <category term="exclusive message" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/exclusive-message/"/>
+    
+    <category term="Web deployment" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Web-deployment/"/>
+    
+    <category term="git" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Anniversary</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/23/anniversary/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/23/anniversary/</id>
+    <published>2020-12-23T13:28:26.000Z</published>
+    <updated>2021-01-25T11:38:02.688Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Anniversary&quot;&gt;&lt;a href=&quot;#Anniversary&quot; class=&quot;headerlink&quot; title=&quot;Anniversary&quot;&gt;&lt;/a&gt;Anniversary&lt;/h1&gt;&lt;h2 id=&quot;2&quot;&gt;&lt;a href=&quot;#2&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="sentiment" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/sentiment/"/>
+    
+    
+    <category term="阿炳" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E9%98%BF%E7%82%B3/"/>
+    
+    <category term="情" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E6%83%85/"/>
+    
+    <category term="exclusive message" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/exclusive-message/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Add Two Numbers</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/08/addTwoNumbers/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/08/addTwoNumbers/</id>
+    <published>2020-12-08T12:42:10.000Z</published>
+    <updated>2020-12-09T13:14:37.899Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;What-is-the-best-solution-to-Add-Two-Numbers&quot;&gt;&lt;a href=&quot;#What-is-the-best-solution-to-Add-Two-Numbers&quot; class=&quot;headerlink&quot; title=&quot;What is  the best solution to Add Two Numbers&quot;&gt;&lt;/a&gt;What is  the best solution to Add Two Numbers&lt;/h1&gt;&lt;p&gt;Currently I encounter a problem about adding two numbers, based on the bias between my initial solution and the official solution, I am able to generate a better way to add two numbers.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Algorithm" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Algorithm/"/>
+    
+    
+    <category term="Algorithm" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Algorithm/"/>
+    
+    <category term="Data structures" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Data-structures/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Differences between HashMap and HashTable</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/06/HashMap&amp;HashTable/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/06/HashMap&amp;HashTable/</id>
+    <published>2020-12-06T11:31:25.000Z</published>
+    <updated>2020-12-06T12:17:09.799Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;The difference between a HashMap and a HashTable is a common question asked by interviewers in interviews. You can choose to focus your answer on the following main differences:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Different value ranges for key and value&lt;/li&gt;
+&lt;li&gt;Threading safety&lt;/li&gt;
+&lt;li&gt;Efficiency and synchronisation&lt;/li&gt;
+&lt;li&gt;Selection and use&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The details will be discussed in the following part of this article.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Data structures" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Data-structures/"/>
+    
+    
+    <category term="Data structures" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Data-structures/"/>
+    
+    <category term="HashMap" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/HashMap/"/>
+    
+    <category term="HashTable" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/HashTable/"/>
+    
+    <category term="Java" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>In-depth analysis of Java-HashMap</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/03/Java-HashMap/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/03/Java-HashMap/</id>
+    <published>2020-12-03T04:14:18.000Z</published>
+    <updated>2020-12-06T10:03:38.284Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;Hash table is a very important data structure with a rich set of applications. The core of many caching techniques (such as memcached) is actually maintaining a large hash table in memory. This article will explain the principles of HashMap implementation in the java collection framework and analyse the JDK7 HashMap source code.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Data structures" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Data-structures/"/>
+    
+    
+    <category term="Data structures" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Data-structures/"/>
+    
+    <category term="HashMap" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/HashMap/"/>
+    
+    <category term="Java" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>A Possible Way to Remove Watermark perfectly</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/11/08/WatermarkRemoval/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/11/08/WatermarkRemoval/</id>
+    <published>2020-11-08T11:41:34.000Z</published>
+    <updated>2020-12-09T02:50:36.511Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Although the traditional method of image watermark removal is efficient, it is more damaging to the details. It may takes a few seconds for some watermarks to be removed using repair stamp, and a few watermarks may be failed to be removed even given  one or two hours. &lt;/p&gt;
+&lt;p&gt;Some images that are not very rich in detail can be filled with adjacent pixels through Photoshop and other image processing software to cover up the watermark part, which can achieve near-perfect results.&lt;/p&gt;
+&lt;center&gt;
+    &lt;img style=&quot;border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);&quot; 
+    src=&quot;https://s1.ax1x.com/2020/11/09/BHcTpQ.jpg&quot;&gt;
+    &lt;br&gt;
+    &lt;div style=&quot;color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;&quot;&gt;From left to right, Original image (with watermark), PS processing (heavy loss of detail), Deep de-watermarking (full details).&lt;/div&gt;
+&lt;/center&gt;
+
+&lt;p&gt;PS is no longer perfect for some extremely detailed and complex images. Traditional PS watermark removal methods can no longer meet the demand for detailed and complex watermarks.&lt;/p&gt;
+&lt;p&gt;Nowadays, using AI technology to remove watermarks, we can achieve almost perfection.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Machine Learning" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Machine-Learning/"/>
+    
+    <category term="Project" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Machine-Learning/Project/"/>
+    
+    
+    <category term="Machine Learning" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Machine-Learning/"/>
+    
+    <category term="Deep Learning" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Deep-Learning/"/>
+    
+    <category term="Project" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Project/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Comparison between Machine Learning Algorithms</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/11/06/MLAComparison/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/11/06/MLAComparison/</id>
+    <published>2020-11-06T10:36:11.000Z</published>
+    <updated>2020-12-04T12:47:21.543Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Comparison-between-Algorithms&quot;&gt;&lt;a href=&quot;#Comparison-between-Algorithms&quot; class=&quot;headerlink&quot; title=&quot;Comparison between Algorithms&quot;&gt;&lt;/a&gt;Comparison between Algorithms&lt;/h1&gt;&lt;p&gt;It is better to teach a man to fish than to teach him to fish. This part will explain how to compare the performance of machine learning algorithms through “statistical tests”. Once we have mastered this method, we can analyse the performance of the algorithms ourselves, without having to follow the crowd.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Machine Learning" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Machine-Learning/"/>
+    
+    
+    <category term="Machine Learning" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Machine-Learning/"/>
+    
+    <category term="Algorithms" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Algorithms/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Introduction to Machine Learning Algorithms</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/11/04/MLAIntro/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/11/04/MLAIntro/</id>
+    <published>2020-11-04T10:36:11.000Z</published>
+    <updated>2020-11-05T10:42:39.479Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;There are too many algorithms involved in artificial intelligence, and there are quite a few used in machine learning, so how can we choose the right algorithm?&lt;/p&gt;
+&lt;p&gt;This blog provides a brief introduction to machine learning algorithms, with specific descriptions and notes to be added later. &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Machine Learning" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Machine-Learning/"/>
+    
+    
+    <category term="Machine Learning" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Machine-Learning/"/>
+    
+    <category term="Algorithms" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Algorithms/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Milestones</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/11/03/Milestones/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/11/03/Milestones/</id>
+    <published>2020-11-03T09:11:54.000Z</published>
+    <updated>2020-11-03T09:17:43.488Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Milestones&quot;&gt;&lt;a href=&quot;#Milestones&quot; class=&quot;headerlink&quot; title=&quot;Milestones&quot;&gt;&lt;/a&gt;Milestones&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;This blog serves as a hashtag,  from which I’ll do my best to publish blogs in English!&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="新手指北" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
+    
+    
+    <category term="reference" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/reference/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Chrome浏览器规避cookie覆盖以及前端开发跨域问题解决</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/27/multi-chrome/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/27/multi-chrome/</id>
+    <published>2020-06-27T07:55:53.000Z</published>
+    <updated>2020-07-14T01:34:13.724Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Chrome浏览器在通常情况下只能在同一网站登录同时登陆一个账号，无论是新标签页还是新窗口下登录其他账号均将覆盖原有cookie，强制下线原有账号。考虑到工作、学习以及生活娱乐的不同需求，需要在同一网站多开账号，以及拥有不同的Chrome账户的同步需求。这里为Chrome多开帐号以及修改默认安装位置（C盘）做了简单笔记，以供后续参考。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="新手指北" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
+    
+    
+    <category term="reference" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/reference/"/>
+    
+    <category term="随笔" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+    <category term="工具" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot和SpringCloud</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/25/SpringBoot&amp;SpringCloud/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/25/SpringBoot&amp;SpringCloud/</id>
+    <published>2020-06-25T05:47:51.000Z</published>
+    <updated>2020-06-26T07:40:35.788Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;1、SpringBoot：一个快速开发框架，通过用MAVEN依赖的继承方式，帮助我们快速整合第三方常用框架，完全采用注解化（使用注解方式启动SpringMVC），简化XML配置，内置HTTP服务器（Tomcat，Jetty），最终以Java应用程序进行执行。&lt;/p&gt;
+&lt;p&gt;2、SpringCloud：一套目前完整的微服务框架，它是是一系列框架的有序集合。它只是将目前各家公司开发的比较成熟、经得起实际考验的服务框架组合起来，通过SpringBoot风格进行再封装屏蔽掉了复杂的配置和实现原理，最终给开发者留出了一套简单易懂、易部署和易维护的分布式系统开发工具包。它利用Spring Boot的开发便利性巧妙地简化了分布式系统基础设施的开发，如服务发现注册、配置中心、消息总线、负载均衡、断路器、数据监控等，都可以用SpringBoot的开发风格做到一键启动和部署。&lt;/p&gt;
+&lt;p&gt;这篇文章简单记录关于SpringBoot以及SpringCloud的关系与区别：&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
+    
+    <category term="SpringBoot" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringBoot/"/>
+    
+    <category term="SpringCloud" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringCloud/"/>
+    
+  </entry>
+  
+</feed>
