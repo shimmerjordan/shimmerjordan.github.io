@@ -6,7 +6,7 @@
   <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/"/>
-  <updated>2021-01-26T12:36:47.015Z</updated>
+  <updated>2021-01-26T13:17:16.423Z</updated>
   <id>https://github.com/shimmerjordan/shimmerjordan.github.io/</id>
   
   <author>
@@ -21,17 +21,15 @@
     <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/24/freeWebpage/"/>
     <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/24/freeWebpage/</id>
     <published>2021-01-24T11:05:00.000Z</published>
-    <updated>2021-01-26T12:36:47.015Z</updated>
+    <updated>2021-01-26T13:17:16.423Z</updated>
     
     
-    <summary type="html">Maybe You Need A Key To Continue Reading!</summary>
+    <summary type="html">&lt;p&gt;I have a number of static websites on hand, including a CV, an anniversary website, a small blog and miniature functional static pages such as QR code generation that need to be deployed on the internet. The best option would undoubtedly be to deploy on a private cloud server, but the functionality of these sites does not justify renting an expensive server for them. In this context, here is a solution for webpage deployment based on github or bitbucket.&lt;/p&gt;</summary>
     
     
     
     <category term="新手指北" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
     
-    
-    <category term="exclusive message" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/exclusive-message/"/>
     
     <category term="Web deployment" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Web-deployment/"/>
     
