@@ -51,7 +51,7 @@
   <entry>
     <title>Free CDN for WebPage</title>
     <url>/2021/01/27/freeWebpageCDN/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>The previous article <a href="#">Post not found: Free Static Webpage Deployment Free Static Webpage Deployment</a>  has explained in full how to deploy a free static website, here are further instructions on how to get free CDN services to improve the speed of access to your website in different parts of the world.</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>The previous article <a href="/2021/01/24/freeWebpage/" title="Free Static Webpage Deployment">Free Static Webpage Deployment</a>  has explained in full how to deploy a free static website, here are further instructions on how to get free CDN services to improve the speed of access to your website in different parts of the world.</p>
 <a id="more"></a>
 
 <h1 id="Overview-of-steps"><a href="#Overview-of-steps" class="headerlink" title="Overview of steps"></a>Overview of steps</h1><ul>
@@ -61,7 +61,7 @@
 <li>[Option] Custom Domains;</li>
 <li>Later remarks.</li>
 </ul>
-<h1 id="Ensure-deployment-of-mid-owned-cloud-repository-is-completed"><a href="#Ensure-deployment-of-mid-owned-cloud-repository-is-completed" class="headerlink" title="Ensure deployment of mid-owned cloud repository is completed"></a>Ensure deployment of mid-owned cloud repository is completed</h1><p>Here you need to make sure that you have web resources that can be accessed properly, as can be seen in <a href="#">Post not found: Free Static Webpage Deployment Free Static Webpage Deployment</a>. Of course, if you are considering using vercel acceleration here, the cloud repository name does not need to be specified as in the previous article, it can be completely customised. This is because vercel can copy and host the cloud repository.</p>
+<h1 id="Ensure-deployment-of-mid-owned-cloud-repository-is-completed"><a href="#Ensure-deployment-of-mid-owned-cloud-repository-is-completed" class="headerlink" title="Ensure deployment of mid-owned cloud repository is completed"></a>Ensure deployment of mid-owned cloud repository is completed</h1><p>Here you need to make sure that you have web resources that can be accessed properly, as can be seen in <a href="/2021/01/24/freeWebpage/" title="Free Static Webpage Deployment">Free Static Webpage Deployment</a>. Of course, if you are considering using vercel acceleration here, the cloud repository name does not need to be specified as in the previous article, it can be completely customised. This is because vercel can copy and host the cloud repository.</p>
 <h1 id="Login-to-Vercel"><a href="#Login-to-Vercel" class="headerlink" title="Login to Vercel"></a>Login to Vercel</h1><p>You can log in to Vercel using github, gitLab and bitbucket, and you can bring in repositories from other platforms (if you are authorised to do so), regardless of which account you are registered under.</p>
 <center>
     <img style="border-radius: 0.3125em;
