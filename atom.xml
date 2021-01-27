@@ -6,7 +6,7 @@
   <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/"/>
-  <updated>2021-01-26T13:17:16.423Z</updated>
+  <updated>2021-01-27T07:33:43.036Z</updated>
   <id>https://github.com/shimmerjordan/shimmerjordan.github.io/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Tutorial for deploying static web pages for free</title>
+    <title>Free CDN for WebPage</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/27/freeWebpageCDN/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/27/freeWebpageCDN/</id>
+    <published>2021-01-27T05:48:00.000Z</published>
+    <updated>2021-01-27T07:33:43.036Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;The previous article &lt;a href=&quot;#&quot;&gt;Post not found: Free Static Webpage Deployment Free Static Webpage Deployment&lt;/a&gt;  has explained in full how to deploy a free static website, here are further instructions on how to get free CDN services to improve the speed of access to your website in different parts of the world.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="新手指北" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
+    
+    
+    <category term="Web deployment" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Web-deployment/"/>
+    
+    <category term="git" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Free Static Webpage Deployment</title>
     <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/24/freeWebpage/"/>
     <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/24/freeWebpage/</id>
     <published>2021-01-24T11:05:00.000Z</published>
-    <updated>2021-01-26T13:17:16.423Z</updated>
+    <updated>2021-01-27T05:51:06.442Z</updated>
     
     
     <summary type="html">&lt;p&gt;I have a number of static websites on hand, including a CV, an anniversary website, a small blog and miniature functional static pages such as QR code generation that need to be deployed on the internet. The best option would undoubtedly be to deploy on a private cloud server, but the functionality of these sites does not justify renting an expensive server for them. In this context, here is a solution for webpage deployment based on github or bitbucket.&lt;/p&gt;</summary>
@@ -475,27 +496,6 @@
     <category term="AOP" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/AOP/"/>
     
     <category term="bean对象方法" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/bean%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring AOP与简单实例</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/AOP-example/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/AOP-example/</id>
-    <published>2020-06-14T09:09:52.000Z</published>
-    <updated>2021-01-26T12:46:25.434Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;在前面的文章&lt;a href=&quot;/2020/06/14/IOCIntroAndCompl/&quot; title=&quot;IOC介绍及其简单实现&quot;&gt;IOC介绍及其简单实现&lt;/a&gt; 中介绍了Spring框架的处理内核之一IOC，这篇文章记录Spring中的另一特性AOP的相关知识。其中关于ApplicationContext的getBean方法笔记可见&lt;a href=&quot;/2020/06/14/ApplicationContextGetBean/&quot; title=&quot;ApplicationContext之getBean方法详解&quot;&gt;ApplicationContext之getBean方法详解&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring/"/>
-    
-    
-    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
-    
-    <category term="AOP" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/AOP/"/>
     
   </entry>
   
