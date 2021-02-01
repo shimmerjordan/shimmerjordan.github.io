@@ -6,7 +6,7 @@
   <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/"/>
-  <updated>2021-01-27T07:46:46.541Z</updated>
+  <updated>2021-02-01T04:56:27.883Z</updated>
   <id>https://github.com/shimmerjordan/shimmerjordan.github.io/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Deploy Github Actions</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/02/01/DeployGithubActions/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/02/01/DeployGithubActions/</id>
+    <published>2021-02-01T07:38:12.000Z</published>
+    <updated>2021-02-01T04:56:27.883Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Sometimes automated deployment projects or timed tasks need to be deployed online, but these are for temporary use or these lightweight applications do not warrant the additional purchase of a cloud server for deployment. This is when you might consider using Github Actions for automated deployments.&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="git" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/git/"/>
+    
+    <category term="Cloud Server" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Cloud-Server/"/>
+    
+  </entry>
   
   <entry>
     <title>Free CDN for WebPage</title>
@@ -466,36 +485,6 @@
     <category term="SpringMVC" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringMVC/"/>
     
     <category term="Mybatis" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Mybatis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ApplicationContext之getBean方法详解</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/ApplicationContextGetBean/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/ApplicationContextGetBean/</id>
-    <published>2020-06-14T09:12:43.000Z</published>
-    <updated>2021-01-26T12:43:03.475Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;我们知道可以通过ApplicationContext的getBean方法来获取Spring容器中已初始化的bean。getBean一共有以下四种方法原型：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;getBean(String name)&lt;/li&gt;
-&lt;li&gt;getBean(Class&lt;T&gt; type)&lt;/li&gt;
-&lt;li&gt;getBean(String name,Class&lt;T&gt; type)&lt;/li&gt;
-&lt;li&gt;getBean(String name,Object[] args)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;下来我们分别来探讨以上四种方式获取bean的区别。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring/"/>
-    
-    
-    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
-    
-    <category term="AOP" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/AOP/"/>
-    
-    <category term="bean对象方法" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/bean%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95/"/>
     
   </entry>
   
