@@ -144,7 +144,7 @@ ga('send', 'pageview');
 <h2 id="2-Generate-SSH-for-different-accounts"><a href="#2-Generate-SSH-for-different-accounts" class="headerlink" title="2. Generate SSH for different accounts"></a>2. Generate SSH for different accounts</h2><p>Generate the corresponding ssh with the following command, and run as many lines of the corresponding command as the number of accounts needed for ssh.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;theEmailRegisted@email.com&quot; -f &quot;githubForWeb_id_rsa&quot;</span><br><span class="line">$ ssh-keygen -t rsa -C &quot;theEmailRegisted@email.com&quot; -f &quot;bitbucketTemp_id_rsa&quot;</span><br></pre></td></tr></table></figure>
 <h2 id="3-Copy-the-public-key-to-platforms-such-as-github"><a href="#3-Copy-the-public-key-to-platforms-such-as-github" class="headerlink" title="3. Copy the public key to platforms such as github"></a>3. Copy the public key to platforms such as github</h2><ul>
-<li>Execute the command <code>cat githubForWeb_id_rsa.pub</code> and copy the second line to the end to the ssh of github and save it.</li>
+<li>Execute the command <code>cat ~/.ssh/githubForWeb_id_rsa.pub</code> and copy the second line to the end to the ssh of github and save it.</li>
 <li>Or you can simply open the file directory and find the corresponding public key file <code>githubForWeb_id_rsa.pub</code>, then open the file with an editor and copy all its contents to the SSH settings of your account.</li>
 </ul>
 <p>The same operation can be used to add SSH keys for platforms such as bitbucket, gitee, etc.</p>

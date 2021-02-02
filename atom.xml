@@ -6,7 +6,7 @@
   <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/"/>
-  <updated>2021-02-01T05:17:40.059Z</updated>
+  <updated>2021-02-02T03:22:30.495Z</updated>
   <id>https://github.com/shimmerjordan/shimmerjordan.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/02/01/DeployGithubActions/"/>
     <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/02/01/DeployGithubActions/</id>
     <published>2021-02-01T07:38:12.000Z</published>
-    <updated>2021-02-01T05:17:40.059Z</updated>
+    <updated>2021-02-02T03:22:30.495Z</updated>
     
     
     <summary type="html">&lt;p&gt;Sometimes automated deployment projects or timed tasks need to be deployed online, but these are for temporary use or these lightweight applications do not warrant the additional purchase of a cloud server for deployment. This is when you might consider using Github Actions for automated deployments.&lt;/p&gt;</summary>
@@ -63,7 +63,7 @@
     <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/24/freeWebpage/"/>
     <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/24/freeWebpage/</id>
     <published>2021-01-24T11:05:00.000Z</published>
-    <updated>2021-01-27T05:51:06.442Z</updated>
+    <updated>2021-02-02T05:43:44.885Z</updated>
     
     
     <summary type="html">&lt;p&gt;I have a number of static websites on hand, including a CV, an anniversary website, a small blog and miniature functional static pages such as QR code generation that need to be deployed on the internet. The best option would undoubtedly be to deploy on a private cloud server, but the functionality of these sites does not justify renting an expensive server for them. In this context, here is a solution for webpage deployment based on github or bitbucket.&lt;/p&gt;</summary>
