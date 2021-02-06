@@ -92,7 +92,7 @@ ga('send', 'pageview');
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">855</span>
+            <span class="post-count">865</span>
         </span>
     </span>
 
@@ -135,13 +135,43 @@ ga('send', 'pageview');
 <h1 id="使用启动参数实现多用户数据共存"><a href="#使用启动参数实现多用户数据共存" class="headerlink" title="使用启动参数实现多用户数据共存"></a>使用启动参数实现多用户数据共存</h1><p>接着以上的安装步骤，右击<code>chrome.exe</code>选择发送桌面快捷方式，然后继续右击桌面的<code>chrome.exe快捷方式</code>进入属性窗口。在属性的<code>目标</code>输入框的文本后添加：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--user-data-dir&#x3D;D:\Chrome\1</span><br></pre></td></tr></table></figure>
 <p>注意这里的<code>--user</code>前有一个空格，<code>D:\Chrome\1</code>可自定义，具体参数为<code>chrome.exe路径\分用户数据存储路径</code>，这里我如法炮制设置了四个用户（修改1、2、3、4用户数据文件夹即可）：</p>
-<p><img src="https://s1.ax1x.com/2020/06/27/N68ao6.jpg" alt="N68ao6.jpg"></p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://s1.ax1x.com/2020/06/27/N68ao6.jpg" width="50%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">chrome 属性.</div>
+</center>
+
 <p>打开网页测试可用，回查资源管理器中Chrome安装目录已经独立存放了四个分用户的数据（文件夹分别为1、2、3、4），至此便解决了Chrome浏览器自定义安装以及多开的问题。</p>
 <h1 id="跨域问题解决"><a href="#跨域问题解决" class="headerlink" title="跨域问题解决"></a>跨域问题解决</h1><p>在开发前后端分离项目的时候，发现前端出现跨域问题，但服务器并不是本地服务器而是第三方接口（百度OCR识别）。使用HBuilder内置浏览器无报错，但使用Chrome浏览器会报如下的错误：</p>
-<p><img src="https://s1.ax1x.com/2020/07/14/UthshD.jpg" alt="UthshD.jpg"></p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://s1.ax1x.com/2020/07/14/UthshD.jpg" width="70%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">跨域报错</div>
+</center>
+
 <p>因此判定问题出现在浏览器，这里同样以上面的方式打开Chrome快捷方式的属性，在页面的目标输入框内的最后加上<code> --disable-web-security</code>即可解决问题。</p>
 <p>可能会出现以下的提示，也表示设置成功，部署前端工程重新尝试发现无报错。</p>
-<p><img src="https://s1.ax1x.com/2020/07/14/UthzNT.jpg" alt="UthzNT.jpg"></p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://s1.ax1x.com/2020/07/14/UthzNT.jpg" width="70%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">--disable-web-security</div>
+</center>
+
 <h2 id="另有Tips："><a href="#另有Tips：" class="headerlink" title="另有Tips："></a>另有Tips：</h2><ol>
 <li><code>Locales</code>目录中是各国的语言dll文件，只保留<code>en-US.dl</code>l和<code>zh-CN.dll</code>就可以了，建议还是保留。</li>
 <li>进一步定制，可以用的参数：<ol>

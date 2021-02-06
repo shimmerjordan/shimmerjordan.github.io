@@ -117,8 +117,6 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
        
   <p>Sometimes automated deployment projects or timed tasks need to be deployed online, but these are for temporary use or these lightweight applications do not warrant the additional purchase of a cloud server for deployment. This is when you might consider using Github Actions for automated deployments.</p>
-<a id="more"></a>
-
 <p>GitHub Actions[1] is GitHub’s continuous integration service[2], launched in October 2018[3]. It is very powerful in that each action is used to perform an action, such as grabbing code, running tests, logging into a remote server, publishing to a third-party service, and so on. Combining these actions is a process of continuous integration. Of course, these actions are shared in the GitHub code repository, so we can refer to them directly.</p>
 <p>Github Actions provides a complete server environment with the following server specifications</p>
 <ul>
@@ -130,7 +128,7 @@ ga('send', 'pageview');
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="https://s3.ax1x.com/2021/02/02/ym5WQJ.png" width="90%">
+    src="https://s3.ax1x.com/2021/02/02/ym5WQJ.png" width="76%">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -141,7 +139,10 @@ ga('send', 'pageview');
 
 
 
+
 <p>Of course, you can use Windows Server 2019 and macOS X Catalina 10.15 in addition to Ubuntu.</p>
+<a id="more"></a>
+
 <p>This looks great, but GitHub Actions itself doesn’t allow direct connections for interactive operations, which means you can’t connect to the server via SSH. If there was a way to connect directly to the server interactively, wouldn’t that be like getting one or more VPS with an E5 2vCPU/7G RAM/90G SSD configuration for free?</p>
 <p>This article will show you how you can get around the limitations of GitHub Actions itself and connect directly to the server by doing a few tricks!</p>
 <blockquote>

@@ -6,7 +6,7 @@
   <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/"/>
-  <updated>2021-02-04T08:16:29.065Z</updated>
+  <updated>2021-02-06T08:52:08.087Z</updated>
   <id>https://github.com/shimmerjordan/shimmerjordan.github.io/</id>
   
   <author>
@@ -21,10 +21,34 @@
     <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/02/01/DeployGithubActions/"/>
     <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/02/01/DeployGithubActions/</id>
     <published>2021-02-01T07:38:12.000Z</published>
-    <updated>2021-02-04T08:16:29.065Z</updated>
+    <updated>2021-02-06T08:52:08.087Z</updated>
     
     
-    <summary type="html">&lt;p&gt;Sometimes automated deployment projects or timed tasks need to be deployed online, but these are for temporary use or these lightweight applications do not warrant the additional purchase of a cloud server for deployment. This is when you might consider using Github Actions for automated deployments.&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;Sometimes automated deployment projects or timed tasks need to be deployed online, but these are for temporary use or these lightweight applications do not warrant the additional purchase of a cloud server for deployment. This is when you might consider using Github Actions for automated deployments.&lt;/p&gt;
+&lt;p&gt;GitHub Actions[1] is GitHub’s continuous integration service[2], launched in October 2018[3]. It is very powerful in that each action is used to perform an action, such as grabbing code, running tests, logging into a remote server, publishing to a third-party service, and so on. Combining these actions is a process of continuous integration. Of course, these actions are shared in the GitHub code repository, so we can refer to them directly.&lt;/p&gt;
+&lt;p&gt;Github Actions provides a complete server environment with the following server specifications&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;2-core CPU&lt;/li&gt;
+&lt;li&gt;7 GB RAM memory&lt;/li&gt;
+&lt;li&gt;84 GB of SSD hard disk space&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Detailed system environment information is shown in the following figure:&lt;/p&gt;
+&lt;center&gt;
+    &lt;img style=&quot;border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);&quot; 
+    src=&quot;https://s3.ax1x.com/2021/02/02/ym5WQJ.png&quot; width=&quot;76%&quot;&gt;
+    &lt;br&gt;
+    &lt;div style=&quot;color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;&quot;&gt;System environment information&lt;/div&gt;
+&lt;/center&gt;
+
+
+
+
+
+&lt;p&gt;Of course, you can use Windows Server 2019 and macOS X Catalina 10.15 in addition to Ubuntu.&lt;/p&gt;</summary>
     
     
     
@@ -42,10 +66,20 @@
     <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/27/freeWebpageCDN/"/>
     <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/27/freeWebpageCDN/</id>
     <published>2021-01-27T05:48:00.000Z</published>
-    <updated>2021-01-27T07:46:46.541Z</updated>
+    <updated>2021-02-06T09:04:51.999Z</updated>
     
     
-    <summary type="html">&lt;p&gt;The previous article &lt;a href=&quot;/2021/01/24/freeWebpage/&quot; title=&quot;Free Static Webpage Deployment&quot;&gt;Free Static Webpage Deployment&lt;/a&gt;  has explained in full how to deploy a free static website, here are further instructions on how to get free CDN services to improve the speed of access to your website in different parts of the world.&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;The previous article &lt;a href=&quot;/2021/01/24/freeWebpage/&quot; title=&quot;Free Static Webpage Deployment&quot;&gt;Free Static Webpage Deployment&lt;/a&gt;  has explained in full how to deploy a free static website, here are further instructions on how to get free CDN services to improve the speed of access to your website in different parts of the world.&lt;/p&gt;
+&lt;center&gt;
+    &lt;img style=&quot;border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);&quot; 
+    src=&quot;https://s3.ax1x.com/2021/02/06/yYsRE9.jpg&quot; width=35%&gt;
+    &lt;br&gt;
+    &lt;div style=&quot;color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;&quot;&gt;CDN&lt;/div&gt;
+&lt;/center&gt;</summary>
     
     
     
@@ -84,7 +118,7 @@
     <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/08/addTwoNumbers/"/>
     <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/08/addTwoNumbers/</id>
     <published>2020-12-08T12:42:10.000Z</published>
-    <updated>2020-12-09T13:14:37.899Z</updated>
+    <updated>2021-02-06T08:54:45.403Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;What-is-the-best-solution-to-Add-Two-Numbers&quot;&gt;&lt;a href=&quot;#What-is-the-best-solution-to-Add-Two-Numbers&quot; class=&quot;headerlink&quot; title=&quot;What is  the best solution to Add Two Numbers&quot;&gt;&lt;/a&gt;What is  the best solution to Add Two Numbers&lt;/h1&gt;&lt;p&gt;Currently I encounter a problem about adding two numbers, based on the bias between my initial solution and the official solution, I am able to generate a better way to add two numbers.&lt;/p&gt;</summary>
@@ -315,7 +349,7 @@
     <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/27/multi-chrome/"/>
     <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/27/multi-chrome/</id>
     <published>2020-06-27T07:55:53.000Z</published>
-    <updated>2020-07-14T01:34:13.724Z</updated>
+    <updated>2021-02-06T09:01:05.450Z</updated>
     
     
     <summary type="html">&lt;p&gt;Chrome浏览器在通常情况下只能在同一网站登录同时登陆一个账号，无论是新标签页还是新窗口下登录其他账号均将覆盖原有cookie，强制下线原有账号。考虑到工作、学习以及生活娱乐的不同需求，需要在同一网站多开账号，以及拥有不同的Chrome账户的同步需求。这里为Chrome多开帐号以及修改默认安装位置（C盘）做了简单笔记，以供后续参考。&lt;/p&gt;</summary>
