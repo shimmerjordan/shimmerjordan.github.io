@@ -80,29 +80,6 @@
   </entry>
   
   <entry>
-    <title>Anniversary</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/23/anniversary/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/23/anniversary/</id>
-    <published>2020-12-23T13:28:26.000Z</published>
-    <updated>2021-01-26T12:51:06.894Z</updated>
-    
-    
-    <summary type="html">Maybe You Need A Key To Continue Reading!</summary>
-    
-    
-    
-    <category term="sentiment" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/sentiment/"/>
-    
-    
-    <category term="阿炳" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E9%98%BF%E7%82%B3/"/>
-    
-    <category term="情" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E6%83%85/"/>
-    
-    <category term="exclusive message" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/exclusive-message/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Add Two Numbers</title>
     <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/08/addTwoNumbers/"/>
     <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/08/addTwoNumbers/</id>
@@ -487,6 +464,36 @@
     <category term="SpringMVC" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringMVC/"/>
     
     <category term="Mybatis" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Mybatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ApplicationContext之getBean方法详解</title>
+    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/ApplicationContextGetBean/"/>
+    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/ApplicationContextGetBean/</id>
+    <published>2020-06-14T09:12:43.000Z</published>
+    <updated>2021-01-26T12:43:03.475Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;我们知道可以通过ApplicationContext的getBean方法来获取Spring容器中已初始化的bean。getBean一共有以下四种方法原型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;getBean(String name)&lt;/li&gt;
+&lt;li&gt;getBean(Class&lt;T&gt; type)&lt;/li&gt;
+&lt;li&gt;getBean(String name,Class&lt;T&gt; type)&lt;/li&gt;
+&lt;li&gt;getBean(String name,Object[] args)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下来我们分别来探讨以上四种方式获取bean的区别。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
+    
+    <category term="AOP" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/AOP/"/>
+    
+    <category term="bean对象方法" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/bean%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95/"/>
     
   </entry>
   
