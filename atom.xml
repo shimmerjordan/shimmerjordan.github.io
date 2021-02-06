@@ -136,10 +136,10 @@
   
   <entry>
     <title>Differences between HashMap and HashTable</title>
-    <link href="https://shimmerjordan.site/2020/12/06/HashMap&amp;HashTable/"/>
-    <id>https://shimmerjordan.site/2020/12/06/HashMap&amp;HashTable/</id>
+    <link href="https://shimmerjordan.site/2020/12/06/HashMap-HashTable/"/>
+    <id>https://shimmerjordan.site/2020/12/06/HashMap-HashTable/</id>
     <published>2020-12-06T11:31:25.000Z</published>
-    <updated>2020-12-06T12:17:09.799Z</updated>
+    <updated>2021-02-06T15:18:58.212Z</updated>
     
     
     <summary type="html">&lt;p&gt;The difference between a HashMap and a HashTable is a common question asked by interviewers in interviews. You can choose to focus your answer on the following main differences:&lt;/p&gt;
@@ -369,10 +369,10 @@
   
   <entry>
     <title>SpringBoot和SpringCloud</title>
-    <link href="https://shimmerjordan.site/2020/06/25/SpringBoot&amp;SpringCloud/"/>
-    <id>https://shimmerjordan.site/2020/06/25/SpringBoot&amp;SpringCloud/</id>
+    <link href="https://shimmerjordan.site/2020/06/25/SpringBoot-SpringCloud/"/>
+    <id>https://shimmerjordan.site/2020/06/25/SpringBoot-SpringCloud/</id>
     <published>2020-06-25T05:47:51.000Z</published>
-    <updated>2021-01-26T12:46:42.826Z</updated>
+    <updated>2021-02-06T15:17:27.268Z</updated>
     
     
     <summary type="html">&lt;p&gt;1、SpringBoot：一个快速开发框架，通过用MAVEN依赖的继承方式，帮助我们快速整合第三方常用框架，完全采用注解化（使用注解方式启动SpringMVC），简化XML配置，内置HTTP服务器（Tomcat，Jetty），最终以Java应用程序进行执行。&lt;/p&gt;

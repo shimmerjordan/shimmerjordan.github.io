@@ -495,7 +495,7 @@
   </entry>
   <entry>
     <title>Differences between HashMap and HashTable</title>
-    <url>/2020/12/06/HashMap&amp;HashTable/</url>
+    <url>/2020/12/06/HashMap-HashTable/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>The difference between a HashMap and a HashTable is a common question asked by interviewers in interviews. You can choose to focus your answer on the following main differences:</p>
 <ul>
 <li>Different value ranges for key and value</li>
@@ -1619,7 +1619,7 @@ See if the CUDA version is higher than 9.0, otherwise it will report an error. I
   </entry>
   <entry>
     <title>SpringBoot和SpringCloud</title>
-    <url>/2020/06/25/SpringBoot&amp;SpringCloud/</url>
+    <url>/2020/06/25/SpringBoot-SpringCloud/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1、SpringBoot：一个快速开发框架，通过用MAVEN依赖的继承方式，帮助我们快速整合第三方常用框架，完全采用注解化（使用注解方式启动SpringMVC），简化XML配置，内置HTTP服务器（Tomcat，Jetty），最终以Java应用程序进行执行。</p>
 <p>2、SpringCloud：一套目前完整的微服务框架，它是是一系列框架的有序集合。它只是将目前各家公司开发的比较成熟、经得起实际考验的服务框架组合起来，通过SpringBoot风格进行再封装屏蔽掉了复杂的配置和实现原理，最终给开发者留出了一套简单易懂、易部署和易维护的分布式系统开发工具包。它利用Spring Boot的开发便利性巧妙地简化了分布式系统基础设施的开发，如服务发现注册、配置中心、消息总线、负载均衡、断路器、数据监控等，都可以用SpringBoot的开发风格做到一键启动和部署。</p>
 <p>这篇文章简单记录关于SpringBoot以及SpringCloud的关系与区别：</p>

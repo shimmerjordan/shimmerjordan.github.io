@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://shimmerjordan.site/2020/12/06/HashMap-HashTable/</loc>
+    <lastmod>2021-02-06</lastmod>
+  </url>
+  <url>
+    <loc>https://shimmerjordan.site/2020/06/25/SpringBoot-SpringCloud/</loc>
+    <lastmod>2021-02-06</lastmod>
+  </url>
+  <url>
     <loc>https://shimmerjordan.site/2021/01/27/freeWebpageCDN/</loc>
     <lastmod>2021-02-06</lastmod>
   </url>
@@ -31,10 +39,6 @@
   <url>
     <loc>https://shimmerjordan.site/2020/07/24/LexianMallIntro/</loc>
     <lastmod>2021-01-31</lastmod>
-  </url>
-  <url>
-    <loc>https://shimmerjordan.site/2020/06/25/SpringBoot&SpringCloud/</loc>
-    <lastmod>2021-01-26</lastmod>
   </url>
   <url>
     <loc>https://shimmerjordan.site/2020/06/13/SpringFactoryModes/</loc>
@@ -123,10 +127,6 @@
   <url>
     <loc>https://shimmerjordan.site/2020/11/08/WatermarkRemoval/</loc>
     <lastmod>2020-12-09</lastmod>
-  </url>
-  <url>
-    <loc>https://shimmerjordan.site/2020/12/06/HashMap&HashTable/</loc>
-    <lastmod>2020-12-06</lastmod>
   </url>
   <url>
     <loc>https://shimmerjordan.site/2020/12/03/Java-HashMap/</loc>
