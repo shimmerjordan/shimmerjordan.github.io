@@ -3,11 +3,11 @@
   <title>丛烨-shimmerjordan</title>
   
   <subtitle>We work in the darkness to serve the light</subtitle>
-  <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/atom.xml" rel="self"/>
+  <link href="https://shimmerjordan.site/atom.xml" rel="self"/>
   
-  <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/"/>
+  <link href="https://shimmerjordan.site/"/>
   <updated>2021-02-06T08:52:08.087Z</updated>
-  <id>https://github.com/shimmerjordan/shimmerjordan.github.io/</id>
+  <id>https://shimmerjordan.site/</id>
   
   <author>
     <name>鞠桥丹-QIAODAN JU</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Deploy Github Actions</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/02/01/DeployGithubActions/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/02/01/DeployGithubActions/</id>
+    <link href="https://shimmerjordan.site/2021/02/01/DeployGithubActions/"/>
+    <id>https://shimmerjordan.site/2021/02/01/DeployGithubActions/</id>
     <published>2021-02-01T07:38:12.000Z</published>
     <updated>2021-02-06T08:52:08.087Z</updated>
     
@@ -52,19 +52,19 @@
     
     
     
-    <category term="新手指北" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
+    <category term="新手指北" scheme="https://shimmerjordan.site/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
     
     
-    <category term="git" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/git/"/>
+    <category term="git" scheme="https://shimmerjordan.site/tags/git/"/>
     
-    <category term="Cloud Server" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Cloud-Server/"/>
+    <category term="Cloud Server" scheme="https://shimmerjordan.site/tags/Cloud-Server/"/>
     
   </entry>
   
   <entry>
     <title>Free CDN for WebPage</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/27/freeWebpageCDN/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/27/freeWebpageCDN/</id>
+    <link href="https://shimmerjordan.site/2021/01/27/freeWebpageCDN/"/>
+    <id>https://shimmerjordan.site/2021/01/27/freeWebpageCDN/</id>
     <published>2021-01-27T05:48:00.000Z</published>
     <updated>2021-02-06T09:04:51.999Z</updated>
     
@@ -83,19 +83,19 @@
     
     
     
-    <category term="新手指北" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
+    <category term="新手指北" scheme="https://shimmerjordan.site/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
     
     
-    <category term="Web deployment" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Web-deployment/"/>
+    <category term="Web deployment" scheme="https://shimmerjordan.site/tags/Web-deployment/"/>
     
-    <category term="git" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/git/"/>
+    <category term="git" scheme="https://shimmerjordan.site/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>Free Static Webpage Deployment</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/24/freeWebpage/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2021/01/24/freeWebpage/</id>
+    <link href="https://shimmerjordan.site/2021/01/24/freeWebpage/"/>
+    <id>https://shimmerjordan.site/2021/01/24/freeWebpage/</id>
     <published>2021-01-24T11:05:00.000Z</published>
     <updated>2021-02-04T08:17:17.196Z</updated>
     
@@ -104,19 +104,19 @@
     
     
     
-    <category term="新手指北" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
+    <category term="新手指北" scheme="https://shimmerjordan.site/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
     
     
-    <category term="Web deployment" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Web-deployment/"/>
+    <category term="Web deployment" scheme="https://shimmerjordan.site/tags/Web-deployment/"/>
     
-    <category term="git" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/git/"/>
+    <category term="git" scheme="https://shimmerjordan.site/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>Add Two Numbers</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/08/addTwoNumbers/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/08/addTwoNumbers/</id>
+    <link href="https://shimmerjordan.site/2020/12/08/addTwoNumbers/"/>
+    <id>https://shimmerjordan.site/2020/12/08/addTwoNumbers/</id>
     <published>2020-12-08T12:42:10.000Z</published>
     <updated>2021-02-06T08:54:45.403Z</updated>
     
@@ -125,19 +125,19 @@
     
     
     
-    <category term="Algorithm" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Algorithm/"/>
+    <category term="Algorithm" scheme="https://shimmerjordan.site/categories/Algorithm/"/>
     
     
-    <category term="Algorithm" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Algorithm/"/>
+    <category term="Algorithm" scheme="https://shimmerjordan.site/tags/Algorithm/"/>
     
-    <category term="Data structures" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Data-structures/"/>
+    <category term="Data structures" scheme="https://shimmerjordan.site/tags/Data-structures/"/>
     
   </entry>
   
   <entry>
     <title>Differences between HashMap and HashTable</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/06/HashMap&amp;HashTable/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/06/HashMap&amp;HashTable/</id>
+    <link href="https://shimmerjordan.site/2020/12/06/HashMap&amp;HashTable/"/>
+    <id>https://shimmerjordan.site/2020/12/06/HashMap&amp;HashTable/</id>
     <published>2020-12-06T11:31:25.000Z</published>
     <updated>2020-12-06T12:17:09.799Z</updated>
     
@@ -153,23 +153,23 @@
     
     
     
-    <category term="Data structures" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Data-structures/"/>
+    <category term="Data structures" scheme="https://shimmerjordan.site/categories/Data-structures/"/>
     
     
-    <category term="Data structures" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Data-structures/"/>
+    <category term="Data structures" scheme="https://shimmerjordan.site/tags/Data-structures/"/>
     
-    <category term="HashMap" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/HashMap/"/>
+    <category term="HashMap" scheme="https://shimmerjordan.site/tags/HashMap/"/>
     
-    <category term="HashTable" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/HashTable/"/>
+    <category term="HashTable" scheme="https://shimmerjordan.site/tags/HashTable/"/>
     
-    <category term="Java" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Java/"/>
+    <category term="Java" scheme="https://shimmerjordan.site/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>In-depth analysis of Java-HashMap</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/03/Java-HashMap/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/12/03/Java-HashMap/</id>
+    <link href="https://shimmerjordan.site/2020/12/03/Java-HashMap/"/>
+    <id>https://shimmerjordan.site/2020/12/03/Java-HashMap/</id>
     <published>2020-12-03T04:14:18.000Z</published>
     <updated>2020-12-06T10:03:38.284Z</updated>
     
@@ -179,21 +179,21 @@
     
     
     
-    <category term="Data structures" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Data-structures/"/>
+    <category term="Data structures" scheme="https://shimmerjordan.site/categories/Data-structures/"/>
     
     
-    <category term="Data structures" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Data-structures/"/>
+    <category term="Data structures" scheme="https://shimmerjordan.site/tags/Data-structures/"/>
     
-    <category term="HashMap" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/HashMap/"/>
+    <category term="HashMap" scheme="https://shimmerjordan.site/tags/HashMap/"/>
     
-    <category term="Java" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Java/"/>
+    <category term="Java" scheme="https://shimmerjordan.site/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>A Possible Way to Remove Watermark perfectly</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/11/08/WatermarkRemoval/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/11/08/WatermarkRemoval/</id>
+    <link href="https://shimmerjordan.site/2020/11/08/WatermarkRemoval/"/>
+    <id>https://shimmerjordan.site/2020/11/08/WatermarkRemoval/</id>
     <published>2020-11-08T11:41:34.000Z</published>
     <updated>2020-12-09T02:50:36.511Z</updated>
     
@@ -216,23 +216,23 @@
     
     
     
-    <category term="Machine Learning" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Machine-Learning/"/>
+    <category term="Machine Learning" scheme="https://shimmerjordan.site/categories/Machine-Learning/"/>
     
-    <category term="Project" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Machine-Learning/Project/"/>
+    <category term="Project" scheme="https://shimmerjordan.site/categories/Machine-Learning/Project/"/>
     
     
-    <category term="Machine Learning" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Machine-Learning/"/>
+    <category term="Machine Learning" scheme="https://shimmerjordan.site/tags/Machine-Learning/"/>
     
-    <category term="Deep Learning" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Deep-Learning/"/>
+    <category term="Deep Learning" scheme="https://shimmerjordan.site/tags/Deep-Learning/"/>
     
-    <category term="Project" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Project/"/>
+    <category term="Project" scheme="https://shimmerjordan.site/tags/Project/"/>
     
   </entry>
   
   <entry>
     <title>Comparison between Machine Learning Algorithms</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/11/06/MLAComparison/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/11/06/MLAComparison/</id>
+    <link href="https://shimmerjordan.site/2020/11/06/MLAComparison/"/>
+    <id>https://shimmerjordan.site/2020/11/06/MLAComparison/</id>
     <published>2020-11-06T10:36:11.000Z</published>
     <updated>2020-12-04T12:47:21.543Z</updated>
     
@@ -241,19 +241,19 @@
     
     
     
-    <category term="Machine Learning" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Machine-Learning/"/>
+    <category term="Machine Learning" scheme="https://shimmerjordan.site/categories/Machine-Learning/"/>
     
     
-    <category term="Machine Learning" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Machine-Learning/"/>
+    <category term="Machine Learning" scheme="https://shimmerjordan.site/tags/Machine-Learning/"/>
     
-    <category term="Algorithms" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Algorithms/"/>
+    <category term="Algorithms" scheme="https://shimmerjordan.site/tags/Algorithms/"/>
     
   </entry>
   
   <entry>
     <title>Introduction to Machine Learning Algorithms</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/11/04/MLAIntro/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/11/04/MLAIntro/</id>
+    <link href="https://shimmerjordan.site/2020/11/04/MLAIntro/"/>
+    <id>https://shimmerjordan.site/2020/11/04/MLAIntro/</id>
     <published>2020-11-04T10:36:11.000Z</published>
     <updated>2020-11-05T10:42:39.479Z</updated>
     
@@ -263,19 +263,19 @@
     
     
     
-    <category term="Machine Learning" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Machine-Learning/"/>
+    <category term="Machine Learning" scheme="https://shimmerjordan.site/categories/Machine-Learning/"/>
     
     
-    <category term="Machine Learning" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Machine-Learning/"/>
+    <category term="Machine Learning" scheme="https://shimmerjordan.site/tags/Machine-Learning/"/>
     
-    <category term="Algorithms" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Algorithms/"/>
+    <category term="Algorithms" scheme="https://shimmerjordan.site/tags/Algorithms/"/>
     
   </entry>
   
   <entry>
     <title>Milestones</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/11/03/Milestones/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/11/03/Milestones/</id>
+    <link href="https://shimmerjordan.site/2020/11/03/Milestones/"/>
+    <id>https://shimmerjordan.site/2020/11/03/Milestones/</id>
     <published>2020-11-03T09:11:54.000Z</published>
     <updated>2020-11-03T09:17:43.488Z</updated>
     
@@ -285,17 +285,17 @@
     
     
     
-    <category term="新手指北" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
+    <category term="新手指北" scheme="https://shimmerjordan.site/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
     
     
-    <category term="reference" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/reference/"/>
+    <category term="reference" scheme="https://shimmerjordan.site/tags/reference/"/>
     
   </entry>
   
   <entry>
     <title>Lexian-Mall电子商务平台</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/07/24/LexianMallIntro/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/07/24/LexianMallIntro/</id>
+    <link href="https://shimmerjordan.site/2020/07/24/LexianMallIntro/"/>
+    <id>https://shimmerjordan.site/2020/07/24/LexianMallIntro/</id>
     <published>2020-07-24T03:19:00.000Z</published>
     <updated>2021-01-31T15:15:30.819Z</updated>
     
@@ -304,29 +304,29 @@
     
     
     
-    <category term="Spring项目" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring%E9%A1%B9%E7%9B%AE/"/>
+    <category term="Spring项目" scheme="https://shimmerjordan.site/categories/Spring%E9%A1%B9%E7%9B%AE/"/>
     
     
-    <category term="电商平台" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E7%94%B5%E5%95%86%E5%B9%B3%E5%8F%B0/"/>
+    <category term="电商平台" scheme="https://shimmerjordan.site/tags/%E7%94%B5%E5%95%86%E5%B9%B3%E5%8F%B0/"/>
     
-    <category term="SpringBoot" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringBoot/"/>
+    <category term="SpringBoot" scheme="https://shimmerjordan.site/tags/SpringBoot/"/>
     
-    <category term="SpringCloud" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringCloud/"/>
+    <category term="SpringCloud" scheme="https://shimmerjordan.site/tags/SpringCloud/"/>
     
-    <category term="Redis" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Redis/"/>
+    <category term="Redis" scheme="https://shimmerjordan.site/tags/Redis/"/>
     
-    <category term="uni-app" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/uni-app/"/>
+    <category term="uni-app" scheme="https://shimmerjordan.site/tags/uni-app/"/>
     
-    <category term="Vue" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Vue/"/>
+    <category term="Vue" scheme="https://shimmerjordan.site/tags/Vue/"/>
     
-    <category term="CMS管理" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/CMS%E7%AE%A1%E7%90%86/"/>
+    <category term="CMS管理" scheme="https://shimmerjordan.site/tags/CMS%E7%AE%A1%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>Lexian-mall项目结构搭建</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/28/lexian-mall-SpringCloud/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/28/lexian-mall-SpringCloud/</id>
+    <link href="https://shimmerjordan.site/2020/06/28/lexian-mall-SpringCloud/"/>
+    <id>https://shimmerjordan.site/2020/06/28/lexian-mall-SpringCloud/</id>
     <published>2020-06-28T08:45:08.000Z</published>
     <updated>2021-01-26T12:34:20.600Z</updated>
     
@@ -335,19 +335,19 @@
     
     
     
-    <category term="lexian-mall实训" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/lexian-mall%E5%AE%9E%E8%AE%AD/"/>
+    <category term="lexian-mall实训" scheme="https://shimmerjordan.site/categories/lexian-mall%E5%AE%9E%E8%AE%AD/"/>
     
     
-    <category term="Web开发" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Web%E5%BC%80%E5%8F%91/"/>
+    <category term="Web开发" scheme="https://shimmerjordan.site/tags/Web%E5%BC%80%E5%8F%91/"/>
     
-    <category term="SpringCloud" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringCloud/"/>
+    <category term="SpringCloud" scheme="https://shimmerjordan.site/tags/SpringCloud/"/>
     
   </entry>
   
   <entry>
     <title>Chrome浏览器规避cookie覆盖以及前端开发跨域问题解决</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/27/multi-chrome/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/27/multi-chrome/</id>
+    <link href="https://shimmerjordan.site/2020/06/27/multi-chrome/"/>
+    <id>https://shimmerjordan.site/2020/06/27/multi-chrome/</id>
     <published>2020-06-27T07:55:53.000Z</published>
     <updated>2021-02-06T09:01:05.450Z</updated>
     
@@ -356,21 +356,21 @@
     
     
     
-    <category term="新手指北" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
+    <category term="新手指北" scheme="https://shimmerjordan.site/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
     
     
-    <category term="reference" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/reference/"/>
+    <category term="reference" scheme="https://shimmerjordan.site/tags/reference/"/>
     
-    <category term="随笔" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="https://shimmerjordan.site/tags/%E9%9A%8F%E7%AC%94/"/>
     
-    <category term="工具" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    <category term="工具" scheme="https://shimmerjordan.site/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
   <entry>
     <title>SpringBoot和SpringCloud</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/25/SpringBoot&amp;SpringCloud/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/25/SpringBoot&amp;SpringCloud/</id>
+    <link href="https://shimmerjordan.site/2020/06/25/SpringBoot&amp;SpringCloud/"/>
+    <id>https://shimmerjordan.site/2020/06/25/SpringBoot&amp;SpringCloud/</id>
     <published>2020-06-25T05:47:51.000Z</published>
     <updated>2021-01-26T12:46:42.826Z</updated>
     
@@ -381,21 +381,21 @@
     
     
     
-    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring/"/>
+    <category term="Spring" scheme="https://shimmerjordan.site/categories/Spring/"/>
     
     
-    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
+    <category term="Spring" scheme="https://shimmerjordan.site/tags/Spring/"/>
     
-    <category term="SpringBoot" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringBoot/"/>
+    <category term="SpringBoot" scheme="https://shimmerjordan.site/tags/SpringBoot/"/>
     
-    <category term="SpringCloud" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringCloud/"/>
+    <category term="SpringCloud" scheme="https://shimmerjordan.site/tags/SpringCloud/"/>
     
   </entry>
   
   <entry>
     <title>Py爬虫+基于echart可视化csv数数据</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/19/pyecharts_tour_statistic/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/19/pyecharts_tour_statistic/</id>
+    <link href="https://shimmerjordan.site/2020/06/19/pyecharts_tour_statistic/"/>
+    <id>https://shimmerjordan.site/2020/06/19/pyecharts_tour_statistic/</id>
     <published>2020-06-18T16:04:06.000Z</published>
     <updated>2020-06-21T05:20:17.034Z</updated>
     
@@ -404,19 +404,19 @@
     
     
     
-    <category term="Python初级应用" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Python%E5%88%9D%E7%BA%A7%E5%BA%94%E7%94%A8/"/>
+    <category term="Python初级应用" scheme="https://shimmerjordan.site/categories/Python%E5%88%9D%E7%BA%A7%E5%BA%94%E7%94%A8/"/>
     
     
-    <category term="Python - 数据可视化" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Python-%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    <category term="Python - 数据可视化" scheme="https://shimmerjordan.site/tags/Python-%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
     
-    <category term="Python爬虫" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Python%E7%88%AC%E8%99%AB/"/>
+    <category term="Python爬虫" scheme="https://shimmerjordan.site/tags/Python%E7%88%AC%E8%99%AB/"/>
     
   </entry>
   
   <entry>
     <title>Python可视化csv数据实例</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/17/py_csv_primary/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/17/py_csv_primary/</id>
+    <link href="https://shimmerjordan.site/2020/06/17/py_csv_primary/"/>
+    <id>https://shimmerjordan.site/2020/06/17/py_csv_primary/</id>
     <published>2020-06-17T12:21:00.000Z</published>
     <updated>2021-01-26T12:33:39.193Z</updated>
     
@@ -425,19 +425,19 @@
     
     
     
-    <category term="Python初级应用" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Python%E5%88%9D%E7%BA%A7%E5%BA%94%E7%94%A8/"/>
+    <category term="Python初级应用" scheme="https://shimmerjordan.site/categories/Python%E5%88%9D%E7%BA%A7%E5%BA%94%E7%94%A8/"/>
     
     
-    <category term="Python" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Python/"/>
+    <category term="Python" scheme="https://shimmerjordan.site/tags/Python/"/>
     
-    <category term="数据可视化" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    <category term="数据可视化" scheme="https://shimmerjordan.site/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
     
   </entry>
   
   <entry>
     <title>IDEA中使用MyBatis-generator自动生成MyBatis代码</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/15/MyBaits-generator-IDEAPlugin/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/15/MyBaits-generator-IDEAPlugin/</id>
+    <link href="https://shimmerjordan.site/2020/06/15/MyBaits-generator-IDEAPlugin/"/>
+    <id>https://shimmerjordan.site/2020/06/15/MyBaits-generator-IDEAPlugin/</id>
     <published>2020-06-15T14:05:11.000Z</published>
     <updated>2020-06-15T14:41:45.536Z</updated>
     
@@ -446,21 +446,21 @@
     
     
     
-    <category term="MyBaits" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/MyBaits/"/>
+    <category term="MyBaits" scheme="https://shimmerjordan.site/categories/MyBaits/"/>
     
     
-    <category term="开发工具" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    <category term="开发工具" scheme="https://shimmerjordan.site/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
-    <category term="IDEA" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/IDEA/"/>
+    <category term="IDEA" scheme="https://shimmerjordan.site/tags/IDEA/"/>
     
-    <category term="MyBaits" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/MyBaits/"/>
+    <category term="MyBaits" scheme="https://shimmerjordan.site/tags/MyBaits/"/>
     
   </entry>
   
   <entry>
     <title>IDEA常用快捷键整理</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/IDEAShortcut/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/IDEAShortcut/</id>
+    <link href="https://shimmerjordan.site/2020/06/14/IDEAShortcut/"/>
+    <id>https://shimmerjordan.site/2020/06/14/IDEAShortcut/</id>
     <published>2020-06-14T14:05:11.000Z</published>
     <updated>2020-06-15T14:15:45.373Z</updated>
     
@@ -469,19 +469,19 @@
     
     
     
-    <category term="开发工具" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    <category term="开发工具" scheme="https://shimmerjordan.site/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
     
-    <category term="开发工具" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    <category term="开发工具" scheme="https://shimmerjordan.site/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
-    <category term="IDEA" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/IDEA/"/>
+    <category term="IDEA" scheme="https://shimmerjordan.site/tags/IDEA/"/>
     
   </entry>
   
   <entry>
     <title>IDEA整合Maven+SSM框架</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/IDEAMavenSSM/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/IDEAMavenSSM/</id>
+    <link href="https://shimmerjordan.site/2020/06/14/IDEAMavenSSM/"/>
+    <id>https://shimmerjordan.site/2020/06/14/IDEAMavenSSM/</id>
     <published>2020-06-14T10:36:38.000Z</published>
     <updated>2021-01-26T12:43:37.643Z</updated>
     
@@ -490,21 +490,21 @@
     
     
     
-    <category term="SSM" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/SSM/"/>
+    <category term="SSM" scheme="https://shimmerjordan.site/categories/SSM/"/>
     
     
-    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
+    <category term="Spring" scheme="https://shimmerjordan.site/tags/Spring/"/>
     
-    <category term="SpringMVC" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/SpringMVC/"/>
+    <category term="SpringMVC" scheme="https://shimmerjordan.site/tags/SpringMVC/"/>
     
-    <category term="Mybatis" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Mybatis/"/>
+    <category term="Mybatis" scheme="https://shimmerjordan.site/tags/Mybatis/"/>
     
   </entry>
   
   <entry>
     <title>ApplicationContext之getBean方法详解</title>
-    <link href="https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/ApplicationContextGetBean/"/>
-    <id>https://github.com/shimmerjordan/shimmerjordan.github.io/2020/06/14/ApplicationContextGetBean/</id>
+    <link href="https://shimmerjordan.site/2020/06/14/ApplicationContextGetBean/"/>
+    <id>https://shimmerjordan.site/2020/06/14/ApplicationContextGetBean/</id>
     <published>2020-06-14T09:12:43.000Z</published>
     <updated>2021-01-26T12:43:03.475Z</updated>
     
@@ -520,14 +520,14 @@
     
     
     
-    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/categories/Spring/"/>
+    <category term="Spring" scheme="https://shimmerjordan.site/categories/Spring/"/>
     
     
-    <category term="Spring" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/Spring/"/>
+    <category term="Spring" scheme="https://shimmerjordan.site/tags/Spring/"/>
     
-    <category term="AOP" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/AOP/"/>
+    <category term="AOP" scheme="https://shimmerjordan.site/tags/AOP/"/>
     
-    <category term="bean对象方法" scheme="https://github.com/shimmerjordan/shimmerjordan.github.io/tags/bean%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95/"/>
+    <category term="bean对象方法" scheme="https://shimmerjordan.site/tags/bean%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95/"/>
     
   </entry>
   
