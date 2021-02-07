@@ -3602,6 +3602,49 @@ int head[vexnumber];    //head[i]存以节点i为起点的第一条边（在edge
       </tags>
   </entry>
   <entry>
+    <title>Hexo-seo Optimization Tips</title>
+    <url>/2020/02/06/Hexo-seo/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Usually Baidu, Google and other search engines actively included in our site is not very likely. This requires us to SEO (Search Engine Optimization) the site, and for blog sites built on Hexo, the Hexo-SEO optimization strategy is used here.</p>
+<a id="more"></a>
+
+<h1 id="1-Generate-the-sitemap-files"><a href="#1-Generate-the-sitemap-files" class="headerlink" title="1. Generate the sitemap files"></a>1. Generate the sitemap files</h1><p>Two Hexo plug-ins need to be installed first:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save		</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
+<p>Open the configuration file <code>_config.yml</code> in the root tree and add:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">sitemap:</span></span><br><span class="line">	<span class="attr">path:</span> <span class="string">sitemap.xml</span></span><br><span class="line"><span class="attr">baidusitemap:</span></span><br><span class="line">	<span class="attr">path:</span> <span class="string">baidusitemap.xml</span></span><br></pre></td></tr></table></figure>
+<p>Restart Hexo again and access <a href="localhost:4000/sitemap.xml">localhost:4000/sitemap.xml</a> and <a href="localhost:4000/baidusitemap.xml">localhost:4000/baidusitemap.xml</a> locally to check the two sitemap files. Be sure to ensure that the sitemap file is displayed properly in your browser and that no errors are reported. Possible causes of errors are the following:</p>
+<ul>
+<li>The <code>sitemap.xml</code> file is in the wrong encoding format, you need to use an editor to convert the encoding format to <code>UTF-8</code> or <code>UNICODE</code>.</li>
+<li>The URL saved in <code>sitemap.xml</code> does not contain <code>&amp;</code>, i.e. the path to the article in Hexo does not contain <code>&amp;</code>. If it does, you need to replace <code>&amp;</code> in the URL with <code>&amp;amp;</code>.</li>
+</ul>
+<p>There may also be other errors, which can be located by the error message and are not repeated here.</p>
+<h1 id="2-Push-to-Google-and-Baidu"><a href="#2-Push-to-Google-and-Baidu" class="headerlink" title="2. Push to Google and Baidu"></a>2. Push to Google and Baidu</h1><h2 id="1-Baidu-→-Add-personal-website"><a href="#1-Baidu-→-Add-personal-website" class="headerlink" title="(1) Baidu → Add personal website"></a>(1) Baidu → <a href="https://ziyuan.baidu.com/site/siteadd?siteurl=">Add personal website</a></h2><blockquote>
+<p>The add file approach is not feasible, hexo will handle html files. So the choice is, add html tags to <code>head.ejs</code></p>
+</blockquote>
+<p><a href="https://ziyuan.baidu.com/dashboard/index">Baidu Dashboard</a></p>
+<p>1.1 Manually submit <a href="https://ziyuan.baidu.com/linksubmit/index">baidusitemap.xml</a> (There is also an automatic submission code inside)</p>
+<p>1.2 You can use “Crawl Diagnosis”, manually - Baidu crawl</p>
+<p>1.3 Robots → detect and update</p>
+<blockquote>
+<h5 id="Robots-configuration"><a href="#Robots-configuration" class="headerlink" title="Robots configuration"></a>Robots configuration</h5><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">User-agent:</span> <span class="string">*</span></span><br><span class="line"><span class="attr">Allow:</span> <span class="string">/</span></span><br><span class="line"><span class="attr">Allow:</span> <span class="string">/home/</span></span><br><span class="line"><span class="attr">Allow:</span> <span class="string">/archives/</span></span><br><span class="line"><span class="attr">Allow:</span> <span class="string">/about/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/vendors/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/js/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/css/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/fonts/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/vendors/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/fancybox/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Sitemap:</span> <span class="string">http://yoursite/sitemap.xml</span></span><br><span class="line"><span class="attr">Sitemap:</span> <span class="string">http://yoursite/baidusitemap.xml</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Allow</code> means allowed to be accessed, <code>Disallow</code> means not allowed. Note that the last two sitemaps are URL to sitemaps. <code>Robots.txt</code> files need to be placed in the root of the page, in line with the <code>sitemap</code> file. In the Hexo blog, it needs to be placed in <code>./public</code></p>
+</blockquote>
+<h2 id="2-Google-→-Add-personal-website"><a href="#2-Google-→-Add-personal-website" class="headerlink" title="(2)Google → Add personal website"></a>(2)Google → <a href="https://search.google.com/search-console/welcome">Add personal website</a></h2><p>Similar to Baidu, it also adds html tags to <code>head.ejs</code>.</p>
+<p><strong>You can also verify websites on baidu and google by means of DNS, here I Google is through the DNS method. See the official guide for details, so I won’t go into it again here.</strong></p>
+<h5 id="Manual-sitemap-submission-even-for-individual-sites"><a href="#Manual-sitemap-submission-even-for-individual-sites" class="headerlink" title="Manual sitemap submission, even for individual sites:"></a>Manual sitemap submission, even for individual sites:</h5><ul>
+<li><a href="https://search.google.com/search-console">GoogleSearchConsole</a> → sitemap → Enter the corresponding URL for sitemap.xml → Submit</li>
+</ul>
+<p>Verification is good, after two days or so Baidu and Google will be able to include your site</p>
+<p>Test method: (respectively in google and baidu search their site or site url title content)</p>
+<h1 id="3-Remove-dead-links-regularly"><a href="#3-Remove-dead-links-regularly" class="headerlink" title="3. Remove dead links regularly"></a>3. Remove dead links regularly</h1><p><a href="https://www.google.com/webmasters/tools/removals">https://www.google.com/webmasters/tools/removals</a></p>
+]]></content>
+      <tags>
+        <tag>reference</tag>
+        <tag>Web deployment</tag>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python爬虫入门</title>
     <url>/2020/02/02/Python-crawlers-beginning/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在初步掌握Python基本语法后，这里使用Py进行一个简单的爬取图片应用作为入门训练。<br>首先爬虫的基本步骤可以概括为：</p>

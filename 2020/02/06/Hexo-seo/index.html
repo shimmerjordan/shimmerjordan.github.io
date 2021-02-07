@@ -14,7 +14,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    SPFA算法详解 |  丛烨-shimmerjordan
+    Hexo-seo Optimization Tips |  丛烨-shimmerjordan
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -63,7 +63,7 @@ ga('send', 'pageview');
     <main class="content on">
       <section class="outer">
   <article
-  id="post-SPFA算法详解"
+  id="post-Hexo-seo"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -74,26 +74,22 @@ ga('send', 'pageview');
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  SPFA算法详解
+  Hexo-seo Optimization Tips
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/02/13/intro-SPFA/" class="article-date">
-  <time datetime="2020-02-13T03:36:55.000Z" itemprop="datePublished">2020-02-13</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-  
+      <a href="/2020/02/06/Hexo-seo/" class="article-date">
+  <time datetime="2020-02-06T12:37:12.000Z" itemprop="datePublished">2020-02-06</time>
+</a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.3k</span>
+            <span class="post-count">474</span>
         </span>
     </span>
 
@@ -102,7 +98,7 @@ ga('send', 'pageview');
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">4 分钟</span>
+            <span class="post-count">2 分钟</span>
         </span>
     </span>
 </div>
@@ -117,78 +113,39 @@ ga('send', 'pageview');
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="SPFA算法介绍"><a href="#SPFA算法介绍" class="headerlink" title="SPFA算法介绍"></a>SPFA算法介绍</h1><p>SPFA算法全程为，Shortest Path Faster Algorithm，为Bellman-Ford算法的队列优化算分的别称，其最坏情况的复杂度与Bellman-Ford相同，为O(VE)<br>与BFS算法比较，复杂度相对稳定。但在稠密图中复杂度比迪杰斯特拉算法差。<br>对SPFA的一个很直观的理解就是由无权图的BFS转化而来。在无权图中，BFS首先到达的顶点所经历的路径一定是最短路(也就是经过的最少顶点数)，所以此时利用数组记录节点访问可以使每个顶点只进队一次。但在带权图中，最先到达的顶点所计算出来的路径不一定是最短路。一个解决方法是放弃数组，此时所需时间自然就是指数级的。所以我们不能放弃数组，而是在处理一个已经在队列中且当前所得的路径比原来更好的顶点时，直接更新最优解。  </p>
+  <p>Usually Baidu, Google and other search engines actively included in our site is not very likely. This requires us to SEO (Search Engine Optimization) the site, and for blog sites built on Hexo, the Hexo-SEO optimization strategy is used here.</p>
 <a id="more"></a>
 
-<h1 id="算法优点"><a href="#算法优点" class="headerlink" title="算法优点"></a>算法优点</h1><ol>
-<li>时间复杂度低于普通Dijkstra以及Ford（一般情况下）</li>
-<li>能够计算负权图问题</li>
-<li>能够判断是否有负环</li>
-</ol>
-<h1 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h1><p>我们用数组记录每个节点的最短路径估计值，用邻接表来存储图G。<br>这里采取的方式是动态逼近法：<br>　　1. 设立一个先进先出的队列用来存储待优化的节点。<br>　　2. 优化时每次取出队首节点u,并且用u点当前的最短路径估计值对离开u点所指向的节点v进行松弛操作，如果v点的最短路径估计值有所调整，且v点不在当前的队列中，就将v点放入队尾<br>　　3. 这样不断从队列中取出节点来进行松弛操作，直至队列空为止<br>事实上，如果一个节点被放入队列n次，那么即证明存在负环。</p>
-<h1 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h1><ol>
-<li>存入图。可以使用<a href="/2020/02/13/starChain/" title="链式前向星">链式前向星</a>或者vector；</li>
-<li>开一个队列，先将开始的节点放入；</li>
-<li>每次从队列中取出一个节点x，遍历与x相通的y节点，查询比对 dis[y] 和 dis[x]+edge[i].w<br>　　如果dis[y] &lt; dis[x]+edge[i].w，说明需要更新操作。<br>　　　　1) 存入最短路<br>　　　　2) 由于改变了原有的长度，所以需要往后更新，与这个节点项链的最短路（即：判断是否存在队列，在就不需要重复，不在就加入队列，等待更新）<br>　　　　3) 在这期间可以记录这个节点的仅对次数，判断是否存在负环（如果某个点进入队列的次数超过n即存在）  </li>
-<li>直到队空。</li>
-</ol>
-<h1 id="模拟过程"><a href="#模拟过程" class="headerlink" title="模拟过程"></a>模拟过程</h1><div align=center><img src="https://i.imgur.com/V2L4gUM.png"></div>
-
-<p>首先建立起始点a到其余各点的最短路径表格  </p>
-<p><img src="https://i.imgur.com/cXnijXy.jpg"></p>
-<p>首先源点a入队，当队列非空时：  </p>
+<h1 id="1-Generate-the-sitemap-files"><a href="#1-Generate-the-sitemap-files" class="headerlink" title="1. Generate the sitemap files"></a>1. Generate the sitemap files</h1><p>Two Hexo plug-ins need to be installed first:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save		</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
+<p>Open the configuration file <code>_config.yml</code> in the root tree and add:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sitemap:</span></span><br><span class="line">	<span class="attr">path:</span> <span class="string">sitemap.xml</span></span><br><span class="line"><span class="attr">baidusitemap:</span></span><br><span class="line">	<span class="attr">path:</span> <span class="string">baidusitemap.xml</span></span><br></pre></td></tr></table></figure>
+<p>Restart Hexo again and access <a href="localhost:4000/sitemap.xml">localhost:4000/sitemap.xml</a> and <a href="localhost:4000/baidusitemap.xml">localhost:4000/baidusitemap.xml</a> locally to check the two sitemap files. Be sure to ensure that the sitemap file is displayed properly in your browser and that no errors are reported. Possible causes of errors are the following:</p>
 <ul>
-<li>队首元素（a）出队，对以a为起始点的所有边的终点依次进行松弛操作（此处有b，c，d三个点），此时路径表格状态为：  <div align=center><img src="https://i.imgur.com/dvKLisF.jpg"></div>
-
-</li>
+<li>The <code>sitemap.xml</code> file is in the wrong encoding format, you need to use an editor to convert the encoding format to <code>UTF-8</code> or <code>UNICODE</code>.</li>
+<li>The URL saved in <code>sitemap.xml</code> does not contain <code>&amp;</code>, i.e. the path to the article in Hexo does not contain <code>&amp;</code>. If it does, you need to replace <code>&amp;</code> in the URL with <code>&amp;amp;</code>.</li>
 </ul>
-<p>在松弛时三个点的路径估计值变小了，而这些点队列中都没有出现，这些点需要入队，此时，队列中新入队了三个节点b，c，d（表格中30应为∞，编辑错误）</p>
-<ul>
-<li>队首元素b点出队，对以b为起始点的所有终点依次进行松弛操作（此时只有e点），此时路径表格状态为：  <div align=center><img src="https://i.imgur.com/0OxHknG.jpg"></div>
+<p>There may also be other errors, which can be located by the error message and are not repeated here.</p>
+<h1 id="2-Push-to-Google-and-Baidu"><a href="#2-Push-to-Google-and-Baidu" class="headerlink" title="2. Push to Google and Baidu"></a>2. Push to Google and Baidu</h1><h2 id="1-Baidu-→-Add-personal-website"><a href="#1-Baidu-→-Add-personal-website" class="headerlink" title="(1) Baidu → Add personal website"></a>(1) Baidu → <a target="_blank" rel="noopener" href="https://ziyuan.baidu.com/site/siteadd?siteurl=">Add personal website</a></h2><blockquote>
+<p>The add file approach is not feasible, hexo will handle html files. So the choice is, add html tags to <code>head.ejs</code></p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://ziyuan.baidu.com/dashboard/index">Baidu Dashboard</a></p>
+<p>1.1 Manually submit <a target="_blank" rel="noopener" href="https://ziyuan.baidu.com/linksubmit/index">baidusitemap.xml</a> (There is also an automatic submission code inside)</p>
+<p>1.2 You can use “Crawl Diagnosis”, manually - Baidu crawl</p>
+<p>1.3 Robots → detect and update</p>
+<blockquote>
+<h5 id="Robots-configuration"><a href="#Robots-configuration" class="headerlink" title="Robots configuration"></a>Robots configuration</h5><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">User-agent:</span> <span class="string">*</span></span><br><span class="line"><span class="attr">Allow:</span> <span class="string">/</span></span><br><span class="line"><span class="attr">Allow:</span> <span class="string">/home/</span></span><br><span class="line"><span class="attr">Allow:</span> <span class="string">/archives/</span></span><br><span class="line"><span class="attr">Allow:</span> <span class="string">/about/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/vendors/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/js/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/css/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/fonts/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/vendors/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/fancybox/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Sitemap:</span> <span class="string">http://yoursite/sitemap.xml</span></span><br><span class="line"><span class="attr">Sitemap:</span> <span class="string">http://yoursite/baidusitemap.xml</span></span><br></pre></td></tr></table></figure>
 
-</li>
+<p><code>Allow</code> means allowed to be accessed, <code>Disallow</code> means not allowed. Note that the last two sitemaps are URL to sitemaps. <code>Robots.txt</code> files need to be placed in the root of the page, in line with the <code>sitemap</code> file. In the Hexo blog, it needs to be placed in <code>./public</code></p>
+</blockquote>
+<h2 id="2-Google-→-Add-personal-website"><a href="#2-Google-→-Add-personal-website" class="headerlink" title="(2)Google → Add personal website"></a>(2)Google → <a target="_blank" rel="noopener" href="https://search.google.com/search-console/welcome">Add personal website</a></h2><p>Similar to Baidu, it also adds html tags to <code>head.ejs</code>.</p>
+<p><strong>You can also verify websites on baidu and google by means of DNS, here I Google is through the DNS method. See the official guide for details, so I won’t go into it again here.</strong></p>
+<h5 id="Manual-sitemap-submission-even-for-individual-sites"><a href="#Manual-sitemap-submission-even-for-individual-sites" class="headerlink" title="Manual sitemap submission, even for individual sites:"></a>Manual sitemap submission, even for individual sites:</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://search.google.com/search-console">GoogleSearchConsole</a> → sitemap → Enter the corresponding URL for sitemap.xml → Submit</li>
 </ul>
-<p>在最短路径中，e的最短路径估值也变小了，e在队列中不存在，因此e也要入队，此时队列中的元素为c，d，e</p>
-<ul>
-<li>队首元素c点出队，对以c为起始点的所有边的终点依次进行松弛操作（此处有e,f两个点），此时路径表格状态为：  <div align=center><img src="https://i.imgur.com/8in2A1V.jpg"></div>
-
-</li>
-</ul>
-<p>在最短路径表中，e，f的最短路径估值变小了，e在队列中存在，f不存在。因此e不用入队了，f要入队，此时队列中的元素为d，e，f</p>
-<ul>
-<li>队首元素d点出队，对以d为起始点的所有边的终点依次进行松弛操作（此处只有g这个点），此时路径表格状态为：  <div align=center><img src="https://i.imgur.com/ft0AfIb.jpg"></div>
-
-</li>
-</ul>
-<p>在最短路径表中，g的最短路径估值没有变小（松弛不成功），没有新结点入队，队列中元素为f，g</p>
-<ul>
-<li>队首元素f点出队，对以f为起始点的所有边的终点依次进行松弛操作（此处有d，e，g三个点），此时路径表格状态为：  <div align=center><img src="https://i.imgur.com/CiU4zsB.jpg"></div>
-
-</li>
-</ul>
-<p>在最短路径表中，e，g的最短路径估值又变小，队列中无e点，e入队，队列中存在g这个点，g不用入队，此时队列中元素为g，e</p>
-<ul>
-<li>队首元素g点出队，对以g为起始点的所有边的终点依次进行松弛操作（此处只有b点），此时路径表格状态为：  <div align=center><img src="https://i.imgur.com/Zd63QDN.jpg></div>
-
-</li>
-</ul>
-<p>在最短路径表中，b的最短路径估值又变小，队列中无b点，b入队，此时队列中元素为e，b队首元素e点出队，对以e为起始点的所有边的终点依次进行松弛操作（此处只有g这个点），此时路径表格状态为：  </p>
-<div align=center><img src="https://i.imgur.com/mjSGsIN.jpg"></div>
-
-<p>在最短路径表中，g的最短路径估值没变化（松弛不成功），此时队列中元素为b</p>
-<ul>
-<li>队首元素b点出队，对以b为起始点的所有边的终点依次进行松弛操作（此处只有e这个点），此时路径表格状态为：  <div align=center><img src="https://i.imgur.com/EdyYHof.jpg"></div>
-
-</li>
-</ul>
-<p>在最短路径表中，e的最短路径估值没变化（松弛不成功），此时队列为空了</p>
-<p>最终a到g的最短路径为 14</p>
-<h1 id="SPFA核心代码"><a href="#SPFA核心代码" class="headerlink" title="SPFA核心代码"></a>SPFA核心代码</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">SPFA</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">	<span class="built_in">memset</span>(vis, inf, <span class="keyword">sizeof</span>(vis));</span><br><span class="line">	<span class="built_in">memset</span>(ven, <span class="number">0</span>, <span class="keyword">sizeof</span>(ven));</span><br><span class="line">	<span class="built_in">memset</span>(nums, <span class="number">0</span>, <span class="keyword">sizeof</span>(nums));</span><br><span class="line">	vis[s] = <span class="number">0</span>;			<span class="comment">//初始化距离 </span></span><br><span class="line">	ven[s] = <span class="number">1</span>, nums[s]++;	<span class="comment">//标记s节点在队列，队列次数+1 </span></span><br><span class="line">	q.push(s);</span><br><span class="line">	<span class="keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">		<span class="keyword">int</span> x = q.front();</span><br><span class="line">		q.pop();		<span class="comment">//出队 </span></span><br><span class="line">		ven[x] = <span class="number">0</span>;		<span class="comment">//标记不在队列 </span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = pre[x]; ~i; i = a[i].next) &#123;	<span class="comment">//遍历与x节点连通的点 </span></span><br><span class="line">		</span><br><span class="line">			<span class="keyword">int</span> y = a[i].y;</span><br><span class="line">			<span class="keyword">if</span> (vis[y] &gt; vis[x] + a[i].time) &#123; <span class="comment">//更新 </span></span><br><span class="line">			</span><br><span class="line">				vis[y] = vis[x] + a[i].time;</span><br><span class="line">				<span class="keyword">if</span> (!ven[y]) &#123;</span><br><span class="line">					<span class="comment">//由于更新了节点，所以后续以这个为基础的最短路，也要更新下</span></span><br><span class="line">					<span class="comment">//所以如果在队列就不用加入，不在的话加入更新后续节点 </span></span><br><span class="line">					q.push(y);</span><br><span class="line">					ven[y] = <span class="number">1</span>;	<span class="comment">//标记这个节点在队列中 </span></span><br><span class="line">					nums[y]++;	<span class="comment">//记录加入次数 </span></span><br><span class="line">					<span class="keyword">if</span> (nums[y] &gt; n)	<span class="comment">//加入超过n次说明存在负圈，直接返回 </span></span><br><span class="line">						<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="关于差分约束和最短路"><a href="#关于差分约束和最短路" class="headerlink" title="关于差分约束和最短路"></a>关于差分约束和最短路</h1><p>SPFA通常用于计算最短路来解决差分约束问题，关于差分约束和最短路可见<a href="/2020/02/16/DifferentialConstraintAndShortestCircuit/" title="差分约束与最短路">差分约束与最短路</a> </p>
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><a href="/2020/02/16/CCF20180904/" title="CCF 201809-4 再卖菜">CCF 201809-4 再卖菜</a>
-
-
-
+<p>Verification is good, after two days or so Baidu and Google will be able to include your site</p>
+<p>Test method: (respectively in google and baidu search their site or site url title content)</p>
+<h1 id="3-Remove-dead-links-regularly"><a href="#3-Remove-dead-links-regularly" class="headerlink" title="3. Remove dead links regularly"></a>3. Remove dead links regularly</h1><p><a target="_blank" rel="noopener" href="https://www.google.com/webmasters/tools/removals">https://www.google.com/webmasters/tools/removals</a></p>
  
       <!-- reward -->
       
@@ -259,12 +216,12 @@ ga('send', 'pageview');
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shimmerjordan.site/2020/02/13/intro-SPFA/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shimmerjordan.site/2020/02/06/Hexo-seo/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E4%BC%98%E5%8C%96/" rel="tag">最短路径优化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B4%9F%E7%8E%AF%E8%A7%A3%E5%86%B3/" rel="tag">负环解决</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web-deployment/" rel="tag">Web deployment</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reference/" rel="tag">reference</a></li></ul>
 
     </footer>
   </div>
@@ -272,19 +229,19 @@ ga('send', 'pageview');
    
   <nav class="article-nav">
     
-      <a href="/2020/02/13/starChain/" class="article-nav-link">
+      <a href="/2020/02/13/intro-SPFA/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            前向星与链式前向星
+            SPFA算法详解
           
         </div>
       </a>
     
     
-      <a href="/2020/02/06/Hexo-seo/" class="article-nav-link">
+      <a href="/2020/02/02/Python-crawlers-beginning/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Hexo-seo Optimization Tips</div>
+        <div class="article-nav-title">Python爬虫入门</div>
       </a>
     
   </nav>
