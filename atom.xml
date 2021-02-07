@@ -6,7 +6,7 @@
   <link href="https://shimmerjordan.site/atom.xml" rel="self"/>
   
   <link href="https://shimmerjordan.site/"/>
-  <updated>2021-02-06T08:52:08.087Z</updated>
+  <updated>2021-02-07T04:50:18.379Z</updated>
   <id>https://shimmerjordan.site/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo-seo Optimization Tips</title>
+    <link href="https://shimmerjordan.site/2021/02/06/Hexo-seo/"/>
+    <id>https://shimmerjordan.site/2021/02/06/Hexo-seo/</id>
+    <published>2021-02-06T12:37:12.000Z</published>
+    <updated>2021-02-07T04:50:18.379Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Usually Baidu, Google and other search engines actively included in our site is not very likely. This requires us to SEO (Search Engine Optimization) the site, and for blog sites built on Hexo, the Hexo-SEO optimization strategy is used here.&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="reference" scheme="https://shimmerjordan.site/tags/reference/"/>
+    
+    <category term="Web deployment" scheme="https://shimmerjordan.site/tags/Web-deployment/"/>
+    
+    <category term="git" scheme="https://shimmerjordan.site/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>Deploy Github Actions</title>
@@ -498,36 +519,6 @@
     <category term="SpringMVC" scheme="https://shimmerjordan.site/tags/SpringMVC/"/>
     
     <category term="Mybatis" scheme="https://shimmerjordan.site/tags/Mybatis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ApplicationContext之getBean方法详解</title>
-    <link href="https://shimmerjordan.site/2020/06/14/ApplicationContextGetBean/"/>
-    <id>https://shimmerjordan.site/2020/06/14/ApplicationContextGetBean/</id>
-    <published>2020-06-14T09:12:43.000Z</published>
-    <updated>2021-01-26T12:43:03.475Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;我们知道可以通过ApplicationContext的getBean方法来获取Spring容器中已初始化的bean。getBean一共有以下四种方法原型：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;getBean(String name)&lt;/li&gt;
-&lt;li&gt;getBean(Class&lt;T&gt; type)&lt;/li&gt;
-&lt;li&gt;getBean(String name,Class&lt;T&gt; type)&lt;/li&gt;
-&lt;li&gt;getBean(String name,Object[] args)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;下来我们分别来探讨以上四种方式获取bean的区别。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Spring" scheme="https://shimmerjordan.site/categories/Spring/"/>
-    
-    
-    <category term="Spring" scheme="https://shimmerjordan.site/tags/Spring/"/>
-    
-    <category term="AOP" scheme="https://shimmerjordan.site/tags/AOP/"/>
-    
-    <category term="bean对象方法" scheme="https://shimmerjordan.site/tags/bean%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95/"/>
     
   </entry>
   
