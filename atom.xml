@@ -42,7 +42,7 @@
     <link href="https://shimmerjordan.site/2021/02/01/DeployGithubActions/"/>
     <id>https://shimmerjordan.site/2021/02/01/DeployGithubActions/</id>
     <published>2021-02-01T07:38:12.000Z</published>
-    <updated>2021-02-06T08:52:08.087Z</updated>
+    <updated>2021-03-05T09:01:50.019Z</updated>
     
     
     <summary type="html">&lt;p&gt;Sometimes automated deployment projects or timed tasks need to be deployed online, but these are for temporary use or these lightweight applications do not warrant the additional purchase of a cloud server for deployment. This is when you might consider using Github Actions for automated deployments.&lt;/p&gt;
