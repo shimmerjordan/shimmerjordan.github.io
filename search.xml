@@ -69,7 +69,7 @@
 <li>Knowledge base: add, delete and check knowledge base, upload attachments</li>
 </ul>
 </blockquote>
-<div id="4" >Attachment management: all attachments of the project are stored in fastDfs, providing a unified management portal</div>
+<div id="4" ><b>Attachment management: all attachments of the project are stored in fastDfs, providing a unified management portal</b></div>
 
 <blockquote>
 <ul>
