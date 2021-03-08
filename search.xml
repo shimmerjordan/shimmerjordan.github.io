@@ -35,7 +35,7 @@
 <h1 id="Function-Overview"><a href="#Function-Overview" class="headerlink" title="Function Overview"></a>Function Overview</h1><p>The project is divided into two parts: the front-end website and the back-end management. The front-end mainly provides examination functions, while the back-end provides basic management and examination management functions.</p>
 <p>The frontend mainly provides online examination and online learning functions</p>
 <p>Backstage management is divided into: <a href="#1">system management</a>, <a href="2">system monitoring</a>, <a href="3">examination management</a>, <a href="4">attachment management</a>, <a href="5">personal management</a></p>
-<div id="1" >System management: provides basic management of users, departments, roles and permissions, etc.</div>
+<div id="1" ><b>System management: provides basic management of users, departments, roles and permissions, etc.</b></div>
 
 <blockquote>
 <ul>
@@ -47,7 +47,7 @@
 <li>Routing management: gateway routing management, including the addition, deletion and checking of routes, refreshing routes, etc.</li>
 </ul>
 </blockquote>
-<div id="2" >System monitoring: monitoring services, logs, etc.</div>
+<div id="2" ><b>System monitoring: monitoring services, logs, etc.</b></div>
 
 <blockquote>
 <ul>
@@ -58,7 +58,7 @@
 <li>Interface documentation: swagger api documentation</li>
 </ul>
 </blockquote>
-<div id="3" >Examination Management: Provide management of courses, examinations, question banks, results, etc.</div>
+<div id="3" ><b>Examination Management: Provide management of courses, examinations, question banks, results, etc.</b></div>
 
 <blockquote>
 <ul>
@@ -76,10 +76,15 @@
 <li>Attachment list: manage all attachments, such as user avatars, exam attachments, knowledge base attachments, etc.</li>
 </ul>
 </blockquote>
-<div id="5" >Personal management: manage personal data and change passwords</div>
->
-> - Personal information: modification of basic information such as name and avatar
-> - Change password: change password]]></content>
+<div id="5" ><b>Personal management: manage personal data and change passwords</b></div>
+
+<blockquote>
+<ul>
+<li>Personal information: modification of basic information such as name and avatar</li>
+<li>Change password: change password</li>
+</ul>
+</blockquote>
+]]></content>
       <categories>
         <category>Spring Cloud</category>
       </categories>
