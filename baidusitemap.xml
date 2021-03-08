@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://shimmerjordan.site/2021/03/08/introToSZ-education/</loc>
+    <lastmod>2021-03-08</lastmod>
+  </url>
+  <url>
+    <loc>https://shimmerjordan.site/2020/06/28/lexian-mall-SpringCloud/</loc>
+    <lastmod>2021-03-08</lastmod>
+  </url>
+  <url>
+    <loc>https://shimmerjordan.site/2020/07/24/LexianMallIntro/</loc>
+    <lastmod>2021-03-08</lastmod>
+  </url>
+  <url>
     <loc>https://shimmerjordan.site/2021/02/01/DeployGithubActions/</loc>
     <lastmod>2021-03-05</lastmod>
   </url>
@@ -39,10 +51,6 @@
   <url>
     <loc>https://shimmerjordan.site/2020/01/18/about/</loc>
     <lastmod>2021-02-04</lastmod>
-  </url>
-  <url>
-    <loc>https://shimmerjordan.site/2020/07/24/LexianMallIntro/</loc>
-    <lastmod>2021-01-31</lastmod>
   </url>
   <url>
     <loc>https://shimmerjordan.site/2020/06/13/SpringFactoryModes/</loc>
@@ -118,10 +126,6 @@
   </url>
   <url>
     <loc>https://shimmerjordan.site/2020/02/16/DifferentialConstraintAndShortestCircuit/</loc>
-    <lastmod>2021-01-26</lastmod>
-  </url>
-  <url>
-    <loc>https://shimmerjordan.site/2020/06/28/lexian-mall-SpringCloud/</loc>
     <lastmod>2021-01-26</lastmod>
   </url>
   <url>

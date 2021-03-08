@@ -25,6 +25,25 @@
       </tags>
   </entry>
   <entry>
+    <title>Introduction to sz-education</title>
+    <url>/2021/03/08/introToSZ-education/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>轼辙云 (sz-education)  is a new generation of microservices teaching management platform based on Spring Cloud, providing multi-tenancy, permission management, exams and exercises. </p>
+<p>The exams support single choice, multiple choice, indefinite choice, judgement and short answer questions.</p>
+<a id="more"></a>
+
+<p>轼 means handrail at the front of the car and 辙 means the tyre tracks left by the car going by.</p>
+]]></content>
+      <categories>
+        <category>Spring Cloud</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>SpringCloud</tag>
+        <tag>Redis</tag>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo-seo Optimization Tips</title>
     <url>/2021/02/06/Hexo-seo/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Usually Baidu, Google and other search engines actively included in our site is not very likely. This requires us to SEO (Search Engine Optimization) the site, and for blog sites built on Hexo, the Hexo-SEO optimization strategy is used here.</p>
@@ -1547,7 +1566,7 @@ See if the CUDA version is higher than 9.0, otherwise it will report an error. I
 <h1 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h1><p>github：<a href="https://github.com/shimmerjordan/Lexian-Mall">https://github.com/shimmerjordan/Lexian-Mall</a></p>
 ]]></content>
       <categories>
-        <category>Spring项目</category>
+        <category>Spring Cloud</category>
       </categories>
       <tags>
         <tag>电商平台</tag>
@@ -1576,7 +1595,7 @@ See if the CUDA version is higher than 9.0, otherwise it will report an error. I
 <p>注意：含有module的maven类型选择为pom类型，每个module类型为jar类型。</p>
 ]]></content>
       <categories>
-        <category>lexian-mall实训</category>
+        <category>Spring Cloud</category>
       </categories>
       <tags>
         <tag>Web开发</tag>
