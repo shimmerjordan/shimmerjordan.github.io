@@ -35,9 +35,9 @@
 <h1 id="Function-Overview"><a href="#Function-Overview" class="headerlink" title="Function Overview"></a>Function Overview</h1><p>The project is divided into two parts: the front-end website and the back-end management. The front-end mainly provides examination functions, while the back-end provides basic management and examination management functions.</p>
 <p>The frontend mainly provides online examination and online learning functions</p>
 <p>Backstage management is divided into: <a href="#1">system management</a>, <a href="2">system monitoring</a>, <a href="3">examination management</a>, <a href="4">attachment management</a>, <a href="5">personal management</a></p>
-<blockquote>
 <div id="1" >System management: provides basic management of users, departments, roles and permissions, etc.</div>
 
+<blockquote>
 <ul>
 <li>User management: add, delete, change, import and export user information</li>
 <li>Department management: add, delete and check department information</li>
@@ -47,44 +47,30 @@
 <li>Routing management: gateway routing management, including the addition, deletion and checking of routes, refreshing routes, etc.</li>
 </ul>
 </blockquote>
-<blockquote>
 <div id="2" >System monitoring: monitoring services, logs, etc.</div>
+>
+> - Log monitoring: view system logs
+> - consul monitoring: consul service monitoring
+> - zipkin monitoring: monitoring service call links
+> - Service monitoring: spring boot admin service monitoring
+> - Interface documentation: swagger api documentation
 
-<ul>
-<li>Log monitoring: view system logs</li>
-<li>consul monitoring: consul service monitoring</li>
-<li>zipkin monitoring: monitoring service call links</li>
-<li>Service monitoring: spring boot admin service monitoring</li>
-<li>Interface documentation: swagger api documentation</li>
-</ul>
-</blockquote>
-<blockquote>
 <div id="3" >Examination Management: Provide management of courses, examinations, question banks, results, etc.</div>
+>
+> - Course management: add, delete, change and check course information
+> - Exam management: add, delete and check exam information, question management, issue and recycle, question management supports simple text, rich text input, add from the question bank, etc.
+> - Question bank management: add, delete and check question categories, add, delete and check question information
+> - Results management: view results, export results
+> - Knowledge base: add, delete and check knowledge base, upload attachments
 
-<ul>
-<li>Course management: add, delete, change and check course information</li>
-<li>Exam management: add, delete and check exam information, question management, issue and recycle, question management supports simple text, rich text input, add from the question bank, etc.</li>
-<li>Question bank management: add, delete and check question categories, add, delete and check question information</li>
-<li>Results management: view results, export results</li>
-<li>Knowledge base: add, delete and check knowledge base, upload attachments</li>
-</ul>
-</blockquote>
-<blockquote>
 <div id="4" >Attachment management: all attachments of the project are stored in fastDfs, providing a unified management portal</div>
+>
+> - Attachment list: manage all attachments, such as user avatars, exam attachments, knowledge base attachments, etc.
 
-<ul>
-<li>Attachment list: manage all attachments, such as user avatars, exam attachments, knowledge base attachments, etc.</li>
-</ul>
-</blockquote>
-<blockquote>
 <div id="5" >Personal management: manage personal data and change passwords</div>
-
-<ul>
-<li>Personal information: modification of basic information such as name and avatar</li>
-<li>Change password: change password</li>
-</ul>
-</blockquote>
-]]></content>
+>
+> - Personal information: modification of basic information such as name and avatar
+> - Change password: change password]]></content>
       <categories>
         <category>Spring Cloud</category>
       </categories>
