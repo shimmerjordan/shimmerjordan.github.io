@@ -84,7 +84,83 @@
 <li>Change password: change password</li>
 </ul>
 </blockquote>
-<h1 id="2-Technology-Selection"><a href="#2-Technology-Selection" class="headerlink" title="2.  Technology Selection"></a>2.  Technology Selection</h1>]]></content>
+<h1 id="2-Technology-Selection"><a href="#2-Technology-Selection" class="headerlink" title="2.  Technology Selection"></a>2.  Technology Selection</h1><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"></td>
+<td align="center"><code>Consul</code></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><code>Hystrix</code> + <code>Turbine</code></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><code>Ribbon</code></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><code>Feign</code></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><code>Spring Cloud Gateway</code></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><code>Spring Cloud OAuth2 </code> + <code>JWT</code></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><code>Spring Boot Admin </code> / <code>Spring Boot Actuator</code></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><code>Spring Cloud Config</code></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><code>Spring Cloud Sleuth</code> + <code>Zipkin</code></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><code>MySQL</code></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><code>Docker</code> + <code>docker-compose</code></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><code>Maven</code></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><code>Swagger</code></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><code>RabbitMQ</code></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><code>七牛云</code></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><code>Redis</code></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">vue</td>
+</tr>
+</tbody></table>
+]]></content>
       <categories>
         <category>Spring Cloud</category>
       </categories>
