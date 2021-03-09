@@ -159,6 +159,63 @@ ga('send', 'pageview');
     
     
     <article
+  id="post-IDEA常用快捷键整理"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/06/14/IDEAShortcut/"
+    >IDEA常用快捷键整理</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/06/14/IDEAShortcut/" class="article-date">
+  <time datetime="2020-06-14T14:05:11.000Z" itemprop="datePublished">2020-06-14</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p> IDEA确实是一个很好的一个开发工具，但是从Eclipse迁移来的我对IDEA的大部分快捷键并不熟悉，错用了很多Eclipse的快捷键。这里搜集资料结合实战经验，记录IDEA的部分常用快捷键。</p> 
+      <a class="article-more-link" href="/2020/06/14/IDEAShortcut/"
+        >Read more...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+  
+</article>
+
+    
+    <article
   id="post-IDEA整合Maven-SSM框架"
   class="article article-type-post"
   itemscope
@@ -670,65 +727,6 @@ ga('send', 'pageview');
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">基础知识</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1/" rel="tag">抽象</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-  
-</article>
-
-    
-    <article
-  id="post-关于ios-sync-with-stdio-false-和cin-tie-nullptr"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/02/21/iosSyncWithStdio/"
-    >关于ios::sync_with_stdio(false)和cin.tie(nullptr)</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/02/21/iosSyncWithStdio/" class="article-date">
-  <time datetime="2020-02-21T02:47:50.000Z" itemprop="datePublished">2020-02-21</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/C-%E6%95%88%E7%8E%87/">C++效率</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我们可以发现C++高效率解决的源码中有很多以下代码段：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">auto</span> io_sync_off = []() &#123;</span><br><span class="line">    <span class="comment">// turn off sync  </span></span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);  </span><br><span class="line">    <span class="comment">// untie in/out streams  </span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>);  </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nullptr</span>;  </span><br><span class="line">&#125;();  </span><br></pre></td></tr></table></figure>
-<p>那么ios::sync_with_stdio(false);和cin.tie(nullptr);到底咋C++效率问题上起什么作用呢？这篇文章简要说明其起源与用法。</p> 
-      <a class="article-more-link" href="/2020/02/21/iosSyncWithStdio/"
-        >Read more...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-%E6%95%88%E7%8E%87/" rel="tag">C++效率</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-%E7%89%B9%E6%80%A7/" rel="tag">C++特性</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">Lambda表达式</a></li></ul>
 
     </footer>
   </div>
