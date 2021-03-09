@@ -93,7 +93,7 @@ ga('send', 'pageview');
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">502</span>
+            <span class="post-count">658</span>
         </span>
     </span>
 
@@ -102,7 +102,7 @@ ga('send', 'pageview');
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3 分钟</span>
+            <span class="post-count">4 分钟</span>
         </span>
     </span>
 </div>
@@ -270,7 +270,26 @@ ga('send', 'pageview');
     display: inline-block;
     color: #999;
     padding: 2px;">System Architecture Diagram</div>
-</center> 
+</center>
+
+<h1 id="4-Core-Dependencies"><a href="#4-Core-Dependencies" class="headerlink" title="4. Core Dependencies"></a>4. Core Dependencies</h1><table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Version</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Spring Boot</code></td>
+<td align="center"><code>2.1.11.RELEASE</code></td>
+</tr>
+<tr>
+<td align="center"><code>Spring Cloud</code></td>
+<td align="center"><code>Greenwich.SR4</code></td>
+</tr>
+</tbody></table>
+<h1 id="5-Project-Structure"><a href="#5-Project-Structure" class="headerlink" title="5. Project Structure"></a>5. Project Structure</h1><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">common                <span class="comment">// System Common Module </span></span><br><span class="line">    ├── common-core         <span class="comment">//System Common Core Module</span></span><br><span class="line">    ├── common-feign        <span class="comment">//System public feign module </span></span><br><span class="line">    ├── common-log          <span class="comment">//System public log module</span></span><br><span class="line">    └── common-security     <span class="comment">//System public security module, including resource server configuration</span></span><br><span class="line">modules               <span class="comment">//Business Modules </span></span><br><span class="line">    |-- auth-service-parent     <span class="comment">//Certification Authorization Services</span></span><br><span class="line">        |-- auth-service-api          <span class="comment">//Authentication authorization service api</span></span><br><span class="line">        |-- auth-service             <span class="comment">//Authentication authorization service specific implementation</span></span><br><span class="line">    |-- user-service-parent     <span class="comment">//user service</span></span><br><span class="line">        |-- user-service-api         <span class="comment">//user service api</span></span><br><span class="line">        |-- user-service             <span class="comment">//User services specific implementation</span></span><br><span class="line">    |── exam-service-parent     <span class="comment">//exam service</span></span><br><span class="line">        |-- exam-service-api         <span class="comment">//exam service api</span></span><br><span class="line">        |-- exam-service             <span class="comment">//exam service specific implementation</span></span><br><span class="line">    └── msc-service-parent      <span class="comment">//message center</span></span><br><span class="line">        |-- msc-service-api          <span class="comment">//message center api</span></span><br><span class="line">        |-- msc-service              <span class="comment">//message center specific implementation</span></span><br><span class="line">frontend               <span class="comment">//Frontend page</span></span><br><span class="line">    ├── sz-education-ui         <span class="comment">//Backend management front-end page</span></span><br><span class="line">    ├── sz-education-web        <span class="comment">//User front-end page</span></span><br><span class="line">config-service         <span class="comment">//Configuration Center (local repository)</span></span><br><span class="line">gateway-service        <span class="comment">//Gateway (dynamic routing)</span></span><br><span class="line">monitor-service        <span class="comment">//Spring boot amdin monitoring service</span></span><br></pre></td></tr></table></figure>
+ 
       <!-- reward -->
       
       <div id="reword-out">
