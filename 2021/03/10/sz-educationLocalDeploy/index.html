@@ -93,7 +93,7 @@ ga('send', 'pageview');
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">866</span>
+            <span class="post-count">516</span>
         </span>
     </span>
 
@@ -102,7 +102,7 @@ ga('send', 'pageview');
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">5 分钟</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
@@ -146,8 +146,9 @@ ga('send', 'pageview');
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">System Functions</div>
+    padding: 2px;">lombok plugin</div>
 </center>
+
 
 <h4 id="2-IntelliJ-IDEA-configuration-maven-setting"><a href="#2-IntelliJ-IDEA-configuration-maven-setting" class="headerlink" title="2. IntelliJ IDEA configuration maven setting"></a>2. IntelliJ IDEA configuration maven setting</h4><p>Open the IntelliJ IDEA welcome page, select “Configure-&gt;Preferences” in the bottom right corner, or select “File&gt;Settings” in the main IDEA interface, then search for <code>maven</code> keyword. Then we override the <code>settings.xml</code> in the following page and adjust the local repository, maven home path and other related parameters as needed.</p>
 <p>Here the <code>setting.xml</code> is saved in <code>docs/deploy</code> directory.</p>
@@ -159,179 +160,59 @@ ga('send', 'pageview');
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">System Functions</div>
+    padding: 2px;">Maven setting</div>
 </center>
+
 
 <h4 id="3-Installing-QRCode-dependencies"><a href="#3-Installing-QRCode-dependencies" class="headerlink" title="3. Installing QRCode dependencies"></a>3. Installing <code>QRCode</code> dependencies</h4><p>The project’s QR code generation function is dependent on the <code>QRCode.jar</code> jar package, the jar package in the source code of the <code>docs/deploy</code> directory, you need to manually execute the command to install to the local maven repository, the specific command is as follows, note that the file directory <code>(-Dfile)</code> needs to be replaced with your actual local directory.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">  mvn install:install-file -Dfile=QRCode.jar -DgroupId=QRCode -DartifactId=QRCode -Dversion=3.0 -Dpackaging=jar</span></span><br></pre></td></tr></table></figure>
-
-
-<hr>
-<p>Backstage management is divided into: <a href="#1">system management</a>, <a href="#2">system monitoring</a>, <a href="#3">examination management</a>, <a href="#4">attachment management</a>, <a href="#5">personal management</a></p>
-<div id="1" ><b>System management: provides basic management of users, departments, roles and permissions, etc.</b></div>
-
-<blockquote>
-<ul>
-<li>User management: add, delete, change, import and export user information</li>
-<li>Department management: add, delete and check department information</li>
-<li>Role management: add, delete and check role information and assign permissions</li>
-<li>Menu management: add, delete, change and check menu information, import and export</li>
-<li>Terminal management: management of OAuth 2.0 clients, such as client_id, client_secret, access_token validity time, etc.</li>
-<li>Routing management: gateway routing management, including the addition, deletion and checking of routes, refreshing routes, etc.</li>
-</ul>
-</blockquote>
-<div id="2" ><b>System monitoring: monitoring services, logs, etc.</b></div>
-
-<blockquote>
-<ul>
-<li>Log monitoring: view system logs</li>
-<li>consul monitoring: consul service monitoring</li>
-<li>zipkin monitoring: monitoring service call links</li>
-<li>Service monitoring: spring boot admin service monitoring</li>
-<li>Interface documentation: swagger api documentation</li>
-</ul>
-</blockquote>
-<div id="3" ><b>Examination Management: Provide management of courses, examinations, question banks, results, etc.</b></div>
-
-<blockquote>
-<ul>
-<li>Course management: add, delete, change and check course information</li>
-<li>Exam management: add, delete and check exam information, question management, issue and recycle, question management supports simple text, rich text input, add from the question bank, etc.</li>
-<li>Question bank management: add, delete and check question categories, add, delete and check question information</li>
-<li>Results management: view results, export results</li>
-<li>Knowledge base: add, delete and check knowledge base, upload attachments</li>
-</ul>
-</blockquote>
-<div id="4" ><b>Attachment management: all attachments of the project are stored in fastDfs, providing a unified management portal</b></div>
-
-<blockquote>
-<ul>
-<li>Attachment list: manage all attachments, such as user avatars, exam attachments, knowledge base attachments, etc.</li>
-</ul>
-</blockquote>
-<div id="5" ><b>Personal management: manage personal data and change passwords</b></div>
-
-<blockquote>
-<ul>
-<li>Personal information: modification of basic information such as name and avatar</li>
-<li>Change password: change password</li>
-</ul>
-</blockquote>
-<h2 id="System-function-diagram"><a href="#System-function-diagram" class="headerlink" title="System function diagram"></a>System function diagram</h2><center>
+<h4 id="4-Configuring-the-SDK"><a href="#4-Configuring-the-SDK" class="headerlink" title="4. Configuring the SDK"></a>4. Configuring the SDK</h4><p>Open IntelliJ IDEA, select “Configure-&gt;Structure for New Projects” in the bottom right corner of the welcome screen, or select “File&gt;Project Structure” on the main IDEA project page, and then select “Structure for New Projects” in the Select the correct JDK version in the SDK option of the project. As shown below.</p>
+<center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/system-functions-en.png" width="100%">
+    src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/MyDeployNotes/JDKconfig.png" width="100%">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">System Functions</div>
+    padding: 2px;">SDK configuring</div>
 </center>
 
-<h1 id="2-Technology-Selection"><a href="#2-Technology-Selection" class="headerlink" title="2.  Technology Selection"></a>2.  Technology Selection</h1><table>
-<thead>
-<tr>
-<th align="center">Technology Name</th>
-<th align="center">Tool</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Service Registration and Discovery</td>
-<td align="center"><code>Consul</code></td>
-</tr>
-<tr>
-<td align="center">Fuse</td>
-<td align="center"><code>Hystrix</code> + <code>Turbine</code></td>
-</tr>
-<tr>
-<td align="center">Client-side load balancing</td>
-<td align="center"><code>Ribbon</code></td>
-</tr>
-<tr>
-<td align="center">Internal service calls</td>
-<td align="center"><code>Feign</code></td>
-</tr>
-<tr>
-<td align="center">Gateway</td>
-<td align="center"><code>Spring Cloud Gateway</code></td>
-</tr>
-<tr>
-<td align="center">Authentication Forensics</td>
-<td align="center"><code>Spring Cloud OAuth2 </code> + <code>JWT</code></td>
-</tr>
-<tr>
-<td align="center">Program Monitoring</td>
-<td align="center"><code>Spring Boot Admin </code> / <code>Spring Boot Actuator</code></td>
-</tr>
-<tr>
-<td align="center">Distributed Configuration Center</td>
-<td align="center"><code>Spring Cloud Config</code></td>
-</tr>
-<tr>
-<td align="center">Distributed call chain monitoring</td>
-<td align="center"><code>Spring Cloud Sleuth</code> + <code>Zipkin</code></td>
-</tr>
-<tr>
-<td align="center">Database</td>
-<td align="center"><code>MySQL</code></td>
-</tr>
-<tr>
-<td align="center">Deployment</td>
-<td align="center"><code>Docker</code> + <code>docker-compose</code></td>
-</tr>
-<tr>
-<td align="center">Build Tools</td>
-<td align="center"><code>Maven</code></td>
-</tr>
-<tr>
-<td align="center">Back-end API Documentation</td>
-<td align="center"><code>Swagger</code></td>
-</tr>
-<tr>
-<td align="center">Message Queue</td>
-<td align="center"><code>RabbitMQ</code></td>
-</tr>
-<tr>
-<td align="center">File Storage</td>
-<td align="center"><code>七牛云</code></td>
-</tr>
-<tr>
-<td align="center">Cache</td>
-<td align="center"><code>Redis</code></td>
-</tr>
-<tr>
-<td align="center">Front-end</td>
-<td align="center">vue</td>
-</tr>
-</tbody></table>
-<h1 id="3-System-Architecture-Diagram"><a href="#3-System-Architecture-Diagram" class="headerlink" title="3. System Architecture Diagram"></a>3. System Architecture Diagram</h1><center>
+
+<h1 id="2-Import-the-project"><a href="#2-Import-the-project" class="headerlink" title="2. Import the project"></a>2. Import the project</h1><p>You can go back to the welcome page, select Get from Version Control, and fill in the URL: <code>https://github.com/shimmerjordan/sz-education.git</code> in the pop-up screen, or you can choose to git locally first and then import the local project in IDEA. Either way is fine, as long as the project is successfully imported.</p>
+<h1 id="3-Modify-configuration"><a href="#3-Modify-configuration" class="headerlink" title="3. Modify configuration"></a>3. Modify configuration</h1><h2 id="1-Modify-the-configuration-of-each-service-as-needed"><a href="#1-Modify-the-configuration-of-each-service-as-needed" class="headerlink" title="1. Modify the configuration of each service as needed"></a>1. Modify the configuration of each service as needed</h2><p>The relevant configuration for each service is modified in the <code>config-service\src\main\resources\config</code> folder, such as ip, port, database name, etc.</p>
+<p>All configurations have default values, such as</p>
+<blockquote>
+<p>MySQL：<code>localhost:3306</code>,  username: <code>root</code>,  password: <code>password</code><br>Redis：<code>localhost:6379</code><br>RabbitMQ：<code>localhost:5672</code></p>
+</blockquote>
+<center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/system-architecture-en.png" width="100%">
+    src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/MyDeployNotes/serviceConfig.png" width="100%">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">System Architecture Diagram</div>
+    padding: 2px;">service configuring</div>
 </center>
 
-<h1 id="4-Core-Dependencies"><a href="#4-Core-Dependencies" class="headerlink" title="4. Core Dependencies"></a>4. Core Dependencies</h1><table>
-<thead>
-<tr>
-<th align="center">Name</th>
-<th align="center">Version</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>Spring Boot</code></td>
-<td align="center"><code>2.1.11.RELEASE</code></td>
-</tr>
-<tr>
-<td align="center"><code>Spring Cloud</code></td>
-<td align="center"><code>Greenwich.SR4</code></td>
-</tr>
-</tbody></table>
-<h1 id="5-Project-Structure"><a href="#5-Project-Structure" class="headerlink" title="5. Project Structure"></a>5. Project Structure</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">common                <span class="comment">// System Common Module </span></span><br><span class="line">    ├── common-core         <span class="comment">//System Common Core Module</span></span><br><span class="line">    |						<span class="comment">//Encapsulate generic configuration, constants, exceptions, base entities, etc.</span></span><br><span class="line">    ├── common-feign        <span class="comment">//System public feign module</span></span><br><span class="line">    |						<span class="comment">//Encapsulate generic feign configuration for carrying access_token between service calls</span></span><br><span class="line">    ├── common-<span class="built_in">log</span>          <span class="comment">//System public log module</span></span><br><span class="line">    |						<span class="comment">//Encapsulate logging logic to record logs asynchronously</span></span><br><span class="line">    ├── common-config		<span class="comment">//General Basic Configuration</span></span><br><span class="line">    ├── common-basic		<span class="comment">//Public base configuration</span></span><br><span class="line">    						<span class="comment">//encapsulating basic configuration including Redis startup, gender enumeration, etc.</span></span><br><span class="line">    ├── common-oss			<span class="comment">//oss configuration, ecapsulating the oss configuration including FastDfs</span></span><br><span class="line">    └── common-security     <span class="comment">//System public security module, including resource server configuration</span></span><br><span class="line">    						<span class="comment">//Encapsulating the common configuration of resource servers in OAuth 2.0</span></span><br><span class="line">    </span><br><span class="line">modules               <span class="comment">//Business Modules </span></span><br><span class="line">    |-- auth-service-parent     <span class="comment">//Certification Authorization Services</span></span><br><span class="line">        |-- auth-service-api          <span class="comment">//Authentication authorization service api</span></span><br><span class="line">        |-- auth-service             <span class="comment">//Authentication authorization service specific implementation</span></span><br><span class="line">    |-- user-service-parent     <span class="comment">//user service</span></span><br><span class="line">        |-- user-service-api         <span class="comment">//user service api</span></span><br><span class="line">        |-- user-service             <span class="comment">//User services specific implementation</span></span><br><span class="line">    |── exam-service-parent     <span class="comment">//exam service</span></span><br><span class="line">        |-- exam-service-api         <span class="comment">//exam service api</span></span><br><span class="line">        |-- exam-service             <span class="comment">//exam service specific implementation</span></span><br><span class="line">    └── msc-service-parent      <span class="comment">//message center</span></span><br><span class="line">        |-- msc-service-api          <span class="comment">//message center api</span></span><br><span class="line">        |-- msc-service              <span class="comment">//message center specific implementation</span></span><br><span class="line">frontend               <span class="comment">//Frontend page</span></span><br><span class="line">    ├── sz-education-ui         <span class="comment">//Backend management front-end page</span></span><br><span class="line">    ├── sz-education-web        <span class="comment">//User front-end page</span></span><br><span class="line">config-service         <span class="comment">//Configuration Center (local repository)</span></span><br><span class="line">gateway-service        <span class="comment">//Gateway (dynamic routing)</span></span><br><span class="line">monitor-service        <span class="comment">//Spring boot amdin monitoring service</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-Run-the-database-initialization-script"><a href="#2-Run-the-database-initialization-script" class="headerlink" title="2. Run the database initialization script"></a>2. Run the database initialization script</h2><p>Create four new databases: <code>microservice-user</code>, <code>microservice-exam</code>,<code> microservice-auth</code>, and <code>microservice-gateway</code>. </p>
+<p>Execute the SQL scripts under the source directory <code>deploy/mysql/</code> respectively:</p>
+<blockquote>
+<ul>
+<li>microservice-user.sql</li>
+<li>microservice-exam.sql</li>
+<li>microservice-auth.sql</li>
+<li>microservice-gateway.sql</li>
+</ul>
+</blockquote>
+<h1 id="4-Startup-environment"><a href="#4-Startup-environment" class="headerlink" title="4. Startup environment"></a>4. Startup environment</h1><ul>
+<li>Start consul: <code>consul agent -dev</code></li>
+<li>Start MySQL</li>
+<li>Start Redis</li>
+<li>Start RabbitMQ</li>
+<li>Start zipkin</li>
+</ul>
  
       <!-- reward -->
       
