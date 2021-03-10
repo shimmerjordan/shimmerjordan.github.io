@@ -6,7 +6,7 @@
   <link href="https://shimmerjordan.site/atom.xml" rel="self"/>
   
   <link href="https://shimmerjordan.site/"/>
-  <updated>2021-03-10T06:33:32.774Z</updated>
+  <updated>2021-03-10T07:33:39.520Z</updated>
   <id>https://shimmerjordan.site/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Introduction to sz-education</title>
-    <link href="https://shimmerjordan.site/2021/03/08/introToSZ-education/"/>
-    <id>https://shimmerjordan.site/2021/03/08/introToSZ-education/</id>
-    <published>2021-03-08T10:16:12.000Z</published>
-    <updated>2021-03-10T06:33:32.774Z</updated>
+    <title>Instruction for deploying sz-education locally</title>
+    <link href="https://shimmerjordan.site/2021/03/10/sz-educationLocalDeploy/"/>
+    <id>https://shimmerjordan.site/2021/03/10/sz-educationLocalDeploy/</id>
+    <published>2021-03-10T06:36:12.000Z</published>
+    <updated>2021-03-10T07:33:39.520Z</updated>
     
     
     <summary type="html">&lt;p&gt;轼辙云 (sz-education)  is a new generation of microservices teaching management platform based on Spring Cloud, providing multi-tenancy, permission management, exams and exercises. &lt;/p&gt;
@@ -36,9 +36,7 @@
     
     <category term="SpringCloud" scheme="https://shimmerjordan.site/tags/SpringCloud/"/>
     
-    <category term="Redis" scheme="https://shimmerjordan.site/tags/Redis/"/>
-    
-    <category term="Vue" scheme="https://shimmerjordan.site/tags/Vue/"/>
+    <category term="tutorial" scheme="https://shimmerjordan.site/tags/tutorial/"/>
     
   </entry>
   
@@ -47,7 +45,7 @@
     <link href="https://shimmerjordan.site/2021/03/08/introToSZ-education/"/>
     <id>https://shimmerjordan.site/2021/03/08/introToSZ-education/</id>
     <published>2021-03-08T10:16:12.000Z</published>
-    <updated>2021-03-10T06:18:22.316Z</updated>
+    <updated>2021-03-10T07:15:53.104Z</updated>
     
     
     <summary type="html">&lt;p&gt;轼辙云 (sz-education)  is a new generation of microservices teaching management platform based on Spring Cloud, providing multi-tenancy, permission management, exams and exercises. &lt;/p&gt;

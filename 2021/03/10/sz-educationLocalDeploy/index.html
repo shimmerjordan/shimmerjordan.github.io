@@ -14,7 +14,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Introduction to sz-education |  丛烨-shimmerjordan
+    Instruction for deploying sz-education locally |  丛烨-shimmerjordan
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -63,7 +63,7 @@ ga('send', 'pageview');
     <main class="content on">
       <section class="outer">
   <article
-  id="post-IntroToSZ-education"
+  id="post-sz-educationLocalDeploy"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -74,15 +74,15 @@ ga('send', 'pageview');
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Introduction to sz-education
+  Instruction for deploying sz-education locally
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2021/03/08/introToSZ-education/" class="article-date">
-  <time datetime="2021-03-08T10:16:12.000Z" itemprop="datePublished">2021-03-08</time>
+      <a href="/2021/03/10/sz-educationLocalDeploy/" class="article-date">
+  <time datetime="2021-03-10T06:36:12.000Z" itemprop="datePublished">2021-03-10</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/Spring-Cloud/">Spring Cloud</a>
@@ -93,7 +93,7 @@ ga('send', 'pageview');
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">759</span>
+            <span class="post-count">866</span>
         </span>
     </span>
 
@@ -102,7 +102,7 @@ ga('send', 'pageview');
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">4 分钟</span>
+            <span class="post-count">5 分钟</span>
         </span>
     </span>
 </div>
@@ -121,11 +121,52 @@ ga('send', 'pageview');
 <p>The exams support single choice, multiple choice, indefinite choice, judgement and short answer questions.</p>
 <a id="more"></a>
 
-<p>轼 means handrail at the front of the car and 辙 means the tyre tracks left by the car going by. By naming the platform this way, I want to express that the ultimate victory will come to those who are forward-looking and have a habit of looking back and taking stock of the past.</p>
-<p>Deploying this project locally can be found in this article at <a href="/2021/03/10/sz-educationLocalDeploy/" title="Instruction for deploying sz-education locally">Instruction for deploying sz-education locally</a> </p>
-<p>For some factors, the deployment tutorial requires authorization to view, you can try the password or contact me.</p>
-<h1 id="1-Function-Overview"><a href="#1-Function-Overview" class="headerlink" title="1. Function Overview"></a>1. Function Overview</h1><p>The project is divided into two parts: the front-end website and the back-end management. The front-end mainly provides examination functions, while the back-end provides basic management and examination management functions.</p>
-<p>The frontend mainly provides online examination and online learning functions</p>
+<p>This article mainly describes how to run the project locally, including downloading, importing, modifying the configuration, and running the project. </p>
+<h1 id="1-Environmental-Preparation"><a href="#1-Environmental-Preparation" class="headerlink" title="1. Environmental Preparation"></a>1. Environmental Preparation</h1><p>First install the development environment:</p>
+<blockquote>
+<ul>
+<li>JDK: 1.8.0_202</li>
+<li>MySQL: 8.0+</li>
+<li>Redis</li>
+<li>RabbitMQ</li>
+<li>node.js</li>
+<li>consul</li>
+<li>zipkin</li>
+<li>git</li>
+<li>maven</li>
+</ul>
+</blockquote>
+<p>Development tool: <code>IntelliJ IDEA 2020.3.1 x64</code></p>
+<h4 id="1-IntelliJ-IDEA-installation-plugin-lombok"><a href="#1-IntelliJ-IDEA-installation-plugin-lombok" class="headerlink" title="1. IntelliJ IDEA installation plugin lombok"></a>1. IntelliJ IDEA installation plugin <code>lombok</code></h4><p>Open the IntelliJ IDEA welcome page, select “Configure-&gt;Plugins” in the bottom right corner and choose Marketplace.<br>Or select “File&gt;Settings&gt;Plugins” in the IDEA project, then enter <code>lombok</code> and install.</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/MyDeployNotes/lombok.png" width="100%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">System Functions</div>
+</center>
+
+<h4 id="2-IntelliJ-IDEA-configuration-maven-setting"><a href="#2-IntelliJ-IDEA-configuration-maven-setting" class="headerlink" title="2. IntelliJ IDEA configuration maven setting"></a>2. IntelliJ IDEA configuration maven setting</h4><p>Open the IntelliJ IDEA welcome page, select “Configure-&gt;Preferences” in the bottom right corner, or select “File&gt;Settings” in the main IDEA interface, then search for <code>maven</code> keyword. Then we override the <code>settings.xml</code> in the following page and adjust the local repository, maven home path and other related parameters as needed.</p>
+<p>Here the <code>setting.xml</code> is saved in <code>docs/deploy</code> directory.</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/MyDeployNotes/mavenSetting.png" width="100%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">System Functions</div>
+</center>
+
+<h4 id="3-Installing-QRCode-dependencies"><a href="#3-Installing-QRCode-dependencies" class="headerlink" title="3. Installing QRCode dependencies"></a>3. Installing <code>QRCode</code> dependencies</h4><p>The project’s QR code generation function is dependent on the <code>QRCode.jar</code> jar package, the jar package in the source code of the <code>docs/deploy</code> directory, you need to manually execute the command to install to the local maven repository, the specific command is as follows, note that the file directory <code>(-Dfile)</code> needs to be replaced with your actual local directory.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">  mvn install:install-file -Dfile=QRCode.jar -DgroupId=QRCode -DartifactId=QRCode -Dversion=3.0 -Dpackaging=jar</span></span><br></pre></td></tr></table></figure>
+
+
+<hr>
 <p>Backstage management is divided into: <a href="#1">system management</a>, <a href="#2">system monitoring</a>, <a href="#3">examination management</a>, <a href="#4">attachment management</a>, <a href="#5">personal management</a></p>
 <div id="1" ><b>System management: provides basic management of users, departments, roles and permissions, etc.</b></div>
 
@@ -361,12 +402,12 @@ ga('send', 'pageview');
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shimmerjordan.site/2021/03/08/introToSZ-education/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shimmerjordan.site/2021/03/10/sz-educationLocalDeploy/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li></ul>
 
     </footer>
   </div>
@@ -374,19 +415,10 @@ ga('send', 'pageview');
    
   <nav class="article-nav">
     
-      <a href="/2021/03/10/sz-educationLocalDeploy/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Instruction for deploying sz-education locally
-          
-        </div>
-      </a>
     
-    
-      <a href="/2021/02/06/Hexo-seo/" class="article-nav-link">
+      <a href="/2021/03/08/introToSZ-education/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Hexo-seo Optimization Tips</div>
+        <div class="article-nav-title">Introduction to sz-education</div>
       </a>
     
   </nav>

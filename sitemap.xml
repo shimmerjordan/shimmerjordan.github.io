@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://shimmerjordan.site/2021/03/08/introToSZ-education/</loc>
+    <loc>https://shimmerjordan.site/2021/03/10/sz-educationLocalDeploy/</loc>
     
     <lastmod>2021-03-10</lastmod>
     
@@ -796,6 +796,13 @@
   
   <url>
     <loc>https://shimmerjordan.site/tags/Cloud-Server/</loc>
+    <lastmod>2021-03-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://shimmerjordan.site/tags/tutorial/</loc>
     <lastmod>2021-03-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
