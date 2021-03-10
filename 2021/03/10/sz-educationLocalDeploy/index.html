@@ -93,7 +93,7 @@ ga('send', 'pageview');
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">516</span>
+            <span class="post-count">1.2k</span>
         </span>
     </span>
 
@@ -102,7 +102,7 @@ ga('send', 'pageview');
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3 分钟</span>
+            <span class="post-count">7 分钟</span>
         </span>
     </span>
 </div>
@@ -213,6 +213,166 @@ ga('send', 'pageview');
 <li>Start RabbitMQ</li>
 <li>Start zipkin</li>
 </ul>
+<h1 id="5-Start-back-end-project"><a href="#5-Start-back-end-project" class="headerlink" title="5. Start back-end project"></a>5. Start back-end project</h1><h2 id="1-Configuring-JVM-parameters"><a href="#1-Configuring-JVM-parameters" class="headerlink" title="1. Configuring JVM parameters"></a>1. Configuring JVM parameters</h2><p>The purpose is to limit the memory of each service, configuration method: in IntelliJ IDEA menu, select “Run-&gt;Edit Configurations”, select Spring Boot, then select the specific service, in the VM options input box, enter: <code>-Xms128m -Xmx128m</code>, as the following figure shows:</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/MyDeployNotes/JVMConfig.png" width="100%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">JVM Config</div>
+</center>
+
+<h2 id="2-Start-following-services-in-sequence"><a href="#2-Start-following-services-in-sequence" class="headerlink" title="2. Start following services in sequence"></a>2. Start following services in sequence</h2><ul>
+<li>config-service</li>
+<li>auth-service</li>
+<li>user-service</li>
+<li>exam-service</li>
+<li>gateway-service</li>
+</ul>
+<p>If you need the monitoring functiond then start the following services:</p>
+<ul>
+<li>monitor-service</li>
+<li>msc-service</li>
+</ul>
+<h2 id="3-Verify-that-the-service-was-started-successfully"><a href="#3-Verify-that-the-service-was-started-successfully" class="headerlink" title="3. Verify that the service was started successfully"></a>3. Verify that the service was started successfully</h2><p>Visit the consul console (<a target="_blank" rel="noopener" href="http://localhost:8500/">http://localhost:8500</a>) and check if the health check of each service is normal.</p>
+<h1 id="6-Start-front-end-project"><a href="#6-Start-front-end-project" class="headerlink" title="6. Start front-end project"></a>6. Start front-end project</h1><h2 id="1-Installing-front-end-dependencies"><a href="#1-Installing-front-end-dependencies" class="headerlink" title="1. Installing front-end dependencies"></a>1. Installing front-end dependencies</h2><p>Run the following command in cmd respectively In the <code>frontend/sz-education-ui</code> and <code>frontend/sz-education-web</code> directories</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm install</span></span><br></pre></td></tr></table></figure>
+<p>If the installation has taken too long, consider using a mirroring service.</p>
+<p>It is also possible that the installation of <code>node-saas</code>or <code>sass-loader</code> fails with the following error.</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">npm ERR! code ELIFECYCLE</span><br><span class="line">npm ERR! errno 1</span><br><span class="line">npm ERR! node-sass@3.13.1 postinstall: `node scripts/build.js`</span><br><span class="line">npm ERR! Exit status 1</span><br><span class="line">npm ERR!</span><br><span class="line">npm ERR! Failed at the node-sass@3.13.1 postinstall script.</span><br><span class="line">npm ERR! This is probably not a problem with npm. There is likely additional logging output above.</span><br></pre></td></tr></table></figure>
+<p>Possible solution:</p>
+</blockquote>
+<ul>
+<li>Update <code>sass-loader</code> and <code>node-sass</code> to the latest version in <code>package.json</code></li>
+<li>Set the <code>node-sass</code> data source in the current directory (the project that requires <code>npm</code>): <code>npm config set sass_binary_site=https://npm.taobao.org/mirrors/node-sass</code>, then run <code>npm i</code></li>
+</ul>
+<h2 id="2-IntelliJ-IDEA-Configuring"><a href="#2-IntelliJ-IDEA-Configuring" class="headerlink" title="2. IntelliJ IDEA Configuring"></a>2. <code>IntelliJ IDEA</code> Configuring</h2><p>You can refer to the back-end project to configure the startup environment with the parameters shown as following:</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/MyDeployNotes/frontConfig.png" width="100%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Frontend Config</div>
+</center>
+
+<p>If the vue-runtime-helpers error is reported as shown below, you can refer to these possible solutions:</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/MyDeployNotes/vue-runtime-helpers-error.png" width="100%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">vue-runtime-helpers-error</div>
+</center>
+
+<p>Possible solutions:</p>
+<ul>
+<li>Find a folder elsewhere and put it into the path: <code>sz-education\frontend\sz-education-ui\node_modules</code> or <code>sz-education\frontend\sz-education-web\node_modules</code> </li>
+</ul>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/MyDeployNotes/vue-runtime-helpers-folder.png" width="60%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">vue-runtime-helpers-error</div>
+</center>
+
+<ul>
+<li>or run <code>npm install --save vue-runtime-helpers</code> separately under the corresponding project folder.</li>
+</ul>
+<p>Then run the front-end project respectively. You can visit following links after launching successfully:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Project</th>
+<th align="center">URL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Front-end</td>
+<td align="center"><a href="localhost:8080">localhost:8080</a></td>
+</tr>
+<tr>
+<td align="center">Back-end</td>
+<td align="center"><a href="localhost:9527">localhost:9527</a></td>
+</tr>
+</tbody></table>
+<p>Default account/password:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Type</th>
+<th align="center">Account</th>
+<th align="center">Password</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Admin</td>
+<td align="center">admin</td>
+<td align="center">123456</td>
+</tr>
+<tr>
+<td align="center">Student</td>
+<td align="center">student</td>
+<td align="center">123456</td>
+</tr>
+<tr>
+<td align="center">Teacher</td>
+<td align="center">teacher</td>
+<td align="center">123456</td>
+</tr>
+</tbody></table>
+<h1 id="7-Related-monitoring-addresses"><a href="#7-Related-monitoring-addresses" class="headerlink" title="7. Related monitoring addresses"></a>7. Related monitoring addresses</h1><table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">URL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">RabbitMQ Monitoring</td>
+<td align="center"><a href="localhost:15672">localhost:15672</a></td>
+</tr>
+<tr>
+<td align="center">Spring Boot Admin Service Monitoring</td>
+<td align="center"><a href="localhost:9186">localhost:9186</a></td>
+</tr>
+<tr>
+<td align="center">zipkin link tracking</td>
+<td align="center"><a href="localhost:9411">localhost:9411</a></td>
+</tr>
+<tr>
+<td align="center">consul</td>
+<td align="center"><a href="localhost:8500">localhost:8500</a></td>
+</tr>
+</tbody></table>
+<h1 id="8-Appendix-Can-be-ignored-for-local-deployment"><a href="#8-Appendix-Can-be-ignored-for-local-deployment" class="headerlink" title="8. Appendix (Can be ignored for local deployment)"></a>8. Appendix (Can be ignored for local deployment)</h1><h2 id="1-Secret-Key-Library"><a href="#1-Secret-Key-Library" class="headerlink" title="1. Secret Key Library"></a>1. Secret Key Library</h2><p>Use <code>keytool</code> to generate a <code>jwt token</code> keystore:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> keytool -genkeypair -<span class="built_in">alias</span> jwt -keyalg RSA -dname <span class="string">&quot;CN=jwt, L=Berlin, S=Berlin, C=DE&quot;</span> -keypass abc123 -keystore jwt.jks -storepass abc123</span></span><br></pre></td></tr></table></figure>
+<p>Execute the following command, enter the key, and copy the output public key</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> keytool -list -rfc --keystore jwt.jks | openssl x509 -inform pem -pubkey</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-GC-parameters"><a href="#2-GC-parameters" class="headerlink" title="2. GC parameters"></a>2. GC parameters</h2><p>Examples of production parameters.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Xmx512m -Xms256m -XX:+UnlockDiagnosticVMOptions -XX:+UseConcMarkSweepGC -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -XX:AutoBoxCacheMax=20000 -XX:-UseBiasedLocking -XX:-UseCounterDecay -XX:-OmitStackTraceInFastThrow -Djava.security.egd=file:/dev/urandom -XX:+CMSParallelInitialMarkEnabled -XX:+ParallelRefProcEnabled -XX:+ExplicitGCInvokesConcurrent -XX:+PrintGCApplicationStoppedTime -XX:+PrintGCApplicationConcurrentTime -XX:+PrintGCDateStamps -XX:+PrintGCDetails -XX:+PrintTenuringDistribution -XX:+HeapDumpOnOutOfMemoryError -XX:+PerfDisableSharedMem -XX:+PrintCompressedOopsMode -XX:-PrintGCApplicationStoppedTime</span><br></pre></td></tr></table></figure>
+<h2 id="3-Intranet-penetration-issues"><a href="#3-Intranet-penetration-issues" class="headerlink" title="3. Intranet penetration issues"></a>3. Intranet penetration issues</h2><blockquote>
+<p>Invalid Host header</p>
+</blockquote>
+<p>After the intranet penetration agent are configured, the page appears this <code>Invalid Host header error</code>. The Intranet penetration tool I am using is <code>frps</code> , and I finally found the solution on google:</p>
+<p>In the case of <code>vue-cli</code> version <strong>2.x</strong>, we need to modify the <code>webpack.dev.conf.js</code> in the <code>devServer</code> object to add <code>disableHostCheck: true</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">  disableHostCheck: <span class="literal">true</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In the case of <code>vue-cli</code> version <strong>3.0</strong>, we need to modify the configuration of <code>vue.config.js</code> </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    disableHostCheck: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Once this is set, the page will be successfully forwarded.</p>
  
       <!-- reward -->
       
