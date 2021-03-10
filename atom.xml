@@ -6,7 +6,7 @@
   <link href="https://shimmerjordan.site/atom.xml" rel="self"/>
   
   <link href="https://shimmerjordan.site/"/>
-  <updated>2021-03-09T12:19:45.215Z</updated>
+  <updated>2021-03-10T06:33:32.774Z</updated>
   <id>https://shimmerjordan.site/</id>
   
   <author>
@@ -21,7 +21,33 @@
     <link href="https://shimmerjordan.site/2021/03/08/introToSZ-education/"/>
     <id>https://shimmerjordan.site/2021/03/08/introToSZ-education/</id>
     <published>2021-03-08T10:16:12.000Z</published>
-    <updated>2021-03-09T12:19:45.215Z</updated>
+    <updated>2021-03-10T06:33:32.774Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;轼辙云 (sz-education)  is a new generation of microservices teaching management platform based on Spring Cloud, providing multi-tenancy, permission management, exams and exercises. &lt;/p&gt;
+&lt;p&gt;The exams support single choice, multiple choice, indefinite choice, judgement and short answer questions.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Spring Cloud" scheme="https://shimmerjordan.site/categories/Spring-Cloud/"/>
+    
+    
+    <category term="SpringBoot" scheme="https://shimmerjordan.site/tags/SpringBoot/"/>
+    
+    <category term="SpringCloud" scheme="https://shimmerjordan.site/tags/SpringCloud/"/>
+    
+    <category term="Redis" scheme="https://shimmerjordan.site/tags/Redis/"/>
+    
+    <category term="Vue" scheme="https://shimmerjordan.site/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Introduction to sz-education</title>
+    <link href="https://shimmerjordan.site/2021/03/08/introToSZ-education/"/>
+    <id>https://shimmerjordan.site/2021/03/08/introToSZ-education/</id>
+    <published>2021-03-08T10:16:12.000Z</published>
+    <updated>2021-03-10T06:18:22.316Z</updated>
     
     
     <summary type="html">&lt;p&gt;轼辙云 (sz-education)  is a new generation of microservices teaching management platform based on Spring Cloud, providing multi-tenancy, permission management, exams and exercises. &lt;/p&gt;
@@ -501,27 +527,6 @@
     <category term="IDEA" scheme="https://shimmerjordan.site/tags/IDEA/"/>
     
     <category term="MyBaits" scheme="https://shimmerjordan.site/tags/MyBaits/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IDEA常用快捷键整理</title>
-    <link href="https://shimmerjordan.site/2020/06/14/IDEAShortcut/"/>
-    <id>https://shimmerjordan.site/2020/06/14/IDEAShortcut/</id>
-    <published>2020-06-14T14:05:11.000Z</published>
-    <updated>2020-06-15T14:15:45.373Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt; IDEA确实是一个很好的一个开发工具，但是从Eclipse迁移来的我对IDEA的大部分快捷键并不熟悉，错用了很多Eclipse的快捷键。这里搜集资料结合实战经验，记录IDEA的部分常用快捷键。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="开发工具" scheme="https://shimmerjordan.site/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
-    
-    <category term="开发工具" scheme="https://shimmerjordan.site/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="IDEA" scheme="https://shimmerjordan.site/tags/IDEA/"/>
     
   </entry>
   
