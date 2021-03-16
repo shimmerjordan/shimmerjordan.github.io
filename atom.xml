@@ -6,7 +6,7 @@
   <link href="https://shimmerjordan.site/atom.xml" rel="self"/>
   
   <link href="https://shimmerjordan.site/"/>
-  <updated>2021-03-14T04:37:16.029Z</updated>
+  <updated>2021-03-16T03:54:13.888Z</updated>
   <id>https://shimmerjordan.site/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>The difference between `this.$store.dispatch()` and `this.$store.commit()` in vuex</title>
+    <link href="https://shimmerjordan.site/2021/03/16/vuexStoreDispatchAndCommit/"/>
+    <id>https://shimmerjordan.site/2021/03/16/vuexStoreDispatchAndCommit/</id>
+    <published>2021-03-16T02:42:10.000Z</published>
+    <updated>2021-03-16T03:54:13.888Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Difference&quot;&gt;&lt;a href=&quot;#Difference&quot; class=&quot;headerlink&quot; title=&quot;Difference&quot;&gt;&lt;/a&gt;Difference&lt;/h1&gt;&lt;p&gt;The difference between &lt;code&gt;this.$store.dispatch()&lt;/code&gt; and &lt;code&gt;this.$store.commit()&lt;/code&gt; methods is that in general they are only different in &lt;strong&gt;the way values are accessed&lt;/strong&gt;, both methods pass the value to vuex’s mutation to change the state.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;this.$store.dispatch()&lt;/code&gt;: contains asynchronous operations, such as submitting data to the background, written: &lt;code&gt;this.$store.dispatch(&amp;#39;action method name&amp;#39;, value)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;this.$store.commit()&lt;/code&gt;: synchronous operation, write: &lt;code&gt;this.$store.commit(&amp;#39;mutations method name&amp;#39;, value)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="vue" scheme="https://shimmerjordan.site/categories/vue/"/>
+    
+    
+    <category term="vue" scheme="https://shimmerjordan.site/tags/vue/"/>
+    
+    <category term="vuex" scheme="https://shimmerjordan.site/tags/vuex/"/>
+    
+  </entry>
   
   <entry>
     <title>Instruction for deploying sz-education locally</title>
@@ -501,29 +526,6 @@
     <category term="Python" scheme="https://shimmerjordan.site/tags/Python/"/>
     
     <category term="数据可视化" scheme="https://shimmerjordan.site/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IDEA中使用MyBatis-generator自动生成MyBatis代码</title>
-    <link href="https://shimmerjordan.site/2020/06/15/MyBaits-generator-IDEAPlugin/"/>
-    <id>https://shimmerjordan.site/2020/06/15/MyBaits-generator-IDEAPlugin/</id>
-    <published>2020-06-15T14:05:11.000Z</published>
-    <updated>2020-06-15T14:41:45.536Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;​        MyBaits-generator主要用于在SSM框架的项目中，自动生成实体类、dao、mapper.xml文件。&lt;a href=&quot;https://github.com/mybatis/generator&quot;&gt;mybatis-generator&lt;/a&gt;有三种用法：命令行、eclipse插件、maven插件。个人觉得maven插件最方便，可以在eclipse/intellij idea等ide上可以通用。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="MyBaits" scheme="https://shimmerjordan.site/categories/MyBaits/"/>
-    
-    
-    <category term="开发工具" scheme="https://shimmerjordan.site/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="IDEA" scheme="https://shimmerjordan.site/tags/IDEA/"/>
-    
-    <category term="MyBaits" scheme="https://shimmerjordan.site/tags/MyBaits/"/>
     
   </entry>
   

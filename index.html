@@ -218,6 +218,67 @@ ga('send', 'pageview');
 
     
     <article
+  id="post-vuexStoreDispatchAndCommit"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/03/16/vuexStoreDispatchAndCommit/"
+    >The difference between `this.$store.dispatch()` and `this.$store.commit()` in vuex</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/03/16/vuexStoreDispatchAndCommit/" class="article-date">
+  <time datetime="2021-03-16T02:42:10.000Z" itemprop="datePublished">2021-03-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/vue/">vue</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Difference"><a href="#Difference" class="headerlink" title="Difference"></a>Difference</h1><p>The difference between <code>this.$store.dispatch()</code> and <code>this.$store.commit()</code> methods is that in general they are only different in <strong>the way values are accessed</strong>, both methods pass the value to vuex’s mutation to change the state.</p>
+<ul>
+<li><code>this.$store.dispatch()</code>: contains asynchronous operations, such as submitting data to the background, written: <code>this.$store.dispatch(&#39;action method name&#39;, value)</code></li>
+<li><code>this.$store.commit()</code>: synchronous operation, write: <code>this.$store.commit(&#39;mutations method name&#39;, value)</code></li>
+</ul> 
+      <a class="article-more-link" href="/2021/03/16/vuexStoreDispatchAndCommit/"
+        >Read more...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vuex/" rel="tag">vuex</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+  
+</article>
+
+    
+    <article
   id="post-sz-educationLocalDeploy"
   class="article article-type-post"
   itemscope
@@ -700,64 +761,6 @@ ga('send', 'pageview');
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-structures/" rel="tag">Data structures</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HashMap/" rel="tag">HashMap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HashTable/" rel="tag">HashTable</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-  
-</article>
-
-    
-    <article
-  id="post-In-depth analysis of Java-HashMap"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/12/03/Java-HashMap/"
-    >In-depth analysis of Java-HashMap</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/12/03/Java-HashMap/" class="article-date">
-  <time datetime="2020-12-03T04:14:18.000Z" itemprop="datePublished">2020-12-03</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Data-structures/">Data structures</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><hr>
-<p>Hash table is a very important data structure with a rich set of applications. The core of many caching techniques (such as memcached) is actually maintaining a large hash table in memory. This article will explain the principles of HashMap implementation in the java collection framework and analyse the JDK7 HashMap source code.</p> 
-      <a class="article-more-link" href="/2020/12/03/Java-HashMap/"
-        >Read more...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-structures/" rel="tag">Data structures</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HashMap/" rel="tag">HashMap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
     </footer>
   </div>

@@ -25,6 +25,42 @@
       </tags>
   </entry>
   <entry>
+    <title>The difference between `this.$store.dispatch()` and `this.$store.commit()` in vuex</title>
+    <url>/2021/03/16/vuexStoreDispatchAndCommit/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Difference"><a href="#Difference" class="headerlink" title="Difference"></a>Difference</h1><p>The difference between <code>this.$store.dispatch()</code> and <code>this.$store.commit()</code> methods is that in general they are only different in <strong>the way values are accessed</strong>, both methods pass the value to vuex’s mutation to change the state.</p>
+<ul>
+<li><code>this.$store.dispatch()</code>: contains asynchronous operations, such as submitting data to the background, written: <code>this.$store.dispatch(&#39;action method name&#39;, value)</code></li>
+<li><code>this.$store.commit()</code>: synchronous operation, write: <code>this.$store.commit(&#39;mutations method name&#39;, value)</code></li>
+</ul>
+<a id="more"></a>
+
+<blockquote>
+<p> commit: Synchronize operations</p>
+<ul>
+<li>Storage value: <code>this.$store.commit(&#39;changeValue&#39;,name)</code></li>
+<li>Fetch value:  <code>this.$store.state.changeValue</code></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>dispatch: Asynchronous operation</p>
+<ul>
+<li>Storage value: <code>this.$store.dispatch(&#39;getlists&#39;,name)</code></li>
+<li>Fetch value:  <code>this.$store.getters.getlists</code></li>
+</ul>
+</blockquote>
+<h1 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h1><h2 id="Vuex-file-src-store-index-js"><a href="#Vuex-file-src-store-index-js" class="headerlink" title="Vuex file src/store/index.js"></a>Vuex file <code>src/store/index.js</code></h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">&quot;vuex&quot;</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  <span class="comment">// state专门用来保存 共享的状态值</span></span><br><span class="line">  state: &#123;</span><br><span class="line">    <span class="comment">// 保存登录状态</span></span><br><span class="line">    login: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// mutations: 专门书写方法,用来更新 state 中的值</span></span><br><span class="line">  mutations: &#123;</span><br><span class="line">    <span class="comment">// 登录</span></span><br><span class="line">    <span class="function"><span class="title">doLogin</span>(<span class="params">state</span>)</span> &#123;</span><br><span class="line">      state.login = <span class="literal">true</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 退出</span></span><br><span class="line">    <span class="function"><span class="title">doLogout</span>(<span class="params">state</span>)</span> &#123;</span><br><span class="line">      state.login = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="JS-Component-section-src-components-Header-vue"><a href="#JS-Component-section-src-components-Header-vue" class="headerlink" title="JS Component section: src/components/Header.vue"></a>JS Component section: <code>src/components/Header.vue</code></h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">&#x2F;&#x2F; 使用vux的 mapState需要引入</span><br><span class="line">import &#123; mapState &#125; from &quot;vuex&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  &#x2F;&#x2F; 官方推荐: 给组件起个名字, 便于报错时的提示</span><br><span class="line">  name: &quot;Header&quot;,</span><br><span class="line">  &#x2F;&#x2F; 引入vuex 的 store 中的state值, 必须在计算属性中书写!</span><br><span class="line">  computed: &#123;</span><br><span class="line">    &#x2F;&#x2F; mapState辅助函数, 可以快速引入store中的值</span><br><span class="line">    &#x2F;&#x2F; 此处的login代表,  store文件中的 state 中的 login, 登录状态</span><br><span class="line">    ...mapState([&quot;login&quot;])</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    logout() &#123;</span><br><span class="line">      this.$store.commit(&quot;doLogout&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="JS-Component-section-src-components-Login-vue"><a href="#JS-Component-section-src-components-Login-vue" class="headerlink" title="JS Component section: src/components/Login.vue"></a>JS Component section: <code>src/components/Login.vue</code></h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;Login&quot;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      uname: &quot;&quot;,</span><br><span class="line">      upwd: &quot;&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    doLogin() &#123;</span><br><span class="line">      console.log(this.uname, this.upwd);</span><br><span class="line">      let data&#x3D;&#123;</span><br><span class="line">        uname:this.uname,</span><br><span class="line">        upwd:this.upwd</span><br><span class="line">      &#125;</span><br><span class="line">       this.axios</span><br><span class="line">        .post(&quot;user_login.php&quot;, data)</span><br><span class="line">        .then(res &#x3D;&gt; &#123;</span><br><span class="line">          console.log(res);</span><br><span class="line">          let code &#x3D; res.data.code;</span><br><span class="line"></span><br><span class="line">          if (code &#x3D;&#x3D; 1) &#123;</span><br><span class="line">            alert(&quot;恭喜您, 登录成功! 即将跳转到首页&quot;);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 路由跳转指定页面</span><br><span class="line">            this.$router.push(&#123; path: &quot;&#x2F;&quot; &#125;);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F;更新 vuex 的 state的值, 必须通过 mutations 提供的方法才可以</span><br><span class="line">            &#x2F;&#x2F; 通过 commit(&#39;方法名&#39;) 就可以出发 mutations 中的指定方法</span><br><span class="line">            this.$store.commit(&quot;doLogin&quot;);</span><br><span class="line">          &#125; else &#123;</span><br><span class="line">            alert(&quot;很遗憾, 登陆失败!&quot;);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch(err &#x3D;&gt; &#123;</span><br><span class="line">          console.error(err);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+        <tag>vuex</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Instruction for deploying sz-education locally</title>
     <url>/2021/03/10/sz-educationLocalDeploy/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Congratulations, wrong guess." data-whm="Do you really want to see it?">
