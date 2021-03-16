@@ -25,7 +25,7 @@
       </tags>
   </entry>
   <entry>
-    <title>The difference between this.$store.dispatch() and this.$store.commit() in vuex</title>
+    <title>The difference between this.$store.dispatch() &amp; this.$store.commit() in vuex</title>
     <url>/2021/03/16/vuexStoreDispatchAndCommit/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Difference"><a href="#Difference" class="headerlink" title="Difference"></a>Difference</h1><p>The difference between <code>this.$store.dispatch()</code> and <code>this.$store.commit()</code> methods is that in general they are only different in <strong>the way values are accessed</strong>, both methods pass the value to vuex’s mutation to change the state.</p>
 <ul>
