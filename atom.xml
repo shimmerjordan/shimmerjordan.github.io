@@ -6,7 +6,7 @@
   <link href="https://shimmerjordan.site/atom.xml" rel="self"/>
   
   <link href="https://shimmerjordan.site/"/>
-  <updated>2021-03-16T03:54:13.888Z</updated>
+  <updated>2021-03-16T04:56:26.267Z</updated>
   <id>https://shimmerjordan.site/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>The difference between `this.$store.dispatch()` and `this.$store.commit()` in vuex</title>
+    <title>The difference between this.$store.dispatch() and this.$store.commit() in vuex</title>
     <link href="https://shimmerjordan.site/2021/03/16/vuexStoreDispatchAndCommit/"/>
     <id>https://shimmerjordan.site/2021/03/16/vuexStoreDispatchAndCommit/</id>
     <published>2021-03-16T02:42:10.000Z</published>
-    <updated>2021-03-16T03:54:13.888Z</updated>
+    <updated>2021-03-16T04:56:26.267Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;Difference&quot;&gt;&lt;a href=&quot;#Difference&quot; class=&quot;headerlink&quot; title=&quot;Difference&quot;&gt;&lt;/a&gt;Difference&lt;/h1&gt;&lt;p&gt;The difference between &lt;code&gt;this.$store.dispatch()&lt;/code&gt; and &lt;code&gt;this.$store.commit()&lt;/code&gt; methods is that in general they are only different in &lt;strong&gt;the way values are accessed&lt;/strong&gt;, both methods pass the value to vuex’s mutation to change the state.&lt;/p&gt;
