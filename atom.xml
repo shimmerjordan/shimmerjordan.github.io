@@ -116,11 +116,11 @@
     <link href="https://shimmerjordan.site/2021/02/01/DeployGithubActions/"/>
     <id>https://shimmerjordan.site/2021/02/01/DeployGithubActions/</id>
     <published>2021-02-01T07:38:12.000Z</published>
-    <updated>2021-03-05T09:01:50.019Z</updated>
+    <updated>2021-03-18T04:59:06.512Z</updated>
     
     
     <summary type="html">&lt;p&gt;Sometimes automated deployment projects or timed tasks need to be deployed online, but these are for temporary use or these lightweight applications do not warrant the additional purchase of a cloud server for deployment. This is when you might consider using Github Actions for automated deployments.&lt;/p&gt;
-&lt;p&gt;GitHub Actions[1] is GitHub’s continuous integration service[2], launched in October 2018[3]. It is very powerful in that each action is used to perform an action, such as grabbing code, running tests, logging into a remote server, publishing to a third-party service, and so on. Combining these actions is a process of continuous integration. Of course, these actions are shared in the GitHub code repository, so we can refer to them directly.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#1&quot;&gt;GitHub Actions[1]&lt;/a&gt; is GitHub’s &lt;a href=&quot;#2&quot;&gt;continuous integration service[2]&lt;/a&gt;, launched in &lt;a href=&quot;#3&quot;&gt;October 2018[3]&lt;/a&gt;. It is very powerful in that each action is used to perform an action, such as grabbing code, running tests, logging into a remote server, publishing to a third-party service, and so on. Combining these actions is a process of continuous integration. Of course, these actions are shared in the GitHub code repository, so we can refer to them directly.&lt;/p&gt;
 &lt;p&gt;Github Actions provides a complete server environment with the following server specifications&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;2-core CPU&lt;/li&gt;
@@ -138,10 +138,6 @@
     color: #999;
     padding: 2px;&quot;&gt;System environment information&lt;/div&gt;
 &lt;/center&gt;
-
-
-
-
 
 &lt;p&gt;Of course, you can use Windows Server 2019 and macOS X Catalina 10.15 in addition to Ubuntu.&lt;/p&gt;</summary>
     
