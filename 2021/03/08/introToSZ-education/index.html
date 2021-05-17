@@ -93,7 +93,7 @@ ga('send', 'pageview');
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">759</span>
+            <span class="post-count">807</span>
         </span>
     </span>
 
@@ -102,7 +102,7 @@ ga('send', 'pageview');
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">4 分钟</span>
+            <span class="post-count">5 分钟</span>
         </span>
     </span>
 </div>
@@ -260,7 +260,7 @@ ga('send', 'pageview');
 </tr>
 <tr>
 <td align="center">Front-end</td>
-<td align="center">vue</td>
+<td align="center"><code>vue</code></td>
 </tr>
 </tbody></table>
 <h1 id="3-System-Architecture-Diagram"><a href="#3-System-Architecture-Diagram" class="headerlink" title="3. System Architecture Diagram"></a>3. System Architecture Diagram</h1><center>
@@ -291,6 +291,80 @@ ga('send', 'pageview');
 </tr>
 </tbody></table>
 <h1 id="5-Project-Structure"><a href="#5-Project-Structure" class="headerlink" title="5. Project Structure"></a>5. Project Structure</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">common                <span class="comment">// System Common Module </span></span><br><span class="line">    ├── common-core         <span class="comment">//System Common Core Module</span></span><br><span class="line">    |						<span class="comment">//Encapsulate generic configuration, constants, exceptions, base entities, etc.</span></span><br><span class="line">    ├── common-feign        <span class="comment">//System public feign module</span></span><br><span class="line">    |						<span class="comment">//Encapsulate generic feign configuration for carrying access_token between service calls</span></span><br><span class="line">    ├── common-<span class="built_in">log</span>          <span class="comment">//System public log module</span></span><br><span class="line">    |						<span class="comment">//Encapsulate logging logic to record logs asynchronously</span></span><br><span class="line">    ├── common-config		<span class="comment">//General Basic Configuration</span></span><br><span class="line">    ├── common-basic		<span class="comment">//Public base configuration</span></span><br><span class="line">    						<span class="comment">//encapsulating basic configuration including Redis startup, gender enumeration, etc.</span></span><br><span class="line">    ├── common-oss			<span class="comment">//oss configuration, ecapsulating the oss configuration including FastDfs</span></span><br><span class="line">    └── common-security     <span class="comment">//System public security module, including resource server configuration</span></span><br><span class="line">    						<span class="comment">//Encapsulating the common configuration of resource servers in OAuth 2.0</span></span><br><span class="line">    </span><br><span class="line">modules               <span class="comment">//Business Modules </span></span><br><span class="line">    |-- auth-service-parent     <span class="comment">//Certification Authorization Services</span></span><br><span class="line">        |-- auth-service-api          <span class="comment">//Authentication authorization service api</span></span><br><span class="line">        |-- auth-service             <span class="comment">//Authentication authorization service specific implementation</span></span><br><span class="line">    |-- user-service-parent     <span class="comment">//user service</span></span><br><span class="line">        |-- user-service-api         <span class="comment">//user service api</span></span><br><span class="line">        |-- user-service             <span class="comment">//User services specific implementation</span></span><br><span class="line">    |── exam-service-parent     <span class="comment">//exam service</span></span><br><span class="line">        |-- exam-service-api         <span class="comment">//exam service api</span></span><br><span class="line">        |-- exam-service             <span class="comment">//exam service specific implementation</span></span><br><span class="line">    └── msc-service-parent      <span class="comment">//message center</span></span><br><span class="line">        |-- msc-service-api          <span class="comment">//message center api</span></span><br><span class="line">        |-- msc-service              <span class="comment">//message center specific implementation</span></span><br><span class="line">frontend               <span class="comment">//Frontend page</span></span><br><span class="line">    ├── sz-education-ui         <span class="comment">//Backend management front-end page</span></span><br><span class="line">    ├── sz-education-web        <span class="comment">//User front-end page</span></span><br><span class="line">config-service         <span class="comment">//Configuration Center (local repository)</span></span><br><span class="line">gateway-service        <span class="comment">//Gateway (dynamic routing)</span></span><br><span class="line">monitor-service        <span class="comment">//Spring boot amdin monitoring service</span></span><br></pre></td></tr></table></figure>
+<h1 id="6-Interface-Display"><a href="#6-Interface-Display" class="headerlink" title="6. Interface Display"></a>6. Interface Display</h1><h2 id="Front-Desk-Examination-Subsystem"><a href="#Front-Desk-Examination-Subsystem" class="headerlink" title="Front Desk Examination Subsystem"></a>Front Desk Examination Subsystem</h2><table>
+<thead>
+<tr>
+<th><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_web_login.png" alt="Front Login"></th>
+<th><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_web_home.png" alt="Front Home"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_web_courses.png" alt="Courses List"></td>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_web_exams.png" alt="Exams List"></td>
+</tr>
+<tr>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_web_exam.png" alt="Exam Interface one"></td>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_web_exam1.png" alt="Exam Interface two"></td>
+</tr>
+<tr>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_web_record.png" alt="Exam records"></td>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_web_incorrect_answer.png" alt="Answer Details"></td>
+</tr>
+</tbody></table>
+<h2 id="Back-office-management-subsystem"><a href="#Back-office-management-subsystem" class="headerlink" title="Back office management subsystem"></a>Back office management subsystem</h2><table>
+<thead>
+<tr>
+<th><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_login.png" alt="Backend Login"></th>
+<th><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_exam.png" alt="Backend Exam Management"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_exam_share.png" alt="Backend Exam Share"></td>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_addExam.png" alt="Backend Exam Add"></td>
+</tr>
+<tr>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_addExam_detail1.png" alt="Backend Exam Add Detail"></td>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_score_manage.png" alt="Backend Score Management"></td>
+</tr>
+<tr>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_score_detail.png" alt="Backend Score Details"></td>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_score_mark.png" alt="Backend Score Mark"></td>
+</tr>
+<tr>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_subjects_manage.png" alt="Backend Subjects Management"></td>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_subjects_rich_edit.png" alt="Backend Subjects Adding Rich Edit"></td>
+</tr>
+<tr>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_menu_manage.png" alt="Backend Menu Management"></td>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_client_manage.png" alt="Backend Client Management"></td>
+</tr>
+<tr>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_role_manage.png" alt="Backend Role Management"></td>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_route_manage.png" alt="Backend Route Management"></td>
+</tr>
+<tr>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_user_manage.png" alt="Backend User Management"></td>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_msg.png" alt="Backend Msg Management"></td>
+</tr>
+</tbody></table>
+<h2 id="Systems-Monitoring"><a href="#Systems-Monitoring" class="headerlink" title="Systems Monitoring"></a>Systems Monitoring</h2><table>
+<thead>
+<tr>
+<th><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_consul.png" alt="Consul Monitor"></th>
+<th><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_log_manage.png" alt="Log Management"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_spring_boot_admin.png" alt="Spring Boot Admin Monitor"></td>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_spring_boot_admin01.png" alt="Spring Boot Admin Monitor Detail"></td>
+</tr>
+<tr>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_zipkin1.png" alt="Zipkin Monitor one"></td>
+<td><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/sz-education@master/docs/images/image_ui_zipkin2.png" alt="Zipkin Monitor two"></td>
+</tr>
+</tbody></table>
+<h1 id="System-deployment"><a href="#System-deployment" class="headerlink" title="System deployment"></a>System deployment</h1><p>See more details on [Instruction for deploying sz-education locally]<a href="https://shimmerjordan.site/2021/03/10/sz-educationLocalDeploy/">https://shimmerjordan.site/2021/03/10/sz-educationLocalDeploy/</a></p>
+<p><strong>Article token access is currently not available to everyone, please <a href="https://shimmerjordan.site/2020/01/18/about">contact me</a> if you need token unlocking</strong></p>
  
       <!-- reward -->
       
