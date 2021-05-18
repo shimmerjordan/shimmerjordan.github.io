@@ -87,7 +87,7 @@
   <entry>
     <title>Introduction to sz-education</title>
     <url>/2021/03/08/introToSZ-education/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>轼辙云 (sz-education)  is a new generation of microservices teaching management platform based on Spring Cloud, providing multi-tenancy, permission management, exams and exercises. </p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://github.com/shimmerjordan/sz-education">轼辙云 (sz-education)</a>  is a new generation of microservices teaching management platform based on Spring Cloud, providing multi-tenancy, permission management, exams and exercises. </p>
 <p>The exams support single choice, multiple choice, indefinite choice, judgement and short answer questions.</p>
 <a id="more"></a>
 
