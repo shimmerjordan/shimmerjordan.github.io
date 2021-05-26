@@ -6,7 +6,7 @@
   <link href="https://shimmerjordan.site/atom.xml" rel="self"/>
   
   <link href="https://shimmerjordan.site/"/>
-  <updated>2021-03-16T06:41:35.557Z</updated>
+  <updated>2021-05-23T09:49:23.676Z</updated>
   <id>https://shimmerjordan.site/</id>
   
   <author>
@@ -21,13 +21,13 @@
     <link href="https://shimmerjordan.site/2021/03/16/vuexStoreDispatchAndCommit/"/>
     <id>https://shimmerjordan.site/2021/03/16/vuexStoreDispatchAndCommit/</id>
     <published>2021-03-16T02:42:10.000Z</published>
-    <updated>2021-03-16T06:41:35.557Z</updated>
+    <updated>2021-05-23T09:49:23.676Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;Difference&quot;&gt;&lt;a href=&quot;#Difference&quot; class=&quot;headerlink&quot; title=&quot;Difference&quot;&gt;&lt;/a&gt;Difference&lt;/h1&gt;&lt;p&gt;The difference between &lt;code&gt;this.$store.dispatch()&lt;/code&gt; and &lt;code&gt;this.$store.commit()&lt;/code&gt; methods is that in general they are only different in &lt;strong&gt;the way values are accessed&lt;/strong&gt;, both methods pass the value to vuex’s mutation to change the state.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;this.$store.dispatch()&lt;/code&gt;: contains asynchronous operations, such as submitting data to the background, written: &lt;code&gt;this.$store.dispatch(&amp;#39;action method name&amp;#39;, value)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;this.$store.commit()&lt;/code&gt;: synchronous operation, write: &lt;code&gt;this.$store.commit(&amp;#39;mutations method name&amp;#39;, value)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;this.$store.commit()&lt;/code&gt;: synchronous operation, written: &lt;code&gt;this.$store.commit(&amp;#39;mutations method name&amp;#39;, value)&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;</summary>
     
     

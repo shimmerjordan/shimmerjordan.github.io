@@ -46,6 +46,16 @@ ga('send', 'pageview');
 
 
   
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?6d06f826e125297d4ce0fa7a1449328e";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 
 <link rel="alternate" href="/atom.xml" title="丛烨-shimmerjordan" type="application/atom+xml">
 </head>
@@ -251,7 +261,7 @@ ga('send', 'pageview');
   <h1 id="Difference"><a href="#Difference" class="headerlink" title="Difference"></a>Difference</h1><p>The difference between <code>this.$store.dispatch()</code> and <code>this.$store.commit()</code> methods is that in general they are only different in <strong>the way values are accessed</strong>, both methods pass the value to vuex’s mutation to change the state.</p>
 <ul>
 <li><code>this.$store.dispatch()</code>: contains asynchronous operations, such as submitting data to the background, written: <code>this.$store.dispatch(&#39;action method name&#39;, value)</code></li>
-<li><code>this.$store.commit()</code>: synchronous operation, write: <code>this.$store.commit(&#39;mutations method name&#39;, value)</code></li>
+<li><code>this.$store.commit()</code>: synchronous operation, written: <code>this.$store.commit(&#39;mutations method name&#39;, value)</code></li>
 </ul> 
       <a class="article-more-link" href="/2021/03/16/vuexStoreDispatchAndCommit/"
         >Read more...</a
