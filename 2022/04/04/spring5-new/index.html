@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="baidu-site-verification" content="code-kg5UjKJZM2" />
+   
+  <meta name="keywords" content="活,炼,阿炳" />
+   
+  <meta name="description" content="shimmerjordan" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Spring 5 新特性 |  丛烨-shimmerjordan
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-Q0DT8B8VJW', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?6d06f826e125297d4ce0fa7a1449328e";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<link rel="alternate" href="/atom.xml" title="丛烨-shimmerjordan" type="application/atom+xml">
+</head>
+
+</html>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+	<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Spring5New"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Spring 5 新特性
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/04/04/spring5-new/" class="article-date">
+  <time datetime="2022-04-04T11:41:34.000Z" itemprop="datePublished">2022-04-04</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">11 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="升级到-Java-SE-8-和-Java-EE-7"><a href="#升级到-Java-SE-8-和-Java-EE-7" class="headerlink" title="升级到 Java SE 8 和 Java EE 7"></a>升级到 Java SE 8 和 Java EE 7</h1><p>直到现在，Spring Framework 仍支持一些弃用的 Java 版本，但 Spring 5 已从旧包袱中解放出来。为了充分利用 Java 8 特性，它的代码库已进行了改进，而且该框架要求将 Java 8 作为最低的 JDK 版本。</p>
+<p>Spring 5 在类路径（和模块路径）上完全兼容 Java 9，而且它通过了 JDK 9 测试套件的测试。对 Java 9 爱好者而言，这是一条好消息，因为在 Java 9 发布后，Spring 能立即使用它。</p>
+<p>在 API 级别上，Spring 5 兼容 Java EE 8 技术，满足对 Servlet 4.0、Bean Validation 2.0 和全新的 JSON Binding API 的需求。对 Java EE API 的最低要求为 V7，该版本引入了针对 Servlet、JPA 和 Bean Validation API 的次要版本。</p>
+<a id="more"></a>
+
+<h1 id="反应式编程模型"><a href="#反应式编程模型" class="headerlink" title="反应式编程模型"></a>反应式编程模型</h1><p>Spring 5 最令人兴奋的新特性是它的反应式编程模型。Spring 5 Framework 基于一种反应式基础而构建，而且是完全异步和非阻塞的。只需少量的线程，新的事件循环执行模型就可以垂直扩展。</p>
+<p>该框架采用反应式流来提供在反应式组件中传播负压的机制。<em>负压</em>是一个确保来自多个生产者的数据不会让使用者不堪重负的概念。</p>
+<p>Spring WebFlux 是 Spring 5 的反应式核心，它为开发人员提供了两种为 Spring Web 编程而设计的编程模型：一种基于注解的模型和 Functional Web Framework (<code>WebFlux.fn</code>)。</p>
+<p>基于注解的模型是 Spring WebMVC 的现代替代方案，该模型基于反应式基础而构建，而 Functional Web Framework 是基于 <code>@Controller</code> 注解的编程模型的替代方案。这些模型都通过同一种反应式基础来运行，后者调整非阻塞 HTTP 来适应反应式流 API。</p>
+<h1 id="使用注解进行编程"><a href="#使用注解进行编程" class="headerlink" title="使用注解进行编程"></a>使用注解进行编程</h1><p>WebMVC 程序员应该对 Spring 5 的基于注解的编程模型非常熟悉。Spring 5 调整了 WebMVC 的<code>@Controller</code> 编程模型，采用了相同的注解。</p>
+<p>在清单 1 中，<code>BookController</code> 类提供了两个方法，分别响应针对某个图书列表的 HTTP 请求，以及针对具有给定 <code>id</code> 的图书的 HTTP 请求。请注意 resource 方法返回的对象（<code>Mono</code> 和 <code>Flux</code>）。这些对象是实现<a target="_blank" rel="noopener" href="http://www.reactive-streams.org/">反应式流</a>规范中的 <code>Publisher</code> 接口的反应式类型。它们的职责是处理数据流。<code>Mono</code> 对象处理一个仅含 1 个元素的流，而 Flux 表示一个包含 N 个元素的流。</p>
+<p>清单 1. 反应式控制器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/book&quot;)</span></span><br><span class="line">    <span class="function">Flux&lt;Book&gt; <span class="title">list</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.repository.findAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/book/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function">Mono&lt;Book&gt; <span class="title">findById</span><span class="params">(<span class="meta">@PathVariable</span> String id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.repository.findOne(id);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Plumbing code omitted for brevity</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是针对 Spring Web 编程的注解。现在我们使用函数式 Web 框架来解决同一个问题。</p>
+<h1 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h1><p>Spring 5 的新函数式方法将请求委托给处理函数，这些函数接受一个服务器请求实例并返回一种反应式类型。清单 2 演示了这一过程，其中 <code>listBook</code> 和 <code>getBook</code> 方法类似于清单 1 中的功能。</p>
+<p>清单 2. 清单 2.BookHandler 函数类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Mono&lt;ServerResponse&gt; <span class="title">listBooks</span><span class="params">(ServerRequest request)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ServerResponse.ok()</span><br><span class="line">            .contentType(APPLICATION_JSON)</span><br><span class="line">            .body(repository.allPeople(), Book.class);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Mono&lt;ServerResponse&gt; <span class="title">getBook</span><span class="params">(ServerRequest request)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> repository.getBook(request.pathVariable(<span class="string">&quot;id&quot;</span>))</span><br><span class="line">            .then(book -&gt; ServerResponse.ok()</span><br><span class="line">            .contentType(APPLICATION_JSON)</span><br><span class="line">            .body(fromObject(book)))</span><br><span class="line">            .otherwiseIfEmpty(ServerResponse.notFound().build());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Plumbing code omitted for brevity</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过路由函数来匹配 HTTP 请求谓词与媒体类型，将客户端请求路由到处理函数。清单 3 展示了图书资源端点 URI 将调用委托给合适的处理函数：</p>
+<p>清单 3. Router 函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">BookHandler handler = <span class="keyword">new</span> BookHandler();</span><br><span class="line">RouterFunction&lt;ServerResponse&gt; personRoute =</span><br><span class="line">    route(</span><br><span class="line">        GET(<span class="string">&quot;/books/&#123;id&#125;&quot;</span>)</span><br><span class="line">        .and(accept(APPLICATION_JSON)), handler::getBook)</span><br><span class="line">        .andRoute(</span><br><span class="line">    GET(<span class="string">&quot;/books&quot;</span>)</span><br><span class="line">        .and(accept(APPLICATION_JSON)), handler::listBooks);</span><br></pre></td></tr></table></figure>
+<p>这些示例背后的数据存储库也支持完整的反应式体验，该体验是通过 Spring Data 对反应式 Couchbase、Reactive MongoDB 和 Cassandra 的支持来实现的。</p>
+<h1 id="使用-REST-端点执行响应式编程"><a href="#使用-REST-端点执行响应式编程" class="headerlink" title="使用 REST 端点执行响应式编程"></a>使用 REST 端点执行响应式编程</h1><p>新的编程模型脱离了传统的 Spring WebMVC 模型，引入了一些很不错的新特性。</p>
+<p>举例来说，WebFlux 模块为 <code>RestTemplate</code> 提供了一种完全非阻塞、反应式的替代方案，名为<code>WebClient</code>。清单 4 创建了一个 <code>WebClient</code>，并调用 <code>books</code> 端点来请求一本给定 <code>id</code> 为 <code>1234</code> 的图书。</p>
+<p>清单 4. 通过 WebClient 调用 REST 端点</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Mono&lt;Book&gt; book = WebClient.create(<span class="string">&quot;http://localhost:8080&quot;</span>)</span><br><span class="line">      .get()</span><br><span class="line">      .url(<span class="string">&quot;/books/&#123;id&#125;&quot;</span>, <span class="number">1234</span>)</span><br><span class="line">      .accept(APPLICATION_JSON)</span><br><span class="line">      .exchange(request)</span><br><span class="line">      .then(response -&gt; response.bodyToMono(Book.class));</span><br></pre></td></tr></table></figure>
+<h1 id="HTTP-2-支持"><a href="#HTTP-2-支持" class="headerlink" title="HTTP/2 支持"></a>HTTP/2 支持</h1><p><strong>HTTP/2 幕后原理：</strong>要了解 HTTP/2 如何提高传输性能，减少延迟，并帮助提高应用程序吞吐量，从而提供经过改进的丰富 Web 体验，请查阅<a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/web/wa-http2-under-the-hood/index.html">我的有关这项期待已久的升级的文章</a>。</p>
+<p>Spring Framework 5.0 将提供专门的 <a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/web/wa-http2-under-the-hood/index.html">HTTP/2 特性</a>支持，还支持人们期望出现在 JDK 9 中的新 HTTP 客户端。尽管 HTTP/2 的服务器推送功能已通过 Jetty servlet 引擎的 <code>ServerPushFilter</code> 类向 Spring 开发人员公开了很长一段时间，但如果发现 Spring 5 中开箱即用地提供了 <a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/web/wa-http2-under-the-hood/index.html">HTTP/2</a>性能增强，Web 优化者们一定会为此欢呼雀跃。</p>
+<p>Java EE Servlet 规范预计将于 2017 年第 4 季度发布，Servlet 4.0 支持将在 Spring 5.1 中提供。到那时，<a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/web/wa-http2-under-the-hood/index.html">HTTP/2 特性</a>将由 Tomcat 9.0、Jetty 9.3 和 Undertow 1.4 原生提供。</p>
+<h1 id="Kotlin-和-Spring-WebFlux"><a href="#Kotlin-和-Spring-WebFlux" class="headerlink" title="Kotlin 和 Spring WebFlux"></a>Kotlin 和 Spring WebFlux</h1><p>Kotlin 是一种来自 <a target="_blank" rel="noopener" href="https://blog.jetbrains.com/kotlin/">JetBrains</a> 的面向对象的语言，它支持函数式编程。它的主要优势之一是与 Java 有非常高的互操作性。通过引入对 Kotlin 的专门支持，Spring 在 V5 中全面吸纳了这一优势。它的函数式编程风格与 Spring WebFlux 模块完美匹配，它的新路由 DSL 利用了函数式 Web 框架以及干净且符合语言习惯的代码。可以像清单 5 中这样简单地表达端点路由：</p>
+<p>清单 5. Kotlin 的用于定义端点的路由 DSL</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function">fun <span class="title">apiRouter</span><span class="params">()</span> </span>= router &#123;</span><br><span class="line">    (accept(APPLICATION_JSON) and <span class="string">&quot;/api&quot;</span>).nest &#123;</span><br><span class="line">        <span class="string">&quot;/book&quot;</span>.nest &#123;</span><br><span class="line">            GET(<span class="string">&quot;/&quot;</span>, bookHandler::findAll)</span><br><span class="line">            GET(<span class="string">&quot;/&#123;id&#125;&quot;</span>, bookHandler::findOne)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="string">&quot;/video&quot;</span>.nest &#123;</span><br><span class="line">            GET(<span class="string">&quot;/&quot;</span>, videoHandler::findAll)</span><br><span class="line">            GET(<span class="string">&quot;/&#123;genre&#125;&quot;</span>, videoHandler::findByGenre)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用 Kotlin 1.1.4+ 时，还添加了对 Kotlin 的不可变类的支持（通过带默认值的可选参数），以及对完全支持 null 的 API 的支持。</p>
+<h1 id="使用-Lambda-表达式注册-bean"><a href="#使用-Lambda-表达式注册-bean" class="headerlink" title="使用 Lambda 表达式注册 bean"></a>使用 Lambda 表达式注册 bean</h1><p>作为传统 XML 和 JavaConfig 的替代方案，现在可以使用 lambda 表达式注册 Spring bean，使 bean 可以实际注册为提供者。清单 6 使用 lambda 表达式注册了一个 <code>Book</code> bean。</p>
+<p>清单 6. 将 Bean 注册为提供者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GenericApplicationContext context = <span class="keyword">new</span> GenericApplicationContext();</span><br><span class="line">context.registerBean(Book.class, () -&gt; <span class="keyword">new</span></span><br><span class="line">              Book(context.getBean(Author.class))</span><br><span class="line">        );</span><br></pre></td></tr></table></figure>
+<h1 id="Spring-WebMVC-支持最新的-API"><a href="#Spring-WebMVC-支持最新的-API" class="headerlink" title="Spring WebMVC 支持最新的 API"></a>Spring WebMVC 支持最新的 API</h1><p>全新的 WebFlux 模块提供了许多新的、令人兴奋的功能，但 Spring 5 也迎合了愿意继续使用 Spring MVC 的开发人员的需求。Spring 5 中更新了模型-视图-控制器框架，以兼容 WebFlux 和最新版的<a target="_blank" rel="noopener" href="https://github.com/FasterXML/jackson/wiki/Jackson-Release-2.9">Jackson 2.9</a> 和 <a target="_blank" rel="noopener" href="https://github.com/google/protobuf/releases?after=v3.0.0-alpha-3">Protobuf 3.0</a>，甚至包括对新的 <a target="_blank" rel="noopener" href="http://json-b.net/">Java EE 8 JSON-Binding API</a> 的支持。</p>
+<p>除了 <a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/web/wa-http2-under-the-hood/index.html">HTTP/2 特性</a>的基础服务器实现之外，Spring WebMVC 还通过 MVC 控制器方法的一个参数来支持 Servlet 4.0 的 <code>PushBuilder</code>。最后，WebMVC 全面支持 Reactor 3.1 的 <code>Flux</code> 和 <code>Mono</code> 对象，以及 <a target="_blank" rel="noopener" href="https://github.com/ReactiveX/RxJava/wiki">RxJava</a>1.3 和 2.1，它们被视为来自 MVC 控制器方法的返回值。这项支持的最终目的是支持 Spring Data 中的新的反应式 WebClient 和反应式存储库。</p>
+<h1 id="使用-JUnit-5-执行条件和并发测试"><a href="#使用-JUnit-5-执行条件和并发测试" class="headerlink" title="使用 JUnit 5 执行条件和并发测试"></a>使用 JUnit 5 执行条件和并发测试</h1><p><strong>JUnit 和 Spring 5</strong>：Spring 5 全面接纳了函数式范例，并支持 JUnit 5 及其新的函数式测试风格。还提供了对 JUnit 4 的向后兼容性，以确保不会破坏旧代码。</p>
+<p>Spring 5 的测试套件通过多种方式得到了增强，但最明显的是它对<a target="_blank" rel="noopener" href="http://junit.org/junit5/">JUnit 5</a> 的支持。现在可以在您的单元测试中利用 Java 8 中提供的函数式编程特性。清单 7 演示了这一支持：</p>
+<p>清单 7. 清单 7.JUnit 5 全面接纳了 Java 8 流和 lambda 表达式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">givenStreamOfInts_SumShouldBeMoreThanFive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    assertTrue(Stream.of(<span class="number">20</span>, <span class="number">40</span>, <span class="number">50</span>)</span><br><span class="line">      .stream()</span><br><span class="line">      .mapToInt(i -&gt; i)</span><br><span class="line">      .sum() &gt; <span class="number">110</span>, () -&gt; <span class="string">&quot;Total should be more than 100&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>迁移到 JUnit 5：</strong>如果您对升级到 JUnit 5 持观望态度，Steve Perry 的<a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/views/global/libraryview.jsp?sort_by=&show_abstract=true&show_all=&search_flag=&contentarea_by=%E6%89%80%E6%9C%89%E4%B8%93%E5%8C%BA&search_by=JUnit+5+%E7%AE%80%E4%BB%8B&product_by=-1&topic_by=-1&type_by=%E6%89%80%E6%9C%89%E7%B1%BB%E5%88%AB&ibm-search=%E6%90%9C%E7%B4%A2">分两部分的深入剖析教程</a>将说服您冒险尝试。</p>
+<p>Spring 5 继承了 <a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/java/j-introducing-junit5-part1-jupiter-api/index.html">JUnit 5</a> 在 Spring TestContext Framework 内实现多个扩展 API 的灵活性。举例而言，开发人员可以使用 JUnit 5 的条件测试执行注解 <code>@EnabledIf</code> 和 <code>@DisabledIf</code> 来自动计算一个 <a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html">SpEL</a> (Spring Expression Language) 表达式，并适当地启用或禁用测试。借助这些注解，Spring 5 支持以前很难实现的复杂的条件测试方案。Spring TextContext Framework 现在能够并发执行测试。</p>
+<h1 id="使用-Spring-WebFlux-执行集成测试"><a href="#使用-Spring-WebFlux-执行集成测试" class="headerlink" title="使用 Spring WebFlux 执行集成测试"></a>使用 Spring WebFlux 执行集成测试</h1><p>Spring Test 现在包含一个 <code>WebTestClient</code>，后者支持对 Spring WebFlux 服务器端点执行集成测试。<code>WebTestClient</code> 使用模拟请求和响应来避免耗尽服务器资源，并能直接绑定到 WebFlux 服务器基础架构。</p>
+<p><code>WebTestClient</code> 可绑定到真实的服务器，或者使用控制器或函数。在清单 8 中，<code>WebTestClient</code> 被绑定到 localhost：</p>
+<p>清单 8. 绑定到 localhost 的 <code>WebTestClient</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">WebTestClient testClient = WebTestClient</span><br><span class="line">  .bindToServer()</span><br><span class="line">  .baseUrl(<span class="string">&quot;http://localhost:8080&quot;</span>)</span><br><span class="line">  .build();</span><br></pre></td></tr></table></figure>
+<p>在清单 9 中，测试了 <code>RouterFunction</code>：</p>
+<p>清单 9. 将 <code>WebTestClient</code> 绑定到 <code>RouterFunction</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">RouterFunction bookRouter = RouterFunctions.route(</span><br><span class="line">  RequestPredicates.GET(<span class="string">&quot;/books&quot;</span>),</span><br><span class="line">  request -&gt; ServerResponse.ok().build()</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">WebTestClient</span><br><span class="line">  .bindToRouterFunction(bookRouter)</span><br><span class="line">  .build().get().uri(<span class="string">&quot;/books&quot;</span>)</span><br><span class="line">  .exchange()</span><br><span class="line">  .expectStatus().isOk()</span><br><span class="line">  .expectBody().isEmpty();</span><br></pre></td></tr></table></figure>
+<h1 id="包清理和弃用"><a href="#包清理和弃用" class="headerlink" title="包清理和弃用"></a>包清理和弃用</h1><p>Spring 5 中止了对一些过时 API 的支持。遭此厄运的还有 Hibernate 3 和 4，为了支持 Hibernate 5，它们遭到了弃用。另外，对 Portlet、Velocity、JasperReports、XMLBeans、JDO 和 Guava 的支持也已中止。</p>
+<p>包级别上的清理工作仍在继续：Spring 5 不再支持<code>beans.factory.access</code>、<code>jdbc.support.nativejdbc</code>、<code>mock.staticmock</code>（来自 spring-aspects 模块）或 <code>web.view.tiles2M</code>。Tiles 3 现在是 Spring 的最低要求。</p>
+<h1 id="对-Spring-核心和容器的一般更新"><a href="#对-Spring-核心和容器的一般更新" class="headerlink" title="对 Spring 核心和容器的一般更新"></a>对 Spring 核心和容器的一般更新</h1><p>Spring Framework 5 改进了扫描和识别组件的方法，使大型项目的性能得到提升。目前，扫描是在编译时执行的，而且向 <a target="_blank" rel="noopener" href="https://jira.spring.io/browse/SPR-11890">META-INF/spring.components</a> 文件中的索引文件添加了组件坐标。该索引是通过一个为项目定义的特定于平台的应用程序构建任务来生成的。</p>
+<p>标有来自 <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/overview-summary.html">javax 包</a>的注解的组件会添加到索引中，任何带 <code>@Index</code> 注解的类或接口都会添加到索引中。Spring 的传统类路径扫描方式没有删除，而是保留为一种后备选择。有许多针对大型代码库的明显性能优势，而托管许多 Spring 项目的服务器也会缩短启动时间。</p>
+<p>Spring 5 还添加了对 <code>@Nullable</code> 的支持，后者可用于指示可选的注入点。使用者现在必须准备接受 null 值。此外，还可以使用此注解来标记可以为 null 的参数、字段和返回值。<code>@Nullable</code> 主要用于 IntelliJ IDEA 等 IDE，但也可用于 Eclipse 和 FindBugs，它使得在编译时处理 null 值变得更方便，而无需在运行时发送 <code>NullPointerExceptions</code>。</p>
+<p>Spring Logging 还提升了性能，自带开箱即用的 Commons Logging 桥接器。现在已通过<code>资源抽象</code>支持防御性编程，为 <code>getFile</code> 访问提供了 <code>isFile</code> 指示器。</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shimmerjordan.site/2022/04/04/spring5-new/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2022/06/30/geforce-now-setup/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Geforce Now 配置指北
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/04/03/spring-transaction-intro/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Spring Transaction 初探</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "StYfTMDp78X0EltFR16ve2q5-gzGzoHsz",
+    app_key: "G4RPxRpXG6RwdfpnJefOSnyy",
+    path: window.location.pathname,
+    avatar: "wavatar",
+    placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+   
+<!-- minivaline评论 -->
+<div id="mvcomments-box">
+  <div id="mvcomments"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@latest"></script>
+<script>
+    new MiniValine(Object.assign({"enable":true,"mode":"DesertsP","placeholder":"Write a Comment","math":true,"md":true,"enableQQ":true,"NoRecordIP":false,"visitor":true,"maxNest":6,"pageSize":6,"adminEmailMd5":"de8a7aa53d07e6b6bceb45c64027763d","tagMeta":["管理员","小伙伴","访客"],"master":["de8a7aa53d07e6b6bceb45c64027763d"],"friends":["b5bd5d836c7a0091aa8473e79ed4c25e","adb7d1cd192658a55c0ad22a3309cecf","3ce1e6c77b4910f1871106cb30dc62b0","cfce8dc43725cc14ffcd9fb4892d5bfc"],"lang":null,"emoticonUrl":["https://cdn.jsdelivr.net/npm/alus@latest","https://cdn.jsdelivr.net/gh/MiniValine/qq@latest","https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest","https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest","https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest","https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"]}, {
+	  el: '#mvcomments',
+    }));
+  const infoEle = document.querySelector('#mvcomments .info');
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+      infoEle.childNodes.forEach(function (item) {
+          item.parentNode.removeChild(item);
+      });
+  }
+</script>
+<style>
+	#mvcomments-box {
+		padding: 5px 30px;
+	}
+	@media screen and (max-width: 800px) {
+		#mvcomments-box {
+		  padding: 5px 0px;
+		}
+	}
+	.darkmode .MiniValine *{
+		color: #f1f1f1!important;
+	}
+	.darkmode .commentTrigger{
+		background-color: #403e3e !important;
+	  }
+	.darkmode .MiniValine .vpage .more{
+		background: #21232F
+	}
+	.darkmode img{
+		filter: brightness(30%)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before{
+		background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after{
+		background: rgba(0,0,0,0.9)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre{
+		background: #282c34
+		border: 1px solid #282c34
+	}
+	.darkmode .MiniValine .vinputs-area .textarea-wrapper textarea{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper input{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .vextra-area .vsmile-icons{
+		background: transparent;
+	}
+	.darkmode .MiniValine .vinputs-wrap{
+		border-color: #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-wrap:hover{
+		border: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper{
+		border-bottom: 1px dashed #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper:hover{
+		border-bottom: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vbtn{
+		background-color: transparent!important;
+	}
+	.darkmode .MiniValine .vbtn:hover{
+		border: 1px dashed #2196f3;
+	}
+</style>
+
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2023
+        <i class="ri-heart-fill heart_icon"></i> 鞠桥丹-QIAODAN JU
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279035150&amp;web_id=1279035150'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="丛烨-shimmerjordan"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Catalogue</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E9%9A%8F%E7%AC%94/">Essay</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">Friends</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/01/18/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯蓝莓汁吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+  </div>
+</body>
+
+</html>

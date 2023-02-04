@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>丛烨-shimmerjordan</title>
+  
+  <subtitle>We work in the darkness to serve the light</subtitle>
+  <link href="https://shimmerjordan.site/atom.xml" rel="self"/>
+  
+  <link href="https://shimmerjordan.site/"/>
+  <updated>2023-01-13T07:00:39.172Z</updated>
+  <id>https://shimmerjordan.site/</id>
+  
+  <author>
+    <name>鞠桥丹-QIAODAN JU</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>移动光猫吉比特GS3101超级账号获取更改桥接</title>
+    <link href="https://shimmerjordan.site/2023/01/09/GS3101-bridge/"/>
+    <id>https://shimmerjordan.site/2023/01/09/GS3101-bridge/</id>
+    <published>2023-01-09T06:28:12.000Z</published>
+    <updated>2023-01-13T07:00:39.172Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;家里移动融合套餐的宽带用的光猫型号是GS3101，用面板后的账户密码登录发现权限几乎为零，本来改桥接要做什么也不好明说，为了避免麻烦就没找客服，这里记录一下自己折腾改桥接的方法。并且小记一下忘了拨号账户密码的解决方案。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Network" scheme="https://shimmerjordan.site/categories/Network/"/>
+    
+    
+    <category term="软路由" scheme="https://shimmerjordan.site/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>软路由折腾笔记</title>
+    <link href="https://shimmerjordan.site/2023/01/07/soft-routing-setup/"/>
+    <id>https://shimmerjordan.site/2023/01/07/soft-routing-setup/</id>
+    <published>2023-01-07T13:28:12.000Z</published>
+    <updated>2023-02-04T07:27:57.620Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;软路由的入门折腾笔记，给自己以后换房子重新部署做个参考&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;目前计划实现的功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ipv6公网的DDNS，绑定域名之后实现公网访问&lt;/li&gt;
+&lt;li&gt;广告过滤，（翻阅长城的功能暂定不加）&lt;/li&gt;
+&lt;li&gt;利用&lt;code&gt;x-ui&lt;/code&gt;搭建一个小型流量中转站&lt;/li&gt;
+&lt;li&gt;搭建青龙面板跑一些基础的脚本&lt;/li&gt;
+&lt;li&gt;离线下载&lt;/li&gt;
+&lt;li&gt;私有云&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="Network" scheme="https://shimmerjordan.site/categories/Network/"/>
+    
+    
+    <category term="软路由" scheme="https://shimmerjordan.site/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浏览器输入URL访问网页的执行流程</title>
+    <link href="https://shimmerjordan.site/2022/07/08/url-visit/"/>
+    <id>https://shimmerjordan.site/2022/07/08/url-visit/</id>
+    <published>2022-07-07T21:38:12.000Z</published>
+    <updated>2022-07-12T01:32:48.765Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;流程概览&quot;&gt;&lt;a href=&quot;#流程概览&quot; class=&quot;headerlink&quot; title=&quot;流程概览&quot;&gt;&lt;/a&gt;流程概览&lt;/h1&gt;&lt;p&gt;对于这一个过程应该有一个大概的骨架，然后再是回忆里面的具体细节。总体流程如下，每一部分细节后面补充：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;查找浏览器缓存：如果查找到缓存中有我们URL对应的文件，则判断是否命中强缓存，如果命中直接读取使用即可，如果强缓存没有命中，判断协商缓存是否命中，但协商缓存不论是否命中都会发送请求，所以都会走下面的步骤&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;DNS域名解析：将输入的URL解析成对应的IP地址&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;生成HTTP请求报文：请求报文包括起始行，首部，主体&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;TCP连接：客户端与服务端进行TCP三次握手，建立连接&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;发送HTTP请求：握手成功后，客户端向服务端发送http请求，请求数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;服务器收到请求并返回数据：客户端根据返回的结果进行渲染展示，同时判断是否需要将文件存入缓存&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;TCP断开连接：客户端与服务端进行TCP四次挥手，断开连接&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="web" scheme="https://shimmerjordan.site/categories/web/"/>
+    
+    
+    <category term="Web" scheme="https://shimmerjordan.site/tags/Web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot中实现跨域的5种方式</title>
+    <link href="https://shimmerjordan.site/2022/07/07/SpringBoot-CORS/"/>
+    <id>https://shimmerjordan.site/2022/07/07/SpringBoot-CORS/</id>
+    <published>2022-07-07T07:38:12.000Z</published>
+    <updated>2022-07-07T16:05:10.249Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;一、为什么会出现跨域问题&quot;&gt;&lt;a href=&quot;#一、为什么会出现跨域问题&quot; class=&quot;headerlink&quot; title=&quot;一、为什么会出现跨域问题&quot;&gt;&lt;/a&gt;一、为什么会出现跨域问题&lt;/h1&gt;&lt;p&gt;出于浏览器的同源策略限制。同源策略（Sameoriginpolicy）是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。可以说Web是构建在同源策略基础之上的，浏览器只是针对同源策略的一种实现。同源策略会阻止一个域的javascript脚本和另外一个域的内容进行交互。所谓同源（即指在同一个域）就是两个页面具有相同的协议（protocol），主机（host）和端口号（port）&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="SpringBoot" scheme="https://shimmerjordan.site/categories/SpringBoot/"/>
+    
+    
+    <category term="Spring" scheme="https://shimmerjordan.site/tags/Spring/"/>
+    
+    <category term="SpringBoot" scheme="https://shimmerjordan.site/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot2 扎记下篇</title>
+    <link href="https://shimmerjordan.site/2022/07/03/Spring-boot-dict-2/"/>
+    <id>https://shimmerjordan.site/2022/07/03/Spring-boot-dict-2/</id>
+    <published>2022-07-03T13:36:12.000Z</published>
+    <updated>2022-07-07T15:26:44.763Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;SpringBoot2笔记下篇&quot;&gt;&lt;a href=&quot;#SpringBoot2笔记下篇&quot; class=&quot;headerlink&quot; title=&quot;SpringBoot2笔记下篇&quot;&gt;&lt;/a&gt;SpringBoot2笔记下篇&lt;/h1&gt;&lt;p&gt;接SpringBoot2扎记上篇内容&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="SpringBoot" scheme="https://shimmerjordan.site/categories/SpringBoot/"/>
+    
+    
+    <category term="Spring" scheme="https://shimmerjordan.site/tags/Spring/"/>
+    
+    <category term="SpringBoot" scheme="https://shimmerjordan.site/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot2 扎记上篇</title>
+    <link href="https://shimmerjordan.site/2022/07/03/Spring-boot-dict-1/"/>
+    <id>https://shimmerjordan.site/2022/07/03/Spring-boot-dict-1/</id>
+    <published>2022-07-03T12:36:12.000Z</published>
+    <updated>2022-07-07T15:19:35.653Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;SpringBoot2笔记上篇&quot;&gt;&lt;a href=&quot;#SpringBoot2笔记上篇&quot; class=&quot;headerlink&quot; title=&quot;SpringBoot2笔记上篇&quot;&gt;&lt;/a&gt;SpringBoot2笔记上篇&lt;/h1&gt;&lt;h1 id=&quot;基础入门-SpringBoot2&quot;&gt;&lt;a href=&quot;#基础入门-SpringBoot2&quot; class=&quot;headerlink&quot; title=&quot;基础入门-SpringBoot2&quot;&gt;&lt;/a&gt;基础入门-SpringBoot2&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Spring Boot 2核心技术&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Spring Boot 2响应式编程&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;环境要求&lt;ul&gt;
+&lt;li&gt;Java8及以上&lt;/li&gt;
+&lt;li&gt;Maven 3.3及以上&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;学习资料&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/projects/spring-boot&quot;&gt;Spring Boot官网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.spring.io/spring-boot/docs/&quot;&gt;Spring Boot官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="SpringBoot" scheme="https://shimmerjordan.site/categories/SpringBoot/"/>
+    
+    
+    <category term="Spring" scheme="https://shimmerjordan.site/tags/Spring/"/>
+    
+    <category term="SpringBoot" scheme="https://shimmerjordan.site/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis学习乱记</title>
+    <link href="https://shimmerjordan.site/2022/07/02/Mybatis-dict/"/>
+    <id>https://shimmerjordan.site/2022/07/02/Mybatis-dict/</id>
+    <published>2022-07-02T12:36:12.000Z</published>
+    <updated>2022-07-03T05:25:08.122Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Mybatis简介&quot;&gt;&lt;a href=&quot;#Mybatis简介&quot; class=&quot;headerlink&quot; title=&quot;Mybatis简介&quot;&gt;&lt;/a&gt;Mybatis简介&lt;/h1&gt;&lt;h2 id=&quot;MyBatis历史&quot;&gt;&lt;a href=&quot;#MyBatis历史&quot; class=&quot;headerlink&quot; title=&quot;MyBatis历史&quot;&gt;&lt;/a&gt;MyBatis历史&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;MyBatis最初是Apache的一个开源项目iBatis, 2010年6月这个项目由Apache Software Foundation迁移到了Google Code。随着开发团队转投Google Code旗下，iBatis3.x正式更名为MyBatis。代码于2013年11月迁移到Github&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;iBatis一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBatis提供的持久层框架包括SQL Maps和Data Access Objects（DAO）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="SSM" scheme="https://shimmerjordan.site/categories/SSM/"/>
+    
+    
+    <category term="Spring" scheme="https://shimmerjordan.site/tags/Spring/"/>
+    
+    <category term="Mybatis" scheme="https://shimmerjordan.site/tags/Mybatis/"/>
+    
+    <category term="SSM" scheme="https://shimmerjordan.site/tags/SSM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringMVC学习杂记</title>
+    <link href="https://shimmerjordan.site/2022/07/02/Spring-dict/"/>
+    <id>https://shimmerjordan.site/2022/07/02/Spring-dict/</id>
+    <published>2022-07-02T06:36:12.000Z</published>
+    <updated>2022-07-02T12:11:17.174Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;一、SpringMVC简介&quot;&gt;&lt;a href=&quot;#一、SpringMVC简介&quot; class=&quot;headerlink&quot; title=&quot;一、SpringMVC简介&quot;&gt;&lt;/a&gt;一、SpringMVC简介&lt;/h1&gt;&lt;h3 id=&quot;1、什么是MVC&quot;&gt;&lt;a href=&quot;#1、什么是MVC&quot; class=&quot;headerlink&quot; title=&quot;1、什么是MVC&quot;&gt;&lt;/a&gt;1、什么是MVC&lt;/h3&gt;&lt;p&gt;MVC是一种软件架构的思想，将软件按照模型、视图、控制器来划分&lt;/p&gt;
+&lt;p&gt;M：Model，模型层，指工程中的JavaBean，作用是处理数据&lt;/p&gt;
+&lt;p&gt;JavaBean分为两类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一类称为实体类Bean：专门存储业务数据的，如 Student、User 等&lt;/li&gt;
+&lt;li&gt;一类称为业务处理 Bean：指 Service 或 Dao 对象，专门用于处理业务逻辑和数据访问。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;V：View，视图层，指工程中的html或jsp等页面，作用是与用户进行交互，展示数据&lt;/p&gt;
+&lt;p&gt;C：Controller，控制层，指工程中的servlet，作用是接收请求和响应浏览器&lt;/p&gt;
+&lt;p&gt;MVC的工作流程 &lt;strong&gt;（详情见最后一章节）&lt;/strong&gt;：&lt;br&gt;用户通过视图层发送请求到服务器，在服务器中请求被Controller接收，Controller调用相应的Model层处理请求，处理完毕将结果返回到Controller，Controller再根据请求处理的结果找到相应的View视图，渲染数据后最终响应给浏览器&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="SSM" scheme="https://shimmerjordan.site/categories/SSM/"/>
+    
+    
+    <category term="Spring" scheme="https://shimmerjordan.site/tags/Spring/"/>
+    
+    <category term="SpringMVC" scheme="https://shimmerjordan.site/tags/SpringMVC/"/>
+    
+    <category term="SSM" scheme="https://shimmerjordan.site/tags/SSM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Geforce Now 配置指北</title>
+    <link href="https://shimmerjordan.site/2022/06/30/geforce-now-setup/"/>
+    <id>https://shimmerjordan.site/2022/06/30/geforce-now-setup/</id>
+    <published>2022-06-30T14:38:12.000Z</published>
+    <updated>2022-07-05T16:04:41.339Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;Geforce Now，一个姣好的云游戏平台解决方案&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="新手指北" scheme="https://shimmerjordan.site/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
+    
+    
+    <category term="随笔" scheme="https://shimmerjordan.site/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring 5 新特性</title>
+    <link href="https://shimmerjordan.site/2022/04/04/spring5-new/"/>
+    <id>https://shimmerjordan.site/2022/04/04/spring5-new/</id>
+    <published>2022-04-04T11:41:34.000Z</published>
+    <updated>2022-07-02T11:58:56.026Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;升级到-Java-SE-8-和-Java-EE-7&quot;&gt;&lt;a href=&quot;#升级到-Java-SE-8-和-Java-EE-7&quot; class=&quot;headerlink&quot; title=&quot;升级到 Java SE 8 和 Java EE 7&quot;&gt;&lt;/a&gt;升级到 Java SE 8 和 Java EE 7&lt;/h1&gt;&lt;p&gt;直到现在，Spring Framework 仍支持一些弃用的 Java 版本，但 Spring 5 已从旧包袱中解放出来。为了充分利用 Java 8 特性，它的代码库已进行了改进，而且该框架要求将 Java 8 作为最低的 JDK 版本。&lt;/p&gt;
+&lt;p&gt;Spring 5 在类路径（和模块路径）上完全兼容 Java 9，而且它通过了 JDK 9 测试套件的测试。对 Java 9 爱好者而言，这是一条好消息，因为在 Java 9 发布后，Spring 能立即使用它。&lt;/p&gt;
+&lt;p&gt;在 API 级别上，Spring 5 兼容 Java EE 8 技术，满足对 Servlet 4.0、Bean Validation 2.0 和全新的 JSON Binding API 的需求。对 Java EE API 的最低要求为 V7，该版本引入了针对 Servlet、JPA 和 Bean Validation API 的次要版本。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Spring" scheme="https://shimmerjordan.site/categories/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://shimmerjordan.site/tags/Spring/"/>
+    
+    <category term="Interview" scheme="https://shimmerjordan.site/tags/Interview/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Transaction 初探</title>
+    <link href="https://shimmerjordan.site/2022/04/03/spring-transaction-intro/"/>
+    <id>https://shimmerjordan.site/2022/04/03/spring-transaction-intro/</id>
+    <published>2022-04-03T01:41:34.000Z</published>
+    <updated>2022-07-02T12:01:06.874Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;事务概念&quot;&gt;&lt;a href=&quot;#事务概念&quot; class=&quot;headerlink&quot; title=&quot;事务概念&quot;&gt;&lt;/a&gt;事务概念&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;什么是事务&lt;/p&gt;
+&lt;p&gt;事务是数据库操作的最基本单元，逻辑上一组操作。要么都成功，要么全部失败（即使只有一个操作失败）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;经典场景：银行转账&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Lucy转账￥100给Mary&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Lucy少100，Mary多100&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;事务四大特性（ACID）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;原子性（Atomic）：全部成功或全部失败&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;一致性（Consistency）：操作前后的总量不变&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;隔离性（Isolation）：多事务操作之间不会产生影响&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;持久性（Duration）：提交后表中数据就会发生变化&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="Spring" scheme="https://shimmerjordan.site/categories/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://shimmerjordan.site/tags/Spring/"/>
+    
+    <category term="Interview" scheme="https://shimmerjordan.site/tags/Interview/"/>
+    
+    <category term="Transaction" scheme="https://shimmerjordan.site/tags/Transaction/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java Dynamic Proxy Introduction</title>
+    <link href="https://shimmerjordan.site/2022/04/01/ynamic-proxy/"/>
+    <id>https://shimmerjordan.site/2022/04/01/ynamic-proxy/</id>
+    <published>2022-04-01T11:41:34.000Z</published>
+    <updated>2022-07-02T11:58:15.327Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;目标：&quot;&gt;&lt;a href=&quot;#目标：&quot; class=&quot;headerlink&quot; title=&quot;目标：&quot;&gt;&lt;/a&gt;目标：&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;理解动态代理：基于反射机制&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;什么是动态代理，动态代理能做什么&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="Java" scheme="https://shimmerjordan.site/categories/Java/"/>
+    
+    
+    <category term="Java" scheme="https://shimmerjordan.site/tags/Java/"/>
+    
+    <category term="Proxy" scheme="https://shimmerjordan.site/tags/Proxy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring AOP 初探</title>
+    <link href="https://shimmerjordan.site/2022/04/01/spring-aop-intro/"/>
+    <id>https://shimmerjordan.site/2022/04/01/spring-aop-intro/</id>
+    <published>2022-04-01T03:41:34.000Z</published>
+    <updated>2022-07-02T11:59:21.225Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;AOP概述&quot;&gt;&lt;a href=&quot;#AOP概述&quot; class=&quot;headerlink&quot; title=&quot;AOP概述&quot;&gt;&lt;/a&gt;AOP概述&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;AOP为面向切面编程，利用AOP可以&lt;strong&gt;隔离业务逻辑&lt;/strong&gt;的各个部分，进一步&lt;strong&gt;解耦&lt;/strong&gt;并提高程序&lt;strong&gt;可重用性&lt;/strong&gt;，以此来提高&lt;strong&gt;开发效率&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;通俗描述：不通过修改源代码的方式，添加新功能（类似python装饰器）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="Spring" scheme="https://shimmerjordan.site/categories/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://shimmerjordan.site/tags/Spring/"/>
+    
+    <category term="AOP" scheme="https://shimmerjordan.site/tags/AOP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring IOC底层原理</title>
+    <link href="https://shimmerjordan.site/2022/03/28/spring-ioc-intro/"/>
+    <id>https://shimmerjordan.site/2022/03/28/spring-ioc-intro/</id>
+    <published>2022-03-28T04:41:34.000Z</published>
+    <updated>2022-07-02T12:00:45.619Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;IOC概念和原理&quot;&gt;&lt;a href=&quot;#IOC概念和原理&quot; class=&quot;headerlink&quot; title=&quot;IOC概念和原理&quot;&gt;&lt;/a&gt;IOC概念和原理&lt;/h1&gt;&lt;h2 id=&quot;什么是IOC&quot;&gt;&lt;a href=&quot;#什么是IOC&quot; class=&quot;headerlink&quot; title=&quot;什么是IOC&quot;&gt;&lt;/a&gt;什么是IOC&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;控制反转：把对象创建和对象之间的调用过程，交给Spring进行管理&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用IOC的目的：为了耦合度降低&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="Spring" scheme="https://shimmerjordan.site/categories/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://shimmerjordan.site/tags/Spring/"/>
+    
+    <category term="IOC" scheme="https://shimmerjordan.site/tags/IOC/"/>
+    
+    <category term="Interview" scheme="https://shimmerjordan.site/tags/Interview/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Introduction to Spring Framework</title>
+    <link href="https://shimmerjordan.site/2022/03/27/springintro/"/>
+    <id>https://shimmerjordan.site/2022/03/27/springintro/</id>
+    <published>2022-03-27T11:41:34.000Z</published>
+    <updated>2022-07-02T12:00:47.666Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Spring框架概述&quot;&gt;&lt;a href=&quot;#Spring框架概述&quot; class=&quot;headerlink&quot; title=&quot;Spring框架概述&quot;&gt;&lt;/a&gt;Spring框架概述&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Spring是轻量级的开源JavaEE框架&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Spring可以解决企业应用开发的复杂性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Spring两个核心部分：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="Spring" scheme="https://shimmerjordan.site/categories/Spring/"/>
+    
+    
+    <category term="Spring" scheme="https://shimmerjordan.site/tags/Spring/"/>
+    
+    <category term="Interview" scheme="https://shimmerjordan.site/tags/Interview/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TopK算法杂记</title>
+    <link href="https://shimmerjordan.site/2022/02/26/topk-algo/"/>
+    <id>https://shimmerjordan.site/2022/02/26/topk-algo/</id>
+    <published>2022-02-26T03:39:17.000Z</published>
+    <updated>2022-03-03T11:01:06.719Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;TopK的字面意思很简单，就是求给定序列的前$k$大（or小）的元素。本文由简单思路入手，对解决方案逐步发散与优化。为简化叙述，本文讨论的均为最大标准下的TopK（最小标准同理）。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Algorithm" scheme="https://shimmerjordan.site/categories/Algorithm/"/>
+    
+    
+    <category term="Algorithm" scheme="https://shimmerjordan.site/tags/Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>八大排序算法笔记</title>
+    <link href="https://shimmerjordan.site/2022/02/25/8SortingAlgorithms/"/>
+    <id>https://shimmerjordan.site/2022/02/25/8SortingAlgorithms/</id>
+    <published>2022-02-25T03:16:10.000Z</published>
+    <updated>2022-02-26T06:38:32.234Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;排序有内部排序和外部排序，内部排序是数据记录在内存中进行排序，而外部排序是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。这里介绍的是内部排序中的八大主流排序算法：&lt;/p&gt;
+&lt;center&gt;
+  &lt;img style=&quot;border-radius: 0.3125em;
+  box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);&quot; 
+  src=&quot;https://cdn.jsdelivr.net/gh/shimmerjordan/pic_bed/blog/8SortingAlg/1.jpg&quot; width=&#39;70%&#39;&gt;
+  &lt;br&gt;
+  &lt;div style=&quot;color:orange; border-bottom: 1px solid #d9d9d9;
+  display: inline-block;
+  color: #999;
+  padding: 2px;&quot;&gt;算法结构&lt;/div&gt;
+&lt;/center&gt;
+
+&lt;p&gt;当$n$较大，则应采用时间复杂度为$O(nlog2n)$的排序方法：快速排序、堆排序或归并排序序。其中快速排序是目前基于比较的内部排序中被认为是最好的方法，当待排序的关键字是随机分布时，快速排序的&lt;strong&gt;平均&lt;/strong&gt;时间最短&lt;strong&gt;但不稳定&lt;/strong&gt;。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Algorithm" scheme="https://shimmerjordan.site/categories/Algorithm/"/>
+    
+    
+    <category term="Algorithm" scheme="https://shimmerjordan.site/tags/Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Clever use of set</title>
+    <link href="https://shimmerjordan.site/2021/11/01/clever-use-of-set/"/>
+    <id>https://shimmerjordan.site/2021/11/01/clever-use-of-set/</id>
+    <published>2021-11-01T06:30:12.000Z</published>
+    <updated>2021-11-01T07:54:18.577Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;I noticed that we can use set to simplify algorithm in many problems, including &lt;a href=&quot;https://leetcode-cn.com/problems/distribute-candies&quot;&gt;distribute candies&lt;/a&gt; and &lt;a href=&quot;https://leetcode-cn.com/problems/keyboard-row/&quot;&gt;keyboard row&lt;/a&gt;. Thus, I conclude some clever use of &lt;code&gt;set&lt;/code&gt; in python and do some comparison between &lt;code&gt;list&lt;/code&gt;.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Data structures" scheme="https://shimmerjordan.site/categories/Data-structures/"/>
+    
+    
+    <category term="Algorithm" scheme="https://shimmerjordan.site/tags/Algorithm/"/>
+    
+    <category term="Data structures" scheme="https://shimmerjordan.site/tags/Data-structures/"/>
+    
+    <category term="Python" scheme="https://shimmerjordan.site/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>The Framework of Backtracking Algorithm Problems (DFS)</title>
+    <link href="https://shimmerjordan.site/2021/08/07/DFSFramework/"/>
+    <id>https://shimmerjordan.site/2021/08/07/DFSFramework/</id>
+    <published>2021-08-06T16:00:12.000Z</published>
+    <updated>2021-08-09T12:59:58.421Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;This paper addresses several questions.&lt;/p&gt;
+&lt;p&gt;What is the backtracking algorithm? What are the techniques for solving problems related to backtracking algorithms? How do I learn backtracking algorithms? Is there a pattern to the backtracking algorithm code?&lt;/p&gt;
+&lt;p&gt;The backtracking algorithm is actually what we often call the &lt;strong&gt;DFS algorithm&lt;/strong&gt;, which is essentially a violent exhaustive &lt;strong&gt;enumeration algorithm&lt;/strong&gt;.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Algorithm" scheme="https://shimmerjordan.site/categories/Algorithm/"/>
+    
+    
+    <category term="Algorithm" scheme="https://shimmerjordan.site/tags/Algorithm/"/>
+    
+    <category term="DFS" scheme="https://shimmerjordan.site/tags/DFS/"/>
+    
+    <category term="Backtracking" scheme="https://shimmerjordan.site/tags/Backtracking/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Five shortest-circuit algorithms &amp; two ways to store maps</title>
+    <link href="https://shimmerjordan.site/2021/08/02/LC743-shortestCircuit_mapsStorage/"/>
+    <id>https://shimmerjordan.site/2021/08/02/LC743-shortestCircuit_mapsStorage/</id>
+    <published>2021-08-02T13:15:22.000Z</published>
+    <updated>2021-08-02T15:13:35.697Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;This article is a record of the answer to Leetcode 743, learning about the five shortest path solutions as follows: Floyd, Plain Dijkstra, Heap Optimization Dijkstra, Bellman Ford, SPFA. and three ways of storing graphs, including adjacency tables, adjacency matrices, and class &amp;amp; adjacency tables.&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="SPFA" scheme="https://shimmerjordan.site/tags/SPFA/"/>
+    
+    <category term="graph" scheme="https://shimmerjordan.site/tags/graph/"/>
+    
+    <category term="shortest path" scheme="https://shimmerjordan.site/tags/shortest-path/"/>
+    
+    <category term="Dijkstra" scheme="https://shimmerjordan.site/tags/Dijkstra/"/>
+    
+    <category term="Floyd" scheme="https://shimmerjordan.site/tags/Floyd/"/>
+    
+    <category term="Bellman-Ford" scheme="https://shimmerjordan.site/tags/Bellman-Ford/"/>
+    
+  </entry>
+  
+</feed>

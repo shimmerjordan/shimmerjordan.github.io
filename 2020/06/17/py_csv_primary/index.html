@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="baidu-site-verification" content="code-kg5UjKJZM2" />
+   
+  <meta name="keywords" content="活,炼,阿炳" />
+   
+  <meta name="description" content="shimmerjordan" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Python可视化csv数据实例 |  丛烨-shimmerjordan
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-Q0DT8B8VJW', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?6d06f826e125297d4ce0fa7a1449328e";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<link rel="alternate" href="/atom.xml" title="丛烨-shimmerjordan" type="application/atom+xml">
+</head>
+
+</html>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+	<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Python可视化csv数据实例"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Python可视化csv数据实例
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/06/17/py_csv_primary/" class="article-date">
+  <time datetime="2020-06-17T12:21:00.000Z" itemprop="datePublished">2020-06-17</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python%E5%88%9D%E7%BA%A7%E5%BA%94%E7%94%A8/">Python初级应用</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">9 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>​        Comma Separated Values，简称CSV，它是一种以逗号分隔数值的文件类型。在数据库或电子表格中，它是最常见的导入导出格式，它以一种简单而明了的方式存储和共享数据，CSV文件通常以纯文本的方式存储数据表。本篇文章记录了Python在csv格式的数据处理中的简单应用实例，并填补了一些曾经学习中的坑。</p>
+<a id="more"></a>
+
+<h1 id="1、数据预处理"><a href="#1、数据预处理" class="headerlink" title="1、数据预处理"></a>1、数据预处理</h1><p>​        首先考虑到数据集中可能存在数据缺失与重复，这里我们需要对数据集进行预处理，这里我选用了<a target="_blank" rel="noopener" href="http://data.stats.gov.cn/easyquery.htm?cn=C01">国家数据网</a>中的“指标/能源/综合能源平衡表”，筛选条件为20年。在获取到其csv文件后发现，其原数据的保存形式如下图所示：</p>
+<p><img src="https://s1.ax1x.com/2020/06/17/NZpdCF.jpg" alt="NZpdCF.jpg"></p>
+<p>​        首先使用Excel的倒置粘贴对其进行坐标的倒置操作，另存为data.csv并使用NotePad++打开后其csv数据显示如下（部分）：</p>
+<p><img src="https://s1.ax1x.com/2020/06/17/NZpq58.jpg" alt="NZpq58.jpg"></p>
+<p>​        可以看到回收能这一条目在2011-2015年没有数据记录，这里需要对其进行丢失数据的预处理。这里可以参考机器学习中的数据处理方式，由于这里丢失数据的规模较小，因此排除了删除特征项的处理方案。这里采用了<code>sklearn.preprocessing</code>的<code>Imputer</code>方法进行缺失值的处理，可以选择平均数，众数或者中位数来填充缺失的值。数据预处理核心代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">filename = <span class="string">&#x27;data.csv&#x27;</span></span><br><span class="line">df = pd.read_csv(filename, encoding=<span class="string">&#x27;gbk&#x27;</span>) <span class="comment">#解决&#x27;utf-8&#x27; codec can&#x27;t decode byte 0xb1 in position 2: invalid start byte</span></span><br><span class="line"></span><br><span class="line">print(df)</span><br><span class="line"><span class="comment"># 输出缺失值的个数</span></span><br><span class="line">missing = df.isnull().<span class="built_in">sum</span>()</span><br><span class="line">print(missing)</span><br><span class="line">print(missing.values, <span class="built_in">type</span>(missing.values))</span><br><span class="line">print(missing.values[<span class="number">1</span>:])  <span class="comment"># 可以索引取值，但是不是列表，方法属性不一样</span></span><br><span class="line">print(<span class="built_in">dir</span>(missing.values))</span><br><span class="line"></span><br><span class="line">print(df.dropna())  <span class="comment"># 按行删除有缺失值</span></span><br><span class="line">print(df.dropna(axis=<span class="number">1</span>))  <span class="comment"># 删除列中有缺失值的列</span></span><br><span class="line">print(df.dropna(how=<span class="string">&quot;all&quot;</span>))  <span class="comment"># 删除那些行全是缺失值的</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Imputer</span><br><span class="line"></span><br><span class="line"><span class="comment">#strategy表示采用何种策略，有mean，median， most_frequent</span></span><br><span class="line"><span class="comment">#axis=0, 表示在列上面进行操作， axis=1表示在行上面进行操作</span></span><br><span class="line">imr = Imputer(missing_values=<span class="string">&#x27;&#x27;</span>, strategy=<span class="string">&#x27;mean&#x27;</span>, axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">## 以后进行transform的时候，直接将这些值填充过去就可以了</span></span><br><span class="line">imr = imr.fit(df)</span><br><span class="line">imputed_data = imr.transform(df.values)</span><br><span class="line">print(imputed_data)</span><br></pre></td></tr></table></figure>
+<p>​        至此，关于数据预处理的部分成功完结，由于数据集并未涉及重复数据，这里不再赘述。</p>
+<h1 id="2、CSV数据文件可视化"><a href="#2、CSV数据文件可视化" class="headerlink" title="2、CSV数据文件可视化"></a>2、CSV数据文件可视化</h1><h2 id="2-1-数据结构分析"><a href="#2-1-数据结构分析" class="headerlink" title="2.1 数据结构分析"></a>2.1 数据结构分析</h2><p>​        首先我们需要对csv的数据结构做一个简单的分析，可以看到预处理后的数据集第一行是年份信息，每一列是各类消耗途径的信息。这里我们考虑以时间为轴，针对各类消耗途径进行分析。因此在前面预处理数据的阶段进行了数据的转置，以此方便后续基于逐行读取的<code>csv.reader(file)</code>进行数组的截取。</p>
+<h2 id="2-2-数据的读取"><a href="#2-2-数据的读取" class="headerlink" title="2.2 数据的读取"></a>2.2 数据的读取</h2><p>​        这里引入csv库，利用其中的<code>csv.reader(file)</code>进行数据的读取，由于在数据预处理阶段已经将csv文件中冗余的说明文字去除，这里直接采用<code>next(csv.reader(file))</code>即可获取第一行数据并默认保存为属性信息。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line">filename = <span class="string">&#x27;data.csv&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(filename) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.reader(f)</span><br><span class="line">    header_row = <span class="built_in">next</span>(reader)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 存储相关消耗类型</span></span><br><span class="line">    year, total, produce_once, recycle, impo, expo = [], [], [], [], [], []</span><br><span class="line">    ann_inven_diff, total_custom, agri_custom, indus_custom = [], [], [], []</span><br><span class="line">    constru_custom, traf_custom, accomm_custom, other_custom = [], [], [], []</span><br><span class="line">    live_custom, termin_custom, indus_termin_custom, source_loss = [], [], [], []</span><br><span class="line">    cok_loss, oil_loss, total_loss, mean_diff = [], [], [], []</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">del</span>(header_row[<span class="number">0</span>])</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        year.append(row[<span class="number">0</span>])</span><br><span class="line">        total.append(<span class="built_in">int</span>(row[<span class="number">1</span>]))</span><br><span class="line">        produce_once.append(<span class="built_in">int</span>(row[<span class="number">2</span>]))</span><br><span class="line">        recycle.append(row[<span class="number">3</span>])</span><br><span class="line">        impo.append(<span class="built_in">int</span>(row[<span class="number">4</span>]))</span><br><span class="line">        expo.append(<span class="built_in">int</span>(row[<span class="number">5</span>]))</span><br><span class="line">        ann_inven_diff.append(<span class="built_in">int</span>(row[<span class="number">6</span>]))</span><br><span class="line">        total_custom.append(<span class="built_in">int</span>(row[<span class="number">7</span>]))</span><br><span class="line">        agri_custom.append(<span class="built_in">int</span>(row[<span class="number">8</span>]))</span><br><span class="line">        indus_custom.append(<span class="built_in">int</span>(row[<span class="number">9</span>]))</span><br><span class="line">        constru_custom.append(<span class="built_in">int</span>(row[<span class="number">10</span>]))</span><br><span class="line">        traf_custom.append(<span class="built_in">int</span>(row[<span class="number">11</span>]))</span><br><span class="line">        accomm_custom.append(<span class="built_in">int</span>(row[<span class="number">12</span>]))</span><br><span class="line">        other_custom.append(<span class="built_in">int</span>(row[<span class="number">13</span>]))</span><br><span class="line">        live_custom.append(<span class="built_in">int</span>(row[<span class="number">14</span>]))</span><br><span class="line">        termin_custom.append(<span class="built_in">int</span>(row[<span class="number">15</span>]))</span><br><span class="line">        indus_termin_custom.append(<span class="built_in">int</span>(row[<span class="number">16</span>]))</span><br><span class="line">        source_loss.append(<span class="built_in">int</span>(row[<span class="number">17</span>]))</span><br><span class="line">        cok_loss.append(<span class="built_in">int</span>(row[<span class="number">18</span>]))</span><br><span class="line">        oil_loss.append(<span class="built_in">int</span>(row[<span class="number">19</span>]))</span><br><span class="line">        total_loss.append(<span class="built_in">int</span>(row[<span class="number">20</span>]))</span><br><span class="line">        mean_diff.append(<span class="built_in">int</span>(row[<span class="number">21</span>]))</span><br></pre></td></tr></table></figure>
+<p>​        针对每一次逐行读取，以数组下标为索引，逐个读取各年份的同类型消耗的数据，存放在消耗类型的列表中。例如这里的<code>year[]</code>存放String类型的年份信息，<code>total[]</code>存放总消耗量等等。</p>
+<h2 id="2-3-数据可视化"><a href="#2-3-数据可视化" class="headerlink" title="2.3 数据可视化"></a>2.3 数据可视化</h2><p>​        这里利用<code>matplotlib</code>库对csv数据进行数据可视化操作，考虑到依据年份有同类消耗的走势数据分析层面，也有多类型走势对比角度，另一方面也可以针对同一年份不同消耗类型的占比分析角度。因此我采用了组合折线图和饼状图的形式实现数据的可视化操作。核心代码以及相关注解如下（这段代码与上面的数据读取代码同文件）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot  <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>]=[<span class="string">&#x27;SimHei&#x27;</span>] <span class="comment">#显示中文标签</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>]=<span class="literal">False</span>   <span class="comment">#这两行需要手动设置</span></span><br><span class="line"></span><br><span class="line">	fig=plt.figure(dpi=<span class="number">300</span>,figsize=(<span class="number">15</span>,<span class="number">8</span>))</span><br><span class="line">    <span class="comment"># 将各个列表传个plot()方法</span></span><br><span class="line">    plt.plot(year,total,c=<span class="string">&#x27;red&#x27;</span>,label=<span class="string">&#x27;可供消费的能源总量(万吨标准煤)&#x27;</span>)</span><br><span class="line">    plt.plot(year,produce_once,c=<span class="string">&#x27;aliceblue&#x27;</span>,label=<span class="string">&#x27;一次能源生产量(万吨标准煤)&#x27;</span>)</span><br><span class="line">    plt.plot(year,recycle,c=<span class="string">&#x27;aqua&#x27;</span>,label=<span class="string">&#x27;回收能(万吨标准煤)&#x27;</span>)</span><br><span class="line">    plt.plot(year,impo,c=<span class="string">&#x27;azure&#x27;</span>,label=<span class="string">&#x27;进口量(万吨标准煤)&#x27;</span>)</span><br><span class="line">    plt.plot(year,expo,c=<span class="string">&#x27;blanchedalmond&#x27;</span>,label=<span class="string">&#x27;出口量(-)(万吨标准煤)&#x27;</span>)</span><br><span class="line">    plt.plot(year,ann_inven_diff,c=<span class="string">&#x27;chartreuse&#x27;</span>,label=<span class="string">&#x27;年初年末库存差额(万吨标准煤)&#x27;</span>)</span><br><span class="line">    plt.plot(year,total_custom,c=<span class="string">&#x27;crimson&#x27;</span>,label=<span class="string">&#x27;能源消费总量(万吨标准煤)&#x27;</span>)</span><br><span class="line">    plt.plot(year,agri_custom,c=<span class="string">&#x27;darkorange&#x27;</span>,label=<span class="string">&#x27;农、林、牧、渔、水利业消费总量(万吨标准煤)&#x27;</span>)</span><br><span class="line">    plt.plot(year,indus_custom,c=<span class="string">&#x27;deepskyblue&#x27;</span>,label=<span class="string">&#x27;工业消费总量(万吨标准煤)&#x27;</span>)</span><br><span class="line">    plt.plot(year,constru_custom,c=<span class="string">&#x27;gold&#x27;</span>,label=<span class="string">&#x27;建筑业消费总量(万吨标准煤)&#x27;</span>)</span><br><span class="line">    plt.plot(year,total_loss,c=<span class="string">&#x27;lime&#x27;</span>,label=<span class="string">&#x27;损失量(万吨标准煤)&#x27;</span>)</span><br><span class="line">    plt.plot(year,mean_diff,c=<span class="string">&#x27;violet&#x27;</span>,label=<span class="string">&#x27;平衡差额(万吨标准煤)&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 设置图形的格式</span></span><br><span class="line">    plt.title(<span class="string">&#x27;2000-2017综合能源平衡折线图（部分）&#x27;</span>,fontsize=<span class="number">24</span>)</span><br><span class="line">    plt.xlabel(<span class="string">&#x27;year&#x27;</span>,fontsize=<span class="number">26</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 绘制斜线日期标签</span></span><br><span class="line">    fig.autofmt_xdate()</span><br><span class="line">    plt.ylabel(<span class="string">&#x27;万吨标准煤&#x27;</span>,fontsize=<span class="number">26</span>)</span><br><span class="line">    plt.tick_params(axis=<span class="string">&#x27;both&#x27;</span>,which=<span class="string">&#x27;major&#x27;</span>,labelsize=<span class="number">10</span>)</span><br><span class="line">    plt.legend(loc=<span class="number">0</span>,ncol=<span class="number">2</span>)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2000年各消耗途径占比</span></span><br><span class="line">    labels = [<span class="string">&#x27;农、林、牧、渔、水利业消费总量&#x27;</span>,<span class="string">&#x27;工业消费总量&#x27;</span>,<span class="string">&#x27;建筑业消费总量&#x27;</span>,\</span><br><span class="line">              <span class="string">&#x27;交通运输、仓储和邮政业消费总量&#x27;</span>,<span class="string">&#x27;生活消费总量&#x27;</span>,\</span><br><span class="line">                  <span class="string">&#x27;其他行业消费总量&#x27;</span>,<span class="string">&#x27;批发、零售业和住宿、餐饮业消费总量&#x27;</span>]</span><br><span class="line">    sizes_2000 = [agri_custom[<span class="number">0</span>], indus_custom[<span class="number">0</span>], constru_custom[<span class="number">0</span>],\</span><br><span class="line">             traf_custom[<span class="number">0</span>],live_custom[<span class="number">0</span>] , other_custom[<span class="number">0</span>],\</span><br><span class="line">                 accomm_custom[<span class="number">0</span>]]</span><br><span class="line">    explode = (<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">    plt.figure(dpi=<span class="number">300</span>,figsize=(<span class="number">15</span>,<span class="number">8</span>))</span><br><span class="line">    plt.pie(sizes_2000,explode=explode,labels=labels,autopct=<span class="string">&#x27;%1.1f%%&#x27;</span>,\</span><br><span class="line">            shadow=<span class="literal">False</span>,textprops=&#123;<span class="string">&#x27;fontsize&#x27;</span>:<span class="number">18</span>,<span class="string">&#x27;color&#x27;</span>:<span class="string">&#x27;black&#x27;</span>&#125;, startangle=<span class="number">150</span>)</span><br><span class="line">    plt.legend(loc=<span class="string">&quot;upper left&quot;</span>,fontsize=<span class="number">10</span>,bbox_to_anchor=(<span class="number">1.1</span>,<span class="number">1.05</span>),\</span><br><span class="line">               ncol=<span class="number">1</span>,borderaxespad=<span class="number">0.3</span>)</span><br><span class="line">    plt.title(<span class="string">&quot;饼图示例-2000年损耗占比&quot;</span>,fontsize=<span class="number">24</span>)</span><br><span class="line">               </span><br><span class="line">            </span><br><span class="line">    <span class="comment"># 2017年损耗占比</span></span><br><span class="line">    sizes_2017 = [agri_custom[<span class="number">17</span>], indus_custom[<span class="number">17</span>], constru_custom[<span class="number">17</span>],\</span><br><span class="line">             traf_custom[<span class="number">17</span>], live_custom[<span class="number">17</span>] , other_custom[<span class="number">17</span>],\</span><br><span class="line">                accomm_custom[<span class="number">17</span>]]</span><br><span class="line">    explode = (<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">    plt.figure(dpi=<span class="number">300</span>,figsize=(<span class="number">15</span>,<span class="number">8</span>))</span><br><span class="line">    plt.pie(sizes_2017,explode=explode,labels=labels,autopct=<span class="string">&#x27;%1.1f%%&#x27;</span>\</span><br><span class="line">            ,textprops=&#123;<span class="string">&#x27;fontsize&#x27;</span>:<span class="number">18</span>,<span class="string">&#x27;color&#x27;</span>:<span class="string">&#x27;black&#x27;</span>&#125;,shadow=<span class="literal">True</span>,startangle=<span class="number">150</span>)</span><br><span class="line">    plt.title(<span class="string">&quot;饼图示例-2017年损耗占比&quot;</span>,fontsize=<span class="number">24</span>)</span><br><span class="line">    plt.legend(loc=<span class="string">&quot;upper left&quot;</span>,fontsize=<span class="number">10</span>,bbox_to_anchor=(<span class="number">1.1</span>,<span class="number">1.05</span>),ncol=<span class="number">1</span>,borderaxespad=<span class="number">0.3</span>)</span><br><span class="line">    plt.show()   </span><br></pre></td></tr></table></figure>
+<p>​        这里遇到了包括中文标签乱码、<code>&#39;utf-8&#39; codec can&#39;t decode byte 0xb1 in position 2: invalid start byte</code>、<code>ValueError: x and y must have same first dimension, but have shapes (21,) and (18,)</code>等诸多问题。其解决方案在以上的代码注释中已经说明，这里不再赘述。</p>
+<h2 id="2-4-输出可视化成果"><a href="#2-4-输出可视化成果" class="headerlink" title="2.4 输出可视化成果"></a>2.4 输出可视化成果</h2><p>​        在填补了输出图像像素、标签等问题后，三张用于展示的图像如下所示：</p>
+<p><img src="https://s1.ax1x.com/2020/06/17/NZZReg.png" alt="NZZReg.png"></p>
+<p><img src="https://s1.ax1x.com/2020/06/17/NZZrWt.png" alt="NZZrWt.png"></p>
+<p><img src="https://s1.ax1x.com/2020/06/17/NZZySP.png" alt="NZZySP.png"></p>
+<p>​        这里可以在绘图代码中对绘图参数进行修改，例如这里设置了两个饼图的不同阴影效果。另一方面，在折线图中由于值域的跨越较大，部分变化不明显，这里可以在源码中注释掉部分值域较大的数据集来对特定参数进行数据比对。</p>
+<h1 id="3、数据分析"><a href="#3、数据分析" class="headerlink" title="3、数据分析"></a>3、数据分析</h1><p>​        不知道怎么分析，那就胡乱分析一波。总体来说，各类能源消费量在每年均呈现上涨趋势。可以看到，从2000-2017年中，基于生活基础建设类的能源消耗比例有一定程度的减小，而包括工业、农业等生产业的能源消耗有相应的比例提升。这和我国提出一带一路等国际化方针政策有些千丝万缕的关系，各类产业链的间接强化直接影响到了相应能源的消耗量。</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shimmerjordan.site/2020/06/17/py_csv_primary/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" rel="tag">数据可视化</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/06/19/pyecharts_tour_statistic/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Py爬虫+基于echart可视化csv数数据
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/06/15/MyBaits-generator-IDEAPlugin/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">IDEA中使用MyBatis-generator自动生成MyBatis代码</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "StYfTMDp78X0EltFR16ve2q5-gzGzoHsz",
+    app_key: "G4RPxRpXG6RwdfpnJefOSnyy",
+    path: window.location.pathname,
+    avatar: "wavatar",
+    placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+   
+<!-- minivaline评论 -->
+<div id="mvcomments-box">
+  <div id="mvcomments"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@latest"></script>
+<script>
+    new MiniValine(Object.assign({"enable":true,"mode":"DesertsP","placeholder":"Write a Comment","math":true,"md":true,"enableQQ":true,"NoRecordIP":false,"visitor":true,"maxNest":6,"pageSize":6,"adminEmailMd5":"de8a7aa53d07e6b6bceb45c64027763d","tagMeta":["管理员","小伙伴","访客"],"master":["de8a7aa53d07e6b6bceb45c64027763d"],"friends":["b5bd5d836c7a0091aa8473e79ed4c25e","adb7d1cd192658a55c0ad22a3309cecf","3ce1e6c77b4910f1871106cb30dc62b0","cfce8dc43725cc14ffcd9fb4892d5bfc"],"lang":null,"emoticonUrl":["https://cdn.jsdelivr.net/npm/alus@latest","https://cdn.jsdelivr.net/gh/MiniValine/qq@latest","https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest","https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest","https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest","https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"]}, {
+	  el: '#mvcomments',
+    }));
+  const infoEle = document.querySelector('#mvcomments .info');
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+      infoEle.childNodes.forEach(function (item) {
+          item.parentNode.removeChild(item);
+      });
+  }
+</script>
+<style>
+	#mvcomments-box {
+		padding: 5px 30px;
+	}
+	@media screen and (max-width: 800px) {
+		#mvcomments-box {
+		  padding: 5px 0px;
+		}
+	}
+	.darkmode .MiniValine *{
+		color: #f1f1f1!important;
+	}
+	.darkmode .commentTrigger{
+		background-color: #403e3e !important;
+	  }
+	.darkmode .MiniValine .vpage .more{
+		background: #21232F
+	}
+	.darkmode img{
+		filter: brightness(30%)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before{
+		background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after{
+		background: rgba(0,0,0,0.9)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre{
+		background: #282c34
+		border: 1px solid #282c34
+	}
+	.darkmode .MiniValine .vinputs-area .textarea-wrapper textarea{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper input{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .vextra-area .vsmile-icons{
+		background: transparent;
+	}
+	.darkmode .MiniValine .vinputs-wrap{
+		border-color: #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-wrap:hover{
+		border: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper{
+		border-bottom: 1px dashed #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper:hover{
+		border-bottom: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vbtn{
+		background-color: transparent!important;
+	}
+	.darkmode .MiniValine .vbtn:hover{
+		border: 1px dashed #2196f3;
+	}
+</style>
+
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2023
+        <i class="ri-heart-fill heart_icon"></i> 鞠桥丹-QIAODAN JU
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279035150&amp;web_id=1279035150'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="丛烨-shimmerjordan"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Catalogue</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E9%9A%8F%E7%AC%94/">Essay</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">Friends</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/01/18/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯蓝莓汁吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+  </div>
+</body>
+
+</html>

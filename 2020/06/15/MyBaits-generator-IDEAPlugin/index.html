@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="baidu-site-verification" content="code-kg5UjKJZM2" />
+   
+  <meta name="keywords" content="活,炼,阿炳" />
+   
+  <meta name="description" content="shimmerjordan" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    IDEA中使用MyBatis-generator自动生成MyBatis代码 |  丛烨-shimmerjordan
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-Q0DT8B8VJW', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?6d06f826e125297d4ce0fa7a1449328e";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<link rel="alternate" href="/atom.xml" title="丛烨-shimmerjordan" type="application/atom+xml">
+</head>
+
+</html>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+	<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-IDEA中使用MyBatis-generator自动生成MyBatis代码"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  IDEA中使用MyBatis-generator自动生成MyBatis代码
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/06/15/MyBaits-generator-IDEAPlugin/" class="article-date">
+  <time datetime="2020-06-15T14:05:11.000Z" itemprop="datePublished">2020-06-15</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/MyBaits/">MyBaits</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">10 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>​        MyBaits-generator主要用于在SSM框架的项目中，自动生成实体类、dao、mapper.xml文件。<a target="_blank" rel="noopener" href="https://github.com/mybatis/generator">mybatis-generator</a>有三种用法：命令行、eclipse插件、maven插件。个人觉得maven插件最方便，可以在eclipse/intellij idea等ide上可以通用。</p>
+<a id="more"></a>
+
+<h1 id="0-在Intellij-IDEA创建maven项目"><a href="#0-在Intellij-IDEA创建maven项目" class="headerlink" title="0. 在Intellij IDEA创建maven项目"></a>0. 在Intellij IDEA创建maven项目</h1><h1 id="1-maven插件添加"><a href="#1-maven插件添加" class="headerlink" title="1.  maven插件添加"></a>1.  maven插件添加</h1><p>在maven项目的pom.xml 添加mybatis-generator-maven-plugin 插件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">finalName</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">plugins</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">plugin</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.generator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-generator-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">configuration</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">verbose</span>&gt;</span>true<span class="tag">&lt;/<span class="name">verbose</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">overwrite</span>&gt;</span>true<span class="tag">&lt;/<span class="name">overwrite</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span>  </span><br></pre></td></tr></table></figure>
+<h1 id="2-generatorConfig-xml配置文件"><a href="#2-generatorConfig-xml配置文件" class="headerlink" title="2.  generatorConfig.xml配置文件"></a>2.  generatorConfig.xml配置文件</h1><p>​        在maven项目下的src/main/resources 目录下建立名为 generatorConfig.xml的配置文件，作为mybatis-generator-maven-plugin 插件的执行目标，模板如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>  </span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">generatorConfiguration</span>  </span></span><br><span class="line"><span class="meta">        <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;</span>  </span></span><br><span class="line"><span class="meta">        <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">generatorConfiguration</span>&gt;</span>  </span><br><span class="line">    <span class="comment">&lt;!--导入属性配置 --&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span> <span class="attr">resource</span>=<span class="string">&quot;generator.properties&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">properties</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">&lt;!--指定特定数据库的jdbc驱动jar包的位置 --&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">classPathEntry</span> <span class="attr">location</span>=<span class="string">&quot;$&#123;jdbc.driverLocation&#125;&quot;</span>/&gt;</span>  </span><br><span class="line">  </span><br><span class="line">    <span class="tag">&lt;<span class="name">context</span> <span class="attr">id</span>=<span class="string">&quot;default&quot;</span> <span class="attr">targetRuntime</span>=<span class="string">&quot;MyBatis3&quot;</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line">        <span class="comment">&lt;!-- optional，旨在创建class时，对注释进行控制 --&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">commentGenerator</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;suppressDate&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span> /&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;/<span class="name">commentGenerator</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line">        <span class="comment">&lt;!--jdbc的数据库连接 --&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">jdbcConnection</span> <span class="attr">driverClass</span>=<span class="string">&quot;$&#123;jdbc.driverClass&#125;&quot;</span> <span class="attr">connectionURL</span>=<span class="string">&quot;$&#123;jdbc.connectionURL&#125;&quot;</span> <span class="attr">userId</span>=<span class="string">&quot;$&#123;jdbc.userId&#125;&quot;</span> <span class="attr">password</span>=<span class="string">&quot;$&#123;jdbc.password&#125;&quot;</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;/<span class="name">jdbcConnection</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line">        <span class="comment">&lt;!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制--&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">javaTypeResolver</span> &gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;forceBigDecimals&quot;</span> <span class="attr">value</span>=<span class="string">&quot;false&quot;</span> /&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;/<span class="name">javaTypeResolver</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line">        <span class="comment">&lt;!-- Model模型生成器,用来生成含有主键key的类，记录类 以及查询Example类  </span></span><br><span class="line"><span class="comment">            targetPackage     指定生成的model生成所在的包名  </span></span><br><span class="line"><span class="comment">            targetProject     指定在该项目下所在的路径  </span></span><br><span class="line"><span class="comment">        --&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">javaModelGenerator</span> <span class="attr">targetPackage</span>=<span class="string">&quot;org.louis.hometutor.po&quot;</span> <span class="attr">targetProject</span>=<span class="string">&quot;src/main/java&quot;</span>&gt;</span>  </span><br><span class="line">            <span class="comment">&lt;!-- 是否对model添加 构造函数 --&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;constructorBased&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span>  </span><br><span class="line">  </span><br><span class="line">            <span class="comment">&lt;!-- 是否允许子包，即targetPackage.schemaName.tableName --&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;enableSubPackages&quot;</span> <span class="attr">value</span>=<span class="string">&quot;false&quot;</span>/&gt;</span>  </span><br><span class="line">  </span><br><span class="line">            <span class="comment">&lt;!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 --&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;immutable&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span>  </span><br><span class="line">  </span><br><span class="line">            <span class="comment">&lt;!-- 给Model添加一个父类 --&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;rootClass&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.foo.louis.Hello&quot;</span>/&gt;</span>  </span><br><span class="line">  </span><br><span class="line">            <span class="comment">&lt;!-- 是否对类CHAR类型的列的数据进行trim操作 --&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;trimStrings&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;/<span class="name">javaModelGenerator</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line">        <span class="comment">&lt;!--Mapper映射文件生成所在的目录 为每一个数据库的表生成对应的SqlMap文件 --&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">sqlMapGenerator</span> <span class="attr">targetPackage</span>=<span class="string">&quot;org.louis.hometutor.domain&quot;</span> <span class="attr">targetProject</span>=<span class="string">&quot;src/main/java&quot;</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;enableSubPackages&quot;</span> <span class="attr">value</span>=<span class="string">&quot;false&quot;</span>/&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;/<span class="name">sqlMapGenerator</span>&gt;</span>  </span><br><span class="line">   </span><br><span class="line">        <span class="comment">&lt;!-- 客户端代码，生成易于使用的针对Model对象和XML配置文件 的代码  </span></span><br><span class="line"><span class="comment">                type=&quot;ANNOTATEDMAPPER&quot;,生成Java Model 和基于注解的Mapper对象  </span></span><br><span class="line"><span class="comment">                type=&quot;MIXEDMAPPER&quot;,生成基于注解的Java Model 和相应的Mapper对象  </span></span><br><span class="line"><span class="comment">                type=&quot;XMLMAPPER&quot;,生成SQLMap XML文件和独立的Mapper接口  </span></span><br><span class="line"><span class="comment">        --&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">javaClientGenerator</span> <span class="attr">targetPackage</span>=<span class="string">&quot;com.foo.tourist.dao&quot;</span> <span class="attr">targetProject</span>=<span class="string">&quot;src/main/java&quot;</span> <span class="attr">type</span>=<span class="string">&quot;MIXEDMAPPER&quot;</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;enableSubPackages&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>/&gt;</span>  </span><br><span class="line">            <span class="comment">&lt;!--定义Maper.java 源代码中的ByExample() 方法的可视性，</span></span><br><span class="line"><span class="comment">				可选的值有：public; private; protected;default  </span></span><br><span class="line"><span class="comment">                注意：如果 targetRuntime=&quot;MyBatis3&quot;,此参数被忽略  </span></span><br><span class="line"><span class="comment">             --&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;exampleMethodVisibility&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>/&gt;</span>  </span><br><span class="line">            <span class="comment">&lt;!--方法名计数器  </span></span><br><span class="line"><span class="comment">              Important <span class="doctag">note:</span> this property is ignored if the target runtime is MyBatis3.  </span></span><br><span class="line"><span class="comment">             --&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;methodNameCalculator&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>/&gt;</span>  </span><br><span class="line">  </span><br><span class="line">            <span class="comment">&lt;!--为生成的接口添加父接口 --&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;rootInterface&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>/&gt;</span>  </span><br><span class="line">  </span><br><span class="line">        <span class="tag">&lt;/<span class="name">javaClientGenerator</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">tableName</span>=<span class="string">&quot;lession&quot;</span> <span class="attr">schema</span>=<span class="string">&quot;louis&quot;</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line">            <span class="comment">&lt;!-- optional   , only for mybatis3 runtime  </span></span><br><span class="line"><span class="comment">               自动生成的键值（identity,或者序列值）  </span></span><br><span class="line"><span class="comment">               如果指定此元素，MBG将会生成&lt;selectKey&gt;元素，然后将此元素插入到SQL Map的&lt;insert&gt; 元素之中  </span></span><br><span class="line"><span class="comment">               sqlStatement 的语句将会返回新的值  </span></span><br><span class="line"><span class="comment">               如果是一个自增主键的话，你可以使用预定义的语句,或者添加自定义的SQL语句. 预定义的值如下:  </span></span><br><span class="line"><span class="comment">                  Cloudscape    This will translate to: VALUES IDENTITY_VAL_LOCAL()  </span></span><br><span class="line"><span class="comment">                  DB2:      VALUES IDENTITY_VAL_LOCAL()  </span></span><br><span class="line"><span class="comment">                  DB2_MF:       SELECT IDENTITY_VAL_LOCAL() FROM SYSIBM.SYSDUMMY1  </span></span><br><span class="line"><span class="comment">                  Derby:        VALUES IDENTITY_VAL_LOCAL()  </span></span><br><span class="line"><span class="comment">                  HSQLDB:   CALL IDENTITY()  </span></span><br><span class="line"><span class="comment">                  Informix:     select dbinfo(&#x27;sqlca.sqlerrd1&#x27;) from systables where tabid=1  </span></span><br><span class="line"><span class="comment">                  MySql:        SELECT LAST_INSERT_ID()  </span></span><br><span class="line"><span class="comment">                  SqlServer:    SELECT SCOPE_IDENTITY()  </span></span><br><span class="line"><span class="comment">                  SYBASE:   SELECT @@IDENTITY  </span></span><br><span class="line"><span class="comment">                  JDBC:     This will configure MBG to generate code for MyBatis3 suport of JDBC standard generated keys. This is a database independent method of obtaining the value from identity columns.  </span></span><br><span class="line"><span class="comment">                  identity: 自增主键  If true, then the column is flagged as an identity column and the generated &lt;selectKey&gt; element will be placed after the insert (for an identity column). If false, then the generated &lt;selectKey&gt; will be placed before the insert (typically for a sequence).  </span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">            --&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">generatedKey</span> <span class="attr">column</span>=<span class="string">&quot;&quot;</span> <span class="attr">sqlStatement</span>=<span class="string">&quot;&quot;</span> <span class="attr">identity</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;&quot;</span>/&gt;</span>  </span><br><span class="line">  </span><br><span class="line">            <span class="comment">&lt;!-- optional.  </span></span><br><span class="line"><span class="comment">                    列的命名规则：  </span></span><br><span class="line"><span class="comment">                    MBG使用 &lt;columnRenamingRule&gt; 元素在计算列名的对应 名称之前，先对列名进行重命名，  </span></span><br><span class="line"><span class="comment">                    作用：一般需要对BUSI_CLIENT_NO 前的BUSI_进行过滤  </span></span><br><span class="line"><span class="comment">                    支持正在表达式  </span></span><br><span class="line"><span class="comment">                     searchString 表示要被换掉的字符串  </span></span><br><span class="line"><span class="comment">                     replaceString 则是要换成的字符串，默认情况下为空字符串，可选  </span></span><br><span class="line"><span class="comment">            --&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">columnRenamingRule</span> <span class="attr">searchString</span>=<span class="string">&quot;&quot;</span> <span class="attr">replaceString</span>=<span class="string">&quot;&quot;</span>/&gt;</span>  </span><br><span class="line">  </span><br><span class="line">            <span class="comment">&lt;!-- optional.告诉 MBG 忽略某一列  </span></span><br><span class="line"><span class="comment">                    column，需要忽略的列  </span></span><br><span class="line"><span class="comment">                    delimitedColumnName:true ,匹配column的值和数据库列的名称 大小写完全匹配，false 忽略大小写匹配  </span></span><br><span class="line"><span class="comment">                    是否限定表的列名，即固定表列在Model中的名称  </span></span><br><span class="line"><span class="comment">            --&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">ignoreColumn</span> <span class="attr">column</span>=<span class="string">&quot;PLAN_ID&quot;</span>  <span class="attr">delimitedColumnName</span>=<span class="string">&quot;true&quot;</span> /&gt;</span>  </span><br><span class="line">  </span><br><span class="line">            <span class="comment">&lt;!--optional.覆盖MBG对Model 的生成规则  </span></span><br><span class="line"><span class="comment">                 column: 数据库的列名  </span></span><br><span class="line"><span class="comment">                 javaType: 对应的Java数据类型的完全限定名  </span></span><br><span class="line"><span class="comment">                 在必要的时候可以覆盖由JavaTypeResolver计算得到的java数据类型. For some databases, this is necessary to handle &quot;odd&quot; database types (e.g. MySql&#x27;s unsigned bigint type should be mapped to java.lang.Object).  </span></span><br><span class="line"><span class="comment">                 jdbcType:该列的JDBC数据类型(INTEGER, DECIMAL, NUMERIC, VARCHAR, etc.)，该列可以覆盖由JavaTypeResolver计算得到的Jdbc类型，对某些数据库而言，对于处理特定的JDBC 驱动癖好 很有必要(e.g. DB2&#x27;s LONGVARCHAR type should be mapped to VARCHAR for iBATIS).  </span></span><br><span class="line"><span class="comment">                 typeHandler:  </span></span><br><span class="line"><span class="comment">            --&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">columnOverride</span> <span class="attr">column</span>=<span class="string">&quot;&quot;</span> <span class="attr">javaType</span>=<span class="string">&quot;&quot;</span> <span class="attr">jdbcType</span>=<span class="string">&quot;&quot;</span> <span class="attr">typeHandler</span>=<span class="string">&quot;&quot;</span> <span class="attr">delimitedColumnName</span>=<span class="string">&quot;&quot;</span> /&gt;</span>  </span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">context</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">generatorConfiguration</span>&gt;</span>  </span><br></pre></td></tr></table></figure>
+<p>​        这里使用了外置的配置文件generator.properties，可以将一下属性配置到properties文件之中，增加配置的灵活性：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">jdbc.driverLocation</span>=<span class="string">D:\\maven\\com\\oracle\\ojdbc14\\10.2.0.4.0\\ojdbc14-10.2.0.4.0.jar  </span></span><br><span class="line"><span class="meta">jdbc.driverClass</span>=<span class="string">oracle.jdbc.driver.OracleDriver  </span></span><br><span class="line"><span class="meta">jdbc.connectionURL</span>=<span class="string">jdbc:oracle:thin:@//localhost:1521/XE  </span></span><br><span class="line"><span class="meta">jdbc.userId</span>=<span class="string">LOUIS  </span></span><br><span class="line"><span class="meta">jdbc.password</span>=<span class="string">123456  </span></span><br></pre></td></tr></table></figure>
+<p>​        项目目录如下：</p>
+<p><img src="http://img.blog.csdn.net/20150127125526859" alt="技术分享"></p>
+<h1 id="3-运行参数配置"><a href="#3-运行参数配置" class="headerlink" title="3.  运行参数配置"></a>3.  运行参数配置</h1><p>​        在Intellij IDEA添加一个“Run运行”选项，使用maven运行mybatis-generator-maven-plugin插件 ：</p>
+<p><img src="http://img.blog.csdn.net/20150127114624571" alt="技术分享"></p>
+<p><img src="http://img.blog.csdn.net/20150127114637987" alt="技术分享"></p>
+<p>​        之后弹出运行配置框，为当前配置配置一个名称，这里其名为”generator”,然后在 “Command line” 选项中输入“mybatis-generator:generate -e”</p>
+<p>​        这里加了“-e ”选项是为了让该插件输出详细信息，这样可以帮助我们定位问题</p>
+<p><img src="http://img.blog.csdn.net/20150127114644399" alt="技术分享"></p>
+<p><img src="http://img.blog.csdn.net/20150127115339141" alt="技术分享"></p>
+<p>​        如果添加成功，则会在run 选项中有“generator” 选项，如下：</p>
+<p><img src="http://img.blog.csdn.net/20150127115619156" alt="技术分享"></p>
+<p>​        点击运行，然后不出意外的话，会在控制台输出：</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">C:\Java\jdk1.7.0_71\bin\java -Dmaven.home=D:\software\apache-maven-3.0.5-bin -Dclassworlds.conf=D:\software\apache-maven-3.0.5-bin\bin\m2.conf -Didea.launcher.port=7533 &quot;-Didea.launcher.bin.path=D:\applications\JetBrains\IntelliJ IDEA 14.0.2\bin&quot; -Dfile.encoding=UTF-8 -classpath &quot;D:\software\apache-maven-3.0.5-bin\boot\plexus-classworlds-2.4.jar;D:\applications\JetBrains\IntelliJ IDEA 14.0.2\lib\idea_rt.jar&quot; com.intellij.rt.execution.application.AppMain org.codehaus.classworlds.Launcher -Didea.version=14.0.2 -s D:\software\apache-maven-3.0.5-bin\conf\settings.xml mybatis-generator:generate -e  </span><br><span class="line">[INFO] Error stacktraces are turned on.  </span><br><span class="line">[INFO] Scanning for projects...  </span><br><span class="line">[INFO]                                                                           </span><br><span class="line">[INFO] ------------------------------------------------------------------------  </span><br><span class="line">[INFO] Building hometutor Maven Webapp 1.0-SNAPSHOT  </span><br><span class="line">[INFO] ------------------------------------------------------------------------  </span><br><span class="line">[INFO]   </span><br><span class="line">[INFO] --- mybatis-generator-maven-plugin:1.3.2:generate (default-cli) @ hometutor ---  </span><br><span class="line">[INFO] Connecting to the Database  </span><br><span class="line">[INFO] Introspecting table louis.lession  </span><br><span class="line">log4j:WARN No appenders could be found for logger (org.mybatis.generator.internal.db.DatabaseIntrospector).  </span><br><span class="line">log4j:WARN Please initialize the log4j system properly.  </span><br><span class="line">log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.  </span><br><span class="line">[INFO] Generating Example class for table LOUIS.LESSION  </span><br><span class="line">[INFO] Generating Record class for table LOUIS.LESSION  </span><br><span class="line">[INFO] Generating Mapper Interface for table LOUIS.LESSION  </span><br><span class="line">[INFO] Generating SQL Map for table LOUIS.LESSION  </span><br><span class="line">[INFO] Saving file LessionMapper.xml  </span><br><span class="line">[INFO] Saving file LessionExample.java  </span><br><span class="line">[INFO] Saving file Lession.java  </span><br><span class="line">[INFO] Saving file LessionMapper.java  </span><br><span class="line">[WARNING] Root class com.foo.louis.Hello cannot be loaded, checking for member overrides is disabled for this class   </span><br><span class="line">[WARNING] Existing file E:\sources\tutor\src\main\java\org\louis\hometutor\po\Lession.java was overwritten  </span><br><span class="line">[WARNING] Existing file E:\sources\tutor\src\main\java\com\foo\tourist\dao\LessionMapper.java was overwritten  </span><br><span class="line">[INFO] ------------------------------------------------------------------------  </span><br><span class="line">[INFO] BUILD SUCCESS  </span><br><span class="line">[INFO] ------------------------------------------------------------------------  </span><br><span class="line">[INFO] Total time: 2.334s  </span><br><span class="line">[INFO] Finished at: Tue Jan 27 12:04:08 CST 2015  </span><br><span class="line">[INFO] Final Memory: 8M/107M  </span><br><span class="line">[INFO] ------------------------------------------------------------------------  </span><br><span class="line">  </span><br><span class="line">Process finished with exit code 0  </span><br></pre></td></tr></table></figure>
+<p>​        看到BUILD SUCCESS，则大功告成，如果有错误的话，由于添加了-e 选项，会把具体的详细错误信息打印出来的，根据错误信息修改即可</p>
+<blockquote>
+<p>转自<a target="_blank" rel="noopener" href="https://www.cnblogs.com/liaojie970/p/7058543.html">山高我为峰</a></p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shimmerjordan.site/2020/06/15/MyBaits-generator-IDEAPlugin/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBaits/" rel="tag">MyBaits</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/06/17/py_csv_primary/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Python可视化csv数据实例
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/06/14/IDEAShortcut/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">IDEA常用快捷键整理</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "StYfTMDp78X0EltFR16ve2q5-gzGzoHsz",
+    app_key: "G4RPxRpXG6RwdfpnJefOSnyy",
+    path: window.location.pathname,
+    avatar: "wavatar",
+    placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+   
+<!-- minivaline评论 -->
+<div id="mvcomments-box">
+  <div id="mvcomments"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@latest"></script>
+<script>
+    new MiniValine(Object.assign({"enable":true,"mode":"DesertsP","placeholder":"Write a Comment","math":true,"md":true,"enableQQ":true,"NoRecordIP":false,"visitor":true,"maxNest":6,"pageSize":6,"adminEmailMd5":"de8a7aa53d07e6b6bceb45c64027763d","tagMeta":["管理员","小伙伴","访客"],"master":["de8a7aa53d07e6b6bceb45c64027763d"],"friends":["b5bd5d836c7a0091aa8473e79ed4c25e","adb7d1cd192658a55c0ad22a3309cecf","3ce1e6c77b4910f1871106cb30dc62b0","cfce8dc43725cc14ffcd9fb4892d5bfc"],"lang":null,"emoticonUrl":["https://cdn.jsdelivr.net/npm/alus@latest","https://cdn.jsdelivr.net/gh/MiniValine/qq@latest","https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest","https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest","https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest","https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"]}, {
+	  el: '#mvcomments',
+    }));
+  const infoEle = document.querySelector('#mvcomments .info');
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+      infoEle.childNodes.forEach(function (item) {
+          item.parentNode.removeChild(item);
+      });
+  }
+</script>
+<style>
+	#mvcomments-box {
+		padding: 5px 30px;
+	}
+	@media screen and (max-width: 800px) {
+		#mvcomments-box {
+		  padding: 5px 0px;
+		}
+	}
+	.darkmode .MiniValine *{
+		color: #f1f1f1!important;
+	}
+	.darkmode .commentTrigger{
+		background-color: #403e3e !important;
+	  }
+	.darkmode .MiniValine .vpage .more{
+		background: #21232F
+	}
+	.darkmode img{
+		filter: brightness(30%)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before{
+		background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after{
+		background: rgba(0,0,0,0.9)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre{
+		background: #282c34
+		border: 1px solid #282c34
+	}
+	.darkmode .MiniValine .vinputs-area .textarea-wrapper textarea{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper input{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .vextra-area .vsmile-icons{
+		background: transparent;
+	}
+	.darkmode .MiniValine .vinputs-wrap{
+		border-color: #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-wrap:hover{
+		border: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper{
+		border-bottom: 1px dashed #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper:hover{
+		border-bottom: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vbtn{
+		background-color: transparent!important;
+	}
+	.darkmode .MiniValine .vbtn:hover{
+		border: 1px dashed #2196f3;
+	}
+</style>
+
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2023
+        <i class="ri-heart-fill heart_icon"></i> 鞠桥丹-QIAODAN JU
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279035150&amp;web_id=1279035150'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="丛烨-shimmerjordan"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Catalogue</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E9%9A%8F%E7%AC%94/">Essay</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">Friends</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/01/18/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯蓝莓汁吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+  </div>
+</body>
+
+</html>
