@@ -3,11 +3,11 @@
   <title>丛烨-shimmerjordan</title>
   
   <subtitle>We work in the darkness to serve the light</subtitle>
-  <link href="https://shimmerjordan.eu.org/atom.xml" rel="self"/>
+  <link href="https://blog.shimmerjordan.eu.org/atom.xml" rel="self"/>
   
-  <link href="https://shimmerjordan.eu.org/"/>
+  <link href="https://blog.shimmerjordan.eu.org/"/>
   <updated>2023-04-10T15:30:47.957Z</updated>
-  <id>https://shimmerjordan.eu.org/</id>
+  <id>https://blog.shimmerjordan.eu.org/</id>
   
   <author>
     <name>鞠桥丹-QIAODAN JU</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>中兴机顶盒B860AV2.1刷安卓/ARM64/OMV/EmuELEC</title>
-    <link href="https://shimmerjordan.eu.org/2023/04/09/B860AV21-Tutorial/"/>
-    <id>https://shimmerjordan.eu.org/2023/04/09/B860AV21-Tutorial/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2023/04/09/B860AV21-Tutorial/"/>
+    <id>https://blog.shimmerjordan.eu.org/2023/04/09/B860AV21-Tutorial/</id>
     <published>2023-04-09T02:28:12.000Z</published>
     <updated>2023-04-10T15:30:47.957Z</updated>
     
@@ -38,19 +38,19 @@
     
     
     
-    <category term="Network" scheme="https://shimmerjordan.eu.org/categories/Network/"/>
+    <category term="Network" scheme="https://blog.shimmerjordan.eu.org/categories/Network/"/>
     
     
-    <category term="刷机" scheme="https://shimmerjordan.eu.org/tags/%E5%88%B7%E6%9C%BA/"/>
+    <category term="刷机" scheme="https://blog.shimmerjordan.eu.org/tags/%E5%88%B7%E6%9C%BA/"/>
     
-    <category term="机顶盒" scheme="https://shimmerjordan.eu.org/tags/%E6%9C%BA%E9%A1%B6%E7%9B%92/"/>
+    <category term="机顶盒" scheme="https://blog.shimmerjordan.eu.org/tags/%E6%9C%BA%E9%A1%B6%E7%9B%92/"/>
     
   </entry>
   
   <entry>
     <title>移动光猫吉比特GS3101超级账号获取更改桥接</title>
-    <link href="https://shimmerjordan.eu.org/2023/01/09/GS3101-bridge/"/>
-    <id>https://shimmerjordan.eu.org/2023/01/09/GS3101-bridge/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2023/01/09/GS3101-bridge/"/>
+    <id>https://blog.shimmerjordan.eu.org/2023/01/09/GS3101-bridge/</id>
     <published>2023-01-09T06:28:12.000Z</published>
     <updated>2023-01-13T07:00:39.172Z</updated>
     
@@ -59,17 +59,17 @@
     
     
     
-    <category term="Network" scheme="https://shimmerjordan.eu.org/categories/Network/"/>
+    <category term="Network" scheme="https://blog.shimmerjordan.eu.org/categories/Network/"/>
     
     
-    <category term="软路由" scheme="https://shimmerjordan.eu.org/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/"/>
+    <category term="软路由" scheme="https://blog.shimmerjordan.eu.org/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/"/>
     
   </entry>
   
   <entry>
     <title>软路由折腾笔记</title>
-    <link href="https://shimmerjordan.eu.org/2023/01/07/soft-routing-setup/"/>
-    <id>https://shimmerjordan.eu.org/2023/01/07/soft-routing-setup/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2023/01/07/soft-routing-setup/"/>
+    <id>https://blog.shimmerjordan.eu.org/2023/01/07/soft-routing-setup/</id>
     <published>2023-01-07T13:28:12.000Z</published>
     <updated>2023-02-04T07:27:57.620Z</updated>
     
@@ -89,17 +89,17 @@
     
     
     
-    <category term="Network" scheme="https://shimmerjordan.eu.org/categories/Network/"/>
+    <category term="Network" scheme="https://blog.shimmerjordan.eu.org/categories/Network/"/>
     
     
-    <category term="软路由" scheme="https://shimmerjordan.eu.org/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/"/>
+    <category term="软路由" scheme="https://blog.shimmerjordan.eu.org/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/"/>
     
   </entry>
   
   <entry>
     <title>浏览器输入URL访问网页的执行流程</title>
-    <link href="https://shimmerjordan.eu.org/2022/07/08/url-visit/"/>
-    <id>https://shimmerjordan.eu.org/2022/07/08/url-visit/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2022/07/08/url-visit/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/07/08/url-visit/</id>
     <published>2022-07-07T21:38:12.000Z</published>
     <updated>2022-07-12T01:32:48.765Z</updated>
     
@@ -124,17 +124,17 @@
     
     
     
-    <category term="web" scheme="https://shimmerjordan.eu.org/categories/web/"/>
+    <category term="web" scheme="https://blog.shimmerjordan.eu.org/categories/web/"/>
     
     
-    <category term="Web" scheme="https://shimmerjordan.eu.org/tags/Web/"/>
+    <category term="Web" scheme="https://blog.shimmerjordan.eu.org/tags/Web/"/>
     
   </entry>
   
   <entry>
     <title>SpringBoot中实现跨域的5种方式</title>
-    <link href="https://shimmerjordan.eu.org/2022/07/07/SpringBoot-CORS/"/>
-    <id>https://shimmerjordan.eu.org/2022/07/07/SpringBoot-CORS/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2022/07/07/SpringBoot-CORS/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/07/07/SpringBoot-CORS/</id>
     <published>2022-07-07T07:38:12.000Z</published>
     <updated>2022-07-07T16:05:10.249Z</updated>
     
@@ -143,19 +143,19 @@
     
     
     
-    <category term="SpringBoot" scheme="https://shimmerjordan.eu.org/categories/SpringBoot/"/>
+    <category term="SpringBoot" scheme="https://blog.shimmerjordan.eu.org/categories/SpringBoot/"/>
     
     
-    <category term="Spring" scheme="https://shimmerjordan.eu.org/tags/Spring/"/>
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/tags/Spring/"/>
     
-    <category term="SpringBoot" scheme="https://shimmerjordan.eu.org/tags/SpringBoot/"/>
+    <category term="SpringBoot" scheme="https://blog.shimmerjordan.eu.org/tags/SpringBoot/"/>
     
   </entry>
   
   <entry>
     <title>SpringBoot2 扎记下篇</title>
-    <link href="https://shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-2/"/>
-    <id>https://shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-2/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-2/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-2/</id>
     <published>2022-07-03T13:36:12.000Z</published>
     <updated>2022-07-07T15:26:44.763Z</updated>
     
@@ -164,19 +164,19 @@
     
     
     
-    <category term="SpringBoot" scheme="https://shimmerjordan.eu.org/categories/SpringBoot/"/>
+    <category term="SpringBoot" scheme="https://blog.shimmerjordan.eu.org/categories/SpringBoot/"/>
     
     
-    <category term="Spring" scheme="https://shimmerjordan.eu.org/tags/Spring/"/>
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/tags/Spring/"/>
     
-    <category term="SpringBoot" scheme="https://shimmerjordan.eu.org/tags/SpringBoot/"/>
+    <category term="SpringBoot" scheme="https://blog.shimmerjordan.eu.org/tags/SpringBoot/"/>
     
   </entry>
   
   <entry>
     <title>SpringBoot2 扎记上篇</title>
-    <link href="https://shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-1/"/>
-    <id>https://shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-1/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-1/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-1/</id>
     <published>2022-07-03T12:36:12.000Z</published>
     <updated>2022-07-07T15:19:35.653Z</updated>
     
@@ -202,19 +202,19 @@
     
     
     
-    <category term="SpringBoot" scheme="https://shimmerjordan.eu.org/categories/SpringBoot/"/>
+    <category term="SpringBoot" scheme="https://blog.shimmerjordan.eu.org/categories/SpringBoot/"/>
     
     
-    <category term="Spring" scheme="https://shimmerjordan.eu.org/tags/Spring/"/>
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/tags/Spring/"/>
     
-    <category term="SpringBoot" scheme="https://shimmerjordan.eu.org/tags/SpringBoot/"/>
+    <category term="SpringBoot" scheme="https://blog.shimmerjordan.eu.org/tags/SpringBoot/"/>
     
   </entry>
   
   <entry>
     <title>Mybatis学习乱记</title>
-    <link href="https://shimmerjordan.eu.org/2022/07/02/Mybatis-dict/"/>
-    <id>https://shimmerjordan.eu.org/2022/07/02/Mybatis-dict/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2022/07/02/Mybatis-dict/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/07/02/Mybatis-dict/</id>
     <published>2022-07-02T12:36:12.000Z</published>
     <updated>2022-07-03T05:25:08.122Z</updated>
     
@@ -228,21 +228,21 @@
     
     
     
-    <category term="SSM" scheme="https://shimmerjordan.eu.org/categories/SSM/"/>
+    <category term="SSM" scheme="https://blog.shimmerjordan.eu.org/categories/SSM/"/>
     
     
-    <category term="Spring" scheme="https://shimmerjordan.eu.org/tags/Spring/"/>
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/tags/Spring/"/>
     
-    <category term="Mybatis" scheme="https://shimmerjordan.eu.org/tags/Mybatis/"/>
+    <category term="Mybatis" scheme="https://blog.shimmerjordan.eu.org/tags/Mybatis/"/>
     
-    <category term="SSM" scheme="https://shimmerjordan.eu.org/tags/SSM/"/>
+    <category term="SSM" scheme="https://blog.shimmerjordan.eu.org/tags/SSM/"/>
     
   </entry>
   
   <entry>
     <title>SpringMVC学习杂记</title>
-    <link href="https://shimmerjordan.eu.org/2022/07/02/Spring-dict/"/>
-    <id>https://shimmerjordan.eu.org/2022/07/02/Spring-dict/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2022/07/02/Spring-dict/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/07/02/Spring-dict/</id>
     <published>2022-07-02T06:36:12.000Z</published>
     <updated>2022-07-02T12:11:17.174Z</updated>
     
@@ -260,21 +260,21 @@
     
     
     
-    <category term="SSM" scheme="https://shimmerjordan.eu.org/categories/SSM/"/>
+    <category term="SSM" scheme="https://blog.shimmerjordan.eu.org/categories/SSM/"/>
     
     
-    <category term="Spring" scheme="https://shimmerjordan.eu.org/tags/Spring/"/>
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/tags/Spring/"/>
     
-    <category term="SpringMVC" scheme="https://shimmerjordan.eu.org/tags/SpringMVC/"/>
+    <category term="SpringMVC" scheme="https://blog.shimmerjordan.eu.org/tags/SpringMVC/"/>
     
-    <category term="SSM" scheme="https://shimmerjordan.eu.org/tags/SSM/"/>
+    <category term="SSM" scheme="https://blog.shimmerjordan.eu.org/tags/SSM/"/>
     
   </entry>
   
   <entry>
     <title>Geforce Now 配置指北</title>
-    <link href="https://shimmerjordan.eu.org/2022/06/30/geforce-now-setup/"/>
-    <id>https://shimmerjordan.eu.org/2022/06/30/geforce-now-setup/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2022/06/30/geforce-now-setup/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/06/30/geforce-now-setup/</id>
     <published>2022-06-30T14:38:12.000Z</published>
     <updated>2022-07-05T16:04:41.339Z</updated>
     
@@ -285,17 +285,17 @@
     
     
     
-    <category term="新手指北" scheme="https://shimmerjordan.eu.org/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
+    <category term="新手指北" scheme="https://blog.shimmerjordan.eu.org/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
     
     
-    <category term="随笔" scheme="https://shimmerjordan.eu.org/tags/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="https://blog.shimmerjordan.eu.org/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
   <entry>
     <title>Spring 5 新特性</title>
-    <link href="https://shimmerjordan.eu.org/2022/04/04/spring5-new/"/>
-    <id>https://shimmerjordan.eu.org/2022/04/04/spring5-new/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2022/04/04/spring5-new/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/04/04/spring5-new/</id>
     <published>2022-04-04T11:41:34.000Z</published>
     <updated>2022-07-02T11:58:56.026Z</updated>
     
@@ -306,19 +306,19 @@
     
     
     
-    <category term="Spring" scheme="https://shimmerjordan.eu.org/categories/Spring/"/>
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/categories/Spring/"/>
     
     
-    <category term="Spring" scheme="https://shimmerjordan.eu.org/tags/Spring/"/>
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/tags/Spring/"/>
     
-    <category term="Interview" scheme="https://shimmerjordan.eu.org/tags/Interview/"/>
+    <category term="Interview" scheme="https://blog.shimmerjordan.eu.org/tags/Interview/"/>
     
   </entry>
   
   <entry>
     <title>Spring Transaction 初探</title>
-    <link href="https://shimmerjordan.eu.org/2022/04/03/spring-transaction-intro/"/>
-    <id>https://shimmerjordan.eu.org/2022/04/03/spring-transaction-intro/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2022/04/03/spring-transaction-intro/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/04/03/spring-transaction-intro/</id>
     <published>2022-04-03T01:41:34.000Z</published>
     <updated>2022-07-02T12:01:06.874Z</updated>
     
@@ -351,21 +351,21 @@
     
     
     
-    <category term="Spring" scheme="https://shimmerjordan.eu.org/categories/Spring/"/>
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/categories/Spring/"/>
     
     
-    <category term="Spring" scheme="https://shimmerjordan.eu.org/tags/Spring/"/>
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/tags/Spring/"/>
     
-    <category term="Interview" scheme="https://shimmerjordan.eu.org/tags/Interview/"/>
+    <category term="Interview" scheme="https://blog.shimmerjordan.eu.org/tags/Interview/"/>
     
-    <category term="Transaction" scheme="https://shimmerjordan.eu.org/tags/Transaction/"/>
+    <category term="Transaction" scheme="https://blog.shimmerjordan.eu.org/tags/Transaction/"/>
     
   </entry>
   
   <entry>
     <title>Java Dynamic Proxy Introduction</title>
-    <link href="https://shimmerjordan.eu.org/2022/04/01/ynamic-proxy/"/>
-    <id>https://shimmerjordan.eu.org/2022/04/01/ynamic-proxy/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2022/04/01/ynamic-proxy/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/04/01/ynamic-proxy/</id>
     <published>2022-04-01T11:41:34.000Z</published>
     <updated>2022-07-02T11:58:15.327Z</updated>
     
@@ -379,19 +379,19 @@
     
     
     
-    <category term="Java" scheme="https://shimmerjordan.eu.org/categories/Java/"/>
+    <category term="Java" scheme="https://blog.shimmerjordan.eu.org/categories/Java/"/>
     
     
-    <category term="Java" scheme="https://shimmerjordan.eu.org/tags/Java/"/>
+    <category term="Java" scheme="https://blog.shimmerjordan.eu.org/tags/Java/"/>
     
-    <category term="Proxy" scheme="https://shimmerjordan.eu.org/tags/Proxy/"/>
+    <category term="Proxy" scheme="https://blog.shimmerjordan.eu.org/tags/Proxy/"/>
     
   </entry>
   
   <entry>
     <title>Spring AOP 初探</title>
-    <link href="https://shimmerjordan.eu.org/2022/04/01/spring-aop-intro/"/>
-    <id>https://shimmerjordan.eu.org/2022/04/01/spring-aop-intro/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2022/04/01/spring-aop-intro/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/04/01/spring-aop-intro/</id>
     <published>2022-04-01T03:41:34.000Z</published>
     <updated>2022-07-02T11:59:21.225Z</updated>
     
@@ -405,19 +405,19 @@
     
     
     
-    <category term="Spring" scheme="https://shimmerjordan.eu.org/categories/Spring/"/>
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/categories/Spring/"/>
     
     
-    <category term="Spring" scheme="https://shimmerjordan.eu.org/tags/Spring/"/>
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/tags/Spring/"/>
     
-    <category term="AOP" scheme="https://shimmerjordan.eu.org/tags/AOP/"/>
+    <category term="AOP" scheme="https://blog.shimmerjordan.eu.org/tags/AOP/"/>
     
   </entry>
   
   <entry>
     <title>Spring IOC底层原理</title>
-    <link href="https://shimmerjordan.eu.org/2022/03/28/spring-ioc-intro/"/>
-    <id>https://shimmerjordan.eu.org/2022/03/28/spring-ioc-intro/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2022/03/28/spring-ioc-intro/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/03/28/spring-ioc-intro/</id>
     <published>2022-03-28T04:41:34.000Z</published>
     <updated>2022-07-02T12:00:45.619Z</updated>
     
@@ -431,21 +431,21 @@
     
     
     
-    <category term="Spring" scheme="https://shimmerjordan.eu.org/categories/Spring/"/>
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/categories/Spring/"/>
     
     
-    <category term="Spring" scheme="https://shimmerjordan.eu.org/tags/Spring/"/>
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/tags/Spring/"/>
     
-    <category term="IOC" scheme="https://shimmerjordan.eu.org/tags/IOC/"/>
+    <category term="IOC" scheme="https://blog.shimmerjordan.eu.org/tags/IOC/"/>
     
-    <category term="Interview" scheme="https://shimmerjordan.eu.org/tags/Interview/"/>
+    <category term="Interview" scheme="https://blog.shimmerjordan.eu.org/tags/Interview/"/>
     
   </entry>
   
   <entry>
     <title>Introduction to Spring Framework</title>
-    <link href="https://shimmerjordan.eu.org/2022/03/27/springintro/"/>
-    <id>https://shimmerjordan.eu.org/2022/03/27/springintro/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2022/03/27/springintro/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/03/27/springintro/</id>
     <published>2022-03-27T11:41:34.000Z</published>
     <updated>2022-07-02T12:00:47.666Z</updated>
     
@@ -461,19 +461,19 @@
     
     
     
-    <category term="Spring" scheme="https://shimmerjordan.eu.org/categories/Spring/"/>
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/categories/Spring/"/>
     
     
-    <category term="Spring" scheme="https://shimmerjordan.eu.org/tags/Spring/"/>
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/tags/Spring/"/>
     
-    <category term="Interview" scheme="https://shimmerjordan.eu.org/tags/Interview/"/>
+    <category term="Interview" scheme="https://blog.shimmerjordan.eu.org/tags/Interview/"/>
     
   </entry>
   
   <entry>
     <title>TopK算法杂记</title>
-    <link href="https://shimmerjordan.eu.org/2022/02/26/topk-algo/"/>
-    <id>https://shimmerjordan.eu.org/2022/02/26/topk-algo/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2022/02/26/topk-algo/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/02/26/topk-algo/</id>
     <published>2022-02-26T03:39:17.000Z</published>
     <updated>2022-03-03T11:01:06.719Z</updated>
     
@@ -482,17 +482,17 @@
     
     
     
-    <category term="Algorithm" scheme="https://shimmerjordan.eu.org/categories/Algorithm/"/>
+    <category term="Algorithm" scheme="https://blog.shimmerjordan.eu.org/categories/Algorithm/"/>
     
     
-    <category term="Algorithm" scheme="https://shimmerjordan.eu.org/tags/Algorithm/"/>
+    <category term="Algorithm" scheme="https://blog.shimmerjordan.eu.org/tags/Algorithm/"/>
     
   </entry>
   
   <entry>
     <title>八大排序算法笔记</title>
-    <link href="https://shimmerjordan.eu.org/2022/02/25/8SortingAlgorithms/"/>
-    <id>https://shimmerjordan.eu.org/2022/02/25/8SortingAlgorithms/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2022/02/25/8SortingAlgorithms/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/02/25/8SortingAlgorithms/</id>
     <published>2022-02-25T03:16:10.000Z</published>
     <updated>2022-02-26T06:38:32.234Z</updated>
     
@@ -513,17 +513,17 @@
     
     
     
-    <category term="Algorithm" scheme="https://shimmerjordan.eu.org/categories/Algorithm/"/>
+    <category term="Algorithm" scheme="https://blog.shimmerjordan.eu.org/categories/Algorithm/"/>
     
     
-    <category term="Algorithm" scheme="https://shimmerjordan.eu.org/tags/Algorithm/"/>
+    <category term="Algorithm" scheme="https://blog.shimmerjordan.eu.org/tags/Algorithm/"/>
     
   </entry>
   
   <entry>
     <title>Clever use of set</title>
-    <link href="https://shimmerjordan.eu.org/2021/11/01/clever-use-of-set/"/>
-    <id>https://shimmerjordan.eu.org/2021/11/01/clever-use-of-set/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2021/11/01/clever-use-of-set/"/>
+    <id>https://blog.shimmerjordan.eu.org/2021/11/01/clever-use-of-set/</id>
     <published>2021-11-01T06:30:12.000Z</published>
     <updated>2021-11-01T07:54:18.577Z</updated>
     
@@ -532,21 +532,21 @@
     
     
     
-    <category term="Data structures" scheme="https://shimmerjordan.eu.org/categories/Data-structures/"/>
+    <category term="Data structures" scheme="https://blog.shimmerjordan.eu.org/categories/Data-structures/"/>
     
     
-    <category term="Algorithm" scheme="https://shimmerjordan.eu.org/tags/Algorithm/"/>
+    <category term="Algorithm" scheme="https://blog.shimmerjordan.eu.org/tags/Algorithm/"/>
     
-    <category term="Data structures" scheme="https://shimmerjordan.eu.org/tags/Data-structures/"/>
+    <category term="Data structures" scheme="https://blog.shimmerjordan.eu.org/tags/Data-structures/"/>
     
-    <category term="Python" scheme="https://shimmerjordan.eu.org/tags/Python/"/>
+    <category term="Python" scheme="https://blog.shimmerjordan.eu.org/tags/Python/"/>
     
   </entry>
   
   <entry>
     <title>The Framework of Backtracking Algorithm Problems (DFS)</title>
-    <link href="https://shimmerjordan.eu.org/2021/08/07/DFSFramework/"/>
-    <id>https://shimmerjordan.eu.org/2021/08/07/DFSFramework/</id>
+    <link href="https://blog.shimmerjordan.eu.org/2021/08/07/DFSFramework/"/>
+    <id>https://blog.shimmerjordan.eu.org/2021/08/07/DFSFramework/</id>
     <published>2021-08-06T16:00:12.000Z</published>
     <updated>2021-08-09T12:59:58.421Z</updated>
     
@@ -557,14 +557,14 @@
     
     
     
-    <category term="Algorithm" scheme="https://shimmerjordan.eu.org/categories/Algorithm/"/>
+    <category term="Algorithm" scheme="https://blog.shimmerjordan.eu.org/categories/Algorithm/"/>
     
     
-    <category term="Algorithm" scheme="https://shimmerjordan.eu.org/tags/Algorithm/"/>
+    <category term="Algorithm" scheme="https://blog.shimmerjordan.eu.org/tags/Algorithm/"/>
     
-    <category term="DFS" scheme="https://shimmerjordan.eu.org/tags/DFS/"/>
+    <category term="DFS" scheme="https://blog.shimmerjordan.eu.org/tags/DFS/"/>
     
-    <category term="Backtracking" scheme="https://shimmerjordan.eu.org/tags/Backtracking/"/>
+    <category term="Backtracking" scheme="https://blog.shimmerjordan.eu.org/tags/Backtracking/"/>
     
   </entry>
   
