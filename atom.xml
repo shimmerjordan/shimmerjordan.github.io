@@ -6,7 +6,7 @@
   <link href="https://shimmerjordan.site/atom.xml" rel="self"/>
   
   <link href="https://shimmerjordan.site/"/>
-  <updated>2023-01-13T07:00:39.172Z</updated>
+  <updated>2023-04-10T15:30:47.957Z</updated>
   <id>https://shimmerjordan.site/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>中兴机顶盒B860AV2.1刷安卓/ARM64/OMV/EmuELEC</title>
+    <link href="https://shimmerjordan.site/2023/04/09/B860AV21-Tutorial/"/>
+    <id>https://shimmerjordan.site/2023/04/09/B860AV21-Tutorial/</id>
+    <published>2023-04-09T02:28:12.000Z</published>
+    <updated>2023-04-10T15:30:47.957Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;What-We-Do&quot;&gt;&lt;a href=&quot;#What-We-Do&quot; class=&quot;headerlink&quot; title=&quot;What We Do&quot;&gt;&lt;/a&gt;What We Do&lt;/h1&gt;&lt;p&gt;利用机顶盒的低能耗、低价格以及高性能的特点，刷入各种固件，使其应用在各种场景：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;刷入安卓/当贝桌面，绕开IPTV收费机制。适用于家庭收视场景；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;刷入armbian64系统，做微型服务器。适用于微服务器、PT盒子、PCDN盒子等场景。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;刷入OMV系统，做NAS。适用于轻量级家庭私有云场景。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;刷入EmuELEC系统，做怀旧游戏机。适用于轻量聚会游戏（怀旧）场景。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="Network" scheme="https://shimmerjordan.site/categories/Network/"/>
+    
+    
+    <category term="刷机" scheme="https://shimmerjordan.site/tags/%E5%88%B7%E6%9C%BA/"/>
+    
+    <category term="机顶盒" scheme="https://shimmerjordan.site/tags/%E6%9C%BA%E9%A1%B6%E7%9B%92/"/>
+    
+  </entry>
   
   <entry>
     <title>移动光猫吉比特GS3101超级账号获取更改桥接</title>
@@ -534,33 +565,6 @@
     <category term="DFS" scheme="https://shimmerjordan.site/tags/DFS/"/>
     
     <category term="Backtracking" scheme="https://shimmerjordan.site/tags/Backtracking/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Five shortest-circuit algorithms &amp; two ways to store maps</title>
-    <link href="https://shimmerjordan.site/2021/08/02/LC743-shortestCircuit_mapsStorage/"/>
-    <id>https://shimmerjordan.site/2021/08/02/LC743-shortestCircuit_mapsStorage/</id>
-    <published>2021-08-02T13:15:22.000Z</published>
-    <updated>2021-08-02T15:13:35.697Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;This article is a record of the answer to Leetcode 743, learning about the five shortest path solutions as follows: Floyd, Plain Dijkstra, Heap Optimization Dijkstra, Bellman Ford, SPFA. and three ways of storing graphs, including adjacency tables, adjacency matrices, and class &amp;amp; adjacency tables.&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="SPFA" scheme="https://shimmerjordan.site/tags/SPFA/"/>
-    
-    <category term="graph" scheme="https://shimmerjordan.site/tags/graph/"/>
-    
-    <category term="shortest path" scheme="https://shimmerjordan.site/tags/shortest-path/"/>
-    
-    <category term="Dijkstra" scheme="https://shimmerjordan.site/tags/Dijkstra/"/>
-    
-    <category term="Floyd" scheme="https://shimmerjordan.site/tags/Floyd/"/>
-    
-    <category term="Bellman-Ford" scheme="https://shimmerjordan.site/tags/Bellman-Ford/"/>
     
   </entry>
   

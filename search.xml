@@ -25,6 +25,244 @@
       </tags>
   </entry>
   <entry>
+    <title>中兴机顶盒B860AV2.1刷安卓/ARM64/OMV/EmuELEC</title>
+    <url>/2023/04/09/B860AV21-Tutorial/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="What-We-Do"><a href="#What-We-Do" class="headerlink" title="What We Do"></a>What We Do</h1><p>利用机顶盒的低能耗、低价格以及高性能的特点，刷入各种固件，使其应用在各种场景：</p>
+<ol>
+<li><p>刷入安卓/当贝桌面，绕开IPTV收费机制。适用于家庭收视场景；</p>
+</li>
+<li><p>刷入armbian64系统，做微型服务器。适用于微服务器、PT盒子、PCDN盒子等场景。</p>
+</li>
+<li><p>刷入OMV系统，做NAS。适用于轻量级家庭私有云场景。</p>
+</li>
+<li><p>刷入EmuELEC系统，做怀旧游戏机。适用于轻量聚会游戏（怀旧）场景。</p>
+</li>
+</ol>
+<a id="more"></a>
+
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><h2 id="中兴B860AV2-1配置"><a href="#中兴B860AV2-1配置" class="headerlink" title="中兴B860AV2.1配置"></a>中兴B860AV2.1配置</h2><p>芯片：S905L 四核 2GHz<br>存储：1G+8G<br>（猜测）接口：两个 USB，1 TF卡，1 网口，1 HDMI，有AV接口，无音频接口。</p>
+<p>无线：有Wifi，无蓝牙</p>
+<h2 id="硬件-工具准备"><a href="#硬件-工具准备" class="headerlink" title="硬件/工具准备"></a>硬件/工具准备</h2><ul>
+<li><p>双工USB线，可自己改造可网购。</p>
+<ul>
+<li>讲究的话可以直接购买，家里如果有富足数据线，剪断后只要两个usb公头。正常数据线有四根线，红色为正极，黑色为负极，白色、绿色为数据传输。按颜色对接即可。如果无颜色，只能借助万用表，确保两个公头的线序一致即可。（如图）<br><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/1.png" alt="USB"></li>
+</ul>
+</li>
+<li><p>短接工具：镊子、别针等导电物件，或网购“专用免拆短接HDMI刷机S905”（型号不一定通用，注意芯片信号）</p>
+</li>
+<li><p>网线以及机顶盒电源线</p>
+</li>
+<li><p>我用的小米的万能遥控是可行的，原始的遥控器可能在刷机后不通用了</p>
+</li>
+<li><p>TF卡以及读卡器，TF卡最少8G。如果需要刷EmuELEC，建议选用64G的TF卡，可以刷入更全的游戏包。</p>
+</li>
+</ul>
+<h2 id="软件准备"><a href="#软件准备" class="headerlink" title="软件准备"></a>软件准备</h2><ul>
+<li><p>刷机软件：<a href="https://pan.baidu.com/s/1XbCkDhSHTuq5IGXFwvalTQ">Amlogic USB Burning Tool</a>，提取码：iw8h </p>
+</li>
+<li><p>过时硬件的驱动：某些系统如果无法识别盒子的驱动，需要下载安装<a href="https://gsmusbdrivers.com/download/amlogic-usb-driver/">Amlogic USB Driver Android [Download] - GSM USB Drivers</a></p>
+</li>
+<li><p>线刷安卓固件（带ROOT）：<a href="https://pan.baidu.com/s/1SYtbQ0vg-gmN_Zy06zxKJQ">带ROOT安卓固件</a>，提取码：wmmh </p>
+</li>
+<li><p>卡刷固件烧写工具：<a href="https://www.balena.io/etcher">balenaEtcher - Flash OS images to SD cards &amp; USB drives</a></p>
+</li>
+<li><p>卡刷Armbian固件：<a href="https://pan.baidu.com/s/1bztVXaz1yLp3G_Po5OABLw">Armbian20.10</a>，提取码：zt7u </p>
+</li>
+<li><p>卡刷EmuELEC固件：<a href="https://pan.baidu.com/s/122dANVsfwi04g5BEP1StPA">emuelec4.3正式版-S905M-S905L-58G</a>，提取码：intl </p>
+</li>
+</ul>
+<p>其他场景以及其他设备型号的固件自行搜索，操作原理和过程类似。</p>
+<h1 id="避坑预警"><a href="#避坑预警" class="headerlink" title="避坑预警"></a>避坑预警</h1><p>这些坑可能遇见，但是我没遇见。做个备份</p>
+<ol>
+<li><p>拿到B860AV2.1盒子卡刷、Recovery、TTL写入、ADB都会锁，只能通过线刷才能成功。以上刷机方法都试过，很坑，建议大家不要去试。</p>
+</li>
+<li><p>线刷一般会发生以下三个错误  </p>
+</li>
+</ol>
+<ul>
+<li><p>线刷驱动装不上，win10要关闭驱动签名；</p>
+</li>
+<li><p>线刷98%失败，Amlogic Usb burning tool 2.1.6.8以后的版本做了超时退出，固件太大，验证时间超过30秒就会失败，这个地方卡了最久，建议使用2.1.6这个版本；</p>
+</li>
+<li><p>遥控左键、电源键都触发不了线刷时，拆机断电后短接C125位置的空位。  </p>
+</li>
+</ul>
+<ol start="3">
+<li><p>盒子优先从TF卡启动，eMMC和TF卡都有系统从TF卡启动；</p>
+</li>
+<li><p>CoreELEC，wifi驱动没有；需要自己编辑红外遥控键码；</p>
+</li>
+<li><p>Armbian 系统长时间不使用，UI就会卡顿；</p>
+</li>
+<li><p>潜龙的固件有几个版本不能自动获取IP，需要手动配置。</p>
+</li>
+</ol>
+<h1 id="刷入底包"><a href="#刷入底包" class="headerlink" title="刷入底包"></a>刷入底包</h1><p>以上的场景中，需要首先线刷底包，包括安卓或者当贝桌面等基于安卓系统的固件。后续才可以借助TF卡 or U盘卡刷其它系统。这里介绍刷安卓固件的步骤，当贝桌面换个固件写入即可。</p>
+<h2 id="短接"><a href="#短接" class="headerlink" title="短接"></a>短接</h2><p>这个操作只需要在线刷底包的时候进行。如果买了HDMI口的免拆工具，直接插上就行。如果型号不匹配或者不具备条件，参考以下方法短接电阻。注意B860AV2.1的短接入口为C125，后面带字母的可能需要短接的电阻不一样，例如B860AV2.1-A是短接C128。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/1.png" alt="短接"></p>
+<p>短接工具可以选回形针、镊子，甚至你可以选择焊上然后再吸锡器去除焊接点。</p>
+<h2 id="刷机"><a href="#刷机" class="headerlink" title="刷机"></a>刷机</h2><p>打开USB Burning Tool，左上角点击文件加载烧录包，之前下载的压缩包记得解压，用的是.img后缀的文件。选中刷机包后，把软件右侧所有能选中的勾都去掉，否则可能变砖。</p>
+<blockquote>
+<p>选择刷安卓底包用来刷其他系统的需要勾选刷写Boot Loader，以此来完成写入Emmc的操作。</p>
+</blockquote>
+<p>盒子<strong>不要通电</strong>。把双头USB一端连接到盒子的挨着网线的那个USB插孔，另一端连接上电脑的USB接口。</p>
+<p>这里得特殊说一下，因为盒子USB插孔选不对，电脑也不识别。正常情况下，盒子连接上电脑，指示灯会点亮。如果不亮，针对这两种情况，可以用以下步骤排除：</p>
+<ol>
+<li><p>若先插USB（盒子指示灯不亮），再短接C125，再插盒子电源（指示灯亮），电脑识别，松开短接，开始刷机。</p>
+</li>
+<li><p>若先插USB（盒子指示灯亮）（再拔掉USB），则先短接C125，再插USB，再插盒子电源，电脑识别，松开短接，开始刷机。</p>
+</li>
+</ol>
+<p>所以选择第一种情况。插机箱的USB，盒子先不亮这种。（如果你用的是笔记本，那就得判断用灯是先亮还是后亮的USB口了）此时，盒子跟电脑已经用USB线连接，盒子没有插电源。用短接工具把盒子电路板上的C125处两个针脚连接上。别松手，把盒子电源插上。</p>
+<p>这时候USB Burning Tool工具<strong>会提示“连接成功”</strong>。</p>
+<p>然后点击开始等待写入完成即可。这里埋点记录写入过程中可能存在的BUG。一般来说，重启或者重新尝试。</p>
+<p>刷机在4% 刷写u-boot的时候一定不要松开。等到7%开始格式化EMMC分区的时候就可以松开了。中途会失败，在点击开始即可。</p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>底包刷入很简单，后续接入显示器，借助遥控器（Maybe需要重新编译，但我有的时候可以用小米的万能遥控）</p>
+<h1 id="刷入armbian系统"><a href="#刷入armbian系统" class="headerlink" title="刷入armbian系统"></a>刷入armbian系统</h1><blockquote>
+<p>如果是高安版本就不要折腾了，高安可以线刷（固件与非高安不通用）但不能ROOT，无法启动和刷入Armbian</p>
+</blockquote>
+<h2 id="准备-1"><a href="#准备-1" class="headerlink" title="准备"></a>准备</h2><blockquote>
+<p>这一步建立在刷入带root权限的安卓系统的基础上</p>
+</blockquote>
+<ol>
+<li><p>需要准备[rebootupdate.apk](<a href="https://androidappsapk.co/download/me.thomastv.rebootupdate/8d3d30a22310d98e7862f183538f43f2/#google_vignette">List APK variants of Reboot to LibreELEC 1.1 apk | AndroidAppsAPK.co</a>)，如果原始网站不可用，可以选择<a href="https://pan.baidu.com/s/1HheiMaOpCPWfMA3QLdJMgg">百度云-rebootupdate.apk</a>，提取码：1f8l 。用来完成root权限的写入。点击刚才装的软件，选择首次运行。允许root执行。此时立刻插入U盘到USB2口。SD卡的话可以在启动机顶盒前就插入；</p>
+</li>
+<li><p>使用BalenaEtcher将armbian固件写入<strong>TF卡</strong>（U盘可能出错）</p>
+</li>
+</ol>
+<h2 id="刷写过程"><a href="#刷写过程" class="headerlink" title="刷写过程"></a>刷写过程</h2><ol>
+<li><p>将armbian固件成功写入之后，修改/boot分区中的<code>/extlinux/exlinux.conf</code>文件：在rk3399那两句前添加<code>#</code>，选择<code>s905x-p212.dtb</code>(去掉#即可)，其他非aml可删除：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/3.png" alt="exlinux.conf"></p>
+</li>
+<li><p>将/boot分区中文件<code>uboot-s905x...</code>修改为<code>uboot.ext</code></p>
+</li>
+</ol>
+<h2 id="从TF卡启动并刷入Emmc"><a href="#从TF卡启动并刷入Emmc" class="headerlink" title="从TF卡启动并刷入Emmc"></a>从TF卡启动并刷入Emmc</h2><p>可以TF卡启动，也可以刷入Emmc。插了TF卡的话默认使用TF卡启动，刷入Emmc方便后续刷OMV再挂载硬盘。不刷的话启动方法更灵活一些。</p>
+<ol>
+<li><p>打开rebootupdate，待安卓完全关闭后，重启前，插入SD卡，<strong>防止文件污染</strong></p>
+</li>
+<li><p>进入armbian(sd卡)系统，设置用户名和密码等  </p>
+</li>
+<li><p><code>cd /boot</code>,输入 <code>ls</code> 列出文件目录  </p>
+</li>
+<li><p>删除<code>System....Infmation</code>文件夹，使用 <code>rm -rf &#39;System....Infmation&#39;</code>    （带引号），如有dir等安卓文件，一并删除  </p>
+</li>
+<li><p>在root文件夹中，有<code>install-aml.sh</code>，写入emmc（<strong>不要使用是s905-emmc</strong>）  </p>
+<ol>
+<li><p>赋予权限<code>chmod 755 install-aml.sh</code></p>
+</li>
+<li><p><code>./install-aml.sh</code>  </p>
+</li>
+<li><p>等待刷写完成，重启即可。</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>成功刷入armbian，并写入emmc。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/4.png" alt="arm-64效果"></p>
+<h2 id="TIPS"><a href="#TIPS" class="headerlink" title="TIPS"></a>TIPS</h2><p>使用SSH在内网环境下登录系统。可以用端口转发+DDNS，利用软路由实现公网访问。</p>
+<p>首次进入会让你重新设置密码；如果开机一直显示<code>reset high-speed usb device number 2 using xhci-hcd</code>说明设备USB供电不足，建议换一个U盘（USB2.0）或者直接使用SD卡</p>
+<h1 id="刷入OMV系统"><a href="#刷入OMV系统" class="headerlink" title="刷入OMV系统"></a>刷入OMV系统</h1><h2 id="自动安装"><a href="#自动安装" class="headerlink" title="自动安装"></a>自动安装</h2><ol>
+<li><p>使用SSH登入刷了armbian系统的机顶盒，输入指令<code>armbian-config</code></p>
+</li>
+<li><p>选择自动安装：</p>
+<ul>
+<li>方向键移到Software⇨回车</li>
+<li>方向键移到Softy⇨回车</li>
+<li>方向键移到OMV⇨ 空格键选择⇨回车确定</li>
+<li>等待安装完成</li>
+</ul>
+</li>
+</ol>
+<h2 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h2><blockquote>
+<p>手动安装的原因是自动安装容易出错，下载进度缓慢</p>
+</blockquote>
+<ol>
+<li><p>添加OMV软件源</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &quot;deb http://packages.openmediavault.org/public arrakis main&quot; &gt; /etc/apt/sources.list.d/openmediavault.list</span><br><span class="line">apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 7E7A6C592EF35D13 24863F0C716B980B</span><br></pre></td></tr></table></figure></li>
+<li><p>设置环境变量</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export LANG=C</span><br><span class="line">export DEBIAN_FRONTEND=noninteractive</span><br><span class="line">export APT_LISTCHANGES_FRONTEND=none</span><br></pre></td></tr></table></figure></li>
+<li><p>开始安装OMV</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install openmediavault-keyring postfix</span><br><span class="line">apt install openmediavault</span><br></pre></td></tr></table></figure>
+<h2 id="TIPS-1"><a href="#TIPS-1" class="headerlink" title="TIPS"></a>TIPS</h2></li>
+</ol>
+<ul>
+<li><p>安装出现错误后，输入如下命令即可安装成功：<code>apt --fix-broken install</code></p>
+</li>
+<li><p>浏览器输入机顶盒的<code>IP</code>即可进入OMV系统，其中默认用户名为<code>admin</code>，密码为<code>openmediavault</code></p>
+</li>
+</ul>
+<h2 id="基础设置"><a href="#基础设置" class="headerlink" title="基础设置"></a>基础设置</h2><h3 id="共享移动硬盘"><a href="#共享移动硬盘" class="headerlink" title="共享移动硬盘"></a>共享移动硬盘</h3><blockquote>
+<p>注意： NFS 只是一小众的文件共亨协议，应用的不多，但苹果系统下应用很广，建议还是用SMB协议吧。通用性较强些。</p>
+</blockquote>
+<h4 id="01-挂载移动硬盘"><a href="#01-挂载移动硬盘" class="headerlink" title="01 挂载移动硬盘"></a>01 挂载移动硬盘</h4><ul>
+<li>插上移动硬盘接到n1的usb口</li>
+</ul>
+<blockquote>
+<p>OMV不支持EXT2，3，extFat，所以最好用ext4或NTFS</p>
+</blockquote>
+<ul>
+<li>存储器→文件系统</li>
+<li>选择移动硬盘→点击[挂载]→保存并应用</li>
+</ul>
+<h4 id="02-添加移动硬盘中需要共享的文件夹"><a href="#02-添加移动硬盘中需要共享的文件夹" class="headerlink" title="02 添加移动硬盘中需要共享的文件夹"></a>02 添加移动硬盘中需要共享的文件夹</h4><ul>
+<li>访问权限管理→点击[共享文件夹]</li>
+<li>点击[添加]</li>
+</ul>
+<blockquote>
+<p>名称：share</p>
+<p>设备：选择移动硬盘</p>
+<p>路径：点击选择，/表示共享整个移动硬盘</p>
+</blockquote>
+<ul>
+<li>点击[保存]</li>
+</ul>
+<h4 id="03-新建用户"><a href="#03-新建用户" class="headerlink" title="03 新建用户"></a>03 新建用户</h4><ul>
+<li>访问权限管理-&gt;用户-&gt;点[添加]</li>
+</ul>
+<blockquote>
+<p>名称 注意不能为root<br>密码<br>确认密码<br>用户组 勾选users</p>
+</blockquote>
+<h4 id="04-设置新建用户对文件夹的权限"><a href="#04-设置新建用户对文件夹的权限" class="headerlink" title="04 设置新建用户对文件夹的权限"></a>04 设置新建用户对文件夹的权限</h4><ul>
+<li>点击新建的用户</li>
+<li>点击[特权]→勾选[读和写]</li>
+<li>保存并应用</li>
+</ul>
+<h4 id="05-通过smb把共享文件夹共享出去"><a href="#05-通过smb把共享文件夹共享出去" class="headerlink" title="05 通过smb把共享文件夹共享出去"></a>05 通过smb把共享文件夹共享出去</h4><ul>
+<li>[服务]→[SMB/CIFS]</li>
+<li>[设置]→常规设置→勾选[启用]→保存并应用</li>
+<li>[共享]→点击[添加]</li>
+</ul>
+<blockquote>
+<p>共享文件夹：选择 share</p>
+</blockquote>
+<ul>
+<li>保存并应用</li>
+</ul>
+<blockquote>
+<p>之后就可以去[我的电脑]-&gt;[网络]中看到 名为“AML”的磁盘，输入刚创建的用户名和密码就可以登入</p>
+</blockquote>
+<h4 id="06-设置移动硬盘待机"><a href="#06-设置移动硬盘待机" class="headerlink" title="06 设置移动硬盘待机"></a>06 设置移动硬盘待机</h4><ul>
+<li>存储器→磁盘</li>
+<li>选择 移动硬盘→点击[编辑]</li>
+</ul>
+<blockquote>
+<p>高级电源管理：1-待机状态时最低功耗</p>
+<p>自动声音管理：禁用</p>
+<p>停转时间：20分钟</p>
+<p>写入缓存：勾选 [开启写入缓存]</p>
+</blockquote>
+<h1 id="刷入EmuELEC系统"><a href="#刷入EmuELEC系统" class="headerlink" title="刷入EmuELEC系统"></a>刷入EmuELEC系统</h1><p>刷入安卓底包后用SD卡完成卡刷，具体步骤类似以上，<strong>暂时</strong>不再赘述了，图的话有兴趣了补上。</p>
+]]></content>
+      <categories>
+        <category>Network</category>
+      </categories>
+      <tags>
+        <tag>刷机</tag>
+        <tag>机顶盒</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>移动光猫吉比特GS3101超级账号获取更改桥接</title>
     <url>/2023/01/09/GS3101-bridge/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>家里移动融合套餐的宽带用的光猫型号是GS3101，用面板后的账户密码登录发现权限几乎为零，本来改桥接要做什么也不好明说，为了避免麻烦就没找客服，这里记录一下自己折腾改桥接的方法。并且小记一下忘了拨号账户密码的解决方案。</p>
