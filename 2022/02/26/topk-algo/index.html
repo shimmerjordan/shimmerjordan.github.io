@@ -8,7 +8,7 @@
   <meta charset="utf-8" />
   <meta name="baidu-site-verification" content="code-kg5UjKJZM2" />
    
-  <meta name="keywords" content="活,炼,阿炳" />
+  <meta name="keywords" content="活,炼" />
    
   <meta name="description" content="shimmerjordan" />
   
@@ -130,7 +130,7 @@ var _hmt = _hmt || [];
   <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>TopK的字面意思很简单，就是求给定序列的前$k$大（or小）的元素。本文由简单思路入手，对解决方案逐步发散与优化。为简化叙述，本文讨论的均为最大标准下的TopK（最小标准同理）。</p>
 <a id="more"></a>
 
-<h1 id="1-全局排序"><a href="#1-全局排序" class="headerlink" title="1. 全局排序"></a>1. 全局排序</h1><p>这是最基础的想法，也是最容易实现的。只需要将给定序列进行全局排序后，取出最大的前$k$个即为所求。这里的排序算法选择可以参考<a href="https://shimmerjordan.site/2022/02/25/8SortingAlgorithms/">八大排序算法笔记</a>，其最优的时间复杂度为$O(nlogn)$。</p>
+<h1 id="1-全局排序"><a href="#1-全局排序" class="headerlink" title="1. 全局排序"></a>1. 全局排序</h1><p>这是最基础的想法，也是最容易实现的。只需要将给定序列进行全局排序后，取出最大的前$k$个即为所求。这里的排序算法选择可以参考<a target="_blank" rel="noopener" href="https://shimmerjordan.site/2022/02/25/8SortingAlgorithms/">八大排序算法笔记</a>，其最优的时间复杂度为$O(nlogn)$。</p>
 <h1 id="2-局部排序"><a href="#2-局部排序" class="headerlink" title="2. 局部排序"></a>2. 局部排序</h1><p>全局排序的时间复杂度之所以高，是因为对给定序列中除TopK的元素外进行了不必要的排序。那么我们就可以考虑使用局部排序的思想来优化算法。</p>
 <p>我们需要尽可能只对前$k$个最大数进行排序操作，或者只进行找到前$k$个最大数的操作。显然冒泡是一个很好的选择，因为每一趟的冒泡都可以找到当前序列的子序列最大值，也就可以保证在$k$趟冒泡的时间内找出TopK。</p>
 <p><strong>代码实现：</strong></p>
@@ -252,7 +252,7 @@ var _hmt = _hmt || [];
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shimmerjordan.site/2022/02/26/topk-algo/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shimmerjordan.eu.org/2022/02/26/topk-algo/" alt="微信分享二维码">
     </div>
 </div>
 
