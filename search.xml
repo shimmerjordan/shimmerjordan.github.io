@@ -99,7 +99,7 @@
 </ol>
 <h1 id="刷入底包"><a href="#刷入底包" class="headerlink" title="刷入底包"></a>刷入底包</h1><p>以上的场景中，需要首先线刷底包，包括安卓或者当贝桌面等基于安卓系统的固件。后续才可以借助TF卡 or U盘卡刷其它系统。这里介绍刷安卓固件的步骤，当贝桌面换个固件写入即可。</p>
 <h2 id="短接"><a href="#短接" class="headerlink" title="短接"></a>短接</h2><p>这个操作只需要在线刷底包的时候进行。如果买了HDMI口的免拆工具，直接插上就行。如果型号不匹配或者不具备条件，参考以下方法短接电阻。注意B860AV2.1的短接入口为C125，后面带字母的可能需要短接的电阻不一样，例如B860AV2.1-A是短接C128。</p>
-<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/1.png" alt="短接"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/2.png" alt="短接"></p>
 <p>短接工具可以选回形针、镊子，甚至你可以选择焊上然后再吸锡器去除焊接点。</p>
 <h2 id="刷机"><a href="#刷机" class="headerlink" title="刷机"></a>刷机</h2><p>打开USB Burning Tool，左上角点击文件加载烧录包，之前下载的压缩包记得解压，用的是.img后缀的文件。选中刷机包后，把软件右侧所有能选中的勾都去掉，否则可能变砖。</p>
 <blockquote>
@@ -190,7 +190,7 @@
 <li><p>安装出现错误后，输入如下命令即可安装成功：<code>apt --fix-broken install</code></p>
 </li>
 <li><p>浏览器输入机顶盒的<code>IP</code>即可进入OMV系统，其中默认用户名为<code>admin</code>，密码为<code>openmediavault</code></p>
-<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/4.png" alt="OMV"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/5.png" alt="OMV"></p>
 </li>
 </ul>
 <h2 id="基础设置"><a href="#基础设置" class="headerlink" title="基础设置"></a>基础设置</h2><h3 id="共享移动硬盘"><a href="#共享移动硬盘" class="headerlink" title="共享移动硬盘"></a>共享移动硬盘</h3><blockquote>
