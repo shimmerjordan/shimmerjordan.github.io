@@ -1,12 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://blog.shimmerjordan.eu.org/2023/04/09/B860AV21-Tutorial/</loc>
-    <lastmod>2023-04-10</lastmod>
+    <loc>https://blog.shimmerjordan.eu.org/2020/11/08/WatermarkRemoval/</loc>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2020/12/08/addTwoNumbers/</loc>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2021/01/27/freeWebpageCDN/</loc>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2021/02/01/DeployGithubActions/</loc>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2021/01/24/freeWebpage/</loc>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2020/12/03/Java-HashMap/</loc>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2021/08/07/DFSFramework/</loc>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2021/07/31/DPFramwork/</loc>
+    <lastmod>2023-04-11</lastmod>
   </url>
   <url>
     <loc>https://blog.shimmerjordan.eu.org/2020/01/18/about/</loc>
-    <lastmod>2023-04-10</lastmod>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-1/</loc>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2021/03/08/introToSZ-education/</loc>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2021/08/02/LC743-shortestCircuit_mapsStorage/</loc>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2022/07/02/Mybatis-dict/</loc>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2020/06/19/pyecharts_tour_statistic/</loc>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2022/02/25/8SortingAlgorithms/</loc>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-2/</loc>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2022/07/02/Spring-dict/</loc>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2023/04/09/B860AV21-Tutorial/</loc>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2021/03/10/sz-educationLocalDeploy/</loc>
+    <lastmod>2023-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.shimmerjordan.eu.org/2022/07/08/url-visit/</loc>
+    <lastmod>2023-04-11</lastmod>
   </url>
   <url>
     <loc>https://blog.shimmerjordan.eu.org/2023/01/07/soft-routing-setup/</loc>
@@ -17,32 +89,12 @@
     <lastmod>2023-01-13</lastmod>
   </url>
   <url>
-    <loc>https://blog.shimmerjordan.eu.org/2022/07/08/url-visit/</loc>
-    <lastmod>2022-07-12</lastmod>
-  </url>
-  <url>
     <loc>https://blog.shimmerjordan.eu.org/2022/07/07/SpringBoot-CORS/</loc>
-    <lastmod>2022-07-07</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-2/</loc>
-    <lastmod>2022-07-07</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-1/</loc>
     <lastmod>2022-07-07</lastmod>
   </url>
   <url>
     <loc>https://blog.shimmerjordan.eu.org/2022/06/30/geforce-now-setup/</loc>
     <lastmod>2022-07-05</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.shimmerjordan.eu.org/2022/07/02/Mybatis-dict/</loc>
-    <lastmod>2022-07-03</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.shimmerjordan.eu.org/2022/07/02/Spring-dict/</loc>
-    <lastmod>2022-07-02</lastmod>
   </url>
   <url>
     <loc>https://blog.shimmerjordan.eu.org/2022/04/03/spring-transaction-intro/</loc>
@@ -73,40 +125,12 @@
     <lastmod>2022-03-03</lastmod>
   </url>
   <url>
-    <loc>https://blog.shimmerjordan.eu.org/2022/02/25/8SortingAlgorithms/</loc>
-    <lastmod>2022-02-26</lastmod>
-  </url>
-  <url>
     <loc>https://blog.shimmerjordan.eu.org/2021/11/01/clever-use-of-set/</loc>
     <lastmod>2021-11-01</lastmod>
   </url>
   <url>
-    <loc>https://blog.shimmerjordan.eu.org/2021/08/07/DFSFramework/</loc>
-    <lastmod>2021-08-09</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.shimmerjordan.eu.org/2021/07/31/DPFramwork/</loc>
-    <lastmod>2021-08-06</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.shimmerjordan.eu.org/2021/08/02/LC743-shortestCircuit_mapsStorage/</loc>
-    <lastmod>2021-08-02</lastmod>
-  </url>
-  <url>
     <loc>https://blog.shimmerjordan.eu.org/2021/03/16/vuexStoreDispatchAndCommit/</loc>
     <lastmod>2021-05-23</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.shimmerjordan.eu.org/2021/03/08/introToSZ-education/</loc>
-    <lastmod>2021-05-18</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.shimmerjordan.eu.org/2021/02/01/DeployGithubActions/</loc>
-    <lastmod>2021-03-18</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.shimmerjordan.eu.org/2021/03/10/sz-educationLocalDeploy/</loc>
-    <lastmod>2021-03-14</lastmod>
   </url>
   <url>
     <loc>https://blog.shimmerjordan.eu.org/2020/01/18/AB/</loc>
@@ -129,32 +153,12 @@
     <lastmod>2021-02-06</lastmod>
   </url>
   <url>
-    <loc>https://blog.shimmerjordan.eu.org/2020/12/03/Java-HashMap/</loc>
-    <lastmod>2021-02-06</lastmod>
-  </url>
-  <url>
     <loc>https://blog.shimmerjordan.eu.org/2020/06/25/SpringBoot-SpringCloud/</loc>
-    <lastmod>2021-02-06</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.shimmerjordan.eu.org/2021/01/27/freeWebpageCDN/</loc>
     <lastmod>2021-02-06</lastmod>
   </url>
   <url>
     <loc>https://blog.shimmerjordan.eu.org/2020/06/27/multi-chrome/</loc>
     <lastmod>2021-02-06</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.shimmerjordan.eu.org/2020/11/08/WatermarkRemoval/</loc>
-    <lastmod>2021-02-06</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.shimmerjordan.eu.org/2020/12/08/addTwoNumbers/</loc>
-    <lastmod>2021-02-06</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.shimmerjordan.eu.org/2021/01/24/freeWebpage/</loc>
-    <lastmod>2021-02-04</lastmod>
   </url>
   <url>
     <loc>https://blog.shimmerjordan.eu.org/2020/06/13/SpringFactoryModes/</loc>
@@ -247,10 +251,6 @@
   <url>
     <loc>https://blog.shimmerjordan.eu.org/2020/11/03/Milestones/</loc>
     <lastmod>2020-11-03</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.shimmerjordan.eu.org/2020/06/19/pyecharts_tour_statistic/</loc>
-    <lastmod>2020-06-21</lastmod>
   </url>
   <url>
     <loc>https://blog.shimmerjordan.eu.org/2020/06/15/MyBaits-generator-IDEAPlugin/</loc>
