@@ -160,6 +160,7 @@
 </ol>
 <p>成功刷入armbian，并写入emmc：</p>
 <p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/4.png" alt="arm-64效果"></p>
+<p>此时即可进入arm系统开始玩耍啦~<br>S</p>
 <h2 id="TIPS"><a href="#TIPS" class="headerlink" title="TIPS"></a>TIPS</h2><p>使用SSH在内网环境下登录系统。可以用端口转发+DDNS，利用软路由实现公网访问。</p>
 <p>首次进入会让你重新设置密码；如果开机一直显示<code>reset high-speed usb device number 2 using xhci-hcd</code>说明设备USB供电不足，建议换一个U盘（USB2.0）或者直接使用SD卡</p>
 <h1 id="刷入OMV系统"><a href="#刷入OMV系统" class="headerlink" title="刷入OMV系统"></a>刷入OMV系统</h1><h2 id="自动安装"><a href="#自动安装" class="headerlink" title="自动安装"></a>自动安装</h2><ol>
@@ -184,7 +185,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export LANG=C</span><br><span class="line">export DEBIAN_FRONTEND=noninteractive</span><br><span class="line">export APT_LISTCHANGES_FRONTEND=none</span><br></pre></td></tr></table></figure></li>
 <li><p>开始安装OMV</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install openmediavault-keyring postfix</span><br><span class="line">apt install openmediavault</span><br></pre></td></tr></table></figure>
-<h2 id="TIPS-1"><a href="#TIPS-1" class="headerlink" title="TIPS"></a>TIPS</h2></li>
+<h3 id="TIPS-1"><a href="#TIPS-1" class="headerlink" title="TIPS"></a>TIPS</h3></li>
 </ol>
 <ul>
 <li><p>安装出现错误后，输入如下命令即可安装成功：<code>apt --fix-broken install</code></p>
@@ -196,7 +197,7 @@
 <h2 id="基础设置"><a href="#基础设置" class="headerlink" title="基础设置"></a>基础设置</h2><h3 id="共享移动硬盘"><a href="#共享移动硬盘" class="headerlink" title="共享移动硬盘"></a>共享移动硬盘</h3><blockquote>
 <p>注意： NFS 只是一小众的文件共亨协议，应用的不多，但苹果系统下应用很广，建议还是用SMB协议吧。通用性较强些。</p>
 </blockquote>
-<h4 id="01-挂载移动硬盘"><a href="#01-挂载移动硬盘" class="headerlink" title="01 挂载移动硬盘"></a>01 挂载移动硬盘</h4><ul>
+<h3 id="01-挂载移动硬盘"><a href="#01-挂载移动硬盘" class="headerlink" title="01 挂载移动硬盘"></a>01 挂载移动硬盘</h3><ul>
 <li>插上移动硬盘接到n1的usb口</li>
 </ul>
 <blockquote>
@@ -206,7 +207,7 @@
 <li>存储器→文件系统</li>
 <li>选择移动硬盘→点击[挂载]→保存并应用</li>
 </ul>
-<h4 id="02-添加移动硬盘中需要共享的文件夹"><a href="#02-添加移动硬盘中需要共享的文件夹" class="headerlink" title="02 添加移动硬盘中需要共享的文件夹"></a>02 添加移动硬盘中需要共享的文件夹</h4><ul>
+<h3 id="02-添加移动硬盘中需要共享的文件夹"><a href="#02-添加移动硬盘中需要共享的文件夹" class="headerlink" title="02 添加移动硬盘中需要共享的文件夹"></a>02 添加移动硬盘中需要共享的文件夹</h3><ul>
 <li>访问权限管理→点击[共享文件夹]</li>
 <li>点击[添加]</li>
 </ul>
@@ -218,18 +219,18 @@
 <ul>
 <li>点击[保存]</li>
 </ul>
-<h4 id="03-新建用户"><a href="#03-新建用户" class="headerlink" title="03 新建用户"></a>03 新建用户</h4><ul>
+<h3 id="03-新建用户"><a href="#03-新建用户" class="headerlink" title="03 新建用户"></a>03 新建用户</h3><ul>
 <li>访问权限管理-&gt;用户-&gt;点[添加]</li>
 </ul>
 <blockquote>
 <p>名称 注意不能为root<br>密码<br>确认密码<br>用户组 勾选users</p>
 </blockquote>
-<h4 id="04-设置新建用户对文件夹的权限"><a href="#04-设置新建用户对文件夹的权限" class="headerlink" title="04 设置新建用户对文件夹的权限"></a>04 设置新建用户对文件夹的权限</h4><ul>
+<h3 id="04-设置新建用户对文件夹的权限"><a href="#04-设置新建用户对文件夹的权限" class="headerlink" title="04 设置新建用户对文件夹的权限"></a>04 设置新建用户对文件夹的权限</h3><ul>
 <li>点击新建的用户</li>
 <li>点击[特权]→勾选[读和写]</li>
 <li>保存并应用</li>
 </ul>
-<h4 id="05-通过smb把共享文件夹共享出去"><a href="#05-通过smb把共享文件夹共享出去" class="headerlink" title="05 通过smb把共享文件夹共享出去"></a>05 通过smb把共享文件夹共享出去</h4><ul>
+<h3 id="05-通过smb把共享文件夹共享出去"><a href="#05-通过smb把共享文件夹共享出去" class="headerlink" title="05 通过smb把共享文件夹共享出去"></a>05 通过smb把共享文件夹共享出去</h3><ul>
 <li>[服务]→[SMB/CIFS]</li>
 <li>[设置]→常规设置→勾选[启用]→保存并应用</li>
 <li>[共享]→点击[添加]</li>
@@ -243,7 +244,7 @@
 <blockquote>
 <p>之后就可以去[我的电脑]-&gt;[网络]中看到 名为“AML”的磁盘，输入刚创建的用户名和密码就可以登入</p>
 </blockquote>
-<h4 id="06-设置移动硬盘待机"><a href="#06-设置移动硬盘待机" class="headerlink" title="06 设置移动硬盘待机"></a>06 设置移动硬盘待机</h4><ul>
+<h3 id="06-设置移动硬盘待机"><a href="#06-设置移动硬盘待机" class="headerlink" title="06 设置移动硬盘待机"></a>06 设置移动硬盘待机</h3><ul>
 <li>存储器→磁盘</li>
 <li>选择 移动硬盘→点击[编辑]</li>
 </ul>
@@ -253,6 +254,69 @@
 <p>停转时间：20分钟</p>
 <p>写入缓存：勾选 [开启写入缓存]</p>
 </blockquote>
+<h2 id="安装配置transmission以及syncthing"><a href="#安装配置transmission以及syncthing" class="headerlink" title="安装配置transmission以及syncthing"></a>安装配置transmission以及syncthing</h2><blockquote>
+<p>Omv5支持的插件还很少，所以transmission和syncthing只能通过<code>armbian-config</code>命令安装。</p>
+</blockquote>
+<ul>
+<li>SSH登陆后<code>armbian-config</code>，[Software] → [Softy] → 空格选择上[Transmission、Syncthing]→ 回车确认安装</li>
+</ul>
+<h3 id="Transmission"><a href="#Transmission" class="headerlink" title="Transmission"></a>Transmission</h3><ul>
+<li><p>修改账号密码:</p>
+<ul>
+<li>文件路径<code>vim /etc/transmission-daemon/settings.json</code></li>
+<li><code># rpc-username rpc-password</code>都填明文；<code>download-dir为</code>下载路径。</li>
+<li><code>:wq!</code> 保存并退出vim</li>
+<li><code>systemctl reload transmission-daemon</code> 使改动生效</li>
+</ul>
+</li>
+<li><p>换UI</p>
+<ul>
+<li>直接参考，傻瓜式更换: <a href="https://github.com/ronggang/transmission-web-control/wiki/Linux-Installation-CN">Github</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="Syncthing基础配置"><a href="#Syncthing基础配置" class="headerlink" title="Syncthing基础配置"></a>Syncthing基础配置</h3><ol>
+<li>打开UI界面，http://{omv-ip}:8384/，右上角操作，显示id</li>
+<li>手机安装Syncthing app（<a href="https://github.com/syncthing/syncthing">开源项目地址</a>，安卓apk可以通过<a href="https://f-droid.org/zh_Hans/packages/com.nutomic.syncthingandroid/">F-Droid</a>下载），设备，有上角+，输入上述id，过一会，网页显示有设备请求连接，连接即可；</li>
+<li>手机上添加需要备份的文件夹，版本控制无，共享给远程已连接的omv设备；</li>
+<li>WEB UI上看到手机共享的文件，选择一个路径保存，版本控制选回收站，参数“在该时间后清除”填0</li>
+<li>有时候，手机清理了一下，会发生<code>folder markermissing</code>错误，在手机需要备份的目录下创建空白文件夹<code>.stfolder</code>，并配置手机清理白名单。</li>
+</ol>
+<h2 id="OMV外网访问及同步"><a href="#OMV外网访问及同步" class="headerlink" title="OMV外网访问及同步"></a>OMV外网访问及同步</h2><h3 id="DDNS-端口转发"><a href="#DDNS-端口转发" class="headerlink" title="DDNS + 端口转发"></a>DDNS + 端口转发</h3><p>组网拓扑暂不细述，有两种思路：</p>
+<ol>
+<li><p>光猫桥接+R2S软路拨号+外接omv：</p>
+<ul>
+<li><p>确认对应传输端口，在R2S软路由侧设置端口转发，监听、转发并开放对应端口（防火墙）：</p>
+<ul>
+<li>一般是在OMV Web UI中设置了相应传输协议的端口，但需要注意的是例如FTP的21端口为发送命令端口，主动模式下的FTP的传输文件端口是<code>命令端口号-1</code>；被动传输文件端口随机，其他的协议端口自行查询。</li>
+<li>Syncthing：在WEB UI（http://{omv-ip}:8384/）中检查连接记录（默认的dynamic地址的端口是否为22000），转发开放22000和48149端口</li>
+</ul>
+</li>
+<li><p>通过R2S的DDNS_ip以及转发的端口号完成连接</p>
+<p> <img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/6.png" alt="端口转发"></p>
+</li>
+</ul>
+</li>
+<li><p>光猫桥接+R2S拨号+交换机+omv或者光猫拨号+omv：</p>
+<ul>
+<li>主要需要让omv直接获取到公网ip，然后在omv中启用ddns的docker实现外网访问。</li>
+<li>这种实现方式最优，但要么牺牲组网可拓展性要么牺牲钱包买交换机。</li>
+</ul>
+</li>
+</ol>
+<h3 id="Syncthing外网访问"><a href="#Syncthing外网访问" class="headerlink" title="Syncthing外网访问"></a>Syncthing外网访问</h3><p>打开上述下载安装的手机app：Syncthing，进行相关设置。无需端口转发以及DDNS之类的操作。此项目基于GO语言开发，类似torrent协议但只存储在个人设备上。<strong>须要</strong>注意以下几点：</p>
+<ol>
+<li><p>一定一定要确认好自己的硬盘挂载路径，否则默认同步到EMMC中，很快就占满空间了。方法可参考：输入<code>mount -l</code>和挂载项对比，如图所示：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/8.png" alt="挂载确认"></p>
+<p>然后在OMV端的Syncthing UI配置OMV端同步文件夹，可以看到是正在同步状态：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/9.png" alt="挂载"></p>
+</li>
+</ol>
+<ol start="2">
+<li><p>做好id和标签的规划和命名以方便管理，建议在OMV的Syncthing UI和手机端均勾选上自动接受，以免后续同步的时候需要手动点击同意创建文件夹。同时注意勾选相关权限和共享文件夹以保证同步可达性。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/7.jpg" alt="配置确认"></p>
+</li>
+</ol>
 <h1 id="刷入EmuELEC系统"><a href="#刷入EmuELEC系统" class="headerlink" title="刷入EmuELEC系统"></a>刷入EmuELEC系统</h1><p>刷入安卓底包后用SD卡完成卡刷，具体步骤类似以上，<strong>暂时</strong>不再赘述了，图的话有兴趣了补上。</p>
 ]]></content>
       <categories>
