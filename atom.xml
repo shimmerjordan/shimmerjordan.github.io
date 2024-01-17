@@ -6,7 +6,7 @@
   <link href="https://blog.shimmerjordan.eu.org/atom.xml" rel="self"/>
   
   <link href="https://blog.shimmerjordan.eu.org/"/>
-  <updated>2023-04-14T10:55:32.518Z</updated>
+  <updated>2024-01-17T11:17:36.208Z</updated>
   <id>https://blog.shimmerjordan.eu.org/</id>
   
   <author>
@@ -15,6 +15,72 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网站备忘/备用</title>
+    <link href="https://blog.shimmerjordan.eu.org/2024/01/17/web4memo/"/>
+    <id>https://blog.shimmerjordan.eu.org/2024/01/17/web4memo/</id>
+    <published>2024-01-17T12:48:00.000Z</published>
+    <updated>2024-01-17T11:17:36.208Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;记录一些自用 &amp;amp; 公开的资源站/备用链接&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="memo" scheme="https://blog.shimmerjordan.eu.org/categories/memo/"/>
+    
+    
+    <category term="Web" scheme="https://blog.shimmerjordan.eu.org/tags/Web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VSCode For Android 安卓使用vscode</title>
+    <link href="https://blog.shimmerjordan.eu.org/2024/01/17/vscode4android/"/>
+    <id>https://blog.shimmerjordan.eu.org/2024/01/17/vscode4android/</id>
+    <published>2024-01-17T11:48:00.000Z</published>
+    <updated>2024-01-17T11:14:49.329Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;无意发现鸿蒙4可以在连接显示器的时候启用电脑模式，如果可以运行生产力软件——Visual Studio Code那就完美了。拾人牙慧实施了一些方案，发现截至20240117还是这种本地Termex+proot+vscode_server(pacman)的后端结合via浏览器全屏操作的前端方案较为舒适且坑少。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="开发环境" scheme="https://blog.shimmerjordan.eu.org/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
+    
+    
+    <category term="开发环境" scheme="https://blog.shimmerjordan.eu.org/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
+    
+    <category term="Android" scheme="https://blog.shimmerjordan.eu.org/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用kplayer实现无人值守推流云盘资源</title>
+    <link href="https://blog.shimmerjordan.eu.org/2023/11/28/kpalyerWithCloudFile/"/>
+    <id>https://blog.shimmerjordan.eu.org/2023/11/28/kpalyerWithCloudFile/</id>
+    <published>2023-11-28T05:48:00.000Z</published>
+    <updated>2024-01-17T10:59:23.522Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在Linux主机（NAS、软路由等）上部署无人值守的24h推流直播服务，利用Alist，NFS等服务挂载自动挂载云盘资源。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://live.bilibili.com/21256315&quot;&gt;Blibili直播地址&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="NAS" scheme="https://blog.shimmerjordan.eu.org/categories/NAS/"/>
+    
+    
+    <category term="Alist" scheme="https://blog.shimmerjordan.eu.org/tags/Alist/"/>
+    
+    <category term="Linux服务" scheme="https://blog.shimmerjordan.eu.org/tags/Linux%E6%9C%8D%E5%8A%A1/"/>
+    
+    <category term="NAS" scheme="https://blog.shimmerjordan.eu.org/tags/NAS/"/>
+    
+  </entry>
   
   <entry>
     <title>中兴机顶盒B860AV2.1刷安卓/ARM64/OMV/EmuELEC</title>
@@ -486,85 +552,6 @@
     
     
     <category term="Algorithm" scheme="https://blog.shimmerjordan.eu.org/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>八大排序算法笔记</title>
-    <link href="https://blog.shimmerjordan.eu.org/2022/02/25/8SortingAlgorithms/"/>
-    <id>https://blog.shimmerjordan.eu.org/2022/02/25/8SortingAlgorithms/</id>
-    <published>2022-02-25T03:16:10.000Z</published>
-    <updated>2023-04-11T13:36:48.463Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;排序有内部排序和外部排序，内部排序是数据记录在内存中进行排序，而外部排序是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。这里介绍的是内部排序中的八大主流排序算法：&lt;/p&gt;
-&lt;center&gt;
-  &lt;img style=&quot;border-radius: 0.3125em;
-  box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);&quot; 
-  src=&quot;https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed/blog/8SortingAlg/1.jpg&quot; width=&#39;70%&#39;&gt;
-  &lt;br&gt;
-  &lt;div style=&quot;color:orange; border-bottom: 1px solid #d9d9d9;
-  display: inline-block;
-  color: #999;
-  padding: 2px;&quot;&gt;算法结构&lt;/div&gt;
-&lt;/center&gt;
-
-&lt;p&gt;当$n$较大，则应采用时间复杂度为$O(nlog2n)$的排序方法：快速排序、堆排序或归并排序序。其中快速排序是目前基于比较的内部排序中被认为是最好的方法，当待排序的关键字是随机分布时，快速排序的&lt;strong&gt;平均&lt;/strong&gt;时间最短&lt;strong&gt;但不稳定&lt;/strong&gt;。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Algorithm" scheme="https://blog.shimmerjordan.eu.org/categories/Algorithm/"/>
-    
-    
-    <category term="Algorithm" scheme="https://blog.shimmerjordan.eu.org/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Clever use of set</title>
-    <link href="https://blog.shimmerjordan.eu.org/2021/11/01/clever-use-of-set/"/>
-    <id>https://blog.shimmerjordan.eu.org/2021/11/01/clever-use-of-set/</id>
-    <published>2021-11-01T06:30:12.000Z</published>
-    <updated>2021-11-01T07:54:18.577Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;I noticed that we can use set to simplify algorithm in many problems, including &lt;a href=&quot;https://leetcode-cn.com/problems/distribute-candies&quot;&gt;distribute candies&lt;/a&gt; and &lt;a href=&quot;https://leetcode-cn.com/problems/keyboard-row/&quot;&gt;keyboard row&lt;/a&gt;. Thus, I conclude some clever use of &lt;code&gt;set&lt;/code&gt; in python and do some comparison between &lt;code&gt;list&lt;/code&gt;.&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Data structures" scheme="https://blog.shimmerjordan.eu.org/categories/Data-structures/"/>
-    
-    
-    <category term="Algorithm" scheme="https://blog.shimmerjordan.eu.org/tags/Algorithm/"/>
-    
-    <category term="Data structures" scheme="https://blog.shimmerjordan.eu.org/tags/Data-structures/"/>
-    
-    <category term="Python" scheme="https://blog.shimmerjordan.eu.org/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>The Framework of Backtracking Algorithm Problems (DFS)</title>
-    <link href="https://blog.shimmerjordan.eu.org/2021/08/07/DFSFramework/"/>
-    <id>https://blog.shimmerjordan.eu.org/2021/08/07/DFSFramework/</id>
-    <published>2021-08-06T16:00:12.000Z</published>
-    <updated>2023-04-11T13:36:48.470Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;This paper addresses several questions.&lt;/p&gt;
-&lt;p&gt;What is the backtracking algorithm? What are the techniques for solving problems related to backtracking algorithms? How do I learn backtracking algorithms? Is there a pattern to the backtracking algorithm code?&lt;/p&gt;
-&lt;p&gt;The backtracking algorithm is actually what we often call the &lt;strong&gt;DFS algorithm&lt;/strong&gt;, which is essentially a violent exhaustive &lt;strong&gt;enumeration algorithm&lt;/strong&gt;.&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Algorithm" scheme="https://blog.shimmerjordan.eu.org/categories/Algorithm/"/>
-    
-    
-    <category term="Algorithm" scheme="https://blog.shimmerjordan.eu.org/tags/Algorithm/"/>
-    
-    <category term="DFS" scheme="https://blog.shimmerjordan.eu.org/tags/DFS/"/>
-    
-    <category term="Backtracking" scheme="https://blog.shimmerjordan.eu.org/tags/Backtracking/"/>
     
   </entry>
   

@@ -25,6 +25,78 @@
       </tags>
   </entry>
   <entry>
+    <title>网站备忘/备用</title>
+    <url>/2024/01/17/web4memo/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>记录一些自用 &amp; 公开的资源站/备用链接</p>
+<a id="more"></a>
+
+<h1 id="资源站"><a href="#资源站" class="headerlink" title="资源站"></a>资源站</h1><p>TODO</p>
+<h1 id="备用"><a href="#备用" class="headerlink" title="备用"></a>备用</h1><p>TODO</p>
+]]></content>
+      <categories>
+        <category>memo</category>
+      </categories>
+      <tags>
+        <tag>Web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VSCode For Android 安卓使用vscode</title>
+    <url>/2024/01/17/vscode4android/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>无意发现鸿蒙4可以在连接显示器的时候启用电脑模式，如果可以运行生产力软件——Visual Studio Code那就完美了。拾人牙慧实施了一些方案，发现截至20240117还是这种本地Termex+proot+vscode_server(pacman)的后端结合via浏览器全屏操作的前端方案较为舒适且坑少。</p>
+<a id="more"></a>
+
+<h1 id="安装Termux"><a href="#安装Termux" class="headerlink" title="安装Termux"></a>安装Termux</h1><p>进入<a href="https://d.icdown.club/repository/main/ZeroTermux/">IXCM工作室下载站 (icdown.club)</a>下载比较新的版本，Zero-Termux比老旧的Termux更好用。如果下载站挂掉可以尝试：</p>
+<ol>
+<li><p><a href="https://f-droid.org/?utm_source=ld246.com">F-Droid - Free and Open Source Android App Repository</a>下载，不要用Play商店（老旧不再维护）</p>
+</li>
+<li></li>
+</ol>
+]]></content>
+      <categories>
+        <category>开发环境</category>
+      </categories>
+      <tags>
+        <tag>开发环境</tag>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用kplayer实现无人值守推流云盘资源</title>
+    <url>/2023/11/28/kpalyerWithCloudFile/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>在Linux主机（NAS、软路由等）上部署无人值守的24h推流直播服务，利用Alist，NFS等服务挂载自动挂载云盘资源。</p>
+<blockquote>
+<p><a href="http://live.bilibili.com/21256315">Blibili直播地址</a></p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="Alist挂载云盘"><a href="#Alist挂载云盘" class="headerlink" title="Alist挂载云盘"></a>Alist挂载云盘</h1><ol>
+<li>NAS利用<code>Alist docker</code>挂载云盘：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">alist:5244</span><br><span class="line">docker run -d --restart=always -v /etc/alist:/opt/alist/data -p 5244:5244 -e PUID=0 -e PGID=0 -e UMASK=022 --name=&quot;alist&quot; xhofe/alist:main</span><br></pre></td></tr></table></figure>
+<p>    QNAP用docker方案挂载Alist会在每次重启NAS的时候丢失挂载的网盘配置，建议直接使用脚本在目录中安装：<a href="https://alist.nn.ci/guide/install/script.html">One-click Script | AList Docs (nn.ci)</a></p>
+<ol start="2">
+<li><p>利用HybridMount等应用挂载Alist内云盘到NAS本地</p>
+<blockquote>
+<p><a href="http://localhost:5244/dav">http://localhost:5244/dav</a></p>
+</blockquote>
+</li>
+</ol>
+<h1 id="KPlayer"><a href="#KPlayer" class="headerlink" title="KPlayer"></a>KPlayer</h1><blockquote>
+<p><a href="https://docs.kplayer.net/">https://docs.kplayer.net/</a></p>
+</blockquote>
+<p>暂时直接参考这个吧，没时间写</p>
+]]></content>
+      <categories>
+        <category>NAS</category>
+      </categories>
+      <tags>
+        <tag>Alist</tag>
+        <tag>Linux服务</tag>
+        <tag>NAS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>中兴机顶盒B860AV2.1刷安卓/ARM64/OMV/EmuELEC</title>
     <url>/2023/04/09/B860AV21-Tutorial/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="What-We-Do"><a href="#What-We-Do" class="headerlink" title="What We Do"></a>What We Do</h1><p>利用机顶盒的低能耗、低价格以及高性能的特点，刷入各种固件，使其应用在各种场景：</p>

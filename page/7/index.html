@@ -169,6 +169,182 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-前向星与链式前向星"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/02/13/starChain/"
+    >前向星与链式前向星</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/02/13/starChain/" class="article-date">
+  <time datetime="2020-02-13T06:46:15.000Z" itemprop="datePublished">2020-02-13</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%9B%BE%E8%AE%BA/">图论</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="前向星"><a href="#前向星" class="headerlink" title="前向星"></a>前向星</h1><p>前向星是以存储边的方式来存储图，先将边读入并存储在连续的数组中，然后按照边的起点进行排序，这样数组中起点相同的边就能够在数组中进行连续访问了。<br>其有点在于实现简单，易于理解。缺点是在读入边后需要对所有边进行一次排序，带来了时间开销，实用性也较差。因此只适合离线算法。  </p>
+<h1 id="链式前向星（实质为数组模拟链表）"><a href="#链式前向星（实质为数组模拟链表）" class="headerlink" title="链式前向星（实质为数组模拟链表）"></a>链式前向星（实质为数组模拟链表）</h1><p>链式前向星和邻接表类似，也是链式结构的结合，每个节点i均有一个链表，此链表内的数据均为以节点i为起点的所有边的集合（对比邻接表存的是顶点的集合），边的表示为一个四元组(to,w,next)，其中to代表该条边的有向点对(w,v)，w代表边上的权值，next指向下一条边。<br>调用的时候只要通过head[i]就能访问到由节点i出发的第一条边的编号，通过编号到edge数组进行索引可以得到边的具体信息，然后根据这条边的next域可以得到第二条边的编号，以此类推，直到next域为INF（这里的INF即head数组初始化的值，一般取-1即可）</p> 
+      <a class="article-more-link" href="/2020/02/13/starChain/"
+        >Read more...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+  
+</article>
+
+    
+    <article
+  id="post-SPFA算法详解"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/02/13/intro-SPFA/"
+    >SPFA算法详解</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/02/13/intro-SPFA/" class="article-date">
+  <time datetime="2020-02-13T03:36:55.000Z" itemprop="datePublished">2020-02-13</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="SPFA算法介绍"><a href="#SPFA算法介绍" class="headerlink" title="SPFA算法介绍"></a>SPFA算法介绍</h1><p>SPFA算法全程为，Shortest Path Faster Algorithm，为Bellman-Ford算法的队列优化算分的别称，其最坏情况的复杂度与Bellman-Ford相同，为O(VE)<br>与BFS算法比较，复杂度相对稳定。但在稠密图中复杂度比迪杰斯特拉算法差。<br>对SPFA的一个很直观的理解就是由无权图的BFS转化而来。在无权图中，BFS首先到达的顶点所经历的路径一定是最短路(也就是经过的最少顶点数)，所以此时利用数组记录节点访问可以使每个顶点只进队一次。但在带权图中，最先到达的顶点所计算出来的路径不一定是最短路。一个解决方法是放弃数组，此时所需时间自然就是指数级的。所以我们不能放弃数组，而是在处理一个已经在队列中且当前所得的路径比原来更好的顶点时，直接更新最优解。  </p> 
+      <a class="article-more-link" href="/2020/02/13/intro-SPFA/"
+        >Read more...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E4%BC%98%E5%8C%96/" rel="tag">最短路径优化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B4%9F%E7%8E%AF%E8%A7%A3%E5%86%B3/" rel="tag">负环解决</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+  
+</article>
+
+    
+    <article
+  id="post-Python爬虫入门"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/02/02/Python-crawlers-beginning/"
+    >Python爬虫入门</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/02/02/Python-crawlers-beginning/" class="article-date">
+  <time datetime="2020-02-02T12:41:59.000Z" itemprop="datePublished">2020-02-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python%E5%88%9D%E7%BA%A7%E5%BA%94%E7%94%A8/">Python初级应用</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在初步掌握Python基本语法后，这里使用Py进行一个简单的爬取图片应用作为入门训练。<br>首先爬虫的基本步骤可以概括为：</p>
+<ul>
+<li>输入域名 -&gt; 下载源代码 -&gt; 分析图片路径 -&gt; 下载图片</li>
+</ul>
+<p>这里我们选取<a target="_blank" rel="noopener" href="http://www.meizitu.com/a/pure.html">http://www.meizitu.com/a/pure.html</a>作为爬取的目标网站。因为这个网站好分析，爬取简单。</p> 
+      <a class="article-more-link" href="/2020/02/02/Python-crawlers-beginning/"
+        >Read more...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" rel="tag">观察者模式</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+  
+</article>
+
+    
+    <article
   id="post-饥荒云服搭搭建"
   class="article article-type-post"
   itemscope
@@ -488,7 +664,7 @@ var _hmt = _hmt || [];
     <ul>
       <li>
         Copyrights &copy;
-        2019-2023
+        2019-2024
         <i class="ri-heart-fill heart_icon"></i> 鞠桥丹-QIAODAN JU
       </li>
     </ul>
