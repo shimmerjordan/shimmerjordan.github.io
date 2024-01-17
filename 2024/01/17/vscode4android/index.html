@@ -103,7 +103,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">157</span>
+            <span class="post-count">378</span>
         </span>
     </span>
 
@@ -134,8 +134,21 @@ var _hmt = _hmt || [];
 <ol>
 <li><p><a target="_blank" rel="noopener" href="https://f-droid.org/?utm_source=ld246.com">F-Droid - Free and Open Source Android App Repository</a>下载，不要用Play商店（老旧不再维护）</p>
 </li>
-<li></li>
+<li><p>查询资源备用站：<a href="https://blog.shimmerjordan.eu.org/2024/01/17/web4memo/">网站备忘/备用 | 丛烨-shimmerjordan</a></p>
+</li>
 </ol>
+<h1 id="安装Linux系统"><a href="#安装Linux系统" class="headerlink" title="安装Linux系统"></a>安装Linux系统</h1><p>使用 <a target="_blank" rel="noopener" href="https://shenzilong.cn/record/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/2022/2%E6%9C%88.html?utm_source=ld246.com#20230922210648-3rxty2b">tmoe</a> 安装 proot ( 没有 root 的情况下 ) 的 linux 系统 （你会其他的也行）</p>
+<p>文档： <a target="_blank" rel="noopener" href="https://doc.tmoe.me/zh/android.html?utm_source=ld246.com">android - 天萌参考手册 (tmoe.me)</a></p>
+<h2 id="大致步骤"><a href="#大致步骤" class="headerlink" title="大致步骤"></a>大致步骤</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -LO https://l.tmoe.me/2.awk;  </span><br><span class="line">awk -f 2.awk </span><br><span class="line"><span class="meta">#</span><span class="bash"> 选 proot 容器 -&gt; arm64发行版列表 -&gt; Arch</span></span><br></pre></td></tr></table></figure>
+<p>安装完毕后在 termux 中输入 debian 即可进入刚安装的系统，还可以输入 tmoe 有很多有用的功能</p>
+<h1 id="安装VSCode"><a href="#安装VSCode" class="headerlink" title="安装VSCode"></a>安装VSCode</h1><blockquote>
+<p>为什么不用 code-server 呢，因为版本落后</p>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>在 arch 系统终端中输入（maybe需要魔法）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash</span><br><span class="line">pacman -S code</span><br></pre></td></tr></table></figure>
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code --no-sandbox -user-data-dir=&quot;/root/app/code&quot; serve-web --host 127.0.0.1</span><br></pre></td></tr></table></figure>
+<p>即可得到vscode的运行地址，复制到浏览器中等待安装完毕（需要魔法Maybe）——via浏览器可以启用全屏模式更舒适</p>
  
       <!-- reward -->
       
