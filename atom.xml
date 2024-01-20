@@ -6,7 +6,7 @@
   <link href="https://blog.shimmerjordan.eu.org/atom.xml" rel="self"/>
   
   <link href="https://blog.shimmerjordan.eu.org/"/>
-  <updated>2024-01-17T11:17:36.208Z</updated>
+  <updated>2024-01-20T04:39:44.551Z</updated>
   <id>https://blog.shimmerjordan.eu.org/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>威联通QNAP切换MariaDB</title>
+    <link href="https://blog.shimmerjordan.eu.org/2024/01/20/qnap_change_datadir/"/>
+    <id>https://blog.shimmerjordan.eu.org/2024/01/20/qnap_change_datadir/</id>
+    <published>2024-01-20T03:48:00.000Z</published>
+    <updated>2024-01-20T04:39:44.551Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;威联通QNAP装了MariaDB，部署了chevereto项目打算做私人图床，但MariaDB默认安装位置和数据存档位置都是系统盘，我给系统盘分配的空间空间不大，因此需要将数据存档位置迁移到其它数据卷。但苦于QNAP系统和传统ubuntu不一样，因此网上大部分教程都不适用。自己摸索出来可行的方案做个记录以免遗忘。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="开发环境" scheme="https://blog.shimmerjordan.eu.org/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
+    
+    
+    <category term="开发环境" scheme="https://blog.shimmerjordan.eu.org/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
+    
+    <category term="QNAP" scheme="https://blog.shimmerjordan.eu.org/tags/QNAP/"/>
+    
+    <category term="MariaDB" scheme="https://blog.shimmerjordan.eu.org/tags/MariaDB/"/>
+    
+  </entry>
   
   <entry>
     <title>网站备忘/备用</title>
@@ -40,7 +63,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2024/01/17/vscode4android/"/>
     <id>https://blog.shimmerjordan.eu.org/2024/01/17/vscode4android/</id>
     <published>2024-01-17T11:48:00.000Z</published>
-    <updated>2024-01-17T12:07:48.812Z</updated>
+    <updated>2024-01-20T04:40:01.999Z</updated>
     
     
     <summary type="html">&lt;p&gt;无意发现鸿蒙4可以在连接显示器的时候启用电脑模式，如果可以运行生产力软件——Visual Studio Code那就完美了。拾人牙慧实施了一些方案，发现截至20240117还是这种本地Termex+proot+vscode_server(pacman)的后端结合via浏览器全屏操作的前端方案较为舒适且坑少。&lt;/p&gt;</summary>
@@ -533,25 +556,6 @@
     <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/tags/Spring/"/>
     
     <category term="Interview" scheme="https://blog.shimmerjordan.eu.org/tags/Interview/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TopK算法杂记</title>
-    <link href="https://blog.shimmerjordan.eu.org/2022/02/26/topk-algo/"/>
-    <id>https://blog.shimmerjordan.eu.org/2022/02/26/topk-algo/</id>
-    <published>2022-02-26T03:39:17.000Z</published>
-    <updated>2022-03-03T11:01:06.719Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;TopK的字面意思很简单，就是求给定序列的前$k$大（or小）的元素。本文由简单思路入手，对解决方案逐步发散与优化。为简化叙述，本文讨论的均为最大标准下的TopK（最小标准同理）。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Algorithm" scheme="https://blog.shimmerjordan.eu.org/categories/Algorithm/"/>
-    
-    
-    <category term="Algorithm" scheme="https://blog.shimmerjordan.eu.org/tags/Algorithm/"/>
     
   </entry>
   

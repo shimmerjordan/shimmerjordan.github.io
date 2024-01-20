@@ -14,7 +14,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    归档: 2024 |  丛烨-shimmerjordan
+    威联通QNAP切换MariaDB |  丛烨-shimmerjordan
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -72,94 +72,301 @@ var _hmt = _hmt || [];
       
     <main class="content on">
       <section class="outer">
-  
-  
-  <article class="articles">
+  <article
+  id="post-QNAP_change_MariaDB_datadir"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">2024</h1>
-    
-    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  威联通QNAP切换MariaDB
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/01/20/qnap_change_datadir/" class="article-date">
+  <time datetime="2024-01-20T03:48:00.000Z" itemprop="datePublished">2024-01-20</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">开发环境</a>
+  </div>
   
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2024" class="archive-year">2024</a>
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">424</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1 分钟</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
-    <div class="archives">
       
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2024/01/20/qnap_change_datadir/" class="archive-article-date">
-  <time datetime="2024-01-20T03:48:00.000Z" itemprop="datePublished">01/20</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2024/01/20/qnap_change_datadir/"
-    >威联通QNAP切换MariaDB</a> 
-</h2>
- 
+    <div class="tocbot"></div>
 
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2024/01/17/web4memo/" class="archive-article-date">
-  <time datetime="2024-01-17T12:48:00.000Z" itemprop="datePublished">01/17</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2024/01/17/web4memo/"
-    >网站备忘/备用</a> 
-</h2>
- 
 
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2024/01/17/vscode4android/" class="archive-article-date">
-  <time datetime="2024-01-17T11:48:00.000Z" itemprop="datePublished">01/17</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2024/01/17/vscode4android/"
-    >VSCode For Android 安卓使用vscode</a> 
-</h2>
- 
 
-    </header>
-    
-    
-  </div>
-</article>
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>威联通QNAP装了MariaDB，部署了chevereto项目打算做私人图床，但MariaDB默认安装位置和数据存档位置都是系统盘，我给系统盘分配的空间空间不大，因此需要将数据存档位置迁移到其它数据卷。但苦于QNAP系统和传统ubuntu不一样，因此网上大部分教程都不适用。自己摸索出来可行的方案做个记录以免遗忘。</p>
+<a id="more"></a>
+
+<blockquote>
+<p>为方便操作，这里全都用WinSCP做浏览和编辑工具</p>
+</blockquote>
+<h1 id="新增QNAP数据卷信息"><a href="#新增QNAP数据卷信息" class="headerlink" title="新增QNAP数据卷信息"></a>新增QNAP数据卷信息</h1><p>修改<code>/etc/config/def_share.info</code>文件（实际软链接到<code>/mnt/HDA_ROOT/.config/def_share.info</code>），在最下面新增：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defDataVol = /share/CACHEDEV2_DATA</span><br></pre></td></tr></table></figure>
+<p>这里新增的是需要设置的默认数据卷位置，也即存储池位置</p>
+<h1 id="修改MariaDB数据目录配置"><a href="#修改MariaDB数据目录配置" class="headerlink" title="修改MariaDB数据目录配置"></a>修改MariaDB数据目录配置</h1><p>修改MariaDB启动脚本<code>/share/CACHEDEV1_DATA/.qpkg/MariaDB5/etc/init.d/mariadb5.sh</code>中<code>DEF_VOL</code>以及<code>MARIADB_DIR_NAME</code>字段：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 原始</span></span><br><span class="line">DEF_VOL=`/sbin/getcfg SHARE_DEF defVolMP -f /etc/config/def_share.info`</span><br><span class="line">MARIADB_DIR_NAME=.@qmariadb</span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改</span></span><br><span class="line">DEF_VOL=`/sbin/getcfg SHARE_DEF defDataVol -f /etc/config/def_share.info`</span><br><span class="line">MARIADB_DIR_NAME=Study/data/Maria5_data</span><br></pre></td></tr></table></figure>
+<p><code>DEF_VOL</code>修改为上一步配置的数据卷，<code>MARIADB_DIR_NAME</code>对应MariaDB数据的存储位置。</p>
+<h1 id="修改MySQL数据存储"><a href="#修改MySQL数据存储" class="headerlink" title="修改MySQL数据存储"></a>修改MySQL数据存储</h1><blockquote>
+<p>可以从上面的配置文件中看出，<code>Maria5_data</code>的子目录包含<code>data</code>以及<code>tmp</code>。</p>
+</blockquote>
+<p>修改MySQL的启动脚本配置文件：<code>/share/CACHEDEV1_DATA/.qpkg/MariaDB5/scripts/mysql_util.sh</code>中<code>DEF_VOL</code>以及<code>datadir</code>字段</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> DEF_VOL=`/sbin/getcfg SHARE_DEF defVolMP -f /etc/config/def_share.info`</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> datadir=<span class="string">&quot;<span class="variable">$&#123;DEF_VOL&#125;</span>/.@qmariadb/data&quot;</span> <span class="comment">#sql server saved location</span></span></span><br><span class="line"></span><br><span class="line">DEF_VOL=`/sbin/getcfg SHARE_DEF defDataVol -f /etc/config/def_share.info`</span><br><span class="line">datadir=&quot;$&#123;DEF_VOL&#125;/Study/data/Maria5_data/data&quot; #sql server saved location</span><br></pre></td></tr></table></figure>
+<p>这里的可以看出MySQL的数据存储是在MariaDB的数据目录的<code>data</code>子目录中</p>
+<h1 id="应用修改"><a href="#应用修改" class="headerlink" title="应用修改"></a>应用修改</h1><p>在QNAP的Web中打开MariaDB应用关闭再打开即可生效。</p>
+ 
+      <!-- reward -->
       
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
       
     </div>
-  </div>
-  
-  
+    
 
-  
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.shimmerjordan.eu.org/2024/01/20/qnap_change_datadir/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MariaDB/" rel="tag">MariaDB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QNAP/" rel="tag">QNAP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag">开发环境</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2024/01/17/web4memo/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">网站备忘/备用</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "StYfTMDp78X0EltFR16ve2q5-gzGzoHsz",
+    app_key: "G4RPxRpXG6RwdfpnJefOSnyy",
+    path: window.location.pathname,
+    avatar: "wavatar",
+    placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+   
+<!-- minivaline评论 -->
+<div id="mvcomments-box">
+  <div id="mvcomments"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@latest"></script>
+<script>
+    new MiniValine(Object.assign({"enable":true,"mode":"DesertsP","placeholder":"Write a Comment","math":true,"md":true,"enableQQ":true,"NoRecordIP":false,"visitor":true,"maxNest":6,"pageSize":6,"adminEmailMd5":"de8a7aa53d07e6b6bceb45c64027763d","tagMeta":["管理员","小伙伴","访客"],"master":["de8a7aa53d07e6b6bceb45c64027763d"],"friends":["b5bd5d836c7a0091aa8473e79ed4c25e","adb7d1cd192658a55c0ad22a3309cecf","3ce1e6c77b4910f1871106cb30dc62b0","cfce8dc43725cc14ffcd9fb4892d5bfc"],"lang":null,"emoticonUrl":["https://cdn.jsdelivr.net/npm/alus@latest","https://cdn.jsdelivr.net/gh/MiniValine/qq@latest","https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest","https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest","https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest","https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"]}, {
+	  el: '#mvcomments',
+    }));
+  const infoEle = document.querySelector('#mvcomments .info');
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+      infoEle.childNodes.forEach(function (item) {
+          item.parentNode.removeChild(item);
+      });
+  }
+</script>
+<style>
+	#mvcomments-box {
+		padding: 5px 30px;
+	}
+	@media screen and (max-width: 800px) {
+		#mvcomments-box {
+		  padding: 5px 0px;
+		}
+	}
+	.darkmode .MiniValine *{
+		color: #f1f1f1!important;
+	}
+	.darkmode .commentTrigger{
+		background-color: #403e3e !important;
+	  }
+	.darkmode .MiniValine .vpage .more{
+		background: #21232F
+	}
+	.darkmode img{
+		filter: brightness(30%)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before{
+		background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after{
+		background: rgba(0,0,0,0.9)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre{
+		background: #282c34
+		border: 1px solid #282c34
+	}
+	.darkmode .MiniValine .vinputs-area .textarea-wrapper textarea{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper input{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .vextra-area .vsmile-icons{
+		background: transparent;
+	}
+	.darkmode .MiniValine .vinputs-wrap{
+		border-color: #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-wrap:hover{
+		border: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper{
+		border-bottom: 1px dashed #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper:hover{
+		border-bottom: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vbtn{
+		background-color: transparent!important;
+	}
+	.darkmode .MiniValine .vbtn:hover{
+		border: 1px dashed #2196f3;
+	}
+</style>
+
+    
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -317,6 +524,23 @@ var _hmt = _hmt || [];
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
