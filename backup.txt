@@ -1,0 +1,23 @@
+Plugins:
+	hexo-generator-searchdb 用于搜索
+	hexo-generator-feed 用于生成RSS订阅
+	hexo-generator-index-pin-top 用于文章置顶
+	hexo-blog-encrypt 用于文章加密
+	hexo-tag-aplayer 用于播放音乐
+	hexo-tag-dplayer 用于播放视频
+	hexo-generator-sitemap 用于sitemap
+	hexo-generator-baidu-sitemap
+
+DNS:	
+	A
+	shimmerjordan.site
+	185.199.108.153
+	Auto
+	Proxied
+
+	CNAME
+	www
+	shimmerjordan.github.io
+	Auto
+	Proxied
+
