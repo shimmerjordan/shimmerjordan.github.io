@@ -4,6 +4,9 @@ on:
     branches:
       - backup # master 分支有 push 行为时就触发这个 action
 
+env:
+  TZ: Asia/Shanghai
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
