@@ -156,7 +156,7 @@ Note the types of these two DNSs. For the record of type A, fill in @ for Name (
 
 ## Adding CNAME file
 
-Create a new CNAME file in the local repository root directory and edit its contents to your personal domain name. In my case, for example, the CNAME file will read shimmerjordan.site. be sure to note that the CNAME file does not have any suffixes. Then push it to the remote repository.
+Create a new CNAME file in the local repository root directory and edit its contents to your personal domain name. In my case, for example, the CNAME file will read blog.shimmerjordan.eu.org. be sure to note that the CNAME file does not have any suffixes. Then push it to the remote repository.
 
 ## Go to github settings and bind the domain name
 
@@ -179,9 +179,9 @@ Click save to complete the domain binding.
 
 This is all I have done, and here are the current pages I have successfully deployed by this method:
 
-- [My blog](https://shimmerjordan.site/)
+- [My blog](https://blog.shimmerjordan.eu.org/)
 
-- [My CV](http://qiaodanju.bitbucket.io/)
+- [My CV](https://cv.shimmerjordan.eu.org/)
 
 - [My grilfriend's CV](https://ruichenzhao.bitbucket.io/)
 

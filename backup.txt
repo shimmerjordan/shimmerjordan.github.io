@@ -1,16 +1,16 @@
 Plugins:
-	hexo-generator-searchdb ÓÃÓÚËÑË÷
-	hexo-generator-feed ÓÃÓÚÉú³ÉRSS¶©ÔÄ
-	hexo-generator-index-pin-top ÓÃÓÚÎÄÕÂÖÃ¶¥
-	hexo-blog-encrypt ÓÃÓÚÎÄÕÂ¼ÓÃÜ
-	hexo-tag-aplayer ÓÃÓÚ²¥·ÅÒôÀÖ
-	hexo-tag-dplayer ÓÃÓÚ²¥·ÅÊÓÆµ
-	hexo-generator-sitemap ÓÃÓÚsitemap
+	hexo-generator-searchdb ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	hexo-generator-feed ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½RSSï¿½ï¿½ï¿½ï¿½
+	hexo-generator-index-pin-top ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½
+	hexo-blog-encrypt ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½
+	hexo-tag-aplayer ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	hexo-tag-dplayer ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½Æµ
+	hexo-generator-sitemap ï¿½ï¿½ï¿½ï¿½sitemap
 	hexo-generator-baidu-sitemap
 
 DNS:	
 	A
-	shimmerjordan.site
+	blog.shimmerjordan.eu.org
 	185.199.108.153
 	Auto
 	Proxied

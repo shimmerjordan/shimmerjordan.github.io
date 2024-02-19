@@ -125,9 +125,9 @@ Vercel automatically pulls updates from the introduced cloud repositories, so up
 
 This is all I have done, and here are the current pages I have successfully deployed by this method:
 
-- [My blog (github)](https://shimmerjordan.site/)
+- [My blog (github)](https://blog.shimmerjordan.eu.org/)
 
-- [My CV (bitbucket)](http://qiaodanju.bitbucket.io/)
+- [My CV (bitbucket)](https://cv.shimmerjordan.eu.org/)
 
 
 Similar CDN acceleration services include [jsDelivr](https://www.jsdelivr.com/), and here I have chosen to use [jsDelivr](https://www.jsdelivr.com/) in conjunction with github as my personal image bed.

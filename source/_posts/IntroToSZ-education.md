@@ -188,7 +188,7 @@ monitor-service        //Spring boot amdin monitoring service
 
 # System deployment
 
-See more details on [Instruction for deploying sz-education locally]https://shimmerjordan.site/2021/03/10/sz-educationLocalDeploy/
+See more details on [Instruction for deploying sz-education locally]https://blog.shimmerjordan.eu.org/2021/03/10/sz-educationLocalDeploy/
 
-**Article token access is currently not available to everyone, please [contact me](https://shimmerjordan.site/2020/01/18/about) if you need token unlocking**
+**Article token access is currently not available to everyone, please [contact me](https://blog.shimmerjordan.eu.org/2020/01/18/about) if you need token unlocking**
 
