@@ -18,17 +18,6 @@ jobs:
           date
           echo "---"
 
-      - name: Add the custom timezone database file
-        run: |
-          sudo mkdir -p /usr/share/zoneinfo/Asia
-          sudo cp /tmp/Asia/Shanghai /usr/share/zoneinfo/Asia/
-          sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-
-      - name: Show the timezone
-        run: |
-          echo "The timezone is $TZ"
-          date
-
       - name: Checkout
         uses: actions/checkout@master
        
