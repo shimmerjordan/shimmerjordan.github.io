@@ -23,7 +23,7 @@ jobs:
        
       - name: npm update
         run: |
-          npm cache clean
+          # npm cache clean --force
           npm install -g npm
           npm config set strict-ssl false
 
