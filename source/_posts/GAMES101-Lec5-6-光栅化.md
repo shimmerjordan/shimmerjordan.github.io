@@ -15,7 +15,7 @@ id: games101-lec5-6
 
 屏幕由像素点（可以暂时理解为一个小方块）构成，是离散的，二维的。像素由RGB的混合有了颜色
 
-< !-- more -->
+<!-- more -->
 
 ## Canonical Cube
 先不考虑$z$的关联，需要通过*视口变换*将平面$\left[-1,\; 1\right]^2$转为$[0, weight] \times [0, height]$：$M_{viewport}=\left(\begin{array}{ccc} \frac{width}{2} & 0 & 0 & \frac{width}{2} \\ 0 & \frac{height}{2} & 0 & \frac{height}{2} \\ 0 & 0 & 1 & 0\\ 0 & 0 & 0 & 1 \end{array}\right)$，这样就可以在投影之后同时将左下角定义为$(0,\; 0)$
