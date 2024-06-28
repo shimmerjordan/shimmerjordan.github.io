@@ -63,14 +63,14 @@ $$\mathbf{R}(\mathbf{n}, \alpha)=\cos (\alpha) \mathbf{I}+(1-\cos (\alpha)) \mat
 摄像机坐标系，视锥体，再规整一下
 ### Orthographic Projection
 这个很简单，难度不大。通常情况，We want to map a cuboid $\left[l,\; r\right] \times [b,\; t] \times [f,\; n]$ to the “canonical (正则、规范、标准)” cube $[-1, 1]^{3}$:
-![正交投影](https://gitee.com/shimmerjordan/pic_bed/raw/obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240525232015628.png)
+![正交投影](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240525232015628.png)
 ### Perspective Projection
 参考下图，其实我们只需要将远平面(f)通过$M_{persp->ortho}$“挤压”成和近平面(n)一个尺寸即可转化为前面我们已知处理方式的正交投影即可。
 >可以在n平面左侧想象存在一个点光源，这样就可以更方便理解为什么远平面更大
 
-![Edge Image Viewer (gitee.com)](https://gitee.com/shimmerjordan/pic_bed/raw/obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529111149680.png)
+![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529111149680.png)
 根据相似三角形法则可以很轻松地找到这样的关系：$y^{\prime}=\frac{n}{z}y$  ,  $x^{\prime}=\frac{n}{z}x$
-![Edge Image Viewer (gitee.com)](https://gitee.com/shimmerjordan/pic_bed/raw/obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529112017170.png)
+![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529112017170.png)
 进一步的，我们可以在齐次坐标系中得到这样的关系：
 $\left(\begin{array}{c} x \\ y \\ z \\1 \end{array}\right) \Rightarrow \left(\begin{array}{c} \frac{nx}{z} \\ \frac{ny}{z} \\ unknown \\1 \end{array}\right) \overset{multi.\; by \;z}{==} \left(\begin{array}{c} nx \\ ny \\ still \; unknown \\ z \end{array}\right)$，这就可以得到$M_{persp->ortho}=\left(\begin{array}{ccc} n & 0 & 0 & 0 \\ 0 & n & 0 & 0 \\ ? & ? & ? & ?\\ 0 & 0 & 1 & 0 \end{array}\right)$
 那么这个第三行怎么推导呢，可以利用：
@@ -80,9 +80,9 @@ $\left(\begin{array}{c} x \\ y \\ z \\1 \end{array}\right) \Rightarrow \left(\be
 #### fovY和aspect ratio
 - fovY：field-of-view 垂直可视角度
 - aspect ratio：宽高比
-![Edge Image Viewer (gitee.com)](https://gitee.com/shimmerjordan/pic_bed/raw/obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529145252467.png)
+![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529145252467.png)
 再根据下图，可以比较容易地写出：$\tan{\frac{fovY}{2}}=\frac{t}{\left|n \right|}$，$aspect=\frac{r}{t}$
-![Edge Image Viewer (gitee.com)](https://gitee.com/shimmerjordan/pic_bed/raw/obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529145812169.png)
+![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529145812169.png)
 这样一来，我们只需要定义一个垂直可视角度fovY可一个宽高比就可以定义出完整的视锥，其他的变量都可以表示出来
 
  

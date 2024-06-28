@@ -35,14 +35,14 @@ id: games101-lec5-6
 - 必定在一个平面；内外区分分明；插值方便（定义其中一个点的属性之后可以根据到三边距离等确定其他位置点的 属性）
 我们需要将图像显示在屏幕上，例如下图我们怎么判断绿框中的位置的RGB（亮或不亮）呢：
 
-![Edge Image Viewer (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240529172003566.png)
+![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240529172003566.png)
 
 ## 离散化-采样
 >这就是为了解决刚才提到的问题，确切的说是判断一个像素和三角形的位置关系 or 像素中心点和三角形的位置关系
 ### 原理
 Sampling实质上是将一个函数离散化的过程：一个像素点对应一个坐标点，对这个坐标点采样，判断它在不在三角形里面。
 
-![Edge Image Viewer (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240529175700443.png)
+![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240529175700443.png)
 
 - 可以采用上图的右图的蓝色包围盒的方式做光栅化的加速（不处理边界外的）
 - 也可以用其他加速方法，例如左边的incremental triangle traversal（适用于窄长并且有旋转角度的，这样加速才明显）
@@ -62,18 +62,18 @@ Sampling实质上是将一个函数离散化的过程：一个像素点对应一
 - Filter包括诸如卷积的方法：Getting rid of certain frequency contents 滤波器
 	- Convolution (= Averaging) 卷积（可以看作一种低通滤波器）
 
-![Edge Image Viewer (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530113650706.png)
+![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530113650706.png)
 ### 傅里叶变换
-![Edge Image Viewer (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530115904028.png)
+![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530115904028.png)
 
 $f(x)=\frac{A}{2}+\frac{2A\cos(t\omega)}{\pi}- \frac{2A\cos(3t\omega)}{3\pi}+ \frac{2A\cos(5t\omega)}{5\pi}-\dots$
 另外注意到$e^{ix}=\cos x +i \sin x$，可以得到以下结论（傅里叶及逆变换）：
 
-![Edge Image Viewer (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530120445706.png)
+![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530120445706.png)
 
 这样就知道，任何一个函数都可以分解成不同频率函数的综合
 ### 采样频率
-![Edge Image Viewer (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530121608262.png)
+![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530121608262.png)
 
 sampling 是在频域上 copy & paste 波形
 - Aliasing = Mixed Frequency Contents
@@ -92,7 +92,7 @@ sampling 是在频域上 copy & paste 波形
 
 - 先采样后模糊（Filter）是不行的（波形重叠的情况下截断依然会有重叠）
 - 时域下的卷积 = 频域下的乘积，时域下的乘积 = 频域下的卷积
-![Edge Image Viewer (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530144755652.png)
+![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530144755652.png)
 
 ### Antialiasing By Supersampling (MSAA)
 
@@ -100,7 +100,7 @@ sampling 是在频域上 copy & paste 波形
 - 近似方法
 - Monte-Carlo
 - 像素的**颜色值**为负责的区域内取样多次颜色值的平均。
-![Edge Image Viewer (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530151452898.png)
+![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530151452898.png)
 ### MSAA的缺陷
 No free lunch!
 - MSAA：每个像素多次采样，求平均。太浪费性能
@@ -126,10 +126,10 @@ No free lunch!
 **Painter's Algorithm**：由远及近画画，覆盖。（油画是这样的思路）
 - 深度计算与排序：$O(nlogn)$
 - 可能有无法排序的情况：例如三个三角形互相重叠
-![Edge Image Viewer (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530165233467.png)
+![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530165233467.png)
 
 **因此引入Z-buffer**：对每个像素多存一个深度
-![Edge Image Viewer (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530165630546.png)
+![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530165630546.png)
 - 实际coding中，(smaller z -> further, larger z -> closer)
 ```C++
 for (each triangle T)

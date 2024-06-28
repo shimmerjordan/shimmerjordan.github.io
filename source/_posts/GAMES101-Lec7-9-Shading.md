@@ -18,19 +18,19 @@ id: games101-lec7-9
 
 ## Blinn-Phong Reflectance Model 光照模型 着色模型
 在考虑着色的时候不考虑物体遮挡导致的阴影
-![image-20240625161511850.png (1482×699) (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240625161511850.png)
+![image-20240625161511850.png (1482×699) ](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240625161511850.png)
 ### Difusse Relection 漫反射
 表面颜色在任意角度是一样的，观测结果具有角度无关性
-![image-20240625163240398.png (868×575) (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240625163240398.png)
+![image-20240625163240398.png (868×575) ](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240625163240398.png)
 根据能量守恒，假设光能量是无损传播的，在直径为$1$的光球壳出的能量密度为$I$，那么在直径为$r$处的能量密度就是$I/r^2$。那么咱们可以又前面反射图所揭露的基本原理得出：$L_d=k_d(I/r^2)max(0,\mathbb{n} \cdot \mathbb{l})$，其中$L_d$是漫反射光线，$k_d$表示颜色的漫反射系数（吸收某种颜色能量的能力），$max(0,\mathbb{n} \cdot \mathbb{1})$表示shading point接收到的能量，因为小于0的物理意义是从物体内部反射出来的光线，没有现实意义因此与0做最大选择。
 ### Specular Term 高光
 和漫反射不一样的点在于漫反射会向所有方向反射光线而高光部位只会向一个特定角度反射，因此高光部位的观测是角度相关的
 **Blinn-Phong模型**
 利用判断半程向量是否和法线“贴近”来判断观测方向是否在高光反射范围内：
-![image-20240626163915819.png (1420×709) (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240626163915819.png)
+![image-20240626163915819.png (1420×709) ](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240626163915819.png)
 - 这个模型可以降低很多计算量，相较于根据入射方向和法线计算反射方向，半程向量的计算十分简单。
 - $p$的作用：虽然说两个向量点乘可以判断彼此夹角大小，但$\cos{\alpha}$的容忍度太高，即使是有$45\degree$的夹角，也有很大的$\cos{\alpha}$值。以$p$次方来放大这种夹角敏感度。一般控制在100~200，控制高光的大小，可以参考下图
-![image-20240626165130764.png (1221×765) (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240626165130764.png)
+![image-20240626165130764.png (1221×765) ](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240626165130764.png)
 ### Ambient Term 环境光
 -  近似看待成常数，用来保证不是全黑，上色&提亮：$L_a=k_{a}I_{a}$
 - 但这仅仅是一种approximate，或者说是fake的，具体的涉及到全局光照的内容，比较复杂，后面再说
@@ -38,24 +38,24 @@ id: games101-lec7-9
 ### 整体效果
 将前面说的Ambient、Diffuse、Specular相加就是Blinn-Phong反射模型的最终结果：
 $\begin{aligned} L &=L_{a}+L_{d}+L_{s} \\ &=k_{a} I_{a}+k_{d}\left(I / r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{l})+k_{s}\left(I / r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{h})^{p} \end{aligned}$
-![image-20240626170018669.png (1223×380) (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240626170018669.png)
+![image-20240626170018669.png (1223×380) ](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240626170018669.png)
 # Shading Frequencies 着色频率
 - Flat shading：每个**三角形**的法线是一样的，shading一次获得颜色值。但效果不会很好的，可以说是十分抽象了
 - Gouraud Shading：每个**顶点**做一次Shading，中间对颜色值插值
 - Phong Shading：
 	 - 对法线值做插值，对每个**像素点**做Shading
 	 - Not the Blinn-Phong Reﬂectance Model
-![image-20240626175046538.png (1124×796) (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240626175046538.png)
+![image-20240626175046538.png (1124×796) ](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240626175046538.png)
 但我们可以看到随着几何模型越来越复杂（定义的vertices越多），Flat的方式似乎也并不会在肉眼上有什么效果差距，计算量还小
 
 ## 顶点法线的计算方法
 相邻面的法线求“平均”，或许我们还可以给各个面根据其面积等因素赋予一个权值，使得这种“平均”更合理：
-![image-20240627194718263.png (438×401) (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627194718263.png)
+![image-20240627194718263.png (438×401) ](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627194718263.png)
 $N_v=\frac{\sum_{i}N_{i}}{\Vert \sum_{i}N_{i}\Vert}$，其中$N_i$就已经是赋予了单位向量权值（长度）的面法线向量
 - Barycentric interpolation：后面会介绍这种向量插值方式（记得normalization）
 # Graphics Pipeline 实时渲染管线
 一个三维场景到渲染出的图像效果的流程成为渲染管线：
-![image-20240627200148405.png (1234×820) (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627200148405.png)
+![image-20240627200148405.png (1234×820) ](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627200148405.png)
 - Vertex Processing
     - Model, View, Projection transforms
     - Shading, Texture mapping
@@ -99,11 +99,11 @@ Shader千变万化，例子：[Snail Shader Program（超高端例子）](https:
 
 # Texture Mapping 纹理映射
 我们如何表现一个平面的纹理图案呢？
-![image-20240627203649856.png (1160×756) (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627203649856.png)
+![image-20240627203649856.png (1160×756) ](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627203649856.png)
 以这个漫反射公式为例，$L_d$并不只是可以表示漫反射系数，它可以表示此像素点任意基本属性
 - 三维物体表面都是二维的
 - 纹理：图，有弹性，可以映射到表面。*但事实上很难做到纹理的三角形完全吻合物理模型的三角形（无缝衔接），这是一块几何上很深入的研究领域叫做“参数化”*
-	![image-20240627204141070.png (1234×842) (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627204141070.png)
+	![image-20240627204141070.png (1234×842) ](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627204141070.png)
 - 纹理坐标系：$(u,v)$，三角形每个顶点对应一个uv坐标，为了方便处理坐标均在0到1之内
 - 一张纹理可以使用多次，类似贴瓷砖？
 - 纹理本身设计得好的话，多次“贴瓷砖”可以无缝衔接→Tilable Texture
@@ -123,12 +123,12 @@ $\begin{aligned} \alpha &=\frac{-\left(x-x_{B}\right)\left(y_{C}-y_{B}\right)+\l
 - 纹理像素：texel
 - 多个pixel映射到了同一个texel
 - 解决：
-    ![image-20240627215620170.png (1251×489) (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627215620170.png)
+    ![image-20240627215620170.png (1251×489) ](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627215620170.png)
     - Nearest
     - Bilinear
         - Bilinear 插值 lerp
         - 水平+竖直插值→双线性插值
-        ![image-20240627220112334.png (1315×771) (gitee.com)](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627220112334.png)
+        ![image-20240627220112334.png (1315×771) ](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627220112334.png)
         - 最近的四个点插值
     - Bicubic 双向三次插值
         - 周围16个点做三次插值
