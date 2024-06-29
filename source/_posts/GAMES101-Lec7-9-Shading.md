@@ -7,6 +7,7 @@ tags:
 categories:
   - 图形学
 id: games101-lec7-9
+mathjax: true
 ---
 > 光照、着色、着色频率、图形管线、纹理映射
 

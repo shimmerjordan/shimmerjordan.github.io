@@ -7,6 +7,7 @@ tags:
 categories:
   - 图形学
 id: games101-lec5-6
+mathjax: true
 ---
 
 # After MVP

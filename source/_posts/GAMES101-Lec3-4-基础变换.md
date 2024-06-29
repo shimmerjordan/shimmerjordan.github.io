@@ -7,6 +7,7 @@ tags:
 categories:
   - 图形学
 id: games101-lec3-4
+mathjax: true
 ---
 
 # 基础变换（仿射变换）：旋转、缩放、切变、平移
