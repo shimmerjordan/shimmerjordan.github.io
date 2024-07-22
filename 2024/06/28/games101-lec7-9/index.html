@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="baidu-site-verification" content="code-kg5UjKJZM2" />
+   
+  <meta name="keywords" content="活,炼" />
+   
+  <meta name="description" content="shimmerjordan" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    GAMES101 Lec7-9 Shading notes |  丛烨-shimmerjordan
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-Q0DT8B8VJW', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?6d06f826e125297d4ce0fa7a1449328e";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<link rel="alternate" href="/atom.xml" title="丛烨-shimmerjordan" type="application/atom+xml">
+</head>
+
+</html>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+	<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-GAMES101-Lec7-9-Shading"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  GAMES101 Lec7-9 Shading notes
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/06/28/games101-lec7-9/" class="article-date">
+  <time datetime="2024-06-28T09:41:34.000Z" itemprop="datePublished">2024-06-28</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">图形学</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">12 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <blockquote>
+<p>光照、着色、着色频率、图形管线、纹理映射</p>
+</blockquote>
+<h1 id="着色（光照与基本着色模型）"><a href="#着色（光照与基本着色模型）" class="headerlink" title="着色（光照与基本着色模型）"></a>着色（光照与基本着色模型）</h1><blockquote>
+<p>着色和阴影无关；<br>Shading：The process of applying a material to an object.</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="Blinn-Phong-Reflectance-Model-光照模型-着色模型"><a href="#Blinn-Phong-Reflectance-Model-光照模型-着色模型" class="headerlink" title="Blinn-Phong Reflectance Model 光照模型 着色模型"></a>Blinn-Phong Reflectance Model 光照模型 着色模型</h2><p>在考虑着色的时候不考虑物体遮挡导致的阴影<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240625161511850.png" alt="image-20240625161511850.png (1482×699) (gitee.com)"></p>
+<h3 id="Difusse-Relection-漫反射"><a href="#Difusse-Relection-漫反射" class="headerlink" title="Difusse Relection 漫反射"></a>Difusse Relection 漫反射</h3><p>表面颜色在任意角度是一样的，观测结果具有角度无关性<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240625163240398.png" alt="image-20240625163240398.png (868×575) (gitee.com)"><br>根据能量守恒，假设光能量是无损传播的，在直径为$1$的光球壳出的能量密度为$I$，那么在直径为$r$处的能量密度就是$I/r^2$。</p>
+<p>那么咱们可以又前面反射图所揭露的基本原理得出：$L_d=k_d(I/r^2)max(0,\mathbb{n} \cdot \mathbb{l})$，其中$L_d$是漫反射光线，$k_d$表示颜色的漫反射系数（吸收某种颜色能量的能力），$max(0,\mathbb{n} \cdot \mathbb{1})$表示shading point接收到的能量，因为小于0的物理意义是从物体内部反射出来的光线，没有现实意义因此与0做最大选择。</p>
+<h3 id="Specular-Term-高光"><a href="#Specular-Term-高光" class="headerlink" title="Specular Term 高光"></a>Specular Term 高光</h3><p>和漫反射不一样的点在于漫反射会向所有方向反射光线而高光部位只会向一个特定角度反射，因此高光部位的观测是角度相关的</p>
+<p><strong>Blinn-Phong模型</strong><br>利用判断半程向量是否和法线“贴近”来判断观测方向是否在高光反射范围内：<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240626163915819.png" alt="image-20240626163915819.png (1420×709) (gitee.com)"></p>
+<ul>
+<li>这个模型可以降低很多计算量，相较于根据入射方向和法线计算反射方向，半程向量的计算十分简单。</li>
+<li>$p$的作用：虽然说两个向量点乘可以判断彼此夹角大小，但$\cos{\alpha}$的容忍度太高，即使是有$45\textdegree$的夹角，也有很大的$\cos{\alpha}$值。以$p$次方来放大这种夹角敏感度。一般控制在100~200，控制高光的大小，可以参考下图<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240626165130764.png" alt="image-20240626165130764.png (1221×765) (gitee.com)"></li>
+</ul>
+<h3 id="Ambient-Term-环境光"><a href="#Ambient-Term-环境光" class="headerlink" title="Ambient Term 环境光"></a>Ambient Term 环境光</h3><ul>
+<li>近似看待成常数，用来保证不是全黑，上色&amp;提亮：$L_a=k_{a}I_{a}$</li>
+<li>但这仅仅是一种approximate，或者说是fake的，具体的涉及到全局光照的内容，比较复杂，后面再说</li>
+</ul>
+<h3 id="整体效果"><a href="#整体效果" class="headerlink" title="整体效果"></a>整体效果</h3><p>将前面说的Ambient、Diffuse、Specular相加就是Blinn-Phong反射模型的最终结果：<br>$\begin{aligned} L &amp;=L_{a}+L_{d}+L_{s} \\ &amp;=k_{a} I_{a}+k_{d}\left(I / r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{l})+k_{s}\left(I / r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{h})^{p} \end{aligned}$<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240626170018669.png" alt="image-20240626170018669.png (1223×380) (gitee.com)"></p>
+<h1 id="Shading-Frequencies-着色频率"><a href="#Shading-Frequencies-着色频率" class="headerlink" title="Shading Frequencies 着色频率"></a>Shading Frequencies 着色频率</h1><ul>
+<li>Flat shading：每个<strong>三角形</strong>的法线是一样的，shading一次获得颜色值。但效果不会很好的，可以说是十分抽象了</li>
+<li>Gouraud Shading：每个<strong>顶点</strong>做一次Shading，中间对颜色值插值</li>
+<li>Phong Shading：<ul>
+<li>对法线值做插值，对每个<strong>像素点</strong>做Shading</li>
+<li>Not the Blinn-Phong Reﬂectance Model</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240626175046538.png" alt="image-20240626175046538.png (1124×796) (gitee.com)"><br>但我们可以看到随着几何模型越来越复杂（定义的vertices越多），Flat的方式似乎也并不会在肉眼上有什么效果差距，计算量还小</p>
+<h2 id="顶点法线的计算方法"><a href="#顶点法线的计算方法" class="headerlink" title="顶点法线的计算方法"></a>顶点法线的计算方法</h2><p>相邻面的法线求“平均”，或许我们还可以给各个面根据其面积等因素赋予一个权值，使得这种“平均”更合理：<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627194718263.png" alt="image-20240627194718263.png (438×401) (gitee.com)"><br>$N_v=\frac{\sum_{i}N_{i}}{\Vert \sum_{i}N_{i}\Vert}$，其中$N_i$就已经是赋予了单位向量权值（长度）的面法线向量</p>
+<ul>
+<li>Barycentric interpolation：后面会介绍这种向量插值方式（记得normalization）</li>
+</ul>
+<h1 id="Graphics-Pipeline-实时渲染管线"><a href="#Graphics-Pipeline-实时渲染管线" class="headerlink" title="Graphics Pipeline 实时渲染管线"></a>Graphics Pipeline 实时渲染管线</h1><p>一个三维场景到渲染出的图像效果的流程成为渲染管线：<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627200148405.png" alt="image-20240627200148405.png (1234×820) (gitee.com)"></p>
+<ul>
+<li>Vertex Processing<ul>
+<li>Model, View, Projection transforms</li>
+<li>Shading, Texture mapping</li>
+<li>Output: Vertex Stream</li>
+</ul>
+</li>
+<li>Triangle Processing<ul>
+<li>Output: Triangle Stream</li>
+</ul>
+</li>
+<li>Rasterization<ul>
+<li>Sampling</li>
+<li>Output: Fragment Stream</li>
+</ul>
+</li>
+<li>Fragment Processing<ul>
+<li>Z-Buffer Visibility Tests</li>
+<li>Shading, Texture mapping 纹理映射</li>
+<li>Output: Shaded Fragments</li>
+</ul>
+</li>
+<li>Framebuffer Operations<ul>
+<li>Output: image (pixels)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Shader Programs</strong></p>
+<ul>
+<li>Program vertex and fragment processing stages 自己编程顶点和像素的着色流程</li>
+<li>Describe operation on <strong>a single vertex (or fragment)</strong> 每个元素都执行一次——通用的执行逻辑</li>
+<li>vertex / fragment shader</li>
+<li>More:<ul>
+<li>Geometry Shader</li>
+<li>Compute Shader</li>
+</ul>
+</li>
+</ul>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>到现在的知识已经可以去学习API了（OpenGL, DirectX）</p>
+<p>推荐：ShaderToy，只需要关注着色<br>Shader千变万化，例子：<a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/ld3Gz2">Snail Shader Program（超高端例子）</a></p>
+<h2 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h2><p><strong>当下的实时渲染：</strong></p>
+<ul>
+<li>100’s of thousands to millions of triangles in a scene</li>
+<li>Complex vertex and fragment shader computations</li>
+<li>High resolution (2-4 megapixel + supersampling)</li>
+<li>30-60 frames per second (even higher for VR)，现在更是夸张</li>
+</ul>
+<p><strong>Graphics Pipeline Implementation: GPUs</strong></p>
+<ul>
+<li>Specialized processors for executing graphics pipeline computations</li>
+<li>Heterogeneous, Multi-Core Processor</li>
+<li>高度并行的，并行度远高于CPU，但每个核心的性能并不及CPU。这种分发式的简单作业更适合图形学的计算</li>
+</ul>
+<h1 id="Texture-Mapping-纹理映射"><a href="#Texture-Mapping-纹理映射" class="headerlink" title="Texture Mapping 纹理映射"></a>Texture Mapping 纹理映射</h1><p>我们如何表现一个平面的纹理图案呢？<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627203649856.png" alt="image-20240627203649856.png (1160×756) (gitee.com)"><br>以这个漫反射公式为例，$L_d$并不只是可以表示漫反射系数，它可以表示此像素点任意基本属性</p>
+<ul>
+<li>三维物体表面都是二维的</li>
+<li>纹理：图，有弹性，可以映射到表面。<em>但事实上很难做到纹理的三角形完全吻合物理模型的三角形（无缝衔接），这是一块几何上很深入的研究领域叫做“参数化”</em><br>  <img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627204141070.png" alt="image-20240627204141070.png (1234×842) (gitee.com)"></li>
+<li>纹理坐标系：$(u,v)$，三角形每个顶点对应一个uv坐标，为了方便处理坐标均在0到1之内</li>
+<li>一张纹理可以使用多次，类似贴瓷砖？</li>
+<li>纹理本身设计得好的话，多次“贴瓷砖”可以无缝衔接→Tilable Texture<ul>
+<li>一种方法：Wang Tiling</li>
+</ul>
+</li>
+</ul>
+<h2 id="Barycentric-coordinates-重心坐标→插值"><a href="#Barycentric-coordinates-重心坐标→插值" class="headerlink" title="Barycentric coordinates 重心坐标→插值"></a>Barycentric coordinates 重心坐标→插值</h2><blockquote>
+<p>三角形的三个顶点有各自不同的属性，插值所做的是让三角形内部<strong>平滑过渡</strong>三个不同属性。这种插值可以对任意一种属性进行操作</p>
+</blockquote>
+<p>三角形三个顶点的坐标和内部某点坐标的关系：$\begin{array}{r} (x, y)=\alpha A+\beta B+\gamma C \\ \alpha+\beta+\gamma=1 \end{array}$，这样我们就可以用$(\alpha, \beta, \gamma)$表示这一点，其中三数都非负。可以利用这个关系做其它属性的插值<br>我们可以利用面积比来计算系数：<br>$\begin{aligned} \alpha &amp;=\frac{-\left(x-x_{B}\right)\left(y_{C}-y_{B}\right)+\left(y-y_{B}\right)\left(x_{C}-x_{B}\right)}{-\left(x_{A}-x_{B}\right)\left(y_{C}-y_{B}\right)+\left(y_{A}-y_{B}\right)\left(x_{C}-x_{B}\right)} \\ \beta &amp;=\frac{-\left(x-x_{C}\right)\left(y_{A}-y_{C}\right)+\left(y-y_{C}\right)\left(x_{A}-x_{C}\right)}{-\left(x_{B}-x_{C}\right)\left(y_{A}-y_{C}\right)+\left(y_{B}-y_{C}\right)\left(x_{A}-x_{C}\right)} \\ \gamma &amp;=1-\alpha-\beta \end{aligned}$<br>对于三角形重心，系数均为$1/3$。既然原理都知道，那就没必要非要记住这个复杂的公式。<br>但有个问题：<strong>barycentric coordinates are not invariant under projection!</strong> 投影前后的重心坐标可能会变化，所以需要在<strong>对应时间</strong>计算对应的重心坐标来做插值，不能随意复用！</p>
+<p>例如z-buffer：对投影三角形中某个点需要逆计算出其在三维的物理坐标做插值然后投影回二维（所以建议针对三维空间的物体先做三维空间的插值再投影）</p>
+<h2 id="Texture-queries-Applying-Textures"><a href="#Texture-queries-Applying-Textures" class="headerlink" title="Texture queries : Applying Textures"></a>Texture queries : Applying Textures</h2><p>像素在三角形内→计算对应uv→取纹理对应颜色值→设置</p>
+<h3 id="问题1-Texture-Magnification-纹理太小怎么办-→-插值"><a href="#问题1-Texture-Magnification-纹理太小怎么办-→-插值" class="headerlink" title="问题1: Texture Magnification 纹理太小怎么办 → 插值"></a>问题1: Texture Magnification 纹理太小怎么办 → 插值</h3><blockquote>
+<p>小分辨率例如256×256的纹理映射到高分辨率的银幕例如4K，映射到的纹理会被拉大（非整数坐标）</p>
+<ul>
+<li>纹理像素：texel</li>
+<li>多个pixel映射到了同一个texel</li>
+</ul>
+</blockquote>
+<h4 id="解决："><a href="#解决：" class="headerlink" title="解决："></a>解决：</h4><p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627215620170.png" alt="image-20240627215620170.png (1251×489) (gitee.com)"></p>
+<ul>
+<li>Nearest</li>
+<li>Bilinear<ul>
+<li>Bilinear 插值 lerp</li>
+<li>水平+竖直插值→双线性插值<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627220112334.png" alt="image-20240627220112334.png (1315×771) (gitee.com)"></li>
+<li>最近的四个点插值</li>
+</ul>
+</li>
+<li>Bicubic 双向三次插值<ul>
+<li>周围16个点做三次插值</li>
+<li>运算量更大，结果更好</li>
+</ul>
+</li>
+</ul>
+<h3 id="问题2-Texture-Magnification-纹理太大怎么办"><a href="#问题2-Texture-Magnification-纹理太大怎么办" class="headerlink" title="问题2: Texture Magnification 纹理太大怎么办"></a>问题2: Texture Magnification 纹理太大怎么办</h3><p>一个pixel对应了多个texel → 采样频率不足导致 摩尔纹+锯齿（走样）<br>    <img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627221744484.png" alt="gitee.com"></p>
+<h4 id="解决：-1"><a href="#解决：-1" class="headerlink" title="解决："></a>解决：</h4><p><strong>Supersampling</strong></p>
+<ul>
+<li>太浪费！</li>
+<li>Just need to get the average value within a range<ul>
+<li>Point Query vs. <strong>(Avg.) Range Query</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>Mipmap：Allowing (fast, approx., square) range queries</strong></p>
+<ul>
+<li>每一次长宽各减半 D=0,1,2,…（有点像downsampling）</li>
+<li>“Mip hierarchy”</li>
+<li>overhead: 只比原Texture多占用1/3的存储</li>
+<li>怎么知道层数D？约为相邻pixel的映射uv之间的距离取2的对数（左侧为Screen Space，右侧为Texture Space）<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627222733351.png" alt="gitee.com"></li>
+<li>如果计算出来需要的D是整数，就很方便</li>
+<li>如果计算出来需要的D不是整数→Trilinear Interpolation三线性插值<ul>
+<li>分别在floor(D)和ceil(D)上做Bilinear Interpolation取颜色值之后再插值<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627224521093.png" alt="gitee.com"></li>
+</ul>
+</li>
+<li>Limitation：Overblur<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627224813613.png" alt="gitee.com"></li>
+<li>不是方块查询<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627225000474.png" alt="gitee.com"></li>
+<li>Solution：各向异性过滤<br>  <img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627225020315.png" alt="gitee.com"></li>
+<li>各向异性过滤 Anisotropic Filtering</li>
+<li>Ripmaps and summed area tables<ul>
+<li>长/宽/长和宽 各减半</li>
+<li>Can look up axis-aligned rectangular zones</li>
+<li>但斜着的区域仍然没有很好解决（EWA过滤解决）<ul>
+<li>EWA filtering 椭圆取样：利用多次查询求平均值的方法来处理不规则区域</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>overhead：3</li>
+<li>多少x：压缩到多少x，显存足够的情况下开越高越好</li>
+</ul>
+<h1 id="Application-of-Texture"><a href="#Application-of-Texture" class="headerlink" title="Application of Texture"></a>Application of Texture</h1><h2 id="各种贴图"><a href="#各种贴图" class="headerlink" title="各种贴图"></a>各种贴图</h2><ul>
+<li>texture = memory + range query (filtering)</li>
+<li>General method to bring data to fragment calculations</li>
+</ul>
+<h2 id="Environment-lighting-Environment-Map"><a href="#Environment-lighting-Environment-Map" class="headerlink" title="Environment lighting - Environment Map"></a>Environment lighting - Environment Map</h2><ul>
+<li>环境光贴图</li>
+<li>例子：Utah Teapot<ul>
+<li>经典：Stanford Bunny，Cornell Box</li>
+</ul>
+</li>
+<li>Spherical Environment Map - 把环境光记录在球体上<br>  <img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240628154301358.png" alt="gitee.com"><ul>
+<li>球心：世界中心</li>
+<li>一个问题：靠近两级的地方拉伸/扭曲，想象地球仪展开</li>
+<li>解决方法：Cube Map</li>
+</ul>
+</li>
+<li>Cube Map：立方体表面，从球心到球面的投影向外<br>  <img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240628154503858.png" alt="gitee.com"><ul>
+<li>扭曲更少，但是Need dir-&gt;face computation，计算量更大</li>
+</ul>
+</li>
+</ul>
+<h2 id="Store-microgeometry"><a href="#Store-microgeometry" class="headerlink" title="Store microgeometry"></a>Store microgeometry</h2><ul>
+<li>Textures can affect shading! → define height/normal → Bump / Normal Map<ul>
+<li>两者类似，都可以以假乱真</li>
+<li>改变表面的法线</li>
+</ul>
+</li>
+<li>Bump Mapping 凹凸贴图（法线贴图），不把几何形体变得很复杂的情况下可以应用一个相对复杂的纹理，就可以改变每个点的高度（使得其法线发生变化），从而制造一种fake的阴影凹凸效果<ul>
+<li>Bump Mapping的Texture记录了高度移动</li>
+<li>不改变几何信息</li>
+<li>逐像素扰动法线方向</li>
+<li>高度 offset 相对变化，从而改变法线方向</li>
+<li>计算法线方向：切线的垂直方向<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240628160951313.png" alt="gitee.com"></li>
+</ul>
+<ol>
+<li>原本的法线$n(p)=(0,1)$竖直向上，在定义的凹凸贴图上可以先计算切线再求法线：新$p$点的切线（导数）为$dp = c \cdot [h(p+1) - h(p)]$，进一步得出法线（逆时针旋转$90\degree$）得到$n(p)=(-dp,1).normalized()$</li>
+<li>三维空间中原始点$n(p)=(0,0,1)$，其切线：$\frac{dp}{du}= c_{1}\cdot [h(u+1)-h(u)]$，$\frac{dp}{dv}= c_{2}\cdot [h(v+1)-h(v)]$，再旋转后得到$n=(-\frac{dp}{du},-\frac{dp}{dv},1)$<ul>
+<li>在这里我们可以将$p$点附近定义为一个<em>局部坐标系</em>，使得其法线方向始终是$(0,0,1)$，随后再将这个坐标变换到世界坐标中。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Displacement mapping 位移贴图<ul>
+<li>输入相同（Texture与Bump Mapping可共用）</li>
+<li>改真的改变了几何信息，对顶点做位移<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240628162349087.png" alt="gitee.com"></li>
+<li>相比上更逼真，要求模型足够细致，运算量更高</li>
+<li>DirectX有Dynamic的插值法，对模型<strong>按需</strong>做插值，使得初始模型不用过于细致</li>
+</ul>
+</li>
+</ul>
+<h2 id="Procedural-textures"><a href="#Procedural-textures" class="headerlink" title="Procedural textures"></a>Procedural textures</h2><ul>
+<li>3D Procedural Noise + Solid Modeling<ul>
+<li>定义空间中任意点的颜色</li>
+<li>并没有实际生成纹理图，是定义一个空间噪声函数+其他处理（二值化等）→映射</li>
+<li>例子：Perlin Noise</li>
+</ul>
+</li>
+<li>Provide Precomputed Shading<ul>
+<li>Ambient occlusion texture map<br>  <img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240628163423782.png" alt="gitee.com"><ul>
+<li>计算好的环境光遮蔽贴图，一些被遮蔽的地方就不需要计算光影了</li>
+<li>空间换时间</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Solid modeling &amp; Volume rendering<ul>
+<li>三维渲染，例如核磁共振</li>
+</ul>
+</li>
+</ul>
+<h1 id="Shadow-mapping（Lec12回头讲的）"><a href="#Shadow-mapping（Lec12回头讲的）" class="headerlink" title="Shadow mapping（Lec12回头讲的）"></a>Shadow mapping（Lec12回头讲的）</h1><blockquote>
+<p>之前提到的着色并没有考虑其他物体甚至自身的其他部分对其的影响，这是不对的</p>
+</blockquote>
+<p>光栅化下对全局光线传输、阴影的处理十分麻烦。</p>
+<ul>
+<li>draw shadows using rasterization</li>
+<li>An Image-space Algorithm<ul>
+<li>不需要场景的几何信息</li>
+<li>有走样现象，直到现在也是这样</li>
+<li>思想：the points NOT in shadow must be seen both <strong>by the light</strong> and <strong>by the camera</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
+<li>Pass 1: Render from Light<ul>
+<li>Depth image from light source → shadow map 记录深度图<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240628165959826.png" alt="gitee.com"></li>
+</ul>
+</li>
+<li>Pass 2A: Render from Eye<ul>
+<li>Standard image (with depth) from eye<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240628170545489.png" alt="gitee.com"></li>
+</ul>
+</li>
+<li>Pass 2B: Project to light<ul>
+<li>Project visible points in eye view back to light source 投影看到的点到之前光源处的“虚拟相机”的成像上，对比记录的深度是否一致<ul>
+<li>visible to light source → color</li>
+<li>blocked → shadow</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>感觉每个光源对每个静态场景有一个shadow map</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240628171616277.png" alt="gitee.com"><br>可以看到有一些“脏脏”的黑绿块</p>
+<ul>
+<li>走样、分辨率</li>
+<li>数值精度问题<ul>
+<li>Involves equality comparison of ﬂoating point depth values means issues of scale, bias, tolerance</li>
+</ul>
+</li>
+<li>只能点光源、<a target="_blank" rel="noopener" href="https://www.timeanddate.com/eclipse/umbra-shadow.html">硬阴影</a><br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240628172223516.png" alt="gitee.com"></li>
+</ul>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.shimmerjordan.eu.org/2024/06/28/games101-lec7-9/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GAMES101/" rel="tag">GAMES101</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B2%E6%9F%93/" rel="tag">渲染</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2024/07/22/games101-lec10-12/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            GAMES101 Lec10-12 几何 notes
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/06/28/games101-lec5-6/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">GAMES101 Lec5-6 光栅化notes</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "StYfTMDp78X0EltFR16ve2q5-gzGzoHsz",
+    app_key: "G4RPxRpXG6RwdfpnJefOSnyy",
+    path: window.location.pathname,
+    avatar: "wavatar",
+    placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+   
+<!-- minivaline评论 -->
+<div id="mvcomments-box">
+  <div id="mvcomments"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@latest"></script>
+<script>
+    new MiniValine(Object.assign({"enable":true,"mode":"DesertsP","placeholder":"Write a Comment","math":true,"md":true,"enableQQ":true,"NoRecordIP":false,"visitor":true,"maxNest":6,"pageSize":6,"adminEmailMd5":"de8a7aa53d07e6b6bceb45c64027763d","tagMeta":["管理员","小伙伴","访客"],"master":["de8a7aa53d07e6b6bceb45c64027763d"],"friends":["b5bd5d836c7a0091aa8473e79ed4c25e","adb7d1cd192658a55c0ad22a3309cecf","3ce1e6c77b4910f1871106cb30dc62b0","cfce8dc43725cc14ffcd9fb4892d5bfc"],"lang":null,"emoticonUrl":["https://cdn.jsdelivr.net/npm/alus@latest","https://cdn.jsdelivr.net/gh/MiniValine/qq@latest","https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest","https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest","https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest","https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"]}, {
+	  el: '#mvcomments',
+    }));
+  const infoEle = document.querySelector('#mvcomments .info');
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+      infoEle.childNodes.forEach(function (item) {
+          item.parentNode.removeChild(item);
+      });
+  }
+</script>
+<style>
+	#mvcomments-box {
+		padding: 5px 30px;
+	}
+	@media screen and (max-width: 800px) {
+		#mvcomments-box {
+		  padding: 5px 0px;
+		}
+	}
+	.darkmode .MiniValine *{
+		color: #f1f1f1!important;
+	}
+	.darkmode .commentTrigger{
+		background-color: #403e3e !important;
+	  }
+	.darkmode .MiniValine .vpage .more{
+		background: #21232F
+	}
+	.darkmode img{
+		filter: brightness(30%)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before{
+		background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after{
+		background: rgba(0,0,0,0.9)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre{
+		background: #282c34
+		border: 1px solid #282c34
+	}
+	.darkmode .MiniValine .vinputs-area .textarea-wrapper textarea{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper input{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .vextra-area .vsmile-icons{
+		background: transparent;
+	}
+	.darkmode .MiniValine .vinputs-wrap{
+		border-color: #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-wrap:hover{
+		border: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper{
+		border-bottom: 1px dashed #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper:hover{
+		border-bottom: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vbtn{
+		background-color: transparent!important;
+	}
+	.darkmode .MiniValine .vbtn:hover{
+		border: 1px dashed #2196f3;
+	}
+</style>
+
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2024
+        <i class="ri-heart-fill heart_icon"></i> 鞠桥丹-QIAODAN JU
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279035150&amp;web_id=1279035150'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="丛烨-shimmerjordan"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Catalogue</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E9%9A%8F%E7%AC%94/">Essay</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">Friends</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/01/18/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯蓝莓汁吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+  </div>
+</body>
+
+</html>

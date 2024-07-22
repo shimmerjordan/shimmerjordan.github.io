@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="baidu-site-verification" content="code-kg5UjKJZM2" />
+   
+  <meta name="keywords" content="活,炼" />
+   
+  <meta name="description" content="shimmerjordan" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Five shortest-circuit algorithms &amp; two ways to store maps |  丛烨-shimmerjordan
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-Q0DT8B8VJW', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?6d06f826e125297d4ce0fa7a1449328e";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<link rel="alternate" href="/atom.xml" title="丛烨-shimmerjordan" type="application/atom+xml">
+</head>
+
+</html>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+	<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-LC743-shortestCircuit_mapsStorage"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Five shortest-circuit algorithms &amp; two ways to store maps
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/08/02/LC743-shortestCircuit_mapsStorage/" class="article-date">
+  <time datetime="2021-08-02T13:15:22.000Z" itemprop="datePublished">2021-08-02</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">14 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>This article is a record of the answer to Leetcode 743, learning about the five shortest path solutions as follows: Floyd, Plain Dijkstra, Heap Optimization Dijkstra, Bellman Ford, SPFA. and three ways of storing graphs, including adjacency tables, adjacency matrices, and class &amp; adjacency tables.</p>
+<span id="more"></span>
+<h1 id="Original-question"><a href="#Original-question" class="headerlink" title="Original question"></a>Original question</h1><blockquote>
+<p>You are given a network of <code>n</code> nodes, labeled from <code>1</code> to <code>n</code>. You are also given times, a list of travel times as directed edges <code>times[i] = (ui, vi, wi)</code>, where <code>ui</code> is the source node, <code>vi</code> is the target node, and <code>wi</code> is the time it takes for a signal to travel from source to target.</p>
+<p>We will send a signal from a given node k. Return the time it takes for all the n nodes to receive the signal. If it is impossible for all the n nodes to receive the signal, return <code>-1</code>.</p>
+<center>
+<img style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed/blog/LC743-shortestCircuit_mapsStorage/pic1.png" width='25%'>
+<br>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Example 1</div>
+</center>
+
+<p><strong>Example 1:</strong></p>
+<blockquote>
+<p><strong>Input:</strong> times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2<br><strong>Output:</strong> 2</p>
+</blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<p><strong>Input:</strong> times = [[1,2,1]], n = 2, k = 1<br><strong>Output:</strong> 1</p>
+</blockquote>
+<p><strong>Example 3:</strong></p>
+<blockquote>
+<p><strong>Input:</strong> times = [[1,2,1]], n = 2, k = 2<br><strong>Output:</strong> -1</p>
+</blockquote>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= k &lt;= n &lt;= 100</code></li>
+<li><code>1 &lt;= times.length &lt;= 6000</code></li>
+<li><code>times[i].length == 3</code></li>
+<li><code>1 &lt;= ui, vi &lt;= n</code></li>
+<li><code>ui != vi</code></li>
+<li><code>0 &lt;= wi &lt;= 100</code></li>
+<li>All the pairs <code>(ui, vi)</code> are <strong>unique</strong>. (i.e., no multiple edges.)</li>
+</ul>
+</blockquote>
+<h1 id="Basic-analysis"><a href="#Basic-analysis" class="headerlink" title="Basic analysis"></a>Basic analysis</h1><p>For convenience, we have agreed that <code>n</code> is the number of points and <code>m</code> is the number of edges.</p>
+<p>According to the question, the data range of <code>n</code> is <code>100</code> and the data range of <code>m</code> is <code>6000</code>, so the graph can be stored using either the ‘adjacency table’ or the ‘adjacency matrix’.</p>
+<p>Also, the problem is <strong>‘the shortest time for all points to be visited from point <code>k</code>‘</strong>, which translates to <strong>‘the shortest distance from point <code>k</code> to other points <code>x</code>‘</strong>.</p>
+<h1 id="Floyd-Adjacency-matrix"><a href="#Floyd-Adjacency-matrix" class="headerlink" title="Floyd (Adjacency matrix)"></a>Floyd (Adjacency matrix)</h1><p>Based on the <strong>Basic Analysis</strong>, we can use the Floyd algorithm, a multi-source sink shortest-circuit algorithm with complexity $O(n^3)$, to solve the problem, and the adjacency matrix to store the graph.</p>
+<p>The computational effort at this point is about $10^6$ which can be passed.</p>
+<p>Running through Floyd, we can obtain the ‘shortest distance from any starting point to any starting point’. Then take <code>max</code> from all <code>w[k][x]</code> which is ‘the maximum of the shortest distance from point <code>k</code> to other points <code>x</code>‘.</p>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> <span class="number">110</span>, M = <span class="number">6010</span>;</span><br><span class="line">    <span class="type">int</span>[][] w = <span class="keyword">new</span> <span class="title class_">int</span>[N][N];</span><br><span class="line">    <span class="type">int</span> <span class="variable">INF</span> <span class="operator">=</span> <span class="number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="type">int</span> n, k;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">networkDelayTime</span><span class="params">(<span class="type">int</span>[][] ts, <span class="type">int</span> _n, <span class="type">int</span> _k)</span> &#123;</span><br><span class="line">        n = _n; k = _k;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                w[i][j] = w[j][i] = i == j ? <span class="number">0</span> : INF;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>[] t : ts) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">u</span> <span class="operator">=</span> t[<span class="number">0</span>], v = t[<span class="number">1</span>], c = t[<span class="number">2</span>];</span><br><span class="line">            w[u][v] = c;</span><br><span class="line">        &#125;</span><br><span class="line">        floyd();</span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            ans = Math.max(ans, w[k][i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans &gt; INF / <span class="number">2</span> ? -<span class="number">1</span> : ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">floyd</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> <span class="number">1</span>; p &lt;= n; p++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                    w[i][j] = Math.min(w[i][j], w[i][p] + w[p][j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Time complexity: stored graph plus shortest-circuit algorithm with complexity $O(m+n^3)$</li>
+<li>Space complexity: $O(n^2)$</li>
+</ul>
+<h1 id="Plain-Dijkstra-Adjacency-matrix"><a href="#Plain-Dijkstra-Adjacency-matrix" class="headerlink" title="Plain Dijkstra (Adjacency matrix)"></a>Plain Dijkstra (Adjacency matrix)</h1><p>Let us now review the algorithm, the main idea of which is greed.</p>
+<p>All nodes are divided into two categories: those for which the shortest path from the starting point to the current point has been determined, and those for which the shortest path from the starting point to the current point has not been determined (hereinafter referred to as ‘undetermined nodes’ and ‘determined nodes’).</p>
+<p>Each time a point with the shortest distance from the starting point is taken from the Undetermined Node, it is classified as a Determined Node and used to ‘update’ the distance from the starting point to all other Undetermined Nodes. This is done until all points are classified as ‘identified nodes’.</p>
+<p>To ‘update’ node <code>B</code> with node <code>A</code> means to compare the length of the shortest path from the starting point to node <code>A</code> with the length of the edge from node <code>A</code> to node <code>B</code>, and if the former is less than the latter, update the latter with the former. This operation is also called <strong>‘slackening’</strong>.</p>
+<p>The implicit message here is that each time an ‘undetermined node’ is selected, the length of the shortest path from the starting point to it can be determined.</p>
+<p>This can be understood as we have already updated the current node with every ‘determined node’ and do not need to update it again (as a point cannot be reached more than once). The current node is already the shortest distance to the starting point of all the ‘undetermined nodes’ and cannot be updated by any other ‘undetermined node’. Therefore the current node can be classified as a ‘determined node’.</p>
+<h2 id="code-1"><a href="#code-1" class="headerlink" title="code"></a>code</h2><p>According to the question, the time it takes for the signal from node <code>k</code> to reach node <code>x</code> is the length of the shortest path from node <code>k</code> to node <code>x</code>. Therefore we need to find the shortest path from node <code>k</code> to all other points, the maximum of which is the answer. If there is a point that cannot be reached from <code>k</code>, then <code>-1</code> is returned.</p>
+<p>The following code decreases the node number by <code>1</code> so that the node number lies in the range <code>[0,n-1]</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># python</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">networkDelayTime</span>(<span class="params">self, times: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]], n: <span class="built_in">int</span>, k: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        g = [[<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line">        <span class="keyword">for</span> x, y, time <span class="keyword">in</span> times:</span><br><span class="line">            g[x - <span class="number">1</span>][y - <span class="number">1</span>] = time</span><br><span class="line"></span><br><span class="line">        dist = [<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)] * n</span><br><span class="line">        dist[k - <span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">        used = [<span class="literal">False</span>] * n</span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            x = -<span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> y, u <span class="keyword">in</span> <span class="built_in">enumerate</span>(used):</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> u <span class="keyword">and</span> (x == -<span class="number">1</span> <span class="keyword">or</span> dist[y] &lt; dist[x]):</span><br><span class="line">                    x = y</span><br><span class="line">            used[x] = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">for</span> y, time <span class="keyword">in</span> <span class="built_in">enumerate</span>(g[x]):</span><br><span class="line">                dist[y] = <span class="built_in">min</span>(dist[y], dist[x] + time)</span><br><span class="line"></span><br><span class="line">        ans = <span class="built_in">max</span>(dist)</span><br><span class="line">        <span class="keyword">return</span> ans <span class="keyword">if</span> ans &lt; <span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>) <span class="keyword">else</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Time complexity: stored graph plus shortest-circuit algorithm with complexity $O(m+n^2)$</li>
+<li>Space complexity: $O(n^2)$</li>
+</ul>
+<h1 id="Heap-optimised-Dijkstra-Adjacency-tables"><a href="#Heap-optimised-Dijkstra-Adjacency-tables" class="headerlink" title="Heap-optimised Dijkstra (Adjacency tables)"></a>Heap-optimised Dijkstra (Adjacency tables)</h1><p>Since the range of edge data is not too large, we can also use the <strong>heap-optimised</strong> Dijkstra algorithm with a complexity of $O(m\log{n})$.</p>
+<p>Both heap-optimised Dijkstra and plain Dijkstra are ‘single-source shortest-circuit’ algorithms.</p>
+<p>After running through the heap-optimised Dijkstra algorithm to find the shortest circuit, max is taken from all the shortest circuits to be the <strong>‘maximum of the shortest distance from point k to other points x’</strong>.</p>
+<p>At this point, the complexity of the algorithm is $O(m\log{n})$, which can be passed.</p>
+<h2 id="code-2"><a href="#code-2" class="headerlink" title="code"></a>code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> <span class="number">110</span>, M = <span class="number">6010</span>;</span><br><span class="line">    <span class="type">int</span>[] he = <span class="keyword">new</span> <span class="title class_">int</span>[N], e = <span class="keyword">new</span> <span class="title class_">int</span>[M], ne = <span class="keyword">new</span> <span class="title class_">int</span>[M], w = <span class="keyword">new</span> <span class="title class_">int</span>[M];</span><br><span class="line">    <span class="type">int</span>[] dist = <span class="keyword">new</span> <span class="title class_">int</span>[N];</span><br><span class="line">    <span class="type">boolean</span>[] vis = <span class="keyword">new</span> <span class="title class_">boolean</span>[N];</span><br><span class="line">    <span class="type">int</span> n, k, idx;</span><br><span class="line">    <span class="type">int</span> <span class="variable">INF</span> <span class="operator">=</span> <span class="number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> c)</span> &#123;</span><br><span class="line">        e[idx] = b;</span><br><span class="line">        ne[idx] = he[a];</span><br><span class="line">        he[a] = idx;</span><br><span class="line">        w[idx] = c;</span><br><span class="line">        idx++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">networkDelayTime</span><span class="params">(<span class="type">int</span>[][] ts, <span class="type">int</span> _n, <span class="type">int</span> _k)</span> &#123;</span><br><span class="line">        n = _n; k = _k;</span><br><span class="line">        Arrays.fill(he, -<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>[] t : ts) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">u</span> <span class="operator">=</span> t[<span class="number">0</span>], v = t[<span class="number">1</span>], c = t[<span class="number">2</span>];</span><br><span class="line">            add(u, v, c);</span><br><span class="line">        &#125;</span><br><span class="line">        dijkstra();</span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            ans = Math.max(ans, dist[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans &gt; INF / <span class="number">2</span> ? -<span class="number">1</span> : ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">dijkstra</span><span class="params">()</span> &#123;</span><br><span class="line">        Arrays.fill(vis, <span class="literal">false</span>);</span><br><span class="line">        Arrays.fill(dist, INF);</span><br><span class="line">        dist[k] = <span class="number">0</span>;</span><br><span class="line">        PriorityQueue&lt;<span class="type">int</span>[]&gt; q = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;((a,b)-&gt;a[<span class="number">1</span>]-b[<span class="number">1</span>]);</span><br><span class="line">        q.add(<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;k, <span class="number">0</span>&#125;);</span><br><span class="line">        <span class="keyword">while</span> (!q.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span>[] poll = q.poll();</span><br><span class="line">            <span class="type">int</span> <span class="variable">id</span> <span class="operator">=</span> poll[<span class="number">0</span>], step = poll[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (vis[id]) <span class="keyword">continue</span>;</span><br><span class="line">            vis[id] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> he[id]; i != -<span class="number">1</span>; i = ne[i]) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> e[i];</span><br><span class="line">                <span class="keyword">if</span> (dist[j] &gt; dist[id] + w[i]) &#123;</span><br><span class="line">                    dist[j] = dist[id] + w[i];</span><br><span class="line">                    q.add(<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;j, dist[j]&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Time complexity: $O(m\log{n}+n)$</li>
+<li>Space complexity: $O(m)$</li>
+</ul>
+<h1 id="Bellman-Ford-Class-amp-Adjacency-table"><a href="#Bellman-Ford-Class-amp-Adjacency-table" class="headerlink" title="Bellman Ford (Class &amp; Adjacency table)"></a>Bellman Ford (Class &amp; Adjacency table)</h1><p>Although the title specifies that there are no ‘negatively weighted edges’, we can still use Bellman Ford, which can be solved by ‘shortest-circuiting in a negatively weighted graph’, which is also a <strong>‘single-source shortest-circuiting’</strong> algorithm with $O(n \cdot m)$ complexity.<br>Usually, to ensure $O(n \cdot m)$, a separate class can be constructed to represent the edges, and all edges can be stored in the set, and the set of edges can be traversed directly in the <code>n</code> times relaxation operations (see P1 for code).<br>Since the order of magnitude of edges in this problem is greater than the order of magnitude of points, it is also possible to continue to use the ‘adjacency table’ approach to edge traversal, with a lower bound of $O(n)$ on the complexity of traversing all edges and an upper bound that ensures that it does not exceed $O(m)$ (see P2 for code).</p>
+<h2 id="code-3"><a href="#code-3" class="headerlink" title="code"></a>code</h2><h3 id="P1"><a href="#P1" class="headerlink" title="P1"></a>P1</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Edge</span> &#123;</span><br><span class="line">        <span class="type">int</span> a, b, c;</span><br><span class="line">        Edge(<span class="type">int</span> _a, <span class="type">int</span> _b, <span class="type">int</span> _c) &#123;</span><br><span class="line">            a = _a; b = _b; c = _c;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> <span class="number">110</span>, M = <span class="number">6010</span>;</span><br><span class="line">    <span class="type">int</span>[] dist = <span class="keyword">new</span> <span class="title class_">int</span>[N];</span><br><span class="line">    <span class="type">boolean</span>[] vis = <span class="keyword">new</span> <span class="title class_">boolean</span>[N];</span><br><span class="line">    <span class="type">int</span> <span class="variable">INF</span> <span class="operator">=</span> <span class="number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="type">int</span> n, m, k;</span><br><span class="line">    List&lt;Edge&gt; es = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">networkDelayTime</span><span class="params">(<span class="type">int</span>[][] ts, <span class="type">int</span> _n, <span class="type">int</span> _k)</span> &#123;</span><br><span class="line">        n = _n; k = _k;</span><br><span class="line">        m = ts.length;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>[] t : ts) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">u</span> <span class="operator">=</span> t[<span class="number">0</span>], v = t[<span class="number">1</span>], c = t[<span class="number">2</span>];</span><br><span class="line">            es.add(<span class="keyword">new</span> <span class="title class_">Edge</span>(u, v, c));</span><br><span class="line">        &#125;</span><br><span class="line">        bf();</span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            ans = Math.max(ans, dist[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans &gt; INF / <span class="number">2</span> ? -<span class="number">1</span> : ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">bf</span><span class="params">()</span> &#123;</span><br><span class="line">        Arrays.fill(dist, INF);</span><br><span class="line">        dist[k] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> <span class="number">1</span>; p &lt;= n; p++) &#123;</span><br><span class="line">            <span class="type">int</span>[] prev = dist.clone();</span><br><span class="line">            <span class="keyword">for</span> (Edge e : es) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> e.a, b = e.b, c = e.c;</span><br><span class="line">                dist[b] = Math.min(dist[b], prev[a] + c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="P2"><a href="#P2" class="headerlink" title="P2"></a>P2</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> <span class="number">110</span>, M = <span class="number">6010</span>;</span><br><span class="line">    <span class="type">int</span>[] he = <span class="keyword">new</span> <span class="title class_">int</span>[N], e = <span class="keyword">new</span> <span class="title class_">int</span>[M], ne = <span class="keyword">new</span> <span class="title class_">int</span>[M], w = <span class="keyword">new</span> <span class="title class_">int</span>[M];</span><br><span class="line">    <span class="type">int</span>[] dist = <span class="keyword">new</span> <span class="title class_">int</span>[N];</span><br><span class="line">    <span class="type">boolean</span>[] vis = <span class="keyword">new</span> <span class="title class_">boolean</span>[N];</span><br><span class="line">    <span class="type">int</span> <span class="variable">INF</span> <span class="operator">=</span> <span class="number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="type">int</span> n, m, k, idx;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> c)</span> &#123;</span><br><span class="line">        e[idx] = b;</span><br><span class="line">        ne[idx] = he[a];</span><br><span class="line">        he[a] = idx;</span><br><span class="line">        w[idx] = c;</span><br><span class="line">        idx++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">networkDelayTime</span><span class="params">(<span class="type">int</span>[][] ts, <span class="type">int</span> _n, <span class="type">int</span> _k)</span> &#123;</span><br><span class="line">        n = _n; k = _k;</span><br><span class="line">        m = ts.length;</span><br><span class="line">        Arrays.fill(he, -<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>[] t : ts) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">u</span> <span class="operator">=</span> t[<span class="number">0</span>], v = t[<span class="number">1</span>], c = t[<span class="number">2</span>];</span><br><span class="line">            add(u, v, c);</span><br><span class="line">        &#125;</span><br><span class="line">        bf();</span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            ans = Math.max(ans, dist[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans &gt; INF / <span class="number">2</span> ? -<span class="number">1</span> : ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">bf</span><span class="params">()</span> &#123;</span><br><span class="line">        Arrays.fill(dist, INF);</span><br><span class="line">        dist[k] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> <span class="number">1</span>; p &lt;= n; p++) &#123;</span><br><span class="line">            <span class="type">int</span>[] prev = dist.clone();</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span>; a &lt;= n; a++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> he[a]; i != -<span class="number">1</span>; i = ne[i]) &#123;</span><br><span class="line">                    <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> e[i];</span><br><span class="line">                    dist[b] = Math.min(dist[b], prev[a] + w[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Time complexity: $O(m \cdot n)$</li>
+<li>Space complexity: $O(m)$</li>
+</ul>
+<h1 id="SPFA-Adjacent-Table"><a href="#SPFA-Adjacent-Table" class="headerlink" title="SPFA (Adjacent Table)"></a>SPFA (Adjacent Table)</h1><p>SPFA is an optimised implementation of Bellman Ford, <strong>either using a queue for optimisation or a stack for optimisation.</strong><br>The complexity is usually $O(k \cdot m)$, with <code>k</code> typically being <code>4</code> to <code>5</code>, and still $O(n \cdot m)$ in the worst case, degrading from $O(k \cdot m)$ to $O(n \cdot m)$ when the data is a grid graph.</p>
+<h2 id="code-4"><a href="#code-4" class="headerlink" title="code"></a>code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> <span class="number">110</span>, M = <span class="number">6010</span>;</span><br><span class="line">    <span class="type">int</span>[] he = <span class="keyword">new</span> <span class="title class_">int</span>[N], e = <span class="keyword">new</span> <span class="title class_">int</span>[M], ne = <span class="keyword">new</span> <span class="title class_">int</span>[M], w = <span class="keyword">new</span> <span class="title class_">int</span>[M];</span><br><span class="line">    <span class="type">int</span>[] dist = <span class="keyword">new</span> <span class="title class_">int</span>[N];</span><br><span class="line">    <span class="type">boolean</span>[] vis = <span class="keyword">new</span> <span class="title class_">boolean</span>[N];</span><br><span class="line">    <span class="type">int</span> <span class="variable">INF</span> <span class="operator">=</span> <span class="number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="type">int</span> n, k, idx;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> c)</span> &#123;</span><br><span class="line">        e[idx] = b;</span><br><span class="line">        ne[idx] = he[a];</span><br><span class="line">        he[a] = idx;</span><br><span class="line">        w[idx] = c;</span><br><span class="line">        idx++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">networkDelayTime</span><span class="params">(<span class="type">int</span>[][] ts, <span class="type">int</span> _n, <span class="type">int</span> _k)</span> &#123;</span><br><span class="line">        n = _n; k = _k;</span><br><span class="line">        Arrays.fill(he, -<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>[] t : ts) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">u</span> <span class="operator">=</span> t[<span class="number">0</span>], v = t[<span class="number">1</span>], c = t[<span class="number">2</span>];</span><br><span class="line">            add(u, v, c);</span><br><span class="line">        &#125;</span><br><span class="line">        spfa();</span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            ans = Math.max(ans, dist[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans &gt; INF / <span class="number">2</span> ? -<span class="number">1</span> : ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">spfa</span><span class="params">()</span> &#123;</span><br><span class="line">        Arrays.fill(vis, <span class="literal">false</span>);</span><br><span class="line">        Arrays.fill(dist, INF);</span><br><span class="line">        dist[k] = <span class="number">0</span>;</span><br><span class="line">        Deque&lt;Integer&gt; d = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">        d.addLast(k);</span><br><span class="line">        vis[k] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">while</span> (!d.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">poll</span> <span class="operator">=</span> d.pollFirst();</span><br><span class="line">            vis[poll] = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> he[poll]; i != -<span class="number">1</span>; i = ne[i]) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> e[i];</span><br><span class="line">                <span class="keyword">if</span> (dist[j] &gt; dist[poll] + w[i]) &#123;</span><br><span class="line">                    dist[j] = dist[poll] + w[i];</span><br><span class="line">                    <span class="keyword">if</span> (vis[j]) <span class="keyword">continue</span>;</span><br><span class="line">                    d.addLast(j);</span><br><span class="line">                    vis[j] = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Time complexity: $O(m \cdot n)$</li>
+<li>Space complexity: $O(m)$</li>
+</ul>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.shimmerjordan.eu.org/2021/08/02/LC743-shortestCircuit_mapsStorage/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bellman-Ford/" rel="tag">Bellman-Ford</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dijkstra/" rel="tag">Dijkstra</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Floyd/" rel="tag">Floyd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SPFA/" rel="tag">SPFA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/graph/" rel="tag">graph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shortest-path/" rel="tag">shortest path</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2021/08/07/DFSFramework/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            The Framework of Backtracking Algorithm Problems (DFS)
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/07/31/DPFramwork/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">The Framework of Solving Dynamic Programming Problems</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "StYfTMDp78X0EltFR16ve2q5-gzGzoHsz",
+    app_key: "G4RPxRpXG6RwdfpnJefOSnyy",
+    path: window.location.pathname,
+    avatar: "wavatar",
+    placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+   
+<!-- minivaline评论 -->
+<div id="mvcomments-box">
+  <div id="mvcomments"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@latest"></script>
+<script>
+    new MiniValine(Object.assign({"enable":true,"mode":"DesertsP","placeholder":"Write a Comment","math":true,"md":true,"enableQQ":true,"NoRecordIP":false,"visitor":true,"maxNest":6,"pageSize":6,"adminEmailMd5":"de8a7aa53d07e6b6bceb45c64027763d","tagMeta":["管理员","小伙伴","访客"],"master":["de8a7aa53d07e6b6bceb45c64027763d"],"friends":["b5bd5d836c7a0091aa8473e79ed4c25e","adb7d1cd192658a55c0ad22a3309cecf","3ce1e6c77b4910f1871106cb30dc62b0","cfce8dc43725cc14ffcd9fb4892d5bfc"],"lang":null,"emoticonUrl":["https://cdn.jsdelivr.net/npm/alus@latest","https://cdn.jsdelivr.net/gh/MiniValine/qq@latest","https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest","https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest","https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest","https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"]}, {
+	  el: '#mvcomments',
+    }));
+  const infoEle = document.querySelector('#mvcomments .info');
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+      infoEle.childNodes.forEach(function (item) {
+          item.parentNode.removeChild(item);
+      });
+  }
+</script>
+<style>
+	#mvcomments-box {
+		padding: 5px 30px;
+	}
+	@media screen and (max-width: 800px) {
+		#mvcomments-box {
+		  padding: 5px 0px;
+		}
+	}
+	.darkmode .MiniValine *{
+		color: #f1f1f1!important;
+	}
+	.darkmode .commentTrigger{
+		background-color: #403e3e !important;
+	  }
+	.darkmode .MiniValine .vpage .more{
+		background: #21232F
+	}
+	.darkmode img{
+		filter: brightness(30%)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before{
+		background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after{
+		background: rgba(0,0,0,0.9)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre{
+		background: #282c34
+		border: 1px solid #282c34
+	}
+	.darkmode .MiniValine .vinputs-area .textarea-wrapper textarea{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper input{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .vextra-area .vsmile-icons{
+		background: transparent;
+	}
+	.darkmode .MiniValine .vinputs-wrap{
+		border-color: #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-wrap:hover{
+		border: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper{
+		border-bottom: 1px dashed #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper:hover{
+		border-bottom: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vbtn{
+		background-color: transparent!important;
+	}
+	.darkmode .MiniValine .vbtn:hover{
+		border: 1px dashed #2196f3;
+	}
+</style>
+
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2024
+        <i class="ri-heart-fill heart_icon"></i> 鞠桥丹-QIAODAN JU
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279035150&amp;web_id=1279035150'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="丛烨-shimmerjordan"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Catalogue</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E9%9A%8F%E7%AC%94/">Essay</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">Friends</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/01/18/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯蓝莓汁吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="baidu-site-verification" content="code-kg5UjKJZM2" />
+   
+  <meta name="keywords" content="活,炼" />
+   
+  <meta name="description" content="shimmerjordan" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    饥荒指令 |  丛烨-shimmerjordan
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-Q0DT8B8VJW', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?6d06f826e125297d4ce0fa7a1449328e";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<link rel="alternate" href="/atom.xml" title="丛烨-shimmerjordan" type="application/atom+xml">
+</head>
+
+</html>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+	<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-饥荒指令"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  饥荒指令
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/01/28/DSTOrder/" class="article-date">
+  <time datetime="2020-01-28T01:18:43.000Z" itemprop="datePublished">2020-01-28</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/">新手指北</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">4.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">17 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>　　可用Ctrl+F查询所需物品名称（大部分代码名称已修改成联机中文MOD翻译）。<br>　　进入游戏后按“～”键调出控制台<br>　　输入c_give(“代码名称“，数量）——物品会按所输数量出现在物品栏，假若包裹放不下，会自动掉落在地上。此代码最方便，甚至还可以在鼠标指针处直接放置建筑类物品。<br>　　c_spawn(“XX”，数量)——放鼠标指针指示的地上<br>　　上帝模式：c_godmode()<br>　　饥饿值上限：GetPlayer().components.hunger:SetMax(500)<br>　　精神值上限：GetPlayer().components.sanity:SetMax(500)<br>　　生命值上限：GetPlayer().components.health:SetMaxHealth(300)<br>　　全物品直接制造：GetPlayer().components.builder:GiveAllRecipes()<br>　　删除物品：TheInput:GetWorldEntityUnderMouse():Remove()<br>　　传送：GetPlayer().Transform:SetPosition(坐标，例：0,0,0)<br>　　此列表已剔除一些对于联机无效的代码，测试过真实有效。<br><span id="more"></span><br>详情见<a href="/file/流年饥荒控制台指令大全+物品大全+服务器管理命令大全.pdf">拓展</a></p>
+<h1 id="材料"><a href="#材料" class="headerlink" title="材料"></a>材料</h1><html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+　　                割下的草：cutgrass <br/>
+　　                树枝：twigs <br/>
+　　                木头：log  <br/>
+　　                木炭：charcoal  <br/>
+　　                灰：ash  <br/>
+　　                采集的芦苇：cutreeds  <br/>
+　　                花瓣：petals  <br/>
+　　                噩梦花瓣：petals_evil  <br/>
+　　                活木头：livinglog  <br/>
+　　                叶子：foliage  <br/>
+　　                荧光果：lightbulb  <br/>
+　　                发光浆果：wormlight  <br/>
+　　                冰：ice  <br/>
+　　                燧石：flint  <br/>
+　　                硝石：nitre  <br/>
+　　                岩石：rocks  <br/>
+　　                大理石：marble  <br/>
+　　                月之石：moonrocknugget  <br/>
+　　                黄金：goldnugget  <br/>
+　　                铥矿石：thulecite  <br/>
+　　                铥矿石碎片：thulecite_pieces  <br/>
+　　                红宝石：redgem  <br/>
+　　                蓝宝石：bluegem  <br/>
+　　                紫宝石：purplegem  <br/>
+　　                绿宝石：greengem  <br/>
+　　                橙宝石：orangegem  <br/>
+　　                黄宝石：yellowgem  <br/>
+　　                彩色宝石：opalpreciousgem  <br/>
+　　                绳子：rope  <br/>
+　　                木板：boards  <br/>
+　　                石砖：cutstone  <br/>
+　　                莎草纸：papyrus  <br/>
+　　                噩梦燃料：nightmarefuel  <br/>
+　　                蜂蜡：beeswax  <br/>
+　　                蜡纸：waxpaper  <br/>
+　　                电器元件：transistor  <br/>
+　　                狗牙：houndstooth  <br/>
+　　                蜘蛛丝：silk  <br/>
+　　                蜘蛛腺体：spidergland
+            </td>
+            <td>
+                <!--右侧内容--> 
+　　                胡子：beardhair <br/> 
+　　                牛毛：beefalowool  <br/>
+　　                牛角：horn  <br/>
+　　                便便：poop  <br/>
+　　                蜂巢：honeycomb  <br/>
+　　                蜂刺：stinger  <br/>
+　　                猪皮：pigskin  <br/>
+　　                兔人尾巴：manrabbit_tail  <br/>
+　　                猫尾：coontail  <br/>
+　　                海象牙：walrus_tusk  <br/>
+　　                胡须：beardhair  <br/>
+　　                烂鸡蛋：rottenegg  <br/>
+　　                乌鸦羽毛：feather_crow  <br/>
+　　                红雀羽毛：feather_robin <br/>
+　　                雪雀羽毛：feather_robin_winter  <br/>
+　　                金丝雀羽毛：feather_canary  <br/>
+　　                鸟粪：guano  <br/>
+　　                触手皮：tentaclespots  <br/>
+　　                粘滑含糊虫（黏糊虫粘液）：slurtleslime  <br/>
+　　                破碎的背壳：slurtle_shellpieces  <br/>
+　　                蚊子血袋：mosquitosack  <br/>
+　　                缀食者皮：slurper_pelt  <br/>
+　　                远古守护者角：minotaurhorn  <br/>
+　　                掉落的羽毛：goose_feather  <br/>
+　　                鳞片：dragon_scales  <br/>
+　　                厚皮毛：bearger_fur  <br/>
+　　                巨鹿眼球：deerclops_eyeball  <br/>
+　　                毒蕈皮：shroom_skin  <br/>
+　　                闪电羊角：lightninggoathorn  <br/>
+　　                格罗门翅膀：glommerwings  <br/>
+　　                格罗门花（花瞬间死亡）：glommerflower  <br/>
+　　                格罗门燃料：glommerfuel  <br/>
+　　                冷冻虫卵：lavae_cocoon  <br/>
+　　                暗影之心：shadowheart  <br/>
+　　                鹿茸：deer_antler  <br/>
+　　                克劳斯钥匙：klaussackkey  <br/>
+　　                齿轮：gears  <br/>
+　　                骨片：boneshard  <br/>
+　　                化石碎片（据说多种实际上只出一种）：fossil_piece
+            </td>
+        </tr>
+    </table>
+</html>
+
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+　　                斧头：axe  <br/>
+　　                金斧头：goldenaxe  <br/>
+　　                露西斧：lucy  <br/>
+　　                鹤嘴锄：pickaxe  <br/>
+　　                黄金鹤嘴锄：goldenpickaxe  <br/>
+　　                铁铲：shovel  <br/>
+　　                黄金铁铲（讲真黄金做的还能叫铁铲）：goldenshovel  <br/>
+　　                镐斧：multitool_axe_pickaxe  <br/>
+　　                锤子：hammer  <br/>
+　　                草叉：pitchfork  <br/>
+　　                剃刀：razor  <br/>
+　　                捕虫网：bugnet  <br/>
+　　                鱼竿：fishingrod  <br/>
+　　                陷阱：trap  <br/>
+　　                鸟陷阱：birdtrap  <br/>
+　　                南瓜灯：pumpkin_lantern  <br/>
+　　                提灯：lantern  <br/>
+　　                漂亮太阳伞：grass_umbrella  <br/>
+　　                雨伞：umbrella  <br/>
+　　                保温石：heatrock  <br/>
+　　                水球：waterballon  <br/>
+　　                指南针：compass
+            </td>
+            <td>
+                <!--右侧内容--> 
+　　                空包裹：bundlewrap  <br/>
+　　                彩纸：giftwrap  <br/>
+　　                稻草卷：bedroll_straw  <br/>
+　　                毛皮铺盖：bedroll_furry  <br/>
+　　                鹅毛扇：featherfan  <br/>
+　　                狗牙陷阱：trap_teeth  <br/>
+　　                麦斯威尔的利齿陷阱：trap_teeth_maxwell  <br/>
+　　                背包：backpack  <br/>
+　　                猪皮包：piggyback  <br/>
+　　                隔热包：icepack  <br/>
+　　                坎普斯背包：krampus_sack  <br/>
+　　                糖果袋：candybag  <br/>
+　　                羽毛笔：featherpencil  <br/>
+　　                便便蓝：fertilizer  <br/>
+　　                取鞍器：saddlehorn  <br/>
+　　                鞍：saddle_basic  <br/>
+　　                浴血战鞍：saddle_wa  <br/>
+　　                闪亮之鞍：saddle_race  <br/>
+　　                刷子：brush  <br/>
+　　                舐盐器：saltlick
+            </td>
+        </tr>
+    </table>
+</html>
+
+<h1 id="武器"><a href="#武器" class="headerlink" title="武器"></a>武器</h1><html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+　　                长矛：spear  <br/>
+　　                瓦丝格雷斯矛：spear_wathgrithr  <br/>
+　　                气球（吹好的，可以装饰自己的窝~）：balloon  <br/>
+　　                火腿球棒：hambat  <br/>
+　　                触手尖刺：tentaclespike  <br/>
+　　                晨星：nightstick  <br/>
+　　                三脚猫的教诲：whip  <br/>
+　　                暗影剑：nightsword  <br/>
+　　                蝙蝠斧棍：batbat  <br/>
+　　                铥矿棒：ruins_bat  <br/>
+　　                冰魔杖（蓝）：icestaff  <br/>
+　　                火魔杖（红）：firestaff <br/> 
+　　                传送魔杖（紫）：telestaff  <br/>
+　　                星星呼唤者（黄）：yellowstaff  <br/>
+　　                毁灭权杖（绿）：greenstaff
+            </td>
+            <td>
+                <!--右侧内容-->
+　　                魔杖（单机用来找零件那个）：diviningrod  <br/>
+　　                懒惰的探索者（橙）：orangestaff  <br/>
+　　                呼月者权杖：opalstaff  <br/>
+　　                回旋镖：boomerang  <br/>
+　　                吹箭：blowdart_pipe  <br/>
+　　                燃烧吹箭：blowdart_fire  <br/>
+　　                麻醉吹箭：blowdart_sleep  <br/>
+　　                电磁吹箭：blowdart_yellow  <br/>
+　　                旋风：staff_tornado  <br/>
+　　                排箫：panflute  <br/>
+　　                独奏乐器:onemanband  <br/>
+　　                火药：gunpowder  <br/>
+　　                蜜蜂地雷：beemine  <br/>
+　　                恒迪尤斯·舒提尤斯（眼睛炮塔）：eyeturret  <br/>
+　　                可放置的眼睛炮塔：eyeturret_item
+            </td>
+        </tr>
+    </table>
+</html>
+
+<h1 id="装备"><a href="#装备" class="headerlink" title="装备"></a>装备</h1><html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+　　                缝纫工具包（为了方便而分类）：sewing_kit  <br/>
+　　                猪皮头盔：footballhat  <br/>
+　　                瓦丝格雷斯帽：wathgrithrhat <br/> 
+　　                女王冠：hivehat  <br/>
+　　                背壳头盔：slurtlehat  <br/>
+　　                远古王冠：ruinshat  <br/>
+　　                矿工帽：minerhat  <br/>
+　　                地鼠帽：molehat  <br/>
+　　                蜘蛛帽：spiderhat  <br/>
+　　                高礼帽：tophat  <br/>
+　　                雨帽：rainhat  <br/>
+　　                眼球伞：eyebrellahat  <br/>
+　　                养蜂人的帽子：beehat  <br/>
+　　                羽毛帽：featherhat  <br/>
+　　                丛林帽：bushhat  <br/>
+　　                贝雷帽：walrushat  <br/>
+　　                冰块：icehat  <br/>
+　　                西瓜帽：watermelonhat  <br/>
+　　                猫帽：catcoonhat  <br/>
+　　                绿蘑菇帽：green_mushroomhat <br/> 
+　　                蓝蘑菇帽：blue_mushroomhat  <br/>  
+　　                红蘑菇帽：red_mushroomhat
+            </td>
+            <td>
+                <!--右侧内容-->
+　　                草地盔甲：armorgrass  <br/>
+　　                木盔甲：armorwood  <br/>
+　　                大理石盔甲：armormarble  <br/>
+　　                暗影盔甲：armor_sanity  <br/>
+　　                鳞甲：armordragonfly  <br/>
+　　                圆壳蛞蝓壳：armorsnurtleshell  <br/>  
+　　                远古盔甲：armorruins  <br/>
+　　                小巧背心：sweatervest  <br/>
+　　                花纹衬衫：hawaiianshirt  <br/>
+　　                夏季背心：reflectivevest  <br/>
+　　                夏日背心：trunkvest_summer  <br/>
+　　                寒冬背心：trunkvest_winter  <br/>
+　　                熊皮背心：beargervest  <br/>
+　　                雨衣：raincoat  <br/>
+　　                饥饿腰带：armorslurper  <br/>
+　　                提神护符（红）：amulet  <br/>
+　　                寒冰护符（蓝）：blueamulet  <br/>
+　　                护符（紫）：purpleamulet  <br/>
+　　                魔力之光（黄）：yellowamulet  <br/>
+　　                懒惰的强盗（橙）：orangeamulet  <br/>
+　　                建造护符（绿）：greenamulet  <br/>
+　　                铥矿奖章：nightmare_timepiece  <br/>
+　　                行走手杖：cane
+            </td>
+        </tr>
+    </table>
+</html>
+
+<h1 id="药物"><a href="#药物" class="headerlink" title="药物"></a>药物</h1><html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+　　                救赎之心：reviver  <br/>
+　　                治疗药膏：healingsalve  <br/>
+　　                蜜蜂药膏：bandage
+            </td>
+            <td>
+                <!--右侧内容-->
+　　                AGV试验药（强心针）：lifeinjector  <br/>
+　　                果冻豆：jellybean
+            </td>
+        </tr>
+    </table>
+</html>
+
+<h1 id="食物"><a href="#食物" class="headerlink" title="食物"></a>食物</h1><html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+　　                胡萝卜：carrot  <br/>
+　　                烤胡萝卜:carrot_cooked  <br/>
+　　                玉米：corn  <br/>
+　　                爆米花：corn_cooked  <br/>
+　　                南瓜：pumpkin   <br/>
+　　                热南瓜：pumpkin_cooked  <br/>
+　　                茄子：eggplant  <br/>
+　　                烤茄子：eggplant_cooked  <br/>
+　　                红蘑菇：red_cap  <br/>
+　　                烤红蘑菇：red_cap_cooked  <br/>
+　　                绿蘑菇：green_cap  <br/>
+　　                烤绿蘑菇：green_cap_cooked  <br/>
+　　                蓝蘑菇：blue_cap  <br/>
+　　                烤蓝蘑菇：blue_cap_cooked  <br/>
+　　                石榴：pomegranate  <br/>
+　　                烤石榴：pomegranate_cooked  <br/>
+　　                榴莲：durian  <br/>
+　　                烤榴莲：durian_cooked  <br/>
+　　                火龙果：dragonfruit  <br/>
+　　                精致火龙果（烤）：dragonfruit_cooked <br/> 
+　　                浆果：berries  <br/>
+　　                烤浆果：berries_cooked  <br/>
+　　                西瓜：watermelon  <br/>
+　　                烤熟的西瓜：watermelon_cooked  <br/>
+　　                仙人掌肉：cactus_meat  <br/>
+　　                仙人掌花：cactus_flower  <br/>
+　　                采集的苔藓：cutlichen  <br/>
+　　                肉：meat  <br/>
+　　                大熟肉：meat_cooked  <br/>
+　　                大肉干：meat_dried  <br/>
+　　                小肉块：smallmeat  <br/>
+　　                熟肉块：cookedsmallmeat  <br/>
+　　                鸡腿：drumstick  <br/>
+　　                烤鸡腿：drumstick_cooked  <br/>
+　　                青蛙腿：froglegs  <br/>
+　　                熟蛙腿：froglegs_cooked  <br/>
+　　                怪物肉：monstermeat  <br/>
+　　                烤怪物肉：cookedmonstermeat  <br/>
+　　                怪物肉干：monstermeat_dried  <br/>
+　　                多叶的肉：plantmeat  <br/>
+　　                煮熟的多叶肉：plantmeat_cooked  <br/>
+　　                鸡蛋：bird_egg  <br/>
+　　                熟鸡蛋：bird_egg_cooked  <br/>
+　　                油煎高脚鸟蛋：tallbirdegg_cooked  <br/>
+　　                鱼：fish  <br/>
+　　                熟鱼：fish_cooked  <br/>
+　　                鳗鱼：eel <br/>
+　　                煮熟的鳗鱼：eel_cooked
+            </td>
+            <td>
+                <!--右侧内容-->
+　　                烤坚果：acorn_cooked  <br/>
+　　                蝴蝶翅膀：butterflywings<br/>  
+　　                黄油：butter  <br/>
+　　                蜂蜜：honey  <br/>
+　　                蜂王浆：royal_jelly  <br/>
+　　                曼德拉草：mandrake  <br/>
+　　                烤熟的曼德拉草：cookedma<br/>ndrake  
+　　                蝙蝠翅膀：batwing  <br/>
+　　                熟蝙蝠翅膀：batwing_cook<br/>ed  
+　　                夏象鼻：trunk_summer  <br/>
+　　                冬象鼻：trunk_winter  <br/>
+　　                熟象鼻：trunk_cooked  <br/>
+　　                肉串：kabobs  <br/>
+　　                肉丸：meatballs  <br/>
+　　                蜜汁火腿：honeyham  <br/>
+　　                肉汤：bonestew  <br/>
+　　                火鸡正餐：turkeydinner  <br/>
+　　                青蛙圆面包三明治：frogglebunwich  <br/>  
+　　                玉米饼包炸鱼：fishtacos  <br/>
+　　                鱼肉条：fishsticks  <br/>
+　　                火龙果派：dragonpie  <br/>
+　　                太妃糖：taffy  <br/>
+　　                南瓜饼：pumpkincookie  <br/>
+　　                奶油松饼：butterflymuffin  <br/>
+　　                芝士蛋糕：powcake  <br/>
+　　                曼德拉草汤：mandrakesoup  <br/>
+　　                鸡蛋火腿：baconeggs  <br/>
+　　                甜蜜金砖：honeynuggets  <br/>
+　　                半圆小酥饼：perogies  <br/>
+　　                蹩脚的炖菜：ratatouille  <br/>
+　　                水果拼盘：fruitmedley  <br/>
+　　                花沙拉：flowersalad  <br/>
+　　                华夫饼：waffles  <br/>
+　　                果酱蜜饯：jammypreserves  <br/>
+　　                香酥茄盒：stuffedeggplant  <br/>
+　　                冰淇淋：icecream  <br/>
+　　                西瓜冰：watermelonicle  <br/>
+　　                水果杂烩：trailmix  <br/>
+　　                辣椒酱：hotchili  <br/>
+　　                鳄梨酱：guacamole  <br/>
+　　                电羊奶：goatmilk  <br/>
+　　                怪物千层饼：monsterlasagna  <br/>
+　　                鳗鱼料理：unagi  <br/>
+　　                湿腻焦糊：wetgoop  <br/>
+　　                腐烂的食物：spoiled_food  <br/>
+　　                圣诞食品（4种形状）：winter_food1/2/3/4  <br/>
+　　                万圣节糖果（11种类型）：halloweencandy_1/..../11  
+            </td>
+        </tr>
+    </table>
+</html>
+
+<h1 id="生物"><a href="#生物" class="headerlink" title="生物"></a>生物</h1><h2 id="普通生物"><a href="#普通生物" class="headerlink" title="普通生物"></a>普通生物</h2><html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+　　                猪人：pigman  <br/>
+　　                猪人守卫：pigguard <br/> 
+　　                猪王：pigking  <br/>
+　　                鱼人：merm  <br/>
+　　                兔人：bunnyman  <br/>
+　　                兔子：rabbit  <br/>
+　　                野牛（宝宝）：babybeefalo  <br/>
+　　                野牛（青年）：  <br/>
+　　                野牛（成年）：beefalo  <br/>
+　　                海象：walrus  <br/>
+　　                小海象：little_walrus  <br/>
+　　                夏象：koalefant_summer  <br/>
+　　                冬象：koalefant_winter  <br/>
+　　                闪电羊：lightninggoat  <br/>
+　　                钢羊：spat  <br/>
+　　                无睛鹿：deer  <br/>
+　　                蜘蛛：spider  <br/>
+　　                蜘蛛战士：spider_warrior  <br/>
+　　                洞穴蜘蛛：spider_hider  <br/>
+　　                喷射蜘蛛：spider_spitter  <br/>
+　　                白蜘蛛：spider_dropper  <br/>
+　　                猎狗：hound  <br/>
+　　                火狗：firehound  <br/>
+　　                冰狗：icehound  <br/>
+　　                乌鸦：crow  <br/>
+　　                红雀：robin  <br/>
+　　                雪雀：robin_winter  <br/>
+　　                金丝雀：canary  <br/>
+　　                火鸡：perd  <br/>
+　　                青蛙：frog  <br/>
+　　                鼹鼠：mole  <br/>
+　　                格罗姆：glommer  <br/>
+　　                猫熊：catcoon  <br/>
+　　                草蜥：grassgekko  <br/>
+　　                触手：tentacle  <br/>
+　　                蝙蝠：bat  <br/>
+　　                龙虾：rocky  <br/>
+　　                猴子：monkey  <br/>
+　　                缀食者：sluroer  <br/>
+　　                远古虫子：worm
+            </td>
+            <td>
+                <!--右侧内容-->
+　　                企鹅：penguin（企鹅这玩意儿会吃格雷姆的粘液）  <br/>
+　　                蜜蜂：bee   <br/>
+　　                杀人蜂：killerbee  <br/>
+　　                萤火虫：fireflies  <br/>
+　　                蚊子:mosquito  <br/>
+　　                高脚鸟（蛋）：tallbirdegg  <br/>
+　　                高脚鸟蛋（孵化）：tallbirdegg_cracked  <br/>
+　　                高脚鸟（宝宝）：smallbird  <br/>
+　　                高脚鸟（青年）：teenbird  <br/>
+　　                高脚鸟（成年）：tallbird  <br/>
+　　                苍蝇：flies（讲真这个只能拿来做装饰，可是谁会喜欢呢？）  <br/>
+　　                蝴蝶：butterfly  <br/>
+　　                岩浆虫：lavae（并没有什么用的，不过你手速够快的话说不定能生成一片烟花）  <br/>
+　　                含糊虫：slurtle  <br/>
+　　                黏糊虫：snurtle  <br/>
+　　                切斯特：chester  <br/>
+　　                切斯特骨眼：chester_eyebone  <br/>
+　　                哈奇：hutch  <br/>
+　　                星空：hutch_fishbowl  <br/>
+　　                坎普斯：krampus  <br/>
+　　                阿比盖尔：abigail  <br/>
+　　                幽灵：ghost <br/>
+　　                食人花：lureplant  <br/>
+　　                食人花眼睛：eyeplant  <br/>
+　　                食人花种子：lureplantbulb  <br/>
+　　                发条骑士：knight  <br/>
+　　                主教：bishop  <br/>
+　　                战车：root  <br/>
+　　                爬行梦魇（正常版）：crawlinghorror  <br/>
+　　                爬行梦魇（可立即攻击版）：crawlingnightmare  <br/>
+　　                巨喙梦魇（正常版）：terrorbeak  <br/>
+　　                巨喙梦魇（可立即攻击版）：nightmarebeak  <br/>
+　　                暗影战车：shadow_rook  <br/>
+　　                暗影主教：shadow_bishop  <br/>
+　　                暗影骑士：shadow_knight  <br/>
+　　                损坏的象（这个系列好像单独分个机器人）：bishop_nightmare  <br/>
+　　                损坏的战车：rook_nightmare  <br/>
+　　                损坏的骑士：knight_nightmare
+            </td>
+        </tr>
+    </table>
+</html>
+
+<h2 id="BOSS"><a href="#BOSS" class="headerlink" title="BOSS"></a>BOSS</h2><html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+　　                蜘蛛女王：spiderqueen  <br/>
+　　                树精守卫：leif  <br/>
+　　                树精守卫（稀少）：leif_sparse  <br/>
+　　                坚果精：birchnutdrake  <br/>
+　　                桦树精：deciduoustree  <br/>
+　　                远古守护者：minotaur  <br/>
+　　                鹿角鹅：moose  <br/>
+　　                鹿角鹅蛋：mooseegg  <br/>
+　　                小鹅：mossling  <br/>
+　　                龙蝇：dragonfly  <br/>
+　　                熊獾：bearger  <br/>
+　　                巨鹿：deerclops
+            </td>
+            <td>
+                <!--右侧内容-->
+　　                巨型蜂巢：beequeenhivegrown  <br/>
+　　                女王蜂：beequeen  <br/>
+　　                雄蜂：beegurd  <br/>
+　　                毒蕈（蘑菇蛤）：toadstool  <br/>
+　　                毒蕈树菇：mushroomsprout  <br/>
+　　                克劳斯：klaus  <br/>
+　　                克劳斯包裹：klaus_sack  <br/>
+　　                宝石鹿（蓝/红）：deer_blue/red　 <br/> 
+　　                森林守护者：DebugSpawn"stalker_forest"  <br/>
+　　                远古狩猎者：DebugSpawn"stalker"  <br/>
+　　                远古影织者：DebugSpawn"stalker_atrium"
+            </td>
+        </tr>
+    </table>
+</html>
+
+<h1 id="植物"><a href="#植物" class="headerlink" title="植物"></a>植物</h1><html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+　　                种子：seeds  <br/>
+　　                松果：pinecone  <br/>
+　　                坚果：acorn  <br/>
+　　                花：flower  <br/>
+　　                噩梦花：flower_evil  <br/>
+　　                长在地上的胡萝卜：carrot_planted  <br/>
+　　                草：grass  <br/>
+　　                草根：depleted_gras  <br/>
+　　                长草簇（可种植的草）：dug_grass  <br/>
+　　                树苗：sapling    <br/>
+　　                树苗（可种植的）：dug_sapling  <br/>
+　　                浆果灌木丛：berrybush  <br/>
+　　                浆果灌木丛（可种植的）：dug_berrybush  <br/>
+　　                浆果灌木丛2：berrybush2  <br/>
+　　                浆果灌木丛2（可种植的）：dug_berrybush2  <br/>
+　　                蜜汁浆果丛：berrybush_juicy  <br/>
+　　                尖刺灌木丛：marsh_bush  <br/>
+　　                尖刺灌木丛（可种植的）：dug_marsh_bush  <br/>
+　　                芦苇：reeds  <br/>
+　　                洞穴苔藓：lichen  <br/>
+　　                蕨类植物：cave_fern <br/> 
+　　                常青树：evergreen  <br/>
+　　                粗壮的常青树：evergreen_sparse  <br/>
+　　                桦树：deciduoustree  
+            </td>
+            <td>
+                <!--右侧内容-->
+　　                多枝的树种：  <br/>
+　　                多枝的树（从小到大4种形态）：twiggy_short/normal/（？）/old  <br/>
+　　                针叶树：marsh_tree  <br/>
+　　                大理石树：marbletree  <br/>
+　　                大理石魔豆：marblebean  <br/>
+　　                大理石灌木：marbleshrub_tall  <br/>
+　　                荧光草（单朵）：flower_cave  <br/>
+　　                荧光草（双朵）：flower_cave_double  <br/>
+　　                荧光草（三朵）：flower_cave_triple  <br/>
+　　                滚草：tumbleweed  <br/>
+　　                仙人掌：cactus  <br/>
+　　                池塘边水草：marsh_plant  <br/>
+　　                水藻：pond_algae  <br/>
+　　                风滚草：tumbleweed  <br/>
+　　                红蘑菇（地上种植的）：red_mushroom  <br/>
+　　                绿蘑菇（地上种植的）：green_mushroom  <br/>
+　　                蓝蘑菇（地上种植的）：blue_mushroom  <br/>
+　　                红蘑菇树：mushtree_medium  <br/>
+　　                绿蘑菇树：mushtree_small  <br/>
+　　                蓝蘑菇树：mushtree_tall  <br/>
+　　                带网的蓝蘑菇树：mushtree_tall_webbed  <br/>
+　　                香蕉树：cave_banana_tree  <br/>
+　　                完全正常的树（活树）：livingtree
+            </td>
+        </tr>
+    </table>
+</html>
+
+<h1 id="矿类"><a href="#矿类" class="headerlink" title="矿类"></a>矿类</h1><html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+　　                卵石（只有岩石）：rock_flintless  <br/>
+　　                卵石（带硝石）：rock1  <br/>
+　　                卵石（带黄金）：rock2  <br/>
+　　                陨石：rock_moon  <br/>
+　　                石笋（高）：stalagmite_full  <br/>
+　　                石笋（中）：stalagmite_med  <br/>
+　　                石笋（矮）：stalagmite_low
+            </td>
+            <td>
+                <!--右侧内容-->
+　　                尖石笋（高）：stalagmite_tall_full <br/> 
+　　                尖石笋（中）：stalagmite_tall_med  <br/>
+　　                尖石笋（矮）:stalagmite_tall_low  <br/>
+　　                迷你冰川：rock_ice  <br/>
+　　                玄武岩：basalt  <br/>
+　　                玄武岩柱子：basalt_pillar  <br/>
+　　                石化树（四个形态）：petrified_tree/short/tall/old（？）
+            </td>
+        </tr>
+    </table>
+</html>
+
+<h1 id="建筑"><a href="#建筑" class="headerlink" title="建筑"></a>建筑</h1><html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+　　                营火：campfire  <br/>
+　　                石头篝火：firepit  <br/>
+　　                火炬：torch  <br/>
+　　                猪火炬：pigtorch  <br/>
+　　                吸热营火：coldfire  <br/>
+　　                吸热篝火：coldfirepit  <br/>
+　　                科学机器：researchlab  <br/>
+　　                炼金术引擎：researchlab2  <br/>
+　　                魔法帽子：researchlab4  <br/>
+　　                暗影操纵仪：researchlab3  <br/>
+　　                远古遗迹：ancient_altar  <br/>
+　　                损坏的远古遗迹：ancient_altar_broken  <br/>
+　　                试金石：resurrectionstone  <br/>
+　　                宝箱：treasurechest  <br/>
+　　                骷髅箱子：skullchest  <br/>
+　　                装饰箱：pandoraschest  <br/>
+　　                大豪华箱子：minotaurchest  <br/>
+　　                鳞片箱子：dragonflychest  <br/>
+　　                基本农场：slow_farmplo  <br/>
+　　                高级农场：fast_farmplot  <br/>
+　　                蘑菇农场：mushroom_farm  <br/>
+　　                晾肉架：meatrack  <br/>
+　　                蜂箱：beebox  <br/>
+　　                烹饪锅：cookpot  <br/>
+　　                冰箱：icebox  <br/>
+　　                帐篷：tent  <br/>
+　　                简易小木棚：siestahut  <br/>
+　　                路牌：homesign  <br/>
+　　                小木牌：minisign_item  <br/>
+　　                路标：  <br/>
+　　                木栅栏：fence  <br/>
+　　                可放置木栅栏：fence_item  <br/>
+　　                木门：fence_gate  <br/>
+　　                可放置木门：fence_gate_item  <br/>
+　　                干草墙：wall_hay  <br/>
+　　                可放置干草墙：wall_hay_item  <br/>
+　　                木墙wall_wood  <br/>
+　　                可放置木墙：wall_wood_item  <br/>
+　　                石墙：wall_stone  <br/>
+　　                可放置石墙：wall_stone_item  <br/>
+　　                月石墙：wall_moonrock  <br/>
+　　                可放置月石墙：wall_moonrock_item  <br/>
+　　                铥矿墙壁：wall_ruins  <br/>
+　　                可放置铥矿墙壁：wall_ruins_item<br/>
+　　                衣柜：Wardrobe  <br/>
+　　                猪舍：pighouse  <br/>
+　　                兔子窝：rabbithole  <br/>
+　　                人鱼舍：mermhouse  <br/>
+　　                鸟笼：birdcage  <br/>
+　　                肉块雕像：resurrectionstatue  
+            </td>
+            <td>
+                <!--右侧内容-->
+　　                温度测量器：winterometer  <br/>
+　　                雨量计：rainometer  <br/>
+　　                避雷针：lightning_rod  <br/>
+　　                雪球发射机：firesuppressor  <br/>
+　　                传送核心：telebase  <br/>
+　　                宝石看台：gemsocket  <br/>
+　　                制图桌：cartographydesk  <br/>
+　　                陶艺转盘：sculptingtable  <br/>
+　　                月石基座：moonbase  <br/>
+　　                月相盘：moondial  <br/>
+　　                真眼守卫：sentryward  <br/>
+　　                萤菇灯：mushroom_light  <br/>
+　　                炽菇灯：mushroom_light2  <br/>
+　　                暗夜照明灯：nightlight  <br/>
+　　                龙鳞火炉：dragonflyfurnace  <br/>
+　　                岩石洞穴：critterlab  <br/>
+　　                卵石路：turf_road  <br/>
+　　                墓碑：gravestone（需测试）  <br/>
+　　                坟墓土堆：mound  <br/>
+　　                骨架：skeleton  <br/>
+　　                猎犬尸骨：houndbone  <br/>
+　　                可疑的土堆：dirtpile  <br/>
+　　                池塘：pond  <br/>
+　　                洞穴池塘：pond_cave  <br/>
+　　                猪人头：pighead  <br/>
+　　                鱼人头：mermhead  <br/>
+　　                兔子洞：rabbithole  <br/>
+　　                蜂窝：beehive  <br/>
+　　                杀人蜂窝：wasphive  <br/>
+　　                蛛网岩：spiderhole  <br/>
+　　                海象巢穴：walrus_camp  <br/>
+　　                高脚鸟巢：tallbirdnest  <br/>
+　　                猎犬丘：houndmound  <br/>
+　　                含糊虫土堆（黏糊虫）：slurtlehole  <br/>
+　　                蝙蝠洞：batcave  <br/>
+　　                猴子桶：monkeybarrel  <br/>
+　　                蜘蛛巢穴：spiderden  <br/>
+　　                鼹鼠丘：molehill  <br/>
+　　                中空树桩：catcoonden  <br/>
+　　                远古头像：ruins_statue_head  <br/>
+　　                远古法师雕像：ruins_statue_mage  <br/>
+　　                麦斯威尔雕像：statuemaxwell  <br/>
+　　                大理石柱子：marblepillar  <br/>
+　　                直立雕像：statueharp  <br/>
+　　                格罗姆雕像：statueglommer  <br/>
+　　                破碎的时钟1/2/3：chessjunk1/2/3  <br/>
+　　                虫洞：wormhole  <br/>
+　　                限定版虫洞：wormhole_limited_1  <br/>
+　　                传送门：multiplayer_portal（？）
+            </td>
+        </tr>
+    </table>
+</html>
+
+<h1 id="玩具"><a href="#玩具" class="headerlink" title="玩具"></a>玩具</h1><html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+　　                trinket_1~5（融化的大理石、假卡祖笛、歌德结、地精玩偶）  <br/>
+　　                trinket_6~10（小型火箭飞船、破烂电线、球与奖杯、硬化橡胶塞、不匹配的纽扣、二手假牙） <br/> 
+　　                trinket_11~14（半躺机器人、干瘪触手、地精、漏水的茶杯）  <br/>
+　　                trinket_17~24（弯曲的叉勺、玩具木马、陀螺、挠痒器、敲打锤、不耐磨的毛线、蹄脚、幸运猫罐）  <br/>
+　　                trinket_25~27（空气“清新”剂、土豆杯、钢丝绳）
+            </td>
+            <td>
+                <!--右侧内容-->
+　　                迷你主教象棋（白/黑（白色被翻译做白葡萄酒））：trinket_15/16  <br/>
+　　                迷你战车象棋（白/黑）：trinket_28/29  <br/>
+　　                迷你骑士象棋（白/黑）：trinket_30/31  <br/>
+　　                trinket_32~37（方晶锆球、蜘蛛指环、猴爪、容量瓶、假牙、断桩）
+            </td>
+        </tr>
+    </table>
+</html>
+
+<h1 id="装饰"><a href="#装饰" class="headerlink" title="装饰"></a>装饰</h1><html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+　　                木质地板：turf_woodfloor  <br/>
+　　                方格地板：turf_checkerfloor  <br/>
+　　                地毯地板：turf_carpetfloor  <br/>
+　　                龙鳞地板：  <br/>
+　　                盆栽：pottedfern  <br/>
+　　                茶几：endtable  <br/>
+　　                烟斗（白/黑）：chesspiece_pipe_marble/stone  <br/>
+　　                禁卫（白/黑）：chesspiece_pawn_marble/stone  <br/>
+　　                龙角烩（白/黑）：chesspiece_hornucopia_marble/stone  <br/>
+　　                皇后（白/黑）：chesspiece_muse_marble/stone  <br/>
+　　                国王（白/黑）：chesspiece_formal_marble/stone  <br/>
+　　                骑士（白/黑）：chesspiece_knight_marble/stone  <br/>
+　　                主教（白/黑）：chesspiece_bishop_marble/stone  <br/>
+　　                战车（白/黑）：chesspiece_rook_marble/stone
+            </td>
+            <td>
+                <!--右侧内容-->
+　　                鬣犬(活）：gargoyle_houndatk  <br/>
+　　                鬣犬(死)：gargoyle_hounddeath  <br/>
+　　                野猪(活)：gargoyle_werepigatk  <br/>
+　　                野猪(嘶吼)：gargoyle_werepighowl   <br/>
+　　                野猪(死)：gargoyle_werepigdeath  <br/>
+　　                友善的稻草人：scarecrow  <br/>
+　　                方尖碑：insanityrock  <br/>
+　　                方尖碑（可伸缩）：sanityrock  <br/>
+　　                奇怪的化石骨架：fossil_stalker（需测试）  <br/>
+　　                熔岩池：lava_pond  <br/>
+　　                圣诞树盆：winter_tree（其实调出来我无法使用）  <br/>
+　　                礼物（空的）：gift  <br/>
+　　                包裹（空的）：bundle  <br/>
+　　                圣诞灯泡（红/绿/蓝/白）：winter_ornament_light1/2/3/4  <br/>
+　　                圣诞灯饰（4种形状）：winter_ornament_fancy1/2/3/4  <br/>
+　　                圣诞灯饰（8种色彩）：winter_ornament_plain1/2/3/4/5/6/7/8
+            </td>
+        </tr>
+    </table>
+</html>
+
+<h1 id="宠物"><a href="#宠物" class="headerlink" title="宠物"></a>宠物</h1><html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+　　                小浣猫：critterlab_kitten  <br/>
+　　                小座狼：critterlab_puppy  <br/>
+　　                小钢羊：critterlab_lamb  <br/>
+　　                小龙蝇：critterlab_dragonling
+            </td>
+            <td>
+                <!--右侧内容-->
+　　                小格罗姆：critterlab_glomling  <br/>
+　　                人工养殖型岩浆虫：lavae_pet（？）  <br/>
+　　                （其实我想把小高脚鸟丢到这个分类来）
+            </td>
+        </tr>
+    </table>
+</html>
+
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><html>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <!--左侧内容-->
+　　                动物足迹：animal_track  <br/>
+　　                矮人明星：stafflight  <br/>
+　　                远古桌子：ruins_table  <br/>
+　　                远古椅子：ruins_chair  <br/>
+　　                远古花瓶：ruins_vase  <br/>
+　　                地图卷轴：mapscroll  <br/>
+　　                主教头部：sculpture_bishophead  <br/>
+　　                骑士头部：sculpture_knighthead  <br/>
+　　                战车鼻部：sculpture_rooknose
+            </td>
+            <td>
+                <!--右侧内容-->
+　　                主教雕塑：sculpture_bishopbody  <br/>
+　　                战车雕塑：sculpture_rookbody  <br/>
+　　                骑士雕塑：sculpture_knightbody  <br/>
+　　                （不知道这个系列在联机里到底还有什么用）   <br/>
+　　                环状传送机零件：teleportato_ring  <br/>
+　　                盒状传送机零件：teleportato_box  <br/>
+　　                曲柄状传送机零件：teleportato_crank  <br/>
+　　                球状传送机零件：teleportato_potato
+            </td>
+        </tr>
+    </table>
+</html>
+
+<h1 id="服务器操作指令"><a href="#服务器操作指令" class="headerlink" title="服务器操作指令"></a>服务器操作指令</h1><p>　　TheNet:Kick(userid)—踢出用户 ID 为“ userid”的玩家<br>　　TheNet:Ban(userid)— 禁止用户 ID 为“ userid”的玩家加入<br>　　c_save()—立即保存当前世界（一般会在每天早上自动保存）<br>　　c_reset(true|false)—true 删除当前世界并新建一个全新的世界； false 重新加载当前世界。<br>　　c_shutdown(true|false)—true 保存并关闭当前世界； false 不保存直接关闭当前世界<br>　　c_rollback()回档<br>　　c_rollback(1)回滚一个存档<br>　　c_rollback(2)回滚两个存档<br>　　c_rollback(3)回滚三个存档<br>服务器没有回过档时理论可以回到任何一个档，但是如果回档一次，最多只能往前回 5 个档<br>　　TheNet:SetAllowIncomingConnections(true|false)—true 允许他人加入； false 阻止任何人加入。<br>　　TheNet:SetAllowIncomingConnections(false)<br>　　TheNet:SetAllowIncomingConnections(true)<br>　　-console -lan -player 6<br>重新生成世界<br>　　c_regenerateworld()<br>测试模式<br>　　c_testruins()<br>超级上帝模式<br>　　c_supergodmode()<br>定位<br>　　GetPlayer().Transform:SetPosition(22,0,33)<br>地图全开：第一次输入<br>　　minimap=TheSim:FindFirstEntityWithTag(“minimap”)<br>第二次打开地图输入：<br>　　minimap=TheSim:FindFirstEntityWithTag(“minimap”)<br>　　minimap.MiniMap:ShowArea(0, 0, 0, 10000)<br>　　c_listplayers()<br>　　-lan -console -player 10<br>　　c_announce(“ 大家记好房间名，回一下档 “)<br>　　c_announce(“ 流年离伤 提醒你：卡？把小地图关了吧。 “)<br>　　c_announce(“ 亲们，重启一下，有点 bug,封了那人之后，我也进不去了 “)<br>　　c_announce(“ 不早了，兄弟们都睡觉吧，服务器要关了，晚安 “)<br>　　c_announce(“ 流年离伤 提醒你： 复活密码 #LNCS,重新选人密码 #LNLS，先按 u 然后输入密码方可 “)<br>　　c_give(“faroz_gls”)<br>　　c_give(“scythe”)<br>复活所有人 :<br>　　for k,v in pairs(AllPlayers) do v:PushEvent(‘respawnfromghost’) end<br>把所有人聚集在一起：<br>　　c_gatherplayers()<br>传送到任意坐标：例子传送到（ 64.008,81.882 ）<br>　　GetPlayer().Transform:SetPosition(64.008,0,81.882)<br>　　GetPlayer().Transform:SetPosition(101,0,112)<br>　　GetPlayer().Transform:SetPosition(73,0,145)<br>　　minimap=TheSim:FindFirstEntityWithTag(“minimap”)<br>　　minimap.MiniMap:ShowArea(0,0,0,10000)<br>全图显示：<br>　　GetWorld().minimap.minimap:showarea(0,0,0,10000)<br>跳过多少天：<br>　　function c_skip(num)<br>　　num = num or 1<br>　　LongUpdate(TUNING.TOTAL_DAY_TIME * num)<br>　　end<br>上帝模式<br>　　c_godmode()，一般情况不会受伤挨饿掉精神<br>设置速度<br>　　c_speed(值)，标准速度为“ 1”，值越大速度越快<br>　　例：设置为标准速度的 10 倍，则输入： c_speed(10)<br>创造模式<br>　　GetPlayer().components.builder:GiveAllRecipes()，可以制作全物品<br>设置生命上限<br>　　GetPlayer().components.health:SetMaxHealth(值)，设置生命上限为值那么大<br>停止饥饿<br>　　GetPlayer().components.hunger:Pause(true)<br>变成海狸（吴迪专用）<br>　　GetPlayer().components.beaverness:SetPercent(1)<br>传送<br>　　c_gonext(“ 代码 “)，把你传送到附近的“代码”的位置<br>　　例：传送到附近的牛的位置，则输入： c_gonest(“beefalo”)<br>删除<br>　　TheInput:GetWorldEntityUnderMouse():Remove()，删除你鼠标所在位置的物体<br>地图全开<br>　　GetWorld().minimap.MiniMap:ShowArea(0,0,0,10000)，退出游戏时失效　<br>跳过一天<br>　　GetClock():MakeNextDay()<br>跳过几天<br>　　for x = 1, 值 do GetClock():MakeNextDay() end<br>　　注意！跳过太多的天数会卡死（根据电脑配置）<br>跳过一段时间<br>　　LongUpdate(值)，时钟每格 30 个单位，一整天是 480 个单位<br>　　跳过 4 格时间，则输入： LongUpdate(120)<br>设置时间段<br>　　GetClock():SetSegs( 白天 ,黄昏 ,夜晚 )<br>　　时钟一共有 16 个格，白天黄昏夜晚加在一起必须为 16<br>　　例：白天7格，黄昏8格，夜晚1格，则输入： GetClock():SetSegs(7,8,1)<br>跳过时间段<br>　　GetClock():NextPhase()，跳过当前时间段，比如白天跳到黄昏<br>开始春天 (DLC1)<br>　　GetSeasonManager():StartSpring()<br>开始下雨<br>　　GetSeasonManager():StartPrecip()<br>停止下雨<br>　　GetSeasonManager():StopPrecip()<br>生成闪电<br>　　GetSeasonManager():DoLightningStrike(Vector3(GetPlayer().Transform:GetWorldPosi<br>tion()))，如果周围没有避雷针，那闪电将会击中你<br>测量距离<br>print(math.sqrt(GetPlayer():GetDistanceSqToInst(TheInput:GetWorldEntityUnderMou<br>se())))，在控制台信息（ Ctrl+L ）中显示角色到鼠标物品之间的距离<br>解锁角色<br>　　GetPlayer().profile:UnlockCharacter(“ 角色名称 “)<br>　　和： GetPlayer().profile:Save()，可以解锁多个角色<br>　　例： GetPlayer().profile:UnlockCharacter(“willow”)<br>　　GetPlayer().profile:UnlockCharacter(“wickerbottom”)<br>　　GetPlayer().profile:Save()<br>　　或全部解锁<br>　　　　GetPlayer().profile:UnlockEverything()<br>清除死亡记录<br>　　ErasePersistentString(“morgue”)，重启游戏可以看到变化  </p>
+<p>　　
+　　
+　　</p>
+<p>　　</p>
+<p>　　</p>
+<p>　　</p>
+<p>　　</p>
+<p>　　</p>
+<p>　　
+　　
+　　</p>
+<p>　　
+　　</p>
+<p>　　
+　　</p>
+<p>　　</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.shimmerjordan.eu.org/2020/01/28/DSTOrder/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reference/" rel="tag">reference</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E6%8C%87%E4%BB%A4/" rel="tag">游戏指令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/01/29/DSTServerConstruction/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            饥荒云服搭搭建
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/01/21/practiceLanqiao/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">蓝桥杯小练</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "StYfTMDp78X0EltFR16ve2q5-gzGzoHsz",
+    app_key: "G4RPxRpXG6RwdfpnJefOSnyy",
+    path: window.location.pathname,
+    avatar: "wavatar",
+    placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+   
+<!-- minivaline评论 -->
+<div id="mvcomments-box">
+  <div id="mvcomments"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@latest"></script>
+<script>
+    new MiniValine(Object.assign({"enable":true,"mode":"DesertsP","placeholder":"Write a Comment","math":true,"md":true,"enableQQ":true,"NoRecordIP":false,"visitor":true,"maxNest":6,"pageSize":6,"adminEmailMd5":"de8a7aa53d07e6b6bceb45c64027763d","tagMeta":["管理员","小伙伴","访客"],"master":["de8a7aa53d07e6b6bceb45c64027763d"],"friends":["b5bd5d836c7a0091aa8473e79ed4c25e","adb7d1cd192658a55c0ad22a3309cecf","3ce1e6c77b4910f1871106cb30dc62b0","cfce8dc43725cc14ffcd9fb4892d5bfc"],"lang":null,"emoticonUrl":["https://cdn.jsdelivr.net/npm/alus@latest","https://cdn.jsdelivr.net/gh/MiniValine/qq@latest","https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest","https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest","https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest","https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"]}, {
+	  el: '#mvcomments',
+    }));
+  const infoEle = document.querySelector('#mvcomments .info');
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+      infoEle.childNodes.forEach(function (item) {
+          item.parentNode.removeChild(item);
+      });
+  }
+</script>
+<style>
+	#mvcomments-box {
+		padding: 5px 30px;
+	}
+	@media screen and (max-width: 800px) {
+		#mvcomments-box {
+		  padding: 5px 0px;
+		}
+	}
+	.darkmode .MiniValine *{
+		color: #f1f1f1!important;
+	}
+	.darkmode .commentTrigger{
+		background-color: #403e3e !important;
+	  }
+	.darkmode .MiniValine .vpage .more{
+		background: #21232F
+	}
+	.darkmode img{
+		filter: brightness(30%)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before{
+		background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after{
+		background: rgba(0,0,0,0.9)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre{
+		background: #282c34
+		border: 1px solid #282c34
+	}
+	.darkmode .MiniValine .vinputs-area .textarea-wrapper textarea{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper input{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .vextra-area .vsmile-icons{
+		background: transparent;
+	}
+	.darkmode .MiniValine .vinputs-wrap{
+		border-color: #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-wrap:hover{
+		border: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper{
+		border-bottom: 1px dashed #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper:hover{
+		border-bottom: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vbtn{
+		background-color: transparent!important;
+	}
+	.darkmode .MiniValine .vbtn:hover{
+		border: 1px dashed #2196f3;
+	}
+</style>
+
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2024
+        <i class="ri-heart-fill heart_icon"></i> 鞠桥丹-QIAODAN JU
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279035150&amp;web_id=1279035150'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="丛烨-shimmerjordan"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Catalogue</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E9%9A%8F%E7%AC%94/">Essay</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">Friends</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/01/18/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯蓝莓汁吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+  </div>
+</body>
+
+</html>
