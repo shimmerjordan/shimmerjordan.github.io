@@ -29,16 +29,19 @@ mathjax: true
 	- LCD：Liquid Crystal Display通过调整自身排布影响光极化（偏正方向）
 	- LED、OLED等等
 	- Electronic Ink Display
+
 # 光栅化
 ## 三角形
 计算机生成图像中，最基本的二维元素是三角形，对其的离散化操作就是生成图像的重点。至于为什么选择三角形：
 - 最基础的多边形，其他多边形可以划分成三角形
 - 必定在一个平面；内外区分分明；插值方便（定义其中一个点的属性之后可以根据到三边距离等确定其他位置点的 属性）
+
 我们需要将图像显示在屏幕上，例如下图我们怎么判断绿框中的位置的RGB（亮或不亮）呢：
 
 ![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240529172003566.png)
 
 ## 离散化-采样
+
 >这就是为了解决刚才提到的问题，确切的说是判断一个像素和三角形的位置关系 or 像素中心点和三角形的位置关系
 ### 原理
 Sampling实质上是将一个函数离散化的过程：一个像素点对应一个坐标点，对这个坐标点采样，判断它在不在三角形里面。
@@ -47,21 +50,25 @@ Sampling实质上是将一个函数离散化的过程：一个像素点对应一
 
 - 可以采用上图的右图的蓝色包围盒的方式做光栅化的加速（不处理边界外的）
 - 也可以用其他加速方法，例如左边的incremental triangle traversal（适用于窄长并且有旋转角度的，这样加速才明显）
+
 # Antialiase 反走样（抗锯齿）
 
 - Sampling artifacts（统称为瑕疵）
+
 ## 采样的缺点：
 - 空间上Signals are changing too frequent (high frequency), but sampled too slowly
 	- Jaggies (Staircase Pattern)：an example of “aliasing” – a sampling error
 	- Moiré Patterns in Imaging 摩尔纹
 - 时间上Signals are changing too fast (high frequency), but sampled too slowly
 	- Wagon Wheel Illusion (False Motion)：倒着转的轮子
+
 > Artifacts 背后的原因：信号变化过快，采样速率跟不上
 ## Antialiased Sampling
 
 ### 先Filter后采样
 - Filter包括诸如卷积的方法：Getting rid of certain frequency contents 滤波器
 	- Convolution (= Averaging) 卷积（可以看作一种低通滤波器）
+
 
 ![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530113650706.png)
 ### 傅里叶变换
@@ -85,9 +92,11 @@ sampling 是在频域上 copy & paste 波形
 - increasing the distance between replicas in the Fourier domain
 - Higher resolution displays, sensors, framebuffers
 - costly & may need very high resolution
+
 ## Option 2: Antialiasing
 - Filtering out high frequencies before sampling
 - Antialiasing = Limiting, then repeating
+
 ### Antialiased Sampling：Pre-Filter → Sample
 > convolving = filtering = averaging
 
@@ -102,11 +111,13 @@ sampling 是在频域上 copy & paste 波形
 - Monte-Carlo
 - 像素的**颜色值**为负责的区域内取样多次颜色值的平均。
 ![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530151452898.png)
+
 ### MSAA的缺陷
 No free lunch!
 - MSAA：每个像素多次采样，求平均。太浪费性能
 - 优化：不使用均匀分布，采样**复用**
 - 怎样分布样本才能达到最好的覆盖效果：Blue Noise?
+
 ## Antialiasing Today
 
 ### Milestones：目前得到广泛应用
@@ -122,12 +133,14 @@ No free lunch!
     - From low resolution to high resolution
     - Essentially still “not enough samples” problem 类似抗锯齿
     - DLSS (Deep Learning Super Sampling) 猜
+
 # Visibility / Occlusion
 ## 深度缓存 Z-buffer
 **Painter's Algorithm**：由远及近画画，覆盖。（油画是这样的思路）
 - 深度计算与排序：$O(nlogn)$
 - 可能有无法排序的情况：例如三个三角形互相重叠
 ![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530165233467.png)
+
 
 **因此引入Z-buffer**：对每个像素多存一个深度
 ![cdn by https://gcore.jsdelivr.net](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec5-6-%E5%85%89%E6%A0%85%E5%8C%96/image-20240530165630546.png)

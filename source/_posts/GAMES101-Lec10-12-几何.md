@@ -9,6 +9,7 @@ categories:
 id: games101-lec10-12
 mathjax: true
 ---
+
 # 几何的表达方式
 
 ## Implicit 隐式几何
@@ -41,19 +42,23 @@ mathjax: true
 	- 自相似
 	- 递归
 - ...
+
 ### Pros
 - compact description (e.g., a function)
 - 很容易判断某点的位置certain queries easy (inside object, distance to surface)
 - good for ray-to-surface intersection 光线求交比较简单 (more later)
 - for simple shapes, exact description / no sampling error
 -  easy to handle changes in topology (e.g., fluid)
+
 ### Cons:
 - 很难描述，当然了也就很难去model complex shapes
+
 ## Explicit 显式几何
 - All points are given directly or via parameter mapping: $f:\mathbb{R}^{2}\rightarrow \mathbb{R}^{3};(u,v) \Rightarrow (x,y,z)$，例如这样的一个马鞍面
 ![github pic](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240703163137053.png)
 - Sampling Is Easy
 - Inside/Outside Test Hard
+
 ### 种类
 - Point cloud
 	- 一堆点，一个$(x,y,z)$的列表
@@ -72,6 +77,7 @@ mathjax: true
 - subdivision surfaces
 - NURBS
 - ...
+
 No “Best” Representation, Each choice best suited to a different task/type of geometry
 # 曲线 Curve
 ## Bézier Curves 贝塞尔曲线
@@ -79,13 +85,16 @@ No “Best” Representation, Each choice best suited to a different task/type o
 ![github pic](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240703173059441.png)
 - p0和p3定义起点和终点
 - p1和p2定义起点与终点的切线方向（与p0和p3一起）
+
 ### 怎么画一个贝塞尔曲线
 >Evaluating Bézier Curves (de Casteljau Algorithm)
 
 例子：三点来画曲线(quadratic Bezier)
 ![github pic](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240703173620214.png)
 在$b_0b_1$和$b_1b_2$上分别找到对应时间$t$的相应比例的点$b_0^1$和$b_1^1$，再找到$b_0^1b_1^1$上对应比例的点$b_0^2$，这个$b_0^2$就是曲线上的一点，只要枚举所有的$t$就可以绘制出来曲线了。
+
 四个点起始的话也是类似的，每次递归多计算一条边即可。
+
 > 你可以在这个牛逼的网站[Hackery, Math & Design — Acko.net](https://acko.net/)找到这个牛逼的动画[Making things with Maths (acko.net)](https://acko.net/files/fullfrontal/fullfrontal/wdcode/online.html)（Youtube视频的16:00)
 
 如果写出来的代数表达式就是：$$\left\{ \begin{aligned} b_0^{1}(t)=(1-t)b_0+tb_{1} \\ b_1^{1}(t)=(1-t)b_1+tb_{2}  \\ b_0^{2}(t)=(1-t)b_0^{1}+tb_{1}^{1} \end{aligned} \right. \Rightarrow b_{0}^{2}(t)=(1-t)^{2}b_0+2t(1-t)b_{1}+t^{2}b_2$$
@@ -97,7 +106,9 @@ No “Best” Representation, Each choice best suited to a different task/type o
 - 对于三次（四个控制点）曲线：$b^{\prime}(0)=3(b_1-b_0)$; $b^{\prime}(1)=3(b_3-b_2)$
 - 仿射变换前后统一（只需要变换控制点即可）；*注意例如投影变换的其他变换不一定满足*
 - 凸包性质：形成的曲线一定在控制点形成的凸包内
+
 但是高阶贝塞尔曲线很难控制，任何一个点就能影响全局，为了解决这个问题，我们引入了分段贝塞尔曲线。
+
 ### Piecewise Bézier Curves
 - Demo：[Bezier Curve Edit](http://math.hws.edu/eck/cs424/notes2013/canvas/bezier.html)
 - chain many low-order Bézier curve
@@ -106,6 +117,7 @@ No “Best” Representation, Each choice best suited to a different task/type o
 	- $C^0$连续是无断点：$a_n=b_0$
 	- $C^1$连是无突变（导数连续）：$a_n=b_0=\frac{1}{2}(a_{n-1}+b_1)$
 	![github pic](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240709163022692.png)
+
 ## 其他曲线
 1. Spline (样条)：a continuous curve constructed so as to pass through a given set of points and have a certain number of continuous derivatives. （一个可控曲线）
 2. B-splines
@@ -115,15 +127,18 @@ No “Best” Representation, Each choice best suited to a different task/type o
 	- 满足局部性（改动一个控制点，可以知道其影响范围而不是整条曲线）
 	- 可能是图形学里面最复杂的一部分
 3. Further：B样条、NURBS（非均匀有理B样条）[Prof. Shi-Min Hu’s course](https://www.bilibili.com/video/av66548502)
+
 # 曲面
 ## Bézier Surfaces贝塞尔曲面
 ![github pic](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240709164146390.png)
 4x4个点：四条4个控制点的贝塞尔曲线，取同一时间（比如说$u$）获得四个控制点，取时间$v$，即获得最后的曲面上的点
+
 ### Evaluating Bézier Surfaces
 总体思路：
 1. 在时间$u$，计算出4条贝塞尔曲线，同时得到 “moving” 贝塞尔曲线的4个控制点
 2. 在时间$v$，计算出 ”moving“ 贝塞尔曲线的表面点即为$(u,v)$
 ![github pic](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240709164949623.png)
+
 ## Mesh
 更广泛的还是Mesh（网格）
 Mesh Operations: Geometry Processing
@@ -136,6 +151,7 @@ Mesh Operations: Geometry Processing
 - Mesh regularization 正规化
     - 不会出现特别奇怪的三角形（接近正三角形）
     - Modify sample distribution to improve quality
+
 ### 细分
 #### Loop Subdivision
 > **Loop是发明者名字，跟循环没关系**
@@ -156,28 +172,38 @@ Mesh Operations: Geometry Processing
 		- 旧的点：受自己本身和邻居的位置影响，
 			![github pic](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240721221305224.png)
 			$n$为顶点的vertex degree（度），旧点更新为$(1-n*u)*original\_postion+u*neighbor\_position\_sum$
+
 #### Catmull-Clark细分
 Loop细分只能处理三角形网格，对于更一般的网格，可以考虑Catmull-Clark细分。
+
 **几个定义：**
 - Non-quad face：非四边的面
 - Extraordinary vertex (奇异点)：指(degree != 4)的点
+
 **Each subdivision step：**
 1. Add vertex in each face
 2. Add midpoint on each edge
 3. Connect all new vertices
+
 简而言之就是连接这个面的中点和每条边的中点。需要注意的是，每一个非四边形面都会引入一个奇异点，然后这个非四边形面会消失（增加了非四边形面个数的奇异点，以后都不会增加了。也就是说所有非四边形面在第一次细分都会消失）
+
 **另外，针对面上或者边上的新点，以及老的点各自的更新方法：**
 ![github pic](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240722121849783.png)
 虽然看起来很复杂，无非就是用以前的平均来定义新的update，类似模糊的平滑操作。
+
 # Mesh Simplification
 Goal: reduce number of mesh elements while maintaining the overall shape 
 应用：移动端、远距离（LOD）
+
 ## Edge Collapse：顶点合并（边坍缩）
 哪些边合并？如何合并？
+
 ### Quadric Error Metrics（⼆次误差度量）
 - 放在二次误差之和最小的地方
 ![github pic](https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240722124513859.png)
+
 仅仅简单求平均位置是显然不合理的，我们可以通过最小化一个点到原平面相关的**其他平面的距离和**（sum of L2 distance）来找到这个最合理的点
+
 ### Simplification via Quadric Error
 - Garland & Heckbert 1997.
 - iteratively collapse edge with smallest score
