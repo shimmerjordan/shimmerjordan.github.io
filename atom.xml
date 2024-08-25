@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>丛烨-shimmerjordan</title>
+  
+  <subtitle>We work in the darkness to serve the light</subtitle>
+  <link href="https://blog.shimmerjordan.eu.org/atom.xml" rel="self"/>
+  
+  <link href="https://blog.shimmerjordan.eu.org/"/>
+  <updated>2024-08-25T03:46:16.000Z</updated>
+  <id>https://blog.shimmerjordan.eu.org/</id>
+  
+  <author>
+    <name>鞠桥丹-QIAODAN JU</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AssetBundle浅析</title>
+    <link href="https://blog.shimmerjordan.eu.org/2024/08/23/assetbundle-intro/"/>
+    <id>https://blog.shimmerjordan.eu.org/2024/08/23/assetbundle-intro/</id>
+    <published>2024-08-23T11:30:12.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;strong&gt;AssetBundle系统提供了一种压缩文件的格式，可以把一个到多个文件进行索引和序列化。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Unity项目在交付安装之后，会通过AssetBundle对不包含代码的资源进行更新。这就允许开发人员先提交一个小的应用程序包，将运行时内存压力降到最低，并有选择地加载针对不同终端用户设备优化后的内容。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Unity" scheme="https://blog.shimmerjordan.eu.org/categories/Unity/"/>
+    
+    
+    <category term="Unity" scheme="https://blog.shimmerjordan.eu.org/tags/Unity/"/>
+    
+    <category term="Assetbundle" scheme="https://blog.shimmerjordan.eu.org/tags/Assetbundle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unity资源映射</title>
+    <link href="https://blog.shimmerjordan.eu.org/2024/08/22/unity-asset-resources/"/>
+    <id>https://blog.shimmerjordan.eu.org/2024/08/22/unity-asset-resources/</id>
+    <published>2024-08-22T11:30:12.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Unity工程（空工程）包含&lt;code&gt;Assets&lt;/code&gt;, &lt;code&gt;Library&lt;/code&gt;, &lt;code&gt;Packages&lt;/code&gt;, &lt;code&gt;ProjectSettings&lt;/code&gt;，其作用分别是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Assets&lt;/strong&gt;&lt;br&gt;  Unity工程实际的资源目录，所有项目用到的资源、代码、配置、库等原始资源只有放置在这个文件夹才会被Unity认可和处理。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Library&lt;/strong&gt;&lt;br&gt;  存放Unity处理完毕的资源，大部分的资源导入到Assets目录之后，还需要通过Unity转化成Unity认可的文件，转化后的文件会存储在这个目录。会在Unity打开时自动检查和转化，不需要备份。如果涉及到多平台开发，建议分开存放目录，以免每次切平台转化Library耗时过久。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Packages&lt;/strong&gt;&lt;br&gt;  2018以后新增的目录，用于管理Unity分离的packages组件。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ProjectSettings&lt;/strong&gt;&lt;br&gt;  用于存放Unity的各种项目设定。&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="Unity" scheme="https://blog.shimmerjordan.eu.org/categories/Unity/"/>
+    
+    
+    <category term="Unity" scheme="https://blog.shimmerjordan.eu.org/tags/Unity/"/>
+    
+    <category term="Asset" scheme="https://blog.shimmerjordan.eu.org/tags/Asset/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GAMES101 Lec10-12 几何 notes</title>
+    <link href="https://blog.shimmerjordan.eu.org/2024/07/22/games101-lec10-12/"/>
+    <id>https://blog.shimmerjordan.eu.org/2024/07/22/games101-lec10-12/</id>
+    <published>2024-07-22T05:41:34.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;几何的表达方式&quot;&gt;&lt;a href=&quot;#几何的表达方式&quot; class=&quot;headerlink&quot; title=&quot;几何的表达方式&quot;&gt;&lt;/a&gt;几何的表达方式&lt;/h1&gt;&lt;h2 id=&quot;Implicit-隐式几何&quot;&gt;&lt;a href=&quot;#Implicit-隐式几何&quot; class=&quot;headerlink&quot; title=&quot;Implicit 隐式几何&quot;&gt;&lt;/a&gt;Implicit 隐式几何&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Based on &lt;strong&gt;classifying points&lt;/strong&gt;，例如通用一点的话：$f(x,y,z)=0$&lt;/li&gt;
+&lt;li&gt;Sampling Can Be Hard&lt;/li&gt;
+&lt;li&gt;Inside/Outside Tests Easy&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="图形学" scheme="https://blog.shimmerjordan.eu.org/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+    
+    <category term="GAMES101" scheme="https://blog.shimmerjordan.eu.org/tags/GAMES101/"/>
+    
+    <category term="渲染" scheme="https://blog.shimmerjordan.eu.org/tags/%E6%B8%B2%E6%9F%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GAMES101 Lec7-9 Shading notes</title>
+    <link href="https://blog.shimmerjordan.eu.org/2024/06/28/games101-lec7-9/"/>
+    <id>https://blog.shimmerjordan.eu.org/2024/06/28/games101-lec7-9/</id>
+    <published>2024-06-28T09:41:34.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;光照、着色、着色频率、图形管线、纹理映射&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;着色（光照与基本着色模型）&quot;&gt;&lt;a href=&quot;#着色（光照与基本着色模型）&quot; class=&quot;headerlink&quot; title=&quot;着色（光照与基本着色模型）&quot;&gt;&lt;/a&gt;着色（光照与基本着色模型）&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;着色和阴影无关；&lt;br&gt;Shading：The process of applying a material to an object.&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="图形学" scheme="https://blog.shimmerjordan.eu.org/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+    
+    <category term="GAMES101" scheme="https://blog.shimmerjordan.eu.org/tags/GAMES101/"/>
+    
+    <category term="渲染" scheme="https://blog.shimmerjordan.eu.org/tags/%E6%B8%B2%E6%9F%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GAMES101 Lec5-6 光栅化notes</title>
+    <link href="https://blog.shimmerjordan.eu.org/2024/06/28/games101-lec5-6/"/>
+    <id>https://blog.shimmerjordan.eu.org/2024/06/28/games101-lec5-6/</id>
+    <published>2024-06-28T05:41:34.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;After-MVP&quot;&gt;&lt;a href=&quot;#After-MVP&quot; class=&quot;headerlink&quot; title=&quot;After MVP&quot;&gt;&lt;/a&gt;After MVP&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;在做了MVP把物体转化为一个Canonical cube之后，我们需要做什么？&lt;br&gt;——将其投影到屏幕&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;屏幕由像素点（可以暂时理解为一个小方块）构成，是离散的，二维的。像素由RGB的混合有了颜色&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="图形学" scheme="https://blog.shimmerjordan.eu.org/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+    
+    <category term="GAMES101" scheme="https://blog.shimmerjordan.eu.org/tags/GAMES101/"/>
+    
+    <category term="渲染" scheme="https://blog.shimmerjordan.eu.org/tags/%E6%B8%B2%E6%9F%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GAMES101 Lec3-4 基础变换notes</title>
+    <link href="https://blog.shimmerjordan.eu.org/2024/06/28/games101-lec3-4/"/>
+    <id>https://blog.shimmerjordan.eu.org/2024/06/28/games101-lec3-4/</id>
+    <published>2024-06-28T04:41:34.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;基础变换（仿射变换）：旋转、缩放、切变、平移&quot;&gt;&lt;a href=&quot;#基础变换（仿射变换）：旋转、缩放、切变、平移&quot; class=&quot;headerlink&quot; title=&quot;基础变换（仿射变换）：旋转、缩放、切变、平移&quot;&gt;&lt;/a&gt;基础变换（仿射变换）：旋转、缩放、切变、平移&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;先后顺序很重要，需要仔细想&lt;/li&gt;
+&lt;li&gt;仿射变换=线性变换+平移&lt;/li&gt;
+&lt;li&gt;线性变换=旋转+缩放+切变&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="图形学" scheme="https://blog.shimmerjordan.eu.org/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+    
+    <category term="GAMES101" scheme="https://blog.shimmerjordan.eu.org/tags/GAMES101/"/>
+    
+    <category term="渲染" scheme="https://blog.shimmerjordan.eu.org/tags/%E6%B8%B2%E6%9F%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>威联通QNAP切换MariaDB</title>
+    <link href="https://blog.shimmerjordan.eu.org/2024/01/20/qnap_change_datadir/"/>
+    <id>https://blog.shimmerjordan.eu.org/2024/01/20/qnap_change_datadir/</id>
+    <published>2024-01-20T03:48:00.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;威联通QNAP装了MariaDB，部署了chevereto项目打算做私人图床，但MariaDB默认安装位置和数据存档位置都是系统盘，我给系统盘分配的空间空间不大，因此需要将数据存档位置迁移到其它数据卷。但苦于QNAP系统和传统ubuntu不一样，因此网上大部分教程都不适用。自己摸索出来可行的方案做个记录以免遗忘。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="开发环境" scheme="https://blog.shimmerjordan.eu.org/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
+    
+    
+    <category term="开发环境" scheme="https://blog.shimmerjordan.eu.org/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
+    
+    <category term="QNAP" scheme="https://blog.shimmerjordan.eu.org/tags/QNAP/"/>
+    
+    <category term="MariaDB" scheme="https://blog.shimmerjordan.eu.org/tags/MariaDB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网站备忘/备用</title>
+    <link href="https://blog.shimmerjordan.eu.org/2024/01/17/web4memo/"/>
+    <id>https://blog.shimmerjordan.eu.org/2024/01/17/web4memo/</id>
+    <published>2024-01-17T12:48:00.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;记录一些自用 &amp;amp; 公开的资源站/备用链接&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="memo" scheme="https://blog.shimmerjordan.eu.org/categories/memo/"/>
+    
+    
+    <category term="Web" scheme="https://blog.shimmerjordan.eu.org/tags/Web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VSCode For Android 安卓使用vscode</title>
+    <link href="https://blog.shimmerjordan.eu.org/2024/01/17/vscode4android/"/>
+    <id>https://blog.shimmerjordan.eu.org/2024/01/17/vscode4android/</id>
+    <published>2024-01-17T11:48:00.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;无意发现鸿蒙4可以在连接显示器的时候启用电脑模式，如果可以运行生产力软件——Visual Studio Code那就完美了。拾人牙慧实施了一些方案，发现截至20240117还是这种本地Termex+proot+vscode_server(pacman)的后端结合via浏览器全屏操作的前端方案较为舒适且坑少。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="开发环境" scheme="https://blog.shimmerjordan.eu.org/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
+    
+    
+    <category term="开发环境" scheme="https://blog.shimmerjordan.eu.org/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
+    
+    <category term="Android" scheme="https://blog.shimmerjordan.eu.org/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用kplayer实现无人值守推流云盘资源</title>
+    <link href="https://blog.shimmerjordan.eu.org/2023/11/28/kpalyerWithCloudFile/"/>
+    <id>https://blog.shimmerjordan.eu.org/2023/11/28/kpalyerWithCloudFile/</id>
+    <published>2023-11-28T05:48:00.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在Linux主机（NAS、软路由等）上部署无人值守的24h推流直播服务，利用Alist，NFS等服务挂载自动挂载云盘资源。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://live.bilibili.com/21256315&quot;&gt;Blibili直播地址&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="NAS" scheme="https://blog.shimmerjordan.eu.org/categories/NAS/"/>
+    
+    
+    <category term="Alist" scheme="https://blog.shimmerjordan.eu.org/tags/Alist/"/>
+    
+    <category term="Linux服务" scheme="https://blog.shimmerjordan.eu.org/tags/Linux%E6%9C%8D%E5%8A%A1/"/>
+    
+    <category term="NAS" scheme="https://blog.shimmerjordan.eu.org/tags/NAS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中兴机顶盒B860AV2.1刷安卓/ARM64/OMV/EmuELEC</title>
+    <link href="https://blog.shimmerjordan.eu.org/2023/04/09/B860AV21-Tutorial/"/>
+    <id>https://blog.shimmerjordan.eu.org/2023/04/09/B860AV21-Tutorial/</id>
+    <published>2023-04-09T02:28:12.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;What-We-Do&quot;&gt;&lt;a href=&quot;#What-We-Do&quot; class=&quot;headerlink&quot; title=&quot;What We Do&quot;&gt;&lt;/a&gt;What We Do&lt;/h1&gt;&lt;p&gt;利用机顶盒的低能耗、低价格以及高性能的特点，刷入各种固件，使其应用在各种场景：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;刷入安卓/当贝桌面，绕开IPTV收费机制。适用于家庭收视场景；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;刷入armbian64系统，做微型服务器。适用于微服务器、PT盒子、PCDN盒子等场景。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;刷入OMV系统，做NAS。适用于轻量级家庭私有云场景。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;刷入EmuELEC系统，做怀旧游戏机。适用于轻量聚会游戏（怀旧）场景。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="Network" scheme="https://blog.shimmerjordan.eu.org/categories/Network/"/>
+    
+    
+    <category term="刷机" scheme="https://blog.shimmerjordan.eu.org/tags/%E5%88%B7%E6%9C%BA/"/>
+    
+    <category term="机顶盒" scheme="https://blog.shimmerjordan.eu.org/tags/%E6%9C%BA%E9%A1%B6%E7%9B%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>移动光猫吉比特GS3101超级账号获取更改桥接</title>
+    <link href="https://blog.shimmerjordan.eu.org/2023/01/09/GS3101-bridge/"/>
+    <id>https://blog.shimmerjordan.eu.org/2023/01/09/GS3101-bridge/</id>
+    <published>2023-01-09T06:28:12.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;家里移动融合套餐的宽带用的光猫型号是GS3101，用面板后的账户密码登录发现权限几乎为零，本来改桥接要做什么也不好明说，为了避免麻烦就没找客服，这里记录一下自己折腾改桥接的方法。并且小记一下忘了拨号账户密码的解决方案。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Network" scheme="https://blog.shimmerjordan.eu.org/categories/Network/"/>
+    
+    
+    <category term="软路由" scheme="https://blog.shimmerjordan.eu.org/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>软路由折腾笔记</title>
+    <link href="https://blog.shimmerjordan.eu.org/2023/01/07/soft-routing-setup/"/>
+    <id>https://blog.shimmerjordan.eu.org/2023/01/07/soft-routing-setup/</id>
+    <published>2023-01-07T13:28:12.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;软路由的入门折腾笔记，给自己以后换房子重新部署做个参考&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;目前计划实现的功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ipv6公网的DDNS，绑定域名之后实现公网访问&lt;/li&gt;
+&lt;li&gt;广告过滤，（翻阅长城的功能暂定不加）&lt;/li&gt;
+&lt;li&gt;利用&lt;code&gt;x-ui&lt;/code&gt;搭建一个小型流量中转站&lt;/li&gt;
+&lt;li&gt;搭建青龙面板跑一些基础的脚本&lt;/li&gt;
+&lt;li&gt;离线下载&lt;/li&gt;
+&lt;li&gt;私有云&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="Network" scheme="https://blog.shimmerjordan.eu.org/categories/Network/"/>
+    
+    
+    <category term="软路由" scheme="https://blog.shimmerjordan.eu.org/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浏览器输入URL访问网页的执行流程</title>
+    <link href="https://blog.shimmerjordan.eu.org/2022/07/08/url-visit/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/07/08/url-visit/</id>
+    <published>2022-07-07T21:38:12.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;流程概览&quot;&gt;&lt;a href=&quot;#流程概览&quot; class=&quot;headerlink&quot; title=&quot;流程概览&quot;&gt;&lt;/a&gt;流程概览&lt;/h1&gt;&lt;p&gt;对于这一个过程应该有一个大概的骨架，然后再是回忆里面的具体细节。总体流程如下，每一部分细节后面补充：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;查找浏览器缓存：如果查找到缓存中有我们URL对应的文件，则判断是否命中强缓存，如果命中直接读取使用即可，如果强缓存没有命中，判断协商缓存是否命中，但协商缓存不论是否命中都会发送请求，所以都会走下面的步骤&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;DNS域名解析：将输入的URL解析成对应的IP地址&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;生成HTTP请求报文：请求报文包括起始行，首部，主体&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;TCP连接：客户端与服务端进行TCP三次握手，建立连接&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;发送HTTP请求：握手成功后，客户端向服务端发送http请求，请求数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;服务器收到请求并返回数据：客户端根据返回的结果进行渲染展示，同时判断是否需要将文件存入缓存&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;TCP断开连接：客户端与服务端进行TCP四次挥手，断开连接&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="web" scheme="https://blog.shimmerjordan.eu.org/categories/web/"/>
+    
+    
+    <category term="Web" scheme="https://blog.shimmerjordan.eu.org/tags/Web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot中实现跨域的5种方式</title>
+    <link href="https://blog.shimmerjordan.eu.org/2022/07/07/SpringBoot-CORS/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/07/07/SpringBoot-CORS/</id>
+    <published>2022-07-07T07:38:12.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;一、为什么会出现跨域问题&quot;&gt;&lt;a href=&quot;#一、为什么会出现跨域问题&quot; class=&quot;headerlink&quot; title=&quot;一、为什么会出现跨域问题&quot;&gt;&lt;/a&gt;一、为什么会出现跨域问题&lt;/h1&gt;&lt;p&gt;出于浏览器的同源策略限制。同源策略（Sameoriginpolicy）是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。可以说Web是构建在同源策略基础之上的，浏览器只是针对同源策略的一种实现。同源策略会阻止一个域的javascript脚本和另外一个域的内容进行交互。所谓同源（即指在同一个域）就是两个页面具有相同的协议（protocol），主机（host）和端口号（port）&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="SpringBoot" scheme="https://blog.shimmerjordan.eu.org/categories/SpringBoot/"/>
+    
+    
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/tags/Spring/"/>
+    
+    <category term="SpringBoot" scheme="https://blog.shimmerjordan.eu.org/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot2 扎记下篇</title>
+    <link href="https://blog.shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-2/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-2/</id>
+    <published>2022-07-03T13:36:12.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;SpringBoot2笔记下篇&quot;&gt;&lt;a href=&quot;#SpringBoot2笔记下篇&quot; class=&quot;headerlink&quot; title=&quot;SpringBoot2笔记下篇&quot;&gt;&lt;/a&gt;SpringBoot2笔记下篇&lt;/h1&gt;&lt;p&gt;接SpringBoot2扎记上篇内容&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="SpringBoot" scheme="https://blog.shimmerjordan.eu.org/categories/SpringBoot/"/>
+    
+    
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/tags/Spring/"/>
+    
+    <category term="SpringBoot" scheme="https://blog.shimmerjordan.eu.org/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot2 扎记上篇</title>
+    <link href="https://blog.shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-1/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-1/</id>
+    <published>2022-07-03T12:36:12.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;SpringBoot2笔记上篇&quot;&gt;&lt;a href=&quot;#SpringBoot2笔记上篇&quot; class=&quot;headerlink&quot; title=&quot;SpringBoot2笔记上篇&quot;&gt;&lt;/a&gt;SpringBoot2笔记上篇&lt;/h1&gt;&lt;h1 id=&quot;基础入门-SpringBoot2&quot;&gt;&lt;a href=&quot;#基础入门-SpringBoot2&quot; class=&quot;headerlink&quot; title=&quot;基础入门-SpringBoot2&quot;&gt;&lt;/a&gt;基础入门-SpringBoot2&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Spring Boot 2核心技术&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Spring Boot 2响应式编程&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;环境要求&lt;ul&gt;
+&lt;li&gt;Java8及以上&lt;/li&gt;
+&lt;li&gt;Maven 3.3及以上&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;学习资料&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/projects/spring-boot&quot;&gt;Spring Boot官网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.spring.io/spring-boot/docs/&quot;&gt;Spring Boot官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="SpringBoot" scheme="https://blog.shimmerjordan.eu.org/categories/SpringBoot/"/>
+    
+    
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/tags/Spring/"/>
+    
+    <category term="SpringBoot" scheme="https://blog.shimmerjordan.eu.org/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis学习乱记</title>
+    <link href="https://blog.shimmerjordan.eu.org/2022/07/02/Mybatis-dict/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/07/02/Mybatis-dict/</id>
+    <published>2022-07-02T12:36:12.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Mybatis简介&quot;&gt;&lt;a href=&quot;#Mybatis简介&quot; class=&quot;headerlink&quot; title=&quot;Mybatis简介&quot;&gt;&lt;/a&gt;Mybatis简介&lt;/h1&gt;&lt;h2 id=&quot;MyBatis历史&quot;&gt;&lt;a href=&quot;#MyBatis历史&quot; class=&quot;headerlink&quot; title=&quot;MyBatis历史&quot;&gt;&lt;/a&gt;MyBatis历史&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;MyBatis最初是Apache的一个开源项目iBatis, 2010年6月这个项目由Apache Software Foundation迁移到了Google Code。随着开发团队转投Google Code旗下，iBatis3.x正式更名为MyBatis。代码于2013年11月迁移到Github&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;iBatis一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBatis提供的持久层框架包括SQL Maps和Data Access Objects（DAO）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="SSM" scheme="https://blog.shimmerjordan.eu.org/categories/SSM/"/>
+    
+    
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/tags/Spring/"/>
+    
+    <category term="Mybatis" scheme="https://blog.shimmerjordan.eu.org/tags/Mybatis/"/>
+    
+    <category term="SSM" scheme="https://blog.shimmerjordan.eu.org/tags/SSM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringMVC学习杂记</title>
+    <link href="https://blog.shimmerjordan.eu.org/2022/07/02/Spring-dict/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/07/02/Spring-dict/</id>
+    <published>2022-07-02T06:36:12.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;一、SpringMVC简介&quot;&gt;&lt;a href=&quot;#一、SpringMVC简介&quot; class=&quot;headerlink&quot; title=&quot;一、SpringMVC简介&quot;&gt;&lt;/a&gt;一、SpringMVC简介&lt;/h1&gt;&lt;h3 id=&quot;1、什么是MVC&quot;&gt;&lt;a href=&quot;#1、什么是MVC&quot; class=&quot;headerlink&quot; title=&quot;1、什么是MVC&quot;&gt;&lt;/a&gt;1、什么是MVC&lt;/h3&gt;&lt;p&gt;MVC是一种软件架构的思想，将软件按照模型、视图、控制器来划分&lt;/p&gt;
+&lt;p&gt;M：Model，模型层，指工程中的JavaBean，作用是处理数据&lt;/p&gt;
+&lt;p&gt;JavaBean分为两类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一类称为实体类Bean：专门存储业务数据的，如 Student、User 等&lt;/li&gt;
+&lt;li&gt;一类称为业务处理 Bean：指 Service 或 Dao 对象，专门用于处理业务逻辑和数据访问。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;V：View，视图层，指工程中的html或jsp等页面，作用是与用户进行交互，展示数据&lt;/p&gt;
+&lt;p&gt;C：Controller，控制层，指工程中的servlet，作用是接收请求和响应浏览器&lt;/p&gt;
+&lt;p&gt;MVC的工作流程 &lt;strong&gt;（详情见最后一章节）&lt;/strong&gt;：&lt;br&gt;用户通过视图层发送请求到服务器，在服务器中请求被Controller接收，Controller调用相应的Model层处理请求，处理完毕将结果返回到Controller，Controller再根据请求处理的结果找到相应的View视图，渲染数据后最终响应给浏览器&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="SSM" scheme="https://blog.shimmerjordan.eu.org/categories/SSM/"/>
+    
+    
+    <category term="Spring" scheme="https://blog.shimmerjordan.eu.org/tags/Spring/"/>
+    
+    <category term="SpringMVC" scheme="https://blog.shimmerjordan.eu.org/tags/SpringMVC/"/>
+    
+    <category term="SSM" scheme="https://blog.shimmerjordan.eu.org/tags/SSM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Geforce Now 配置指北</title>
+    <link href="https://blog.shimmerjordan.eu.org/2022/06/30/geforce-now-setup/"/>
+    <id>https://blog.shimmerjordan.eu.org/2022/06/30/geforce-now-setup/</id>
+    <published>2022-06-30T14:38:12.000Z</published>
+    <updated>2024-08-25T03:46:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;Geforce Now，一个姣好的云游戏平台解决方案&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="新手指北" scheme="https://blog.shimmerjordan.eu.org/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
+    
+    
+    <category term="随笔" scheme="https://blog.shimmerjordan.eu.org/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+</feed>

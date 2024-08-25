@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="baidu-site-verification" content="code-kg5UjKJZM2" />
+   
+  <meta name="keywords" content="活,炼" />
+   
+  <meta name="description" content="shimmerjordan" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    中兴机顶盒B860AV2.1刷安卓/ARM64/OMV/EmuELEC |  丛烨-shimmerjordan
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-Q0DT8B8VJW', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?6d06f826e125297d4ce0fa7a1449328e";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<link rel="alternate" href="/atom.xml" title="丛烨-shimmerjordan" type="application/atom+xml">
+</head>
+
+</html>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+	<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-中兴机顶盒B860AV2.1刷安卓-ARM64-OMV-emuelec"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  中兴机顶盒B860AV2.1刷安卓/ARM64/OMV/EmuELEC
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/04/09/B860AV21-Tutorial/" class="article-date">
+  <time datetime="2023-04-09T02:28:12.000Z" itemprop="datePublished">2023-04-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Network/">Network</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">12 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="What-We-Do"><a href="#What-We-Do" class="headerlink" title="What We Do"></a>What We Do</h1><p>利用机顶盒的低能耗、低价格以及高性能的特点，刷入各种固件，使其应用在各种场景：</p>
+<ol>
+<li><p>刷入安卓/当贝桌面，绕开IPTV收费机制。适用于家庭收视场景；</p>
+</li>
+<li><p>刷入armbian64系统，做微型服务器。适用于微服务器、PT盒子、PCDN盒子等场景。</p>
+</li>
+<li><p>刷入OMV系统，做NAS。适用于轻量级家庭私有云场景。</p>
+</li>
+<li><p>刷入EmuELEC系统，做怀旧游戏机。适用于轻量聚会游戏（怀旧）场景。</p>
+</li>
+</ol>
+<span id="more"></span>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><h2 id="中兴B860AV2-1配置"><a href="#中兴B860AV2-1配置" class="headerlink" title="中兴B860AV2.1配置"></a>中兴B860AV2.1配置</h2><p>芯片：S905L 四核 2GHz<br>存储：1G+8G<br>（猜测）接口：两个 USB，1 TF卡，1 网口，1 HDMI，有AV接口，无音频接口。</p>
+<p>无线：有Wifi，无蓝牙</p>
+<h2 id="硬件-工具准备"><a href="#硬件-工具准备" class="headerlink" title="硬件/工具准备"></a>硬件/工具准备</h2><ul>
+<li><p>双工USB线，可自己改造可网购。</p>
+<ul>
+<li>讲究的话可以直接购买，家里如果有富足数据线，剪断后只要两个usb公头。正常数据线有四根线，红色为正极，黑色为负极，白色、绿色为数据传输。按颜色对接即可。如果无颜色，只能借助万用表，确保两个公头的线序一致即可。（如图）<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/1.png" alt="USB"></li>
+</ul>
+</li>
+<li><p>短接工具：镊子、别针等导电物件，或网购“专用免拆短接HDMI刷机S905”（型号不一定通用，注意芯片信号）</p>
+</li>
+<li><p>网线以及机顶盒电源线</p>
+</li>
+<li><p>我用的小米的万能遥控是可行的，原始的遥控器可能在刷机后不通用了</p>
+</li>
+<li><p>TF卡以及读卡器，TF卡最少8G。如果需要刷EmuELEC，建议选用64G的TF卡，可以刷入更全的游戏包。</p>
+</li>
+</ul>
+<h2 id="软件准备"><a href="#软件准备" class="headerlink" title="软件准备"></a>软件准备</h2><ul>
+<li><p>刷机软件：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1XbCkDhSHTuq5IGXFwvalTQ">Amlogic USB Burning Tool</a>，提取码：iw8h </p>
+</li>
+<li><p>过时硬件的驱动：某些系统如果无法识别盒子的驱动，需要下载安装<a target="_blank" rel="noopener" href="https://gsmusbdrivers.com/download/amlogic-usb-driver/">Amlogic USB Driver Android [Download] - GSM USB Drivers</a></p>
+</li>
+<li><p>线刷安卓固件（带ROOT）：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1SYtbQ0vg-gmN_Zy06zxKJQ">带ROOT安卓固件</a>，提取码：wmmh </p>
+</li>
+<li><p>卡刷固件烧写工具：<a target="_blank" rel="noopener" href="https://www.balena.io/etcher">balenaEtcher - Flash OS images to SD cards &amp; USB drives</a></p>
+</li>
+<li><p>卡刷Armbian固件：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1bztVXaz1yLp3G_Po5OABLw">Armbian20.10</a>，提取码：zt7u </p>
+</li>
+<li><p>卡刷EmuELEC固件：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/122dANVsfwi04g5BEP1StPA">emuelec4.3正式版-S905M-S905L-58G</a>，提取码：intl </p>
+</li>
+</ul>
+<p>其他场景以及其他设备型号的固件自行搜索，操作原理和过程类似。</p>
+<h1 id="避坑预警"><a href="#避坑预警" class="headerlink" title="避坑预警"></a>避坑预警</h1><p>这些坑可能遇见，但是我没遇见。做个备份</p>
+<ol>
+<li><p>拿到B860AV2.1盒子卡刷、Recovery、TTL写入、ADB都会锁，只能通过线刷才能成功。以上刷机方法都试过，很坑，建议大家不要去试。</p>
+</li>
+<li><p>线刷一般会发生以下三个错误  </p>
+</li>
+</ol>
+<ul>
+<li><p>线刷驱动装不上，win10要关闭驱动签名；</p>
+</li>
+<li><p>线刷98%失败，Amlogic Usb burning tool 2.1.6.8以后的版本做了超时退出，固件太大，验证时间超过30秒就会失败，这个地方卡了最久，建议使用2.1.6这个版本；</p>
+</li>
+<li><p>遥控左键、电源键都触发不了线刷时，拆机断电后短接C125位置的空位。  </p>
+</li>
+</ul>
+<ol>
+<li><p>盒子优先从TF卡启动，eMMC和TF卡都有系统从TF卡启动；</p>
+</li>
+<li><p>CoreELEC，wifi驱动没有；需要自己编辑红外遥控键码；</p>
+</li>
+<li><p>Armbian 系统长时间不使用，UI就会卡顿；</p>
+</li>
+<li><p>潜龙的固件有几个版本不能自动获取IP，需要手动配置。</p>
+</li>
+</ol>
+<h1 id="刷入底包"><a href="#刷入底包" class="headerlink" title="刷入底包"></a>刷入底包</h1><p>以上的场景中，需要首先线刷底包，包括安卓或者当贝桌面等基于安卓系统的固件。后续才可以借助TF卡 or U盘卡刷其它系统。这里介绍刷安卓固件的步骤，当贝桌面换个固件写入即可。</p>
+<h2 id="短接"><a href="#短接" class="headerlink" title="短接"></a>短接</h2><p>这个操作只需要在线刷底包的时候进行。如果买了HDMI口的免拆工具，直接插上就行。如果型号不匹配或者不具备条件，参考以下方法短接电阻。注意B860AV2.1的短接入口为C125，后面带字母的可能需要短接的电阻不一样，例如B860AV2.1-A是短接C128。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/2.png" alt="短接"></p>
+<p>短接工具可以选回形针、镊子，甚至你可以选择焊上然后再吸锡器去除焊接点。</p>
+<h2 id="刷机"><a href="#刷机" class="headerlink" title="刷机"></a>刷机</h2><p>打开USB Burning Tool，左上角点击文件加载烧录包，之前下载的压缩包记得解压，用的是.img后缀的文件。选中刷机包后，把软件右侧所有能选中的勾都去掉，否则可能变砖。</p>
+<blockquote>
+<p>选择刷安卓底包用来刷其他系统的需要勾选刷写Boot Loader，以此来完成写入Emmc的操作。</p>
+</blockquote>
+<p>盒子<strong>不要通电</strong>。把双头USB一端连接到盒子的挨着网线的那个USB插孔，另一端连接上电脑的USB接口。</p>
+<p>这里得特殊说一下，因为盒子USB插孔选不对，电脑也不识别。正常情况下，盒子连接上电脑，指示灯会点亮。如果不亮，针对这两种情况，可以用以下步骤排除：</p>
+<ol>
+<li><p>若先插USB（盒子指示灯不亮），再短接C125，再插盒子电源（指示灯亮），电脑识别，松开短接，开始刷机。</p>
+</li>
+<li><p>若先插USB（盒子指示灯亮）（再拔掉USB），则先短接C125，再插USB，再插盒子电源，电脑识别，松开短接，开始刷机。</p>
+</li>
+</ol>
+<p>所以选择第一种情况。插机箱的USB，盒子先不亮这种。（如果你用的是笔记本，那就得判断用灯是先亮还是后亮的USB口了）此时，盒子跟电脑已经用USB线连接，盒子没有插电源。用短接工具把盒子电路板上的C125处两个针脚连接上。别松手，把盒子电源插上。</p>
+<p>这时候USB Burning Tool工具<strong>会提示“连接成功”</strong>。</p>
+<p>然后点击开始等待写入完成即可。这里埋点记录写入过程中可能存在的BUG。一般来说，重启或者重新尝试。</p>
+<p>刷机在4% 刷写u-boot的时候一定不要松开。等到7%开始格式化EMMC分区的时候就可以松开了。中途会失败，在点击开始即可。</p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>底包刷入很简单，后续接入显示器，借助遥控器（Maybe需要重新编译，但我有的时候可以用小米的万能遥控）</p>
+<h1 id="刷入armbian系统"><a href="#刷入armbian系统" class="headerlink" title="刷入armbian系统"></a>刷入armbian系统</h1><blockquote>
+<p>如果是高安版本就不要折腾了，高安可以线刷（固件与非高安不通用）但不能ROOT，无法启动和刷入Armbian</p>
+</blockquote>
+<h2 id="准备-1"><a href="#准备-1" class="headerlink" title="准备"></a>准备</h2><blockquote>
+<p>这一步建立在刷入带root权限的安卓系统的基础上</p>
+</blockquote>
+<ol>
+<li><p>需要准备<a href="[List APK variants of Reboot to LibreELEC 1.1 apk | AndroidAppsAPK.co](https://androidappsapk.co/download/me.thomastv.rebootupdate/8d3d30a22310d98e7862f183538f43f2/#google_vignette">rebootupdate.apk</a>)，如果原始网站不可用，可以选择<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1HheiMaOpCPWfMA3QLdJMgg">百度云-rebootupdate.apk</a>，提取码：1f8l 。用来完成root权限的写入。点击刚才装的软件，选择首次运行。允许root执行。此时立刻插入U盘到USB2口。SD卡的话可以在启动机顶盒前就插入；</p>
+</li>
+<li><p>使用BalenaEtcher将armbian固件写入<strong>TF卡</strong>（U盘可能出错）</p>
+</li>
+</ol>
+<h2 id="刷写过程"><a href="#刷写过程" class="headerlink" title="刷写过程"></a>刷写过程</h2><ol>
+<li><p>将armbian固件成功写入之后，修改/boot分区中的<code>/extlinux/exlinux.conf</code>文件：在rk3399那两句前添加<code>#</code>，选择<code>s905x-p212.dtb</code>(去掉#即可)，其他非aml可删除：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/3.png" alt="exlinux.conf"></p>
+</li>
+<li><p>将/boot分区中文件<code>uboot-s905x...</code>修改为<code>uboot.ext</code></p>
+</li>
+</ol>
+<h2 id="从TF卡启动并刷入Emmc"><a href="#从TF卡启动并刷入Emmc" class="headerlink" title="从TF卡启动并刷入Emmc"></a>从TF卡启动并刷入Emmc</h2><p>可以TF卡启动，也可以刷入Emmc。插了TF卡的话默认使用TF卡启动，刷入Emmc方便后续刷OMV再挂载硬盘。不刷的话启动方法更灵活一些。</p>
+<ol>
+<li><p>打开rebootupdate，待安卓完全关闭后，重启前，插入SD卡，<strong>防止文件污染</strong></p>
+</li>
+<li><p>进入armbian(sd卡)系统，设置用户名和密码等  </p>
+</li>
+<li><p><code>cd /boot</code>,输入 <code>ls</code> 列出文件目录  </p>
+</li>
+<li><p>删除<code>System....Infmation</code>文件夹，使用 <code>rm -rf &#39;System....Infmation&#39;</code>    （带引号），如有dir等安卓文件，一并删除  </p>
+</li>
+<li><p>在root文件夹中，有<code>install-aml.sh</code>，写入emmc（<strong>不要使用是s905-emmc</strong>）  </p>
+<ol>
+<li><p>赋予权限<code>chmod 755 install-aml.sh</code></p>
+</li>
+<li><p><code>./install-aml.sh</code>  </p>
+</li>
+<li><p>等待刷写完成，重启即可。</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>成功刷入armbian，并写入emmc：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/4.png" alt="arm-64效果"></p>
+<p>此时即可进入arm系统开始玩耍啦~</p>
+<h2 id="TIPS"><a href="#TIPS" class="headerlink" title="TIPS"></a>TIPS</h2><p>使用SSH在内网环境下登录系统。可以用端口转发+DDNS，利用软路由实现公网访问。</p>
+<p>首次进入会让你重新设置密码；如果开机一直显示<code>reset high-speed usb device number 2 using xhci-hcd</code>说明设备USB供电不足，建议换一个U盘（USB2.0）或者直接使用SD卡</p>
+<h1 id="刷入OMV系统"><a href="#刷入OMV系统" class="headerlink" title="刷入OMV系统"></a>刷入OMV系统</h1><h2 id="自动安装"><a href="#自动安装" class="headerlink" title="自动安装"></a>自动安装</h2><ol>
+<li><p>使用SSH登入刷了armbian系统的机顶盒，输入指令<code>armbian-config</code></p>
+</li>
+<li><p>选择自动安装：</p>
+<ul>
+<li>方向键移到Software⇨回车</li>
+<li>方向键移到Softy⇨回车</li>
+<li>方向键移到OMV⇨ 空格键选择⇨回车确定</li>
+<li>等待安装完成</li>
+</ul>
+</li>
+</ol>
+<h2 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h2><blockquote>
+<p>手动安装的原因是自动安装容易出错，下载进度缓慢</p>
+</blockquote>
+<ol>
+<li><p>添加OMV软件源</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;deb http://packages.openmediavault.org/public arrakis main&quot; &gt; /etc/apt/sources.list.d/openmediavault.list</span><br><span class="line">apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 7E7A6C592EF35D13 24863F0C716B980B</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export LANG=C</span><br><span class="line">export DEBIAN_FRONTEND=noninteractive</span><br><span class="line">export APT_LISTCHANGES_FRONTEND=none</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开始安装OMV</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install openmediavault-keyring postfix</span><br><span class="line">apt install openmediavault</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>耐心</strong>等待安装完成即可。</p>
+<h2 id="TIPS-1"><a href="#TIPS-1" class="headerlink" title="TIPS"></a>TIPS</h2><ul>
+<li><p>安装出现错误后，输入如下命令即可安装成功：<code>apt --fix-broken install</code></p>
+</li>
+<li><p>浏览器输入机顶盒的<code>IP</code>即可进入OMV系统，其中默认用户名为<code>admin</code>，密码为<code>openmediavault</code></p>
+<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/5.png" alt="OMV"></p>
+</li>
+</ul>
+<h2 id="基础设置"><a href="#基础设置" class="headerlink" title="基础设置"></a>基础设置</h2><h3 id="共享移动硬盘"><a href="#共享移动硬盘" class="headerlink" title="共享移动硬盘"></a>共享移动硬盘</h3><blockquote>
+<p>注意： NFS 只是一小众的文件共亨协议，应用的不多，但苹果系统下应用很广，建议还是用SMB协议吧。通用性较强些。</p>
+</blockquote>
+<h3 id="01-挂载移动硬盘"><a href="#01-挂载移动硬盘" class="headerlink" title="01 挂载移动硬盘"></a>01 挂载移动硬盘</h3><ul>
+<li>插上移动硬盘接到n1的usb口</li>
+</ul>
+<blockquote>
+<p>OMV不支持EXT2，3，extFat，所以最好用ext4或NTFS</p>
+</blockquote>
+<ul>
+<li>存储器→文件系统</li>
+<li>选择移动硬盘→点击[挂载]→保存并应用</li>
+</ul>
+<h3 id="02-添加移动硬盘中需要共享的文件夹"><a href="#02-添加移动硬盘中需要共享的文件夹" class="headerlink" title="02 添加移动硬盘中需要共享的文件夹"></a>02 添加移动硬盘中需要共享的文件夹</h3><ul>
+<li>访问权限管理→点击[共享文件夹]</li>
+<li>点击[添加]</li>
+</ul>
+<blockquote>
+<p>名称：share</p>
+<p>设备：选择移动硬盘</p>
+<p>路径：点击选择，/表示共享整个移动硬盘</p>
+</blockquote>
+<ul>
+<li>点击[保存]</li>
+</ul>
+<h3 id="03-新建用户"><a href="#03-新建用户" class="headerlink" title="03 新建用户"></a>03 新建用户</h3><ul>
+<li>访问权限管理-&gt;用户-&gt;点[添加]</li>
+</ul>
+<blockquote>
+<p>名称 注意不能为root<br>密码<br>确认密码<br>用户组 勾选users</p>
+</blockquote>
+<h3 id="04-设置新建用户对文件夹的权限"><a href="#04-设置新建用户对文件夹的权限" class="headerlink" title="04 设置新建用户对文件夹的权限"></a>04 设置新建用户对文件夹的权限</h3><ul>
+<li>点击新建的用户</li>
+<li>点击[特权]→勾选[读和写]</li>
+<li>保存并应用</li>
+</ul>
+<h3 id="05-通过smb把共享文件夹共享出去"><a href="#05-通过smb把共享文件夹共享出去" class="headerlink" title="05 通过smb把共享文件夹共享出去"></a>05 通过smb把共享文件夹共享出去</h3><ul>
+<li>[服务]→[SMB/CIFS]</li>
+<li>[设置]→常规设置→勾选[启用]→保存并应用</li>
+<li>[共享]→点击[添加]</li>
+</ul>
+<blockquote>
+<p>共享文件夹：选择 share</p>
+</blockquote>
+<ul>
+<li>保存并应用</li>
+</ul>
+<blockquote>
+<p>之后就可以去[我的电脑]-&gt;[网络]中看到 名为“AML”的磁盘，输入刚创建的用户名和密码就可以登入</p>
+</blockquote>
+<h3 id="06-设置移动硬盘待机"><a href="#06-设置移动硬盘待机" class="headerlink" title="06 设置移动硬盘待机"></a>06 设置移动硬盘待机</h3><ul>
+<li>存储器→磁盘</li>
+<li>选择 移动硬盘→点击[编辑]</li>
+</ul>
+<blockquote>
+<p>高级电源管理：1-待机状态时最低功耗</p>
+<p>自动声音管理：禁用</p>
+<p>停转时间：20分钟</p>
+<p>写入缓存：勾选 [开启写入缓存]</p>
+</blockquote>
+<h2 id="安装配置transmission以及syncthing"><a href="#安装配置transmission以及syncthing" class="headerlink" title="安装配置transmission以及syncthing"></a>安装配置transmission以及syncthing</h2><blockquote>
+<p>Omv5支持的插件还很少，所以transmission和syncthing只能通过<code>armbian-config</code>命令安装。</p>
+</blockquote>
+<ul>
+<li>SSH登陆后<code>armbian-config</code>，[Software] → [Softy] → 空格选择上[Transmission、Syncthing]→ 回车确认安装</li>
+</ul>
+<h3 id="Transmission"><a href="#Transmission" class="headerlink" title="Transmission"></a>Transmission</h3><ul>
+<li><p>修改账号密码:</p>
+<ul>
+<li>文件路径<code>vim /etc/transmission-daemon/settings.json</code></li>
+<li><code># rpc-username rpc-password</code>都填明文；<code>download-dir为</code>下载路径。</li>
+<li><code>:wq!</code> 保存并退出vim</li>
+<li><code>systemctl reload transmission-daemon</code> 使改动生效</li>
+</ul>
+</li>
+<li><p>换UI</p>
+<ul>
+<li>直接参考，傻瓜式更换: <a target="_blank" rel="noopener" href="https://github.com/ronggang/transmission-web-control/wiki/Linux-Installation-CN">Github</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="Syncthing基础配置"><a href="#Syncthing基础配置" class="headerlink" title="Syncthing基础配置"></a>Syncthing基础配置</h3><ol>
+<li>打开UI界面，<a target="_blank" rel="noopener" href="http://{omv-ip}:8384/，右上角操作，显示id">http://{omv-ip}:8384/，右上角操作，显示id</a></li>
+<li>手机安装Syncthing app（<a target="_blank" rel="noopener" href="https://github.com/syncthing/syncthing">开源项目地址</a>，安卓apk可以通过<a target="_blank" rel="noopener" href="https://f-droid.org/zh_Hans/packages/com.nutomic.syncthingandroid/">F-Droid</a>下载），设备，有上角+，输入上述id，过一会，网页显示有设备请求连接，连接即可；</li>
+<li>手机上添加需要备份的文件夹，版本控制无，共享给远程已连接的omv设备；</li>
+<li>WEB UI上看到手机共享的文件，选择一个路径保存，版本控制选回收站，参数“在该时间后清除”填0</li>
+<li>有时候，手机清理了一下，会发生<code>folder markermissing</code>错误，在手机需要备份的目录下创建空白文件夹<code>.stfolder</code>，并配置手机清理白名单。</li>
+</ol>
+<h2 id="OMV外网访问及同步"><a href="#OMV外网访问及同步" class="headerlink" title="OMV外网访问及同步"></a>OMV外网访问及同步</h2><h3 id="DDNS-端口转发"><a href="#DDNS-端口转发" class="headerlink" title="DDNS + 端口转发"></a>DDNS + 端口转发</h3><p>组网拓扑暂不细述，有两种思路：</p>
+<ol>
+<li><p>光猫桥接+R2S软路拨号+外接omv：</p>
+<ul>
+<li>确认对应传输端口，在R2S软路由侧设置端口转发，监听、转发并开放对应端口（防火墙）：<ul>
+<li>一般是在OMV Web UI中设置了相应传输协议的端口，但需要注意的是例如FTP的21端口为发送命令端口，主动模式下的FTP的传输文件端口是<code>命令端口号-1</code>；被动传输文件端口随机，其他的协议端口自行查询。</li>
+<li>Syncthing：在WEB UI（<a target="_blank" rel="noopener" href="http://{omv-ip}:8384/）中检查连接记录（默认的dynamic地址的端口是否为22000），转发开放22000和48149端口">http://{omv-ip}:8384/）中检查连接记录（默认的dynamic地址的端口是否为22000），转发开放22000和48149端口</a></li>
+</ul>
+</li>
+<li><p>通过R2S的DDNS_ip以及转发的端口号完成连接</p>
+<p> <img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/6.png" alt="端口转发"></p>
+</li>
+</ul>
+</li>
+<li><p>光猫桥接+R2S拨号+交换机+omv或者光猫拨号+omv：</p>
+<ul>
+<li>主要需要让omv直接获取到公网ip，然后在omv中启用ddns的docker实现外网访问。</li>
+<li>这种实现方式最优，但要么牺牲组网可拓展性要么牺牲钱包买交换机。</li>
+</ul>
+</li>
+</ol>
+<h3 id="Syncthing外网访问"><a href="#Syncthing外网访问" class="headerlink" title="Syncthing外网访问"></a>Syncthing外网访问</h3><p>打开上述下载安装的手机app：Syncthing，进行相关设置。无需端口转发以及DDNS之类的操作。此项目基于GO语言开发，类似torrent协议但只存储在个人设备上。<strong>须要</strong>注意以下几点：</p>
+<ol>
+<li><p>一定一定要确认好自己的硬盘挂载路径，否则默认同步到EMMC中，很快就占满空间了。方法可参考：输入<code>mount -l</code>和挂载项对比，如图所示：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/8.png" alt="挂载确认"></p>
+<p>然后在OMV端的Syncthing UI配置OMV端同步文件夹，可以看到是正在同步状态：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/9.png" alt="挂载"></p>
+</li>
+</ol>
+<ol>
+<li><p>做好id和标签的规划和命名以方便管理，建议在OMV的Syncthing UI和手机端均勾选上自动接受，以免后续同步的时候需要手动点击同意创建文件夹。同时注意勾选相关权限和共享文件夹以保证同步可达性。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/B860AV/7.jpg" alt="配置确认"></p>
+</li>
+</ol>
+<h1 id="刷入EmuELEC系统"><a href="#刷入EmuELEC系统" class="headerlink" title="刷入EmuELEC系统"></a>刷入EmuELEC系统</h1><p>刷入安卓底包后用SD卡完成卡刷，具体步骤类似以上，<strong>暂时</strong>不再赘述了，图的话有兴趣了补上。</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.shimmerjordan.eu.org/2023/04/09/B860AV21-Tutorial/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%B7%E6%9C%BA/" rel="tag">刷机</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E9%A1%B6%E7%9B%92/" rel="tag">机顶盒</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/11/28/kpalyerWithCloudFile/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            利用kplayer实现无人值守推流云盘资源
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/01/09/GS3101-bridge/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">移动光猫吉比特GS3101超级账号获取更改桥接</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "StYfTMDp78X0EltFR16ve2q5-gzGzoHsz",
+    app_key: "G4RPxRpXG6RwdfpnJefOSnyy",
+    path: window.location.pathname,
+    avatar: "wavatar",
+    placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+   
+<!-- minivaline评论 -->
+<div id="mvcomments-box">
+  <div id="mvcomments"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@latest"></script>
+<script>
+    new MiniValine(Object.assign({"enable":true,"mode":"DesertsP","placeholder":"Write a Comment","math":true,"md":true,"enableQQ":true,"NoRecordIP":false,"visitor":true,"maxNest":6,"pageSize":6,"adminEmailMd5":"de8a7aa53d07e6b6bceb45c64027763d","tagMeta":["管理员","小伙伴","访客"],"master":["de8a7aa53d07e6b6bceb45c64027763d"],"friends":["b5bd5d836c7a0091aa8473e79ed4c25e","adb7d1cd192658a55c0ad22a3309cecf","3ce1e6c77b4910f1871106cb30dc62b0","cfce8dc43725cc14ffcd9fb4892d5bfc"],"lang":null,"emoticonUrl":["https://cdn.jsdelivr.net/npm/alus@latest","https://cdn.jsdelivr.net/gh/MiniValine/qq@latest","https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest","https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest","https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest","https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"]}, {
+	  el: '#mvcomments',
+    }));
+  const infoEle = document.querySelector('#mvcomments .info');
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+      infoEle.childNodes.forEach(function (item) {
+          item.parentNode.removeChild(item);
+      });
+  }
+</script>
+<style>
+	#mvcomments-box {
+		padding: 5px 30px;
+	}
+	@media screen and (max-width: 800px) {
+		#mvcomments-box {
+		  padding: 5px 0px;
+		}
+	}
+	.darkmode .MiniValine *{
+		color: #f1f1f1!important;
+	}
+	.darkmode .commentTrigger{
+		background-color: #403e3e !important;
+	  }
+	.darkmode .MiniValine .vpage .more{
+		background: #21232F
+	}
+	.darkmode img{
+		filter: brightness(30%)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before{
+		background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after{
+		background: rgba(0,0,0,0.9)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre{
+		background: #282c34
+		border: 1px solid #282c34
+	}
+	.darkmode .MiniValine .vinputs-area .textarea-wrapper textarea{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper input{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .vextra-area .vsmile-icons{
+		background: transparent;
+	}
+	.darkmode .MiniValine .vinputs-wrap{
+		border-color: #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-wrap:hover{
+		border: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper{
+		border-bottom: 1px dashed #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper:hover{
+		border-bottom: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vbtn{
+		background-color: transparent!important;
+	}
+	.darkmode .MiniValine .vbtn:hover{
+		border: 1px dashed #2196f3;
+	}
+</style>
+
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2024
+        <i class="ri-heart-fill heart_icon"></i> 鞠桥丹-QIAODAN JU
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279035150&amp;web_id=1279035150'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="丛烨-shimmerjordan"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Catalogue</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E9%9A%8F%E7%AC%94/">Essay</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">Friends</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/01/18/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯蓝莓汁吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="baidu-site-verification" content="code-kg5UjKJZM2" />
+   
+  <meta name="keywords" content="活,炼" />
+   
+  <meta name="description" content="shimmerjordan" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    浏览器输入URL访问网页的执行流程 |  丛烨-shimmerjordan
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-Q0DT8B8VJW', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?6d06f826e125297d4ce0fa7a1449328e";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<link rel="alternate" href="/atom.xml" title="丛烨-shimmerjordan" type="application/atom+xml">
+</head>
+
+</html>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+	<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-浏览器URL访问执行流程"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  浏览器输入URL访问网页的执行流程
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/07/08/url-visit/" class="article-date">
+  <time datetime="2022-07-07T21:38:12.000Z" itemprop="datePublished">2022-07-08</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web/">web</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">13 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="流程概览"><a href="#流程概览" class="headerlink" title="流程概览"></a>流程概览</h1><p>对于这一个过程应该有一个大概的骨架，然后再是回忆里面的具体细节。总体流程如下，每一部分细节后面补充：</p>
+<ul>
+<li><p>查找浏览器缓存：如果查找到缓存中有我们URL对应的文件，则判断是否命中强缓存，如果命中直接读取使用即可，如果强缓存没有命中，判断协商缓存是否命中，但协商缓存不论是否命中都会发送请求，所以都会走下面的步骤</p>
+</li>
+<li><p>DNS域名解析：将输入的URL解析成对应的IP地址</p>
+</li>
+<li><p>生成HTTP请求报文：请求报文包括起始行，首部，主体</p>
+</li>
+<li><p>TCP连接：客户端与服务端进行TCP三次握手，建立连接</p>
+</li>
+<li><p>发送HTTP请求：握手成功后，客户端向服务端发送http请求，请求数据</p>
+</li>
+<li><p>服务器收到请求并返回数据：客户端根据返回的结果进行渲染展示，同时判断是否需要将文件存入缓存</p>
+</li>
+<li><p>TCP断开连接：客户端与服务端进行TCP四次挥手，断开连接</p>
+</li>
+</ul>
+<span id="more"></span>
+<h1 id="一、查找浏览器缓存："><a href="#一、查找浏览器缓存：" class="headerlink" title="一、查找浏览器缓存："></a>一、查找浏览器缓存：</h1><p>如果是第一次请求肯定在缓存找不到文件啦（先在memory cache也就是内存中找，再在disk cache也就是磁盘中找），那之后的请求为什么能找到呢？<br>因为第一次请求时如果服务器端在对应的<strong>请求接口中设置了响应头里</strong>的<code>Cache-Control:max-age</code>或者<code>Expires</code>，<code>Last-Modified</code>（最后修改时间） 或者<code>etag</code>（其实就是一个比文件最后修改时间判断是否修改更精确的一个标识，通常会用文件的md5值），浏览器第一次请求到之后就会将文件及这些信息缓存下来，再次请求的时候就会先判断<code>max-age</code>有没有过期（没有<code>max-age</code>就找<code>Expires</code>，两者同时存在前者优先级更高），如果没有过期，则强缓存命中，返回200（from disk cache或者from memory cache）;</p>
+<p>如果已经过期，则会发起一个请求，请求头中带上<code>If-None-Match</code>（值就是上一次服务器返回的<code>etag</code>）或者<code>If-Modified-Since</code>（值就是上一次服务器返回的<code>Last-Modified</code> ），去比对服务器中要请求的文件的<code>etag</code>或者<code>last-modified</code>（注意如果两者同时存在，前者的优先级会更高），判断文件到底有没有修改，如果没有修改，则使用本地缓存的就好了，返回304（from disk cache或者from memory cache），如果修改过了，再从服务器中重新请求，并修改<code>etag</code>或者<code>last-modified</code>。返回200</p>
+<h2 id="看两张图，走一遍流程"><a href="#看两张图，走一遍流程" class="headerlink" title="看两张图，走一遍流程~"></a>看两张图，走一遍流程~</h2><h3 id="第一次请求某个URL资源文件"><a href="#第一次请求某个URL资源文件" class="headerlink" title="第一次请求某个URL资源文件"></a>第一次请求某个URL资源文件</h3><center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/URL-visit/1.png" width="70%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">第一次请求URL</div>
+</center>
+
+<p>注意这里的<code>Expires</code>是http1.0的属性，已经被http1.1的<code>max-age</code>所替代了，只有没有设置<code>max-age</code>的时候才回去找<code>Expires</code></p>
+<h3 id="第一次请求某个URL资源文件-1"><a href="#第一次请求某个URL资源文件-1" class="headerlink" title="第一次请求某个URL资源文件"></a>第一次请求某个URL资源文件</h3><center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/URL-visit/2.png" width="70%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">再次请求URL</div>
+</center>
+
+<p>补充：上文说了缓存会存在两个地方，memory cache或者disk cache，一般来说需要经常读取的文件，比如图片，JS会存在memory cache，不会经常读取的比如css文件会存在disk cache中</p>
+<h1 id="二、DNS域名解析"><a href="#二、DNS域名解析" class="headerlink" title="二、DNS域名解析"></a>二、DNS域名解析</h1><p>DNS虽然也是应用层协议，事实上他是为其他应用层协议工作的，包括不限于HTTP和SMTP以及FTP，用于将用户提供的主机名解析为ip地址</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/URL-visit/3.png" width="100%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">DNS解析流程</div>
+</center>
+
+<ul>
+<li><p>查找主机中的浏览器中DNS缓存，缓存中维护了一张域名和IP地址的对应表  </p>
+</li>
+<li><p>查找主机中的操作系统中的DNS缓存，就存在C:\Windows\System32\drivers\etc目录下的hosts文件</p>
+</li>
+<li><p>查询本地域名服务器，注意主机和本地域名服务器为递归查询，也就是主机需要的Ip地址<strong>一定要从本地域名服务器</strong>查询获得，不论他是自身查到的还是继续向上从哪一级获取的</p>
+</li>
+<li><p>如果本地域名服务器没有查询到：</p>
+<ol>
+<li><p>向根域名服务器发起迭代查询，一般DNS服务器的缓存中会有.com域名服务器中的域名，所以到顶级服务器的匹配过程不是那么必要了</p>
+</li>
+<li><p>根域名服务器会返回他一个权限域名服务器的地址</p>
+</li>
+<li><p>然后再去向权限域名服务器迭代查询，得到最终的IP地址</p>
+</li>
+</ol>
+</li>
+<li><p>本地域名服务器得到IP地址后返回给主机的操作系统，操作系统缓存后，交给浏览器，浏览器同时也存在维护<code>域名-IP地址</code>的表中</p>
+</li>
+</ul>
+<h2 id="例如www-wikipedia-org："><a href="#例如www-wikipedia-org：" class="headerlink" title="例如www.wikipedia.org："></a>例如<code>www.wikipedia.org</code>：</h2><center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/URL-visit/6.png" width="80%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">DNS解析流程</div>
+</center>
+
+<p>这样的整个域名看上去只是对应一个单独的IP地址，<strong>不过事实上后面可能对应着多个ip地址</strong>（<strong>也是学习到了，一个ip地址可以对应多个域名<a target="_blank" rel="noopener" href="http://www.zhihu.com/question/29390934">听说一个IP可以绑定多个域名，那么…? - 互联网</a>，一个域名也可以对应多个ip地址<a target="_blank" rel="noopener" href="https://blog.csdn.net/ywcpig/article/details/52525689">负载均衡实现，一个域名对应多个IP地址</a>，cry！</strong>）还好，有几种方法可以消除这个瓶颈：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ywcpig/article/details/52525689">循环 DNS</a> 是DNS查找时返回多个IP时的解决方案。举例来说，</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Facebook.com</span><br></pre></td></tr></table></figure>
+<p>实际上就对应了四个IP地址。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ywcpig/article/details/52525689">负载平衡器</a> 是以一个特定IP地址进行侦听并将网络请求转发到集群服务器上的硬件设备。 一些大型的站点一般都会使用这种昂贵的高性能负载平衡器。</p>
+</li>
+<li><p><strong>地理 DNS</strong> 根据用户所处的地理位置，通过把域名映射到多个不同的IP地址提高可扩展性。这样不同的服务器不能够更新同步状态，但映射静态内容的话非常好。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ywcpig/article/details/52525689">Anycast</a>是一个IP地址映射多个物理主机的路由技术。 美中不足，Anycast与TCP协议适应的不是很好，所以很少应用在那些方案中</p>
+</li>
+</ul>
+<h1 id="三、生成HTTP请求报文"><a href="#三、生成HTTP请求报文" class="headerlink" title="三、生成HTTP请求报文"></a>三、生成HTTP请求报文</h1><p>因为像Facebook主页这样的动态页面，打开后在浏览器缓存中很快甚至马上就会过期，毫无疑问他们不能从中读取。</p>
+<p>所以，浏览器将把以下请求发送到Facebook所在的服务器：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">GET</span> <span class="string">http://facebook.com/</span> <span class="string">HTTP/1.1</span></span><br><span class="line"> <span class="attr">Accept:</span> <span class="string">application/x-ms-application,</span> <span class="string">image/jpeg,</span> <span class="string">application/xaml+xml,</span> [<span class="string">...</span>]</span><br><span class="line"> <span class="attr">User-Agent:</span> <span class="string">Mozilla/4.0</span> <span class="string">(compatible;</span> <span class="string">MSIE</span> <span class="number">8.0</span><span class="string">;</span> <span class="string">Windows</span> <span class="string">NT</span> <span class="number">6.1</span><span class="string">;</span> <span class="string">WOW64;</span> [<span class="string">...</span>]</span><br><span class="line"> <span class="attr">Accept-Encoding:</span> <span class="string">gzip,</span> <span class="string">deflate</span></span><br><span class="line"> <span class="attr">Connection:</span> <span class="string">Keep-Alive</span></span><br><span class="line"> <span class="attr">Host:</span> <span class="string">facebook.com</span></span><br><span class="line"> <span class="attr">Cookie:</span> <span class="string">datr=1265876274-[...];</span> <span class="string">locale=en_US;</span> <span class="string">lsd=WW[...];</span> <span class="string">c_user=2101[...]</span></span><br></pre></td></tr></table></figure>
+<p>GET 这个请求定义了要读取的<strong>URL</strong>：<code>http://facebook.com/</code></p>
+<p>以及浏览器自身定义 (<strong>User-Agent</strong> 头)， 和它希望接受什么类型的相应 (<strong>Accept</strong> and <strong>Accept-Encoding</strong> 头)</p>
+<p><strong>Connection</strong>头要求服务器为了后边的请求不要关闭TCP连接。</p>
+<h2 id="Tip："><a href="#Tip：" class="headerlink" title="Tip："></a>Tip：</h2><p><strong>URL</strong>：<code>http://facebook.com/</code>中最后的斜杠是至关重要的。这种情况下，浏览器能安全的添加斜杠。而像<code>http://example.com/folderOrFile</code>这样的地址，因为浏览器不清楚<code>folderOrFile</code>到底是文件夹还是文件，所以不能自动添加斜杠。这时，浏览器就不加斜杠直接访问地址，服务器会响应一个重定向，结果造成一次不必要的握手。</p>
+<h1 id="四、TCP连接"><a href="#四、TCP连接" class="headerlink" title="四、TCP连接"></a>四、TCP连接</h1><p>进行TCP三次握手连接，这里附图复习一下三次握手四次挥手</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/URL-visit/4.jpg" width="80%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">三次握手</div>
+</center>
+
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/URL-visit/5.jpg" width="80%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">四次挥手</div>
+</center>
+
+<h1 id="Option-服务的永久重定向响应"><a href="#Option-服务的永久重定向响应" class="headerlink" title="Option - 服务的永久重定向响应"></a>Option - 服务的永久重定向响应</h1><p>例如 Facebook 服务器会发回浏览器如下响应：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">HTTP/1.1</span> <span class="number">301</span> <span class="string">Moved</span> <span class="string">Permanently</span></span><br><span class="line"> <span class="attr">Cache-Control:</span> <span class="string">private,</span> <span class="literal">no</span><span class="string">-store,</span> <span class="literal">no</span><span class="string">-cache,</span> <span class="string">must-revalidate,</span> <span class="string">post-check=0,</span></span><br><span class="line"> <span class="string">pre-check=0</span></span><br><span class="line"> <span class="attr">Expires:</span> <span class="string">Sat,</span> <span class="number">01</span> <span class="string">Jan</span> <span class="number">2000 00:00:00 </span><span class="string">GMT</span></span><br><span class="line"> <span class="attr">Location:</span> <span class="string">http://www.facebook.com/</span></span><br><span class="line"> <span class="attr">P3P:</span> <span class="string">CP=&quot;DSP</span> <span class="string">LAW&quot;</span></span><br><span class="line"> <span class="attr">Pragma:</span> <span class="literal">no</span><span class="string">-cache</span></span><br><span class="line"> <span class="attr">Set-Cookie:</span> <span class="string">made_write_conn=deleted;</span> <span class="string">expires=Thu,</span> <span class="number">12</span><span class="string">-Feb-2009</span> <span class="number">05</span><span class="string">:09:50</span> <span class="string">GMT;</span></span><br><span class="line"> <span class="string">path=/;</span> <span class="string">domain=.facebook.com;</span> <span class="string">httponly</span></span><br><span class="line"> <span class="attr">Content-Type:</span> <span class="string">text/html;</span> <span class="string">charset=utf-8</span></span><br><span class="line"> <span class="attr">X-Cnection:</span> <span class="string">close</span></span><br><span class="line"> <span class="attr">Date:</span> <span class="string">Fri,</span> <span class="number">12</span> <span class="string">Feb</span> <span class="number">2010 05:09:51 </span><span class="string">GMT</span></span><br><span class="line"> <span class="attr">Content-Length:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>服务器给浏览器响应一个301永久重定向响应，这样浏览器就会访问<code>http://www.facebook.com/</code>而非<code>http://facebook.com/</code></p>
+<p>为什么服务器一定要重定向而不是直接发会用户想看的网页内容呢？这个问题有好多有意思的答案：</p>
+<ol>
+<li><p>其中一个原因跟<strong>搜索引擎排名</strong>有关。你看，如果一个页面有两个地址，就像<code>http://www.igoro.com/</code>和<code>http://igoro.com/</code>，搜索引擎会认为它们是两个网站，结果造成每一个的搜索链接都减少从而降低排名。而搜索引擎知道301永久重定向是什么意思，这样就会把访问带www的和不带www的地址归到同一个网站排名下。</p>
+</li>
+<li><p>还有一个是用不同的地址会造成<strong>缓存友好性</strong>变差。当一个页面有好几个名字时，它可能会在缓存里出现好几次。</p>
+</li>
+</ol>
+<h1 id="服务器收到请求并返回数据"><a href="#服务器收到请求并返回数据" class="headerlink" title="服务器收到请求并返回数据"></a>服务器收到请求并返回数据</h1><p>服务器在处理完请求之后生成并返回的响应：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">HTTP/1.1</span> <span class="number">200</span> <span class="string">OK</span></span><br><span class="line"> <span class="attr">Cache-Control:</span> <span class="string">private,</span> <span class="literal">no</span><span class="string">-store,</span> <span class="literal">no</span><span class="string">-cache,</span> <span class="string">must-revalidate,</span> <span class="string">post-check=0,</span></span><br><span class="line"> <span class="string">pre-check=0</span></span><br><span class="line"> <span class="attr">Expires:</span> <span class="string">Sat,</span> <span class="number">01</span> <span class="string">Jan</span> <span class="number">2000 00:00:00 </span><span class="string">GMT</span></span><br><span class="line"> <span class="attr">P3P:</span> <span class="string">CP=&quot;DSP</span> <span class="string">LAW&quot;</span></span><br><span class="line"> <span class="attr">Pragma:</span> <span class="literal">no</span><span class="string">-cache</span></span><br><span class="line"> <span class="attr">Content-Encoding:</span> <span class="string">gzip</span></span><br><span class="line"> <span class="attr">Content-Type:</span> <span class="string">text/html;</span> <span class="string">charset=utf-8</span></span><br><span class="line"> <span class="attr">X-Cnection:</span> <span class="string">close</span></span><br><span class="line"> <span class="attr">Transfer-Encoding:</span> <span class="string">chunked</span></span><br><span class="line"> <span class="attr">Date:</span> <span class="string">Fri,</span> <span class="number">12</span> <span class="string">Feb</span> <span class="number">2010 09:05:55 </span><span class="string">GMT</span></span><br><span class="line"></span><br><span class="line"> <span class="string">2b3Tn@[...]</span></span><br></pre></td></tr></table></figure>
+<p>整个响应大小为35kB，其中大部分在整理后以blob类型传输。</p>
+<p><strong>内容编码</strong>头告诉浏览器整个响应体用gzip算法进行压缩。解压blob块后，你可以看到如下期望的HTML：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;</span>    </span></span><br><span class="line"><span class="meta"> <span class="string">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.w3.org/1999/xhtml&quot;</span> <span class="attr">xml:lang</span>=<span class="string">&quot;en&quot;</span></span></span><br><span class="line"><span class="tag"> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">id</span>=<span class="string">&quot;facebook&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html; charset=utf-8&quot;</span> /&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-language&quot;</span> <span class="attr">content</span>=<span class="string">&quot;en&quot;</span> /&gt;</span></span><br><span class="line"> ...</span><br></pre></td></tr></table></figure>
+<p>关于压缩，头信息说明了是否缓存这个页面，如果缓存的话如何去做，有什么cookies要去设置（前面这个响应里没有这点）和隐私信息等等。</p>
+<p>请注意报头中把<strong>Content-type</strong>设置为<code>text/html</code>。报头让浏览器将该响应内容以HTML形式呈现，而不是以文件形式下载它。浏览器会根据报头信息决定如何解释该响应，不过同时也会考虑像URL扩展内容等其他因素。</p>
+<h2 id="浏览器发送获取嵌入HTML的对象"><a href="#浏览器发送获取嵌入HTML的对象" class="headerlink" title="浏览器发送获取嵌入HTML的对象"></a>浏览器发送获取嵌入HTML的对象</h2><p>在浏览器显示HTML时，它会注意到需要获取其他地址内容的标签。这时，浏览器会发送一个获取请求来重新获得这些文件。</p>
+<p>下面是几个我们访问<a target="_blank" rel="noopener" href="https://blog.csdn.net/ywcpig/article/details/52525689">http://facebook.com</a>时需要重获取的几个URL：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pic</span></span><br><span class="line"><span class="string">http://static.ak.fbcdn.net/rsrc.php/z12E0/hash/8q2anwu7.gif</span></span><br><span class="line"><span class="string">http://static.ak.fbcdn.net/rsrc.php/zBS5C/hash/7hwy7at6.gif</span></span><br><span class="line"><span class="comment"># css</span></span><br><span class="line"><span class="string">http://static.ak.fbcdn.net/rsrc.php/z448Z/hash/2plh8s4n.css</span></span><br><span class="line"><span class="string">http://static.ak.fbcdn.net/rsrc.php/zANE1/hash/cvtutcee.css</span></span><br><span class="line"><span class="comment"># j</span></span><br><span class="line"><span class="string">http://static.ak.fbcdn.net/rsrc.php/zEMOA/hash/c8yzb6ub.js</span></span><br><span class="line"><span class="string">http://static.ak.fbcdn.net/rsrc.php/z6R9L/hash/cq2lgbs8.jss</span></span><br></pre></td></tr></table></figure>
+<p>这些地址都要经历一个和HTML读取类似的过程。所以浏览器会在DNS中查找这些域名，发送请求，重定向等。</p>
+<p>但不像动态页面那样，静态文件会允许浏览器对其进行缓存。有的文件可能会不需要与服务器通讯，而从缓存中直接读取。服务器的响应中包含了静态文件保存的期限信息，所以浏览器知道要把它们缓存多长时间。还有，每个响应都可能包含像版本号一样工作的ETag头（被请求变量的实体值），如果浏览器观察到文件的版本 <code>ETag</code> 信息已经存在，就马上停止这个文件的传输。</p>
+<p>试着猜猜看<code>http://fbcdn.net</code>在地址中代表什么？聪明的答案是”Facebook内容分发网络”。Facebook利用<strong>内容分发网络</strong>（CDN）分发像图片，CSS表和JavaScript文件这些静态文件。所以，这些文件会在全球很多CDN的数据中心中留下备份。</p>
+<p>静态内容往往代表站点的带宽大小，也能通过CDN轻松的复制。通常网站会使用第三方的CDN。例如，Facebook的静态文件由最大的CDN提供商Akamai来托管。</p>
+<p>举例来讲，当你试着ping <code>http://static.ak.fbcdn.net</code>的时候，可能会从某个<code>http://akamai.net</code>服务器上获得响应。有意思的是，当你同样再ping一次的时候，响应的服务器可能就不一样，这说明幕后的负载平衡开始起作用了。</p>
+<h1 id="Option-览器发送异步（AJAX）请求"><a href="#Option-览器发送异步（AJAX）请求" class="headerlink" title="Option - 览器发送异步（AJAX）请求"></a>Option - 览器发送异步（AJAX）请求</h1><p>在Web 2.0伟大精神的指引下，页面显示完成后客户端仍与服务器端保持着联系。</p>
+<p>以 Facebook 聊天功能为例，它会持续与服务器保持联系来及时更新你那些亮亮灰灰的好友状态。为了更新这些头像亮着的好友状态，在浏览器中执行的 JavaScript 代码会给服务器发送异步请求。这个异步请求发送给特定的地址，它是一个按照程式构造的获取或发送请求。还是在Facebook这个例 子中，客户端发送给<code>http://www.facebook.com/ajax/chat/buddy_list.php</code>一个发布请求来获取你好友里哪个在线的状态信息。</p>
+<p>提起这个模式，就必须要讲讲”AJAX”– “异步JavaScript 和 XML”，虽然服务器为什么用XML格式来进行响应也没有个一清二白的原因。再举个例子吧，对于异步请求，Facebook会返回一些JavaScript的代码片段。</p>
+<p>除了其他，fiddler 这个工具能够让你看到浏览器发送的异步请求。事实上，你不仅可以被动的做为这些请求的看客，还能主动出击修改和重新发送它们。AJAX请求这么容易被蒙，可着实让那些计分的在线游戏开发者们郁闷的了。（当然，可别那样骗人家~）</p>
+<p>Facebook聊天功能提供了关于AJAX一个有意思的问题案例：把数据从服务器端推送到客户端。因为HTTP是一个 请求-响应 协议，所以聊天服务器不能把新消息发给客户。取而代之的是客户端不得不隔几秒就轮询下服务器端看自己有没有新消息。</p>
+<p>这些情况发生时长轮询是个减轻服务器负载挺有趣的技术。如果当被轮询时服务器没有新消息，它就不理这个客户端。而当尚未超时的情况下收到了该客户的新消息，服务器就会找到未完成的请求，把新消息做为响应返回给客户端。</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.shimmerjordan.eu.org/2022/07/08/url-visit/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/01/07/soft-routing-setup/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            软路由折腾笔记
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/07/07/SpringBoot-CORS/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">SpringBoot中实现跨域的5种方式</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "StYfTMDp78X0EltFR16ve2q5-gzGzoHsz",
+    app_key: "G4RPxRpXG6RwdfpnJefOSnyy",
+    path: window.location.pathname,
+    avatar: "wavatar",
+    placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+   
+<!-- minivaline评论 -->
+<div id="mvcomments-box">
+  <div id="mvcomments"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@latest"></script>
+<script>
+    new MiniValine(Object.assign({"enable":true,"mode":"DesertsP","placeholder":"Write a Comment","math":true,"md":true,"enableQQ":true,"NoRecordIP":false,"visitor":true,"maxNest":6,"pageSize":6,"adminEmailMd5":"de8a7aa53d07e6b6bceb45c64027763d","tagMeta":["管理员","小伙伴","访客"],"master":["de8a7aa53d07e6b6bceb45c64027763d"],"friends":["b5bd5d836c7a0091aa8473e79ed4c25e","adb7d1cd192658a55c0ad22a3309cecf","3ce1e6c77b4910f1871106cb30dc62b0","cfce8dc43725cc14ffcd9fb4892d5bfc"],"lang":null,"emoticonUrl":["https://cdn.jsdelivr.net/npm/alus@latest","https://cdn.jsdelivr.net/gh/MiniValine/qq@latest","https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest","https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest","https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest","https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"]}, {
+	  el: '#mvcomments',
+    }));
+  const infoEle = document.querySelector('#mvcomments .info');
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+      infoEle.childNodes.forEach(function (item) {
+          item.parentNode.removeChild(item);
+      });
+  }
+</script>
+<style>
+	#mvcomments-box {
+		padding: 5px 30px;
+	}
+	@media screen and (max-width: 800px) {
+		#mvcomments-box {
+		  padding: 5px 0px;
+		}
+	}
+	.darkmode .MiniValine *{
+		color: #f1f1f1!important;
+	}
+	.darkmode .commentTrigger{
+		background-color: #403e3e !important;
+	  }
+	.darkmode .MiniValine .vpage .more{
+		background: #21232F
+	}
+	.darkmode img{
+		filter: brightness(30%)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before{
+		background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after{
+		background: rgba(0,0,0,0.9)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre{
+		background: #282c34
+		border: 1px solid #282c34
+	}
+	.darkmode .MiniValine .vinputs-area .textarea-wrapper textarea{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper input{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .vextra-area .vsmile-icons{
+		background: transparent;
+	}
+	.darkmode .MiniValine .vinputs-wrap{
+		border-color: #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-wrap:hover{
+		border: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper{
+		border-bottom: 1px dashed #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper:hover{
+		border-bottom: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vbtn{
+		background-color: transparent!important;
+	}
+	.darkmode .MiniValine .vbtn:hover{
+		border: 1px dashed #2196f3;
+	}
+</style>
+
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2024
+        <i class="ri-heart-fill heart_icon"></i> 鞠桥丹-QIAODAN JU
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279035150&amp;web_id=1279035150'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="丛烨-shimmerjordan"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Catalogue</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E9%9A%8F%E7%AC%94/">Essay</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">Friends</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/01/18/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯蓝莓汁吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+  </div>
+</body>
+
+</html>

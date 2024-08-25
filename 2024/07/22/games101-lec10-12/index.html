@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="baidu-site-verification" content="code-kg5UjKJZM2" />
+   
+  <meta name="keywords" content="活,炼" />
+   
+  <meta name="description" content="shimmerjordan" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    GAMES101 Lec10-12 几何 notes |  丛烨-shimmerjordan
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-Q0DT8B8VJW', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?6d06f826e125297d4ce0fa7a1449328e";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<link rel="alternate" href="/atom.xml" title="丛烨-shimmerjordan" type="application/atom+xml">
+</head>
+
+</html>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+	<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-GAMES101-Lec10-12-几何"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  GAMES101 Lec10-12 几何 notes
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/07/22/games101-lec10-12/" class="article-date">
+  <time datetime="2024-07-22T05:41:34.000Z" itemprop="datePublished">2024-07-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">图形学</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">8 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="几何的表达方式"><a href="#几何的表达方式" class="headerlink" title="几何的表达方式"></a>几何的表达方式</h1><h2 id="Implicit-隐式几何"><a href="#Implicit-隐式几何" class="headerlink" title="Implicit 隐式几何"></a>Implicit 隐式几何</h2><ul>
+<li>Based on <strong>classifying points</strong>，例如通用一点的话：$f(x,y,z)=0$</li>
+<li>Sampling Can Be Hard</li>
+<li>Inside/Outside Tests Easy</li>
+</ul>
+<span id="more"></span>
+<h3 id="种类"><a href="#种类" class="headerlink" title="种类"></a>种类</h3><ul>
+<li>Algebraic surface<br>  <img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240703163749790.png" alt="github pic"><ul>
+<li>最直接的，用数学公式</li>
+<li>不直观，复杂模型几乎不可能</li>
+</ul>
+</li>
+<li>Constructive Solid Geometry（CSG）<ul>
+<li>基本形状的布尔操作组合成复杂形状<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240703163910473.png" alt="github pic"></li>
+</ul>
+</li>
+<li>Distance functions 距离函数<ul>
+<li>相关：Signed Distance Field</li>
+<li><a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/4tByz3">Ladybug (shadertoy.com)</a>这个例子用纯粹的距离函数表示了很nice的效果（注意这个渲染过程会拉爆你的显卡）</li>
+<li>解析形式表达任意一点到物体的最小距离</li>
+<li>Blending 距离函数，模拟一个交融的过程<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240703165134240.png" alt="github pic"></li>
+</ul>
+</li>
+<li>Level sets （水平集）<ul>
+<li>Grid方式描述distance，可以参考等高线？但其实就是距离函数的另一种表现方式<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240703165841025.png" alt="github pic"></li>
+<li>例子：CT扫描，上面的例子是二位的，这里3D的CT就和前面说到的纹理联系起来了</li>
+</ul>
+</li>
+<li>Fractals 分形<br>  <img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240703170229826.png" alt="github pic"><ul>
+<li>自相似</li>
+<li>递归</li>
+</ul>
+</li>
+<li>…</li>
+</ul>
+<h3 id="Pros"><a href="#Pros" class="headerlink" title="Pros"></a>Pros</h3><ul>
+<li>compact description (e.g., a function)</li>
+<li>很容易判断某点的位置certain queries easy (inside object, distance to surface)</li>
+<li>good for ray-to-surface intersection 光线求交比较简单 (more later)</li>
+<li>for simple shapes, exact description / no sampling error</li>
+<li>easy to handle changes in topology (e.g., fluid)</li>
+</ul>
+<h3 id="Cons"><a href="#Cons" class="headerlink" title="Cons:"></a>Cons:</h3><ul>
+<li>很难描述，当然了也就很难去model complex shapes</li>
+</ul>
+<h2 id="Explicit-显式几何"><a href="#Explicit-显式几何" class="headerlink" title="Explicit 显式几何"></a>Explicit 显式几何</h2><ul>
+<li>All points are given directly or via parameter mapping: $f:\mathbb{R}^{2}\rightarrow \mathbb{R}^{3};(u,v) \Rightarrow (x,y,z)$，例如这样的一个马鞍面<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240703163137053.png" alt="github pic"></li>
+<li>Sampling Is Easy</li>
+<li>Inside/Outside Test Hard</li>
+</ul>
+<h3 id="种类-1"><a href="#种类-1" class="headerlink" title="种类"></a>种类</h3><ul>
+<li>Point cloud<ul>
+<li>一堆点，一个$(x,y,z)$的列表</li>
+<li>可以表示任何几何，只需要点足够密</li>
+<li>Useful for LARGE datasets (&gt;&gt;1 point/pixel)</li>
+<li>Often converted into polygon mesh</li>
+<li>Difficult to draw in undersampled regions</li>
+</ul>
+</li>
+<li>Triangle/polygon mesh<ul>
+<li>Store vertices &amp; polygons (often triangles or quads)</li>
+<li>More complicated data structures</li>
+<li>Perhaps most common representation in graphics</li>
+<li>例子：.obj格式<ul>
+<li>Just a text file that 物理点 specifies vertices, 法线 normals, 纹理坐标 texture coordinates and their connectivities</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>subdivision, NURBS</li>
+<li>Bézier surfaces 贝塞尔曲线</li>
+<li>subdivision surfaces</li>
+<li>NURBS</li>
+<li>…</li>
+</ul>
+<p>No “Best” Representation, Each choice best suited to a different task/type of geometry</p>
+<h1 id="曲线-Curve"><a href="#曲线-Curve" class="headerlink" title="曲线 Curve"></a>曲线 Curve</h1><h2 id="Bezier-Curves-贝塞尔曲线"><a href="#Bezier-Curves-贝塞尔曲线" class="headerlink" title="Bézier Curves 贝塞尔曲线"></a>Bézier Curves 贝塞尔曲线</h2><p>一条由四个点（其实是任意≥3个点）定义的曲线：<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240703173059441.png" alt="github pic"></p>
+<ul>
+<li>p0和p3定义起点和终点</li>
+<li>p1和p2定义起点与终点的切线方向（与p0和p3一起）</li>
+</ul>
+<h3 id="怎么画一个贝塞尔曲线"><a href="#怎么画一个贝塞尔曲线" class="headerlink" title="怎么画一个贝塞尔曲线"></a>怎么画一个贝塞尔曲线</h3><blockquote>
+<p>Evaluating Bézier Curves (de Casteljau Algorithm)</p>
+</blockquote>
+<p>例子：三点来画曲线(quadratic Bezier)<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240703173620214.png" alt="github pic"><br>在$b_0b_1$和$b_1b_2$上分别找到对应时间$t$的相应比例的点$b_0^1$和$b_1^1$，再找到$b_0^1b_1^1$上对应比例的点$b_0^2$，这个$b_0^2$就是曲线上的一点，只要枚举所有的$t$就可以绘制出来曲线了。</p>
+<p>四个点起始的话也是类似的，每次递归多计算一条边即可。</p>
+<blockquote>
+<p>你可以在这个牛逼的网站<a target="_blank" rel="noopener" href="https://acko.net/">Hackery, Math &amp; Design — Acko.net</a>找到这个牛逼的动画<a target="_blank" rel="noopener" href="https://acko.net/files/fullfrontal/fullfrontal/wdcode/online.html">Making things with Maths (acko.net)</a>（Youtube视频的16:00)</p>
+</blockquote>
+<p>如果写出来的代数表达式就是：<script type="math/tex">\left\{ \begin{aligned} b_0^{1}(t)=(1-t)b_0+tb_{1} \\ b_1^{1}(t)=(1-t)b_1+tb_{2}  \\ b_0^{2}(t)=(1-t)b_0^{1}+tb_{1}^{1} \end{aligned} \right. \Rightarrow b_{0}^{2}(t)=(1-t)^{2}b_0+2t(1-t)b_{1}+t^{2}b_2</script><br>更通用的，如果有$n+1$个控制点，我们可以得到一个$n$阶的Bézier曲线：<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240703205522229.png" alt="github pic"><br>其中Bernstein多项式为：$B_i^{n}(t)=\begin{pmatrix} n \\ i \end{pmatrix} t^{i}(1-t)^{n-i}$，其实就是描述多项分布的多项式：<img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240703210139297.png" alt="github pic"><br>我们通过定义这样一个与时间$t$有关的多项式来对不同的控制点进行插值，以此形成新的在曲线上的点。可以发现有以下性质：</p>
+<ul>
+<li>过起点和终点：$b(0)=b_0$;  $b(1)=b_3$</li>
+<li>对于三次（四个控制点）曲线：$b^{\prime}(0)=3(b_1-b_0)$; $b^{\prime}(1)=3(b_3-b_2)$</li>
+<li>仿射变换前后统一（只需要变换控制点即可）；<em>注意例如投影变换的其他变换不一定满足</em></li>
+<li>凸包性质：形成的曲线一定在控制点形成的凸包内</li>
+</ul>
+<p>但是高阶贝塞尔曲线很难控制，任何一个点就能影响全局，为了解决这个问题，我们引入了分段贝塞尔曲线。</p>
+<h3 id="Piecewise-Bezier-Curves"><a href="#Piecewise-Bezier-Curves" class="headerlink" title="Piecewise Bézier Curves"></a>Piecewise Bézier Curves</h3><ul>
+<li>Demo：<a target="_blank" rel="noopener" href="http://math.hws.edu/eck/cs424/notes2013/canvas/bezier.html">Bezier Curve Edit</a></li>
+<li>chain many low-order Bézier curve</li>
+<li>例如常用的三阶：Piecewise cubic Bézier（每段四个控制点）</li>
+<li>保证光滑（切线不突变）：内部控制点前后的切线点共线<ul>
+<li>$C^0$连续是无断点：$a_n=b_0$</li>
+<li>$C^1$连是无突变（导数连续）：$a_n=b_0=\frac{1}{2}(a_{n-1}+b_1)$<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240709163022692.png" alt="github pic"></li>
+</ul>
+</li>
+</ul>
+<h2 id="其他曲线"><a href="#其他曲线" class="headerlink" title="其他曲线"></a>其他曲线</h2><ol>
+<li>Spline (样条)：a continuous curve constructed so as to pass through a given set of points and have a certain number of continuous derivatives. （一个可控曲线）</li>
+<li>B-splines<ul>
+<li>basis splines 基函数样条</li>
+<li>Bernstein Polynomial作为基函数</li>
+<li>是贝塞尔曲线的超集</li>
+<li>满足局部性（改动一个控制点，可以知道其影响范围而不是整条曲线）</li>
+<li>可能是图形学里面最复杂的一部分</li>
+</ul>
+</li>
+<li>Further：B样条、NURBS（非均匀有理B样条）<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av66548502">Prof. Shi-Min Hu’s course</a></li>
+</ol>
+<h1 id="曲面"><a href="#曲面" class="headerlink" title="曲面"></a>曲面</h1><h2 id="Bezier-Surfaces贝塞尔曲面"><a href="#Bezier-Surfaces贝塞尔曲面" class="headerlink" title="Bézier Surfaces贝塞尔曲面"></a>Bézier Surfaces贝塞尔曲面</h2><p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240709164146390.png" alt="github pic"><br>4x4个点：四条4个控制点的贝塞尔曲线，取同一时间（比如说$u$）获得四个控制点，取时间$v$，即获得最后的曲面上的点</p>
+<h3 id="Evaluating-Bezier-Surfaces"><a href="#Evaluating-Bezier-Surfaces" class="headerlink" title="Evaluating Bézier Surfaces"></a>Evaluating Bézier Surfaces</h3><p>总体思路：</p>
+<ol>
+<li>在时间$u$，计算出4条贝塞尔曲线，同时得到 “moving” 贝塞尔曲线的4个控制点</li>
+<li>在时间$v$，计算出 ”moving“ 贝塞尔曲线的表面点即为$(u,v)$<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240709164949623.png" alt="github pic"></li>
+</ol>
+<h2 id="Mesh"><a href="#Mesh" class="headerlink" title="Mesh"></a>Mesh</h2><p>更广泛的还是Mesh（网格）<br>Mesh Operations: Geometry Processing<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240709165613584.png" alt="github pic"></p>
+<ul>
+<li>Mesh subdivision 细分 upsampling<ul>
+<li>Increase resolution</li>
+</ul>
+</li>
+<li>Mesh simplification 简化 downsampling<ul>
+<li>Decrease resolution</li>
+<li>Try to preserve shape/appearance</li>
+</ul>
+</li>
+<li>Mesh regularization 正规化<ul>
+<li>不会出现特别奇怪的三角形（接近正三角形）</li>
+<li>Modify sample distribution to improve quality</li>
+</ul>
+</li>
+</ul>
+<h3 id="细分"><a href="#细分" class="headerlink" title="细分"></a>细分</h3><h4 id="Loop-Subdivision"><a href="#Loop-Subdivision" class="headerlink" title="Loop Subdivision"></a>Loop Subdivision</h4><blockquote>
+<p><strong>Loop是发明者名字，跟循环没关系</strong></p>
+</blockquote>
+<p>细分的应用场景1：Displacement mapping 位移贴图 需要模型足够细致，于是需要细分（最好是动态细分）</p>
+<p>需要三角形Mesh</p>
+<p>步骤：</p>
+<ol>
+<li>create more triangles (vertices)：Split each triangle into four</li>
+<li>tune their positions （调整位置-形状需要有改变）<ul>
+<li>Assign new vertex positions according to weights</li>
+<li>New / old vertices updated differently 新老点分别改变<ul>
+<li>新的点：<br>  <img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240709203222220.png" alt="github pic"><br>  这里例子中中间共享的白色点可以更新为$\frac{3}{8} \cdot (A+B)+\frac{1}{8}\cdot (C+D)$，可以理解为是周围点的加权平均，使得其变得更加平滑</li>
+<li>旧的点：受自己本身和邻居的位置影响，<br>  <img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240721221305224.png" alt="github pic"><br>  $n$为顶点的vertex degree（度），旧点更新为$(1-n<em>u)</em>original_postion+u*neighbor_position_sum$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="Catmull-Clark细分"><a href="#Catmull-Clark细分" class="headerlink" title="Catmull-Clark细分"></a>Catmull-Clark细分</h4><p>Loop细分只能处理三角形网格，对于更一般的网格，可以考虑Catmull-Clark细分。</p>
+<p><strong>几个定义：</strong></p>
+<ul>
+<li>Non-quad face：非四边的面</li>
+<li>Extraordinary vertex (奇异点)：指(degree != 4)的点</li>
+</ul>
+<p><strong>Each subdivision step：</strong></p>
+<ol>
+<li>Add vertex in each face</li>
+<li>Add midpoint on each edge</li>
+<li>Connect all new vertices</li>
+</ol>
+<p>简而言之就是连接这个面的中点和每条边的中点。需要注意的是，每一个非四边形面都会引入一个奇异点，然后这个非四边形面会消失（增加了非四边形面个数的奇异点，以后都不会增加了。也就是说所有非四边形面在第一次细分都会消失）</p>
+<p><strong>另外，针对面上或者边上的新点，以及老的点各自的更新方法：</strong><br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240722121849783.png" alt="github pic"><br>虽然看起来很复杂，无非就是用以前的平均来定义新的update，类似模糊的平滑操作。</p>
+<h1 id="Mesh-Simplification"><a href="#Mesh-Simplification" class="headerlink" title="Mesh Simplification"></a>Mesh Simplification</h1><p>Goal: reduce number of mesh elements while maintaining the overall shape<br>应用：移动端、远距离（LOD）</p>
+<h2 id="Edge-Collapse：顶点合并（边坍缩）"><a href="#Edge-Collapse：顶点合并（边坍缩）" class="headerlink" title="Edge Collapse：顶点合并（边坍缩）"></a>Edge Collapse：顶点合并（边坍缩）</h2><p>哪些边合并？如何合并？</p>
+<h3 id="Quadric-Error-Metrics（⼆次误差度量）"><a href="#Quadric-Error-Metrics（⼆次误差度量）" class="headerlink" title="Quadric Error Metrics（⼆次误差度量）"></a>Quadric Error Metrics（⼆次误差度量）</h3><ul>
+<li>放在二次误差之和最小的地方<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240722124513859.png" alt="github pic"></li>
+</ul>
+<p>仅仅简单求平均位置是显然不合理的，我们可以通过最小化一个点到原平面相关的<strong>其他平面的距离和</strong>（sum of L2 distance）来找到这个最合理的点</p>
+<h3 id="Simplification-via-Quadric-Error"><a href="#Simplification-via-Quadric-Error" class="headerlink" title="Simplification via Quadric Error"></a>Simplification via Quadric Error</h3><ul>
+<li>Garland &amp; Heckbert 1997.</li>
+<li>iteratively collapse edge with smallest score</li>
+<li>有问题：一条边的操作会影响其它边，需要更新<ul>
+<li>数据结构：优先队列 or 堆（每次取最小后动态更新最小）</li>
+</ul>
+</li>
+<li>贪心算法，非全局最优（但也够用了）</li>
+<li>可以有的放矢<br>  <img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240722145336627.png" alt="github pic"></li>
+</ul>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.shimmerjordan.eu.org/2024/07/22/games101-lec10-12/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GAMES101/" rel="tag">GAMES101</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B2%E6%9F%93/" rel="tag">渲染</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2024/08/22/unity-asset-resources/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Unity资源映射
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/06/28/games101-lec7-9/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">GAMES101 Lec7-9 Shading notes</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "StYfTMDp78X0EltFR16ve2q5-gzGzoHsz",
+    app_key: "G4RPxRpXG6RwdfpnJefOSnyy",
+    path: window.location.pathname,
+    avatar: "wavatar",
+    placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+   
+<!-- minivaline评论 -->
+<div id="mvcomments-box">
+  <div id="mvcomments"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@latest"></script>
+<script>
+    new MiniValine(Object.assign({"enable":true,"mode":"DesertsP","placeholder":"Write a Comment","math":true,"md":true,"enableQQ":true,"NoRecordIP":false,"visitor":true,"maxNest":6,"pageSize":6,"adminEmailMd5":"de8a7aa53d07e6b6bceb45c64027763d","tagMeta":["管理员","小伙伴","访客"],"master":["de8a7aa53d07e6b6bceb45c64027763d"],"friends":["b5bd5d836c7a0091aa8473e79ed4c25e","adb7d1cd192658a55c0ad22a3309cecf","3ce1e6c77b4910f1871106cb30dc62b0","cfce8dc43725cc14ffcd9fb4892d5bfc"],"lang":null,"emoticonUrl":["https://cdn.jsdelivr.net/npm/alus@latest","https://cdn.jsdelivr.net/gh/MiniValine/qq@latest","https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest","https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest","https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest","https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"]}, {
+	  el: '#mvcomments',
+    }));
+  const infoEle = document.querySelector('#mvcomments .info');
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+      infoEle.childNodes.forEach(function (item) {
+          item.parentNode.removeChild(item);
+      });
+  }
+</script>
+<style>
+	#mvcomments-box {
+		padding: 5px 30px;
+	}
+	@media screen and (max-width: 800px) {
+		#mvcomments-box {
+		  padding: 5px 0px;
+		}
+	}
+	.darkmode .MiniValine *{
+		color: #f1f1f1!important;
+	}
+	.darkmode .commentTrigger{
+		background-color: #403e3e !important;
+	  }
+	.darkmode .MiniValine .vpage .more{
+		background: #21232F
+	}
+	.darkmode img{
+		filter: brightness(30%)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before{
+		background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after{
+		background: rgba(0,0,0,0.9)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre{
+		background: #282c34
+		border: 1px solid #282c34
+	}
+	.darkmode .MiniValine .vinputs-area .textarea-wrapper textarea{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper input{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .vextra-area .vsmile-icons{
+		background: transparent;
+	}
+	.darkmode .MiniValine .vinputs-wrap{
+		border-color: #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-wrap:hover{
+		border: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper{
+		border-bottom: 1px dashed #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper:hover{
+		border-bottom: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vbtn{
+		background-color: transparent!important;
+	}
+	.darkmode .MiniValine .vbtn:hover{
+		border: 1px dashed #2196f3;
+	}
+</style>
+
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2024
+        <i class="ri-heart-fill heart_icon"></i> 鞠桥丹-QIAODAN JU
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279035150&amp;web_id=1279035150'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="丛烨-shimmerjordan"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Catalogue</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E9%9A%8F%E7%AC%94/">Essay</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">Friends</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/01/18/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯蓝莓汁吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+  </div>
+</body>
+
+</html>

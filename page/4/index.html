@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="baidu-site-verification" content="code-kg5UjKJZM2" />
+   
+  <meta name="keywords" content="活,炼" />
+   
+  <meta name="description" content="shimmerjordan" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+     丛烨-shimmerjordan
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-Q0DT8B8VJW', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?6d06f826e125297d4ce0fa7a1449328e";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<link rel="alternate" href="/atom.xml" title="丛烨-shimmerjordan" type="application/atom+xml">
+</head>
+
+</html>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+	<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      
+<section class="cover">
+    
+  <div class="cover-frame">
+    <div class="bg-box">
+      <img src="/images/cover2.jpg" alt="image frame" />
+    </div>
+    <div class="cover-inner text-center text-white">
+      <h1><a href="/">丛烨-shimmerjordan</a></h1>
+      <div id="subtitle-box">
+        
+        <span id="subtitle"></span>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="cover-learn-more">
+    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+  </div>
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+
+
+<!-- Subtitle -->
+
+  <script>
+    try {
+      var typed = new Typed("#subtitle", {
+        strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+        startDelay: 0,
+        typeSpeed: 200,
+        loop: true,
+        backSpeed: 100,
+        showCursor: true
+      });
+    } catch (err) {
+      console.log(err)
+    }
+  </script>
+  
+<div id="main">
+  <section class="outer">
+  
+  
+  
+
+<div class="notice" style="margin-top:50px">
+    <i class="ri-heart-fill"></i>
+    <div class="notice-content" id="broad"></div>
+</div>
+<script type="text/javascript">
+    fetch('https://v1.hitokoto.cn')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("broad").innerHTML = data.hitokoto;
+        })
+        .catch(console.error)
+</script>
+
+<style>
+    .notice {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+    }
+
+    .notice i {
+        float: left;
+        color: #999;
+        font-size: 16px;
+        padding-right: 10px;
+        vertical-align: middle;
+        margin-top: -2px;
+    }
+
+    .notice-content {
+        display: initial;
+        vertical-align: middle;
+    }
+</style>
+  
+  <article class="articles">
+    
+    
+    
+    
+    <article
+  id="post-DFSFramework"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/08/07/DFSFramework/"
+    >The Framework of Backtracking Algorithm Problems (DFS)</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/08/07/DFSFramework/" class="article-date">
+  <time datetime="2021-08-06T16:00:12.000Z" itemprop="datePublished">2021-08-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>This paper addresses several questions.</p>
+<p>What is the backtracking algorithm? What are the techniques for solving problems related to backtracking algorithms? How do I learn backtracking algorithms? Is there a pattern to the backtracking algorithm code?</p>
+<p>The backtracking algorithm is actually what we often call the <strong>DFS algorithm</strong>, which is essentially a violent exhaustive <strong>enumeration algorithm</strong>.</p> 
+      <a class="article-more-link" href="/2021/08/07/DFSFramework/"
+        >Read more...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Backtracking/" rel="tag">Backtracking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+  
+</article>
+
+    
+    <article
+  id="post-LC743-shortestCircuit_mapsStorage"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/08/02/LC743-shortestCircuit_mapsStorage/"
+    >Five shortest-circuit algorithms &amp; two ways to store maps</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/08/02/LC743-shortestCircuit_mapsStorage/" class="article-date">
+  <time datetime="2021-08-02T13:15:22.000Z" itemprop="datePublished">2021-08-02</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>This article is a record of the answer to Leetcode 743, learning about the five shortest path solutions as follows: Floyd, Plain Dijkstra, Heap Optimization Dijkstra, Bellman Ford, SPFA. and three ways of storing graphs, including adjacency tables, adjacency matrices, and class &amp; adjacency tables.</p> 
+      <a class="article-more-link" href="/2021/08/02/LC743-shortestCircuit_mapsStorage/"
+        >Read more...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bellman-Ford/" rel="tag">Bellman-Ford</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dijkstra/" rel="tag">Dijkstra</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Floyd/" rel="tag">Floyd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SPFA/" rel="tag">SPFA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/graph/" rel="tag">graph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shortest-path/" rel="tag">shortest path</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+  
+</article>
+
+    
+    <article
+  id="post-DynamicProgSolutionFramework"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/07/31/DPFramwork/"
+    >The Framework of Solving Dynamic Programming Problems</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/07/31/DPFramwork/" class="article-date">
+  <time datetime="2021-07-31T10:38:12.000Z" itemprop="datePublished">2021-07-31</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>Dynamic Programming is a problem for many people, but it is also one of the most skillful and interesting strategies. This article gives a partial overview of these problems, plus a framework for solving dynamic programming.</p>
+<p><strong>This paper addresses several questions.</strong></p>
+<p>What is dynamic programming? </p>
+<p>What are the techniques for solving dynamic programming problems?</p>
+<p>How can I learn dynamic programming?</p> 
+      <a class="article-more-link" href="/2021/07/31/DPFramwork/"
+        >Read more...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dynamic-Programming/" rel="tag">Dynamic Programming</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+  
+</article>
+
+    
+    <article
+  id="post-difference_store.dispatch_store.commit"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/03/16/vuexStoreDispatchAndCommit/"
+    >The difference between this.\$store.dispatch() and this.\$store.commit() in vuex</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/03/16/vuexStoreDispatchAndCommit/" class="article-date">
+  <time datetime="2021-03-16T02:42:10.000Z" itemprop="datePublished">2021-03-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/vue/">vue</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Difference"><a href="#Difference" class="headerlink" title="Difference"></a>Difference</h1><p>The difference between <code>this.$store.dispatch()</code> and <code>this.$store.commit()</code> methods is that in general they are only different in <strong>the way values are accessed</strong>, both methods pass the value to vuex’s mutation to change the state.</p>
+<ul>
+<li><code>this.$store.dispatch()</code>: contains asynchronous operations, such as submitting data to the background, written: <code>this.$store.dispatch(&#39;action method name&#39;, value)</code></li>
+<li><code>this.$store.commit()</code>: synchronous operation, written: <code>this.$store.commit(&#39;mutations method name&#39;, value)</code></li>
+</ul> 
+      <a class="article-more-link" href="/2021/03/16/vuexStoreDispatchAndCommit/"
+        >Read more...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vuex/" rel="tag">vuex</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+  
+</article>
+
+    
+    <article
+  id="post-sz-educationLocalDeploy"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/03/10/sz-educationLocalDeploy/"
+    >Instruction for deploying sz-education locally</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/03/10/sz-educationLocalDeploy/" class="article-date">
+  <time datetime="2021-03-10T06:36:12.000Z" itemprop="datePublished">2021-03-10</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Spring-Cloud/">Spring Cloud</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  Maybe You Need A Key To Continue Reading! You can try it or contact me for unlocking. 
+      <a class="article-more-link" href="/2021/03/10/sz-educationLocalDeploy/"
+        >Read more...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+  
+</article>
+
+    
+    <article
+  id="post-IntroToSZ-education"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/03/08/introToSZ-education/"
+    >Introduction to sz-education</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/03/08/introToSZ-education/" class="article-date">
+  <time datetime="2021-03-08T10:16:12.000Z" itemprop="datePublished">2021-03-08</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Spring-Cloud/">Spring Cloud</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p><a target="_blank" rel="noopener" href="https://github.com/shimmerjordan/sz-education">轼辙云 (sz-education)</a>  is a new generation of microservices teaching management platform based on Spring Cloud, providing multi-tenancy, permission management, exams and exercises. </p>
+<p>The exams support single choice, multiple choice, indefinite choice, judgement and short answer questions.</p> 
+      <a class="article-more-link" href="/2021/03/08/introToSZ-education/"
+        >Read more...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+  
+</article>
+
+    
+    <article
+  id="post-Hexo-seo"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/02/06/Hexo-seo/"
+    >Hexo-seo Optimization Tips</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/02/06/Hexo-seo/" class="article-date">
+  <time datetime="2021-02-06T12:37:12.000Z" itemprop="datePublished">2021-02-06</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>Usually Baidu, Google and other search engines actively included in our site is not very likely. This requires us to SEO (Search Engine Optimization) the site, and for blog sites built on Hexo, the Hexo-SEO optimization strategy is used here.</p> 
+      <a class="article-more-link" href="/2021/02/06/Hexo-seo/"
+        >Read more...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web-deployment/" rel="tag">Web deployment</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reference/" rel="tag">reference</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+  
+</article>
+
+    
+    <article
+  id="post-DeployGithubActions"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/02/01/DeployGithubActions/"
+    >Deploy Github Actions</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/02/01/DeployGithubActions/" class="article-date">
+  <time datetime="2021-02-01T07:38:12.000Z" itemprop="datePublished">2021-02-01</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/">新手指北</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>Sometimes automated deployment projects or timed tasks need to be deployed online, but these are for temporary use or these lightweight applications do not warrant the additional purchase of a cloud server for deployment. This is when you might consider using Github Actions for automated deployments.</p>
+<p><a href="#1">GitHub Actions[1]</a> is GitHub’s <a href="#2">continuous integration service[2]</a>, launched in <a href="#3">October 2018[3]</a>. It is very powerful in that each action is used to perform an action, such as grabbing code, running tests, logging into a remote server, publishing to a third-party service, and so on. Combining these actions is a process of continuous integration. Of course, these actions are shared in the GitHub code repository, so we can refer to them directly.</p>
+<p>Github Actions provides a complete server environment with the following server specifications</p>
+<ul>
+<li>2-core CPU</li>
+<li>7 GB RAM memory</li>
+<li>84 GB of SSD hard disk space</li>
+</ul>
+<p>Detailed system environment information is shown in the following figure:</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/2021/02/02/ym5WQJ.png" width="76%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">System environment information</div>
+</center>
+
+<p>Of course, you can use Windows Server 2019 and macOS X Catalina 10.15 in addition to Ubuntu.</p> 
+      <a class="article-more-link" href="/2021/02/01/DeployGithubActions/"
+        >Read more...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cloud-Server/" rel="tag">Cloud Server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+  
+</article>
+
+    
+    <article
+  id="post-hexo-euler"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/02/01/hexo_on_cloud_server/"
+    >Hexo的云服务器部署</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/02/01/hexo_on_cloud_server/" class="article-date">
+  <time datetime="2021-02-01T07:38:12.000Z" itemprop="datePublished">2021-02-01</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/">新手指北</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>部署hexo博客到云服务器上的教程</p>
+<h1 id="环境部署"><a href="#环境部署" class="headerlink" title="环境部署"></a>环境部署</h1><p>环境部署环节应该不需要多说，遇到问题了google之即可。</p>
+<h2 id="相关环境表"><a href="#相关环境表" class="headerlink" title="相关环境表"></a>相关环境表</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>本地</th>
+<th>远端欧拉</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nodejs</td>
+<td>nodejs</td>
+<td>用<code>node -v</code>以及<code>npm -v</code>检查安装情况</td>
+</tr>
+<tr>
+<td>git</td>
+<td>git</td>
+<td></td>
+</tr>
+<tr>
+<td>hexo-cli</td>
+<td></td>
+<td><code>npm i hexo-cli -g</code>安装</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="部署hexo"><a href="#部署hexo" class="headerlink" title="部署hexo"></a>部署hexo</h1><p>在本地安装完<code>hexo-cli</code>之后使用<code>hexo</code>检查安装成功与否。如果失败，先重新起一个命令行再尝试。</p>
+<ol>
+<li>在自定义位置初始化blog文件夹：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir hexo-blog</span><br><span class="line">cd hexo-blog &amp;&amp; npm init -y</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>公司的网执行<code>npm i</code>可能会失败，因为其本质是从github拉取仓库，可以直接从github下载压缩包后解压到该目录：<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-starter">GitHub - hexojs/hexo-starter: Hexo Starter site)</a></p>
+</blockquote>
+<ol>
+<li><p>下载主题</p>
+<p>同以上一样，从<a target="_blank" rel="noopener" href="https://hexo.io/themes/">Themes | Hexo</a>选择合适主题下载，大部分主题都有教程如何安装。同理，如果直接使用npm无法拉取的话可以直接去github下载后放在<code>theme</code>文件夹下。</p>
+<p>在本地配置文件<code>_config.yml</code>文件中修改：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这里修改为自定义主题</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">redefine</span></span><br></pre></td></tr></table></figure>
+<p>注意有的主体需要新建形如<code>_config.redefine.yml</code>的文件进行主题的配置</p>
+</li>
+<li><p>本地执行<code>hexo</code>项目，添加<code>start</code>脚本</p>
+<p>先在<code>package.json</code>文件中修改：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;build&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hexo generate&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;clean&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hexo clean&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;deploy&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hexo clean &amp;&amp; hexo g -d&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;server&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hexo server&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hexo clean &amp;&amp; hexo g &amp;&amp; hexo s&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+<p>再使用<code>npm start</code>启动项目，可以在 <a target="_blank" rel="noopener" href="http://localhost:4000">http://localhost:4000</a> 验证效果了</p>
+</li>
+</ol>
+<h1 id="部署远端git"><a href="#部署远端git" class="headerlink" title="部署远端git"></a>部署远端git</h1><blockquote>
+<p>git的安装与配置不再详述，包括ssh认证的问题请自行解决。主要记录远端git私库的配置。</p>
+</blockquote>
+<ol>
+<li><p>ssh登录到远端服务器后，创建用户并配置其仓库：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">useradd git</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置密码</span></span><br><span class="line">passwd git </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这步很重要，不切换用户后面会很麻烦</span></span><br><span class="line">su git </span><br><span class="line">cd /home/git/</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">项目存在的真实目录</span></span><br><span class="line">mkdir -p projects/hexo-blog</span><br><span class="line">mkdir repos &amp;&amp; cd repos</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建一个裸露的仓库</span></span><br><span class="line">git init --bare blog.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建裸露仓库并配置hook</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd blog.git/hooks</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建 hook 钩子函数，输入了内容如下</span></span><br><span class="line">vi post-receive</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">git --work-tree=/home/git/projects/hexo-blog --git-dir=/home/git/repos/blog.git checkout -f</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chmod +x post-receive</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"> 退出到 root 登录</span></span><br><span class="line">exit</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加权限</span></span><br><span class="line">chown -R git:git /home/git/repos/blog.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在本地测试git仓是否可用，在空白文件夹下发送以下命令，如果有空仓库下拉，说明git私库搭建成功：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@server_ip:/home/git/repos/blog.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建立ssh信任关系，用于免密登录，在本地：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i C:/Users/yourname/.ssh/id_rsa.pub git@server_ip</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">测试能否登录</span></span><br><span class="line">ssh git@server_ip</span><br></pre></td></tr></table></figure>
+<p>如果windows无法使用<code>ssh-copy-id</code>，参考<a target="_blank" rel="noopener" href="http://3ms.huawei.com/km/blogs/details/14354899">windows无法使用ssh-copy-id解决方案</a></p>
+</li>
+<li><p>（可选）安全起见禁用git用户的shell登录权限，只能通过<code>git clone</code>，<code>git push</code>等登录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 git-shell 是否在登录方式里面</span></span><br><span class="line">cat /etc/shells</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看是否安装</span></span><br><span class="line">which git-shell</span><br><span class="line">vi /etc/shells</span><br></pre></td></tr></table></figure>
+<p>添加上两步显示出来的路径，通常在 <code>/usr/bin/git-shell</code>，随后修改<code>/etc/passwd</code>中的权限：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将原来的</span></span><br><span class="line">git:x:1000:1000::/home/git:/bin/bash</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改为</span></span><br><span class="line">git:x:1000:1000:,,,:/home/git:/usr/bin/git-shell</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="搭建nginx服务器"><a href="#搭建nginx服务器" class="headerlink" title="搭建nginx服务器"></a>搭建<code>nginx</code>服务器</h4><blockquote>
+<p>nginx的安装与配置不再赘述</p>
+</blockquote>
+<ol>
+<li><p>配置<code>nginx</code>文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">先启动检查是否安装成功，浏览器查看 server_ip，默认是 80 端口</span></span><br><span class="line">nginx</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">先停止nginx</span></span><br><span class="line">nginx -s stop </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">可以使用nginx -t查看配置文件位置</span></span><br><span class="line">cd /etc/nginx/</span><br><span class="line">vim nginx.conf</span><br></pre></td></tr></table></figure>
+<p>修改 <code>root</code>解析路径，同时将 <code>user</code>改为 <code>root</code> ，不然<code>nginx</code>无法访问<code>/home/git/projects/hexo-blog</code>。此外配置location为<code>/</code>的部分，自定义监听端口号。修改部分参考如下：</p>
+<figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">user root;</span><br><span class="line">worker_processes auto;</span><br><span class="line">error_log /var/log/nginx/error.log;</span><br><span class="line">pid /run/nginx.pid;</span><br><span class="line"></span><br><span class="line">include /usr/share/nginx/modules/*.conf;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    <span class="attribute">worker_connections 1024;</span></span><br><span class="line"><span class="attribute">&#125;</span></span><br><span class="line"><span class="attribute"></span></span><br><span class="line"><span class="attribute">http &#123;</span></span><br><span class="line"><span class="attribute">    log_format  main  &#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span></span><br><span class="line"><span class="attribute">                      &#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span></span><br><span class="line"><span class="attribute">                      &#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;;</span></span><br><span class="line"><span class="attribute"></span></span><br><span class="line"><span class="attribute">    access_log  /var/log/nginx/access.log  main;</span></span><br><span class="line"><span class="attribute"></span></span><br><span class="line"><span class="attribute">    sendfile            on;</span></span><br><span class="line"><span class="attribute">    tcp_nopush          on;</span></span><br><span class="line"><span class="attribute">    tcp_nodelay         on;</span></span><br><span class="line"><span class="attribute">    keepalive_timeout   65;</span></span><br><span class="line"><span class="attribute">    types_hash_max_size 2048;</span></span><br><span class="line"><span class="attribute">    client_max_body_size 100m;</span></span><br><span class="line"><span class="attribute"></span></span><br><span class="line"><span class="attribute">    include             /etc/nginx/mime.types;</span></span><br><span class="line"><span class="attribute">    default_type        application/octet-stream;</span></span><br><span class="line"><span class="attribute"></span></span><br><span class="line"><span class="attribute">    include /etc/nginx/conf.d/*.conf;</span></span><br><span class="line"><span class="attribute"></span></span><br><span class="line"><span class="attribute">    server &#123;</span></span><br><span class="line"><span class="attribute">        listen       800 default_server;</span></span><br><span class="line"><span class="attribute">        listen       [</span>::]:800 default_server;</span><br><span class="line">        <span class="attribute">server_name  localhost;</span></span><br><span class="line"><span class="attribute">        root         /usr/share/nginx/html;</span></span><br><span class="line"><span class="attribute">        # Load configuration files for the default server block.</span></span><br><span class="line"><span class="attribute">        include /etc/nginx/default.d/*.conf;</span></span><br><span class="line"><span class="attribute"></span></span><br><span class="line"><span class="attribute">        location / &#123;</span></span><br><span class="line"><span class="attribute">            root /home/git/projects/hexo-blog;</span></span><br><span class="line"><span class="attribute">            index index.html index.html;</span></span><br><span class="line"><span class="attribute">        &#125;</span></span><br><span class="line"><span class="attribute">    &#125;</span></span><br><span class="line"><span class="attribute">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>然后使用<code>nginx -s reload</code>重加载<code>nginx</code>配置</p>
+</li>
+</ol>
+<h1 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h1><p>至此我们就把本地和服务器的环境全部搭建完成，现在利用 hexo 配置文件进行链接</p>
+<ol>
+<li>配置<code>_config.yml</code>文件中的<code>deploy</code>：</li>
+</ol>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@server_ip:/home/git/repos/blog.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>在 <code>package.json</code> 中添加 npm 脚本</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;deploy&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hexo clean &amp;&amp; hexo g -d&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hexo clean &amp;&amp; hexo g &amp;&amp; hexo s&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这下在本地调试就用<code>npm start</code>，调试好了就使用<code>npm run deploy</code>部署到服务器。即可通过<code>server_ip:port/location</code>进行访问了</p>
+<p>如果遇到上传不上的情况，在远端先<code>rm</code>删除分支，再创建<code>_config.yml</code>中配置的分支即可。</p>
+</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cloud-Serve/" rel="tag">Cloud Serve</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+  
+</article>
+
+    
+    <article
+  id="post-CDN for GithubPage"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/01/27/freeWebpageCDN/"
+    >Free CDN for WebPage</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/01/27/freeWebpageCDN/" class="article-date">
+  <time datetime="2021-01-27T05:48:00.000Z" itemprop="datePublished">2021-01-27</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/">新手指北</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>The previous article <a href="/2021/01/24/freeWebpage/" title="Free Static Webpage Deployment">Free Static Webpage Deployment</a>  has explained in full how to deploy a free static website, here are further instructions on how to get free CDN services to improve the speed of access to your website in different parts of the world.</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/2021/02/06/yYsRE9.jpg" width=35%>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">CDN</div>
+</center> 
+      <a class="article-more-link" href="/2021/01/27/freeWebpageCDN/"
+        >Read more...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web-deployment/" rel="tag">Web deployment</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+  
+</article>
+
+    
+  </article>
+  
+
+  
+  <nav class="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
+  </nav>
+  
+</section>
+</div>
+
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2024
+        <i class="ri-heart-fill heart_icon"></i> 鞠桥丹-QIAODAN JU
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279035150&amp;web_id=1279035150'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="丛烨-shimmerjordan"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Catalogue</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E9%9A%8F%E7%AC%94/">Essay</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">Friends</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/01/18/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯蓝莓汁吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+  </div>
+</body>
+
+</html>

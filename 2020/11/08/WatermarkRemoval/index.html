@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="baidu-site-verification" content="code-kg5UjKJZM2" />
+   
+  <meta name="keywords" content="活,炼" />
+   
+  <meta name="description" content="shimmerjordan" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    A Possible Way to Remove Watermark perfectly |  丛烨-shimmerjordan
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-Q0DT8B8VJW', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?6d06f826e125297d4ce0fa7a1449328e";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<link rel="alternate" href="/atom.xml" title="丛烨-shimmerjordan" type="application/atom+xml">
+</head>
+
+</html>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+	<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-A Possible Way to Remove Watermark perfectly"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  A Possible Way to Remove Watermark perfectly
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/11/08/WatermarkRemoval/" class="article-date">
+  <time datetime="2020-11-08T11:41:34.000Z" itemprop="datePublished">2020-11-08</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a> / <a class="article-category-link" href="/categories/Machine-Learning/Project/">Project</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">13 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>Although the traditional method of image watermark removal is efficient, it is more damaging to the details. It may takes a few seconds for some watermarks to be removed using repair stamp, and a few watermarks may be failed to be removed even given  one or two hours. </p>
+<p>Some images that are not very rich in detail can be filled with adjacent pixels through Photoshop and other image processing software to cover up the watermark part, which can achieve near-perfect results.</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://s1.ax1x.com/2020/11/09/BHcTpQ.jpg">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">From left to right, Original image (with watermark), PS processing (heavy loss of detail), Deep de-watermarking (full details).</div>
+</center>
+
+<p>PS is no longer perfect for some extremely detailed and complex images. Traditional PS watermark removal methods can no longer meet the demand for detailed and complex watermarks.</p>
+<p>Nowadays, using AI technology to remove watermarks, we can achieve almost perfection.</p>
+<span id="more"></span>
+<blockquote>
+<p>With the continuous development of artificial intelligence technology, deep learning its application in the filed of image processing is becoming more and more widespread. At ICML 2018, researchers from institutions such as NVIDIA and MIT showcased an image degradation technology, Noise2Noise, which automatically removes watermarks, blurs and other noises from images, almost perfectly restores them, and the rendering time is milliseconds. Reference: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1803.04189">Noise2Noise: Learning Image Restoration without Clean Data</a></p>
+</blockquote>
+<p>Third party reproduction project: <a href="https://link.zhihu.com/?target=https%3A//github.com/yu4u/noise2noise">yu4u/noise2noise</a> . This can be used to remove subtitles and image noise, but the author did not add a watermark removal feature. I’ve modified this python script to remove the watermark already. <strong>But it only works on computers with NVIDIA series graphics card.</strong></p>
+<h1 id="Preparations"><a href="#Preparations" class="headerlink" title="Preparations"></a>Preparations</h1><h2 id="Download-Script"><a href="#Download-Script" class="headerlink" title="Download Script"></a>Download Script</h2><p><a target="_blank" rel="noopener" href="https://github.com/shimmerjordan/n2n-dewatermark">https://github.com/shimmerjordan/n2n-dewatermark</a></p>
+<h2 id="Build-environment"><a href="#Build-environment" class="headerlink" title="Build environment"></a>Build environment</h2><p>First go to the NVIDIA website and download the latest version of the graphics driver for your computer’s graphics card. (studio version - for designer PS modeling and drawing, GRD version - for playing games)</p>
+<p><a target="_blank" rel="noopener" href="https://www.nvidia.cn/Download/index.aspx?lang=cn">NVIDIA Driver Download</a></p>
+<p>Many people are using older versions of video card drivers. So the cuda version is too low and the tf frame runs up reporting errors.</p>
+<p>After installation, restart your computer, right-click on the desktop and click NVIDIA Control Panel -&gt; System Information -&gt; Components.</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/2020/11/17/DZYscn.jpg">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">System Information</div>
+</center>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/2020/11/17/DZtpjI.jpg" width="70%" height="70%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">CUDA version</div>
+</center>
+See if the CUDA version is higher than 9.0, otherwise it will report an error. If it is still below 9.0, use a software program such as Software Manager to uninstall any software on the computer that starts with NVIDIA, and then re-download the latest version of the graphics card driver from the address above. Then we need to download and install the CUDA through official website: [https://developer.nvidia.com/cuda-toolkit-archive](https://developer.nvidia.com/cuda-toolkit-archive). Besides, we should go to the official website and select the corresponding version of cuDNN to download.
+[https://developer.nvidia.com/cudnn](https://developer.nvidia.com/cudnn).
+
+>**1、CUDA**
+>
+>CUDA (Compute Unified Device Architecture) is a computing platform from graphics card manufacturer NVIDIA. CUDA is a general-purpose parallel computing architecture introduced by NVIDIA, which enables GPUs to solve complex computing problems.
+>
+>**2、CUDNN**
+>
+>NVIDIA cuDNN is a GPU acceleration library for deep neural networks. With an emphasis on performance, ease of use, and low memory overhead, NVIDIA cuDNN can be integrated into higher-level machine learning frameworks such as Google's Tensorflow and UC Berkeley's popular caffe software. The simple **insert design** allows developers to focus on designing and implementing neural network models rather than simply tuning performance, while also enabling high-performance modern parallel computing on the GPU.
+>
+>  **3、Relationship between CUDA & CUDNN**
+>
+>CUDA is seen as a workbench, equipped with many tools, such as a hammer, screwdriver, etc. cuDNN is a deep learning GPU accelerated library based on CUDA, with which deep learning calculations can be done on the GPU. It's the equivalent of a working tool, like it's a wrench. But CUDA, the workbench, didn't come with a wrench when it was bought. To run a deep neural network on CUDA, you have to install cuDNN, just like you have to buy the wrench back if you want to twist a nut. This is what allows the GPU to do deep neural network work and work much faster than the CPU.
+>
+>**4、CUDNN will have no impact on CUDA**
+>
+>From the official installation guide, we can see that as long as the cuDNN file is copied to the corresponding folder of CUDA, that is, the so-called plug-in design, the cuDNN database is added to CUDA, cuDNN is the extended computing library of CUDA, will not cause other effects on CUDA.
+>
+>As you can see, the existing files in CUDA and cuDNN do not have the same files, and after copying the files of cuDNN, the files in CUDA will not be overwritten, and other files in CUDA will not be affected.
+
+Then build the python run container. For convenience, go straight to the highly integrated IDE, Anaconda. The tensorflow-gpu version needs to match the cuda/cudnn version, otherwise the script will run and report an error.
+
+We open Anaconda Prompt and enter the following command into it:
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure>
+
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/2020/11/18/DmAjU0.jpg">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Add channels</div>
+</center>
+
+
+<p>Then press enter twice and copy this line again:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install tensorflow-gpu</span><br></pre></td></tr></table></figure>
+<p>After the installation we can close the Anaconda Prompt. Here I have created and activated a <em>DeepLearning</em> environment in the <em>env</em> under <em>Anaconda</em>, where all operations take place.</p>
+<h2 id="Prepare-data-set"><a href="#Prepare-data-set" class="headerlink" title="Prepare data set"></a>Prepare data set</h2><p>Download the coco2017 dataset at <a target="_blank" rel="noopener" href="http://images.cocodataset.org/zips/val2017.zip">http://images.cocodataset.org/zips/val2017.zip</a></p>
+<p>This zip file can decompress 5,000 images, of which 4,200 are used for training. The remaining 800 images are used for testing.</p>
+<p>Open the n2n-watermark-remove-master directory that we have just extracted to the desktop, enter the dataset inside, then enter the train, use the file manager that comes with windows to randomly select 800 of the pictures, right-click and move them to the test directory. The remaining 4200 pictures (ctrl+A) are all selected and moved to the train directory.</p>
+<h2 id="Acquisition-Production-of-watermarks"><a href="#Acquisition-Production-of-watermarks" class="headerlink" title="Acquisition/Production of watermarks"></a>Acquisition/Production of watermarks</h2><p>This step is very important, because if you want the computer to remove the watermark, you have to teach the computer to distinguish the watermark, and the watermark can only be removed if the computer learns to distinguish which parts of a watermarked image are watermarked and which parts are not. The key to this step is to find the original watermark image. Usually logos are watermarked and the logo image can be found on their website, (if it is on a white background it needs to be keyed).<br>Of course you can also use a cleverer approach, assuming that all the images on a website have a uniform style of watermark, you just need to go to the website and upload an image with a solid background (50% neutral grey recommended), let the system add a watermark to this image, and then calculate the difference through image subtraction, which is also the watermark image.</p>
+<h2 id="Train-models"><a href="#Train-models" class="headerlink" title="Train models"></a>Train models</h2><p>Use the command via Anaconda Prompt to access the project directory of n2n-watermark-remove. Then use the following command to install the dependencies:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p>It may be necessary to wait a while for this to be installed, after which the training operation can be carried out.</p>
+<h3 id="Train-with-watermark"><a href="#Train-with-watermark" class="headerlink" title="Train with watermark"></a>Train with watermark</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python train.py --image_dir dataset/train --test_dir dataset/test --image_size 128 --batch_size 8 --lr 0.001 --source_noise_model text,0,50 --target_noise_model text,0,50 --val_noise_model text,25,25 --loss mae --output_path text_noise</span><br></pre></td></tr></table></figure>
+<p>The training time is determined by the graphics card. They generally range from a few dozen hours to several hundred hours. If possible, Kaggle and Google Colab can be used.</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/2020/11/20/DQorBF.jpg">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">The Beginning of Training</div>
+</center>
+
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/2020/11/20/DQoghR.jpg">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">The Process of Training</div>
+</center>
+
+<p>We can see the ETA, loss and the PSNR during the process(Some index such as batch_size was initialized in the command above).</p>
+<p>During the training process, each iteration will generate a weights.xxxxxx-xxxx.hdf5 model file. The hdf5 file is not always generated, and there are times when it is normal that it is not. </p>
+<p>The number at the beginning represents the number of laps. The higher the number, the better the de-watermarking effect. The default for this script is 100 laps. The script runs by default for 100 laps. Normally the window is closed after about 50 laps and the resulting model is de-watermarked.</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/2020/11/20/DQRNM4.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">De-watermark model</div>
+</center>
+
+<p><strong>Further, the model can be trained on the noise of the image and achieve a noise reduction effect.</strong></p>
+<h3 id="Train-with-Gaussian-noise"><a href="#Train-with-Gaussian-noise" class="headerlink" title="Train with Gaussian noise"></a>Train with Gaussian noise</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># train model using (noise, noise) pairs (noise2noise)</span></span><br><span class="line">python3 train.py --image_dir dataset/<span class="number">291</span> --test_dir dataset/Set14 --image_size <span class="number">128</span> --batch_size <span class="number">8</span> --lr <span class="number">0.001</span> --output_path gaussian</span><br><span class="line"></span><br><span class="line"><span class="comment"># train model using (noise, clean) paris (standard training)</span></span><br><span class="line">python3 train.py --image_dir dataset/<span class="number">291</span> --test_dir dataset/Set14 --image_size <span class="number">128</span> --batch_size <span class="number">8</span> --lr <span class="number">0.001</span> --target_noise_model clean --output_path clean</span><br></pre></td></tr></table></figure>
+<h3 id="Train-with-text-insertion"><a href="#Train-with-text-insertion" class="headerlink" title="Train with text insertion"></a>Train with text insertion</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># train model using (noise, noise) pairs (noise2noise)</span></span><br><span class="line">python3 train.py --image_dir dataset/<span class="number">291</span> --test_dir dataset/Set14 --image_size <span class="number">128</span> --batch_size <span class="number">8</span> --lr <span class="number">0.001</span> --source_noise_model text,<span class="number">0</span>,<span class="number">50</span> --target_noise_model text,<span class="number">0</span>,<span class="number">50</span> --val_noise_model text,<span class="number">25</span>,<span class="number">25</span> --loss mae --output_path text_noise</span><br><span class="line"></span><br><span class="line"><span class="comment"># train model using (noise, clean) paris (standard training)</span></span><br><span class="line">python3 train.py --image_dir dataset/<span class="number">291</span> --test_dir dataset/Set14 --image_size <span class="number">128</span> --batch_size <span class="number">8</span> --lr <span class="number">0.001</span> --source_noise_model text,<span class="number">0</span>,<span class="number">50</span> --target_noise_model clean --val_noise_model text,<span class="number">25</span>,<span class="number">25</span> --loss mae --output_path text_clean</span><br></pre></td></tr></table></figure>
+<h3 id="Train-with-random-valued-impulse-noise"><a href="#Train-with-random-valued-impulse-noise" class="headerlink" title="Train with random-valued impulse noise"></a>Train with random-valued impulse noise</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># train model using (noise, noise) pairs (noise2noise)</span></span><br><span class="line">python3 train.py --image_dir dataset/<span class="number">291</span> --test_dir dataset/Set14 --image_size <span class="number">128</span> --batch_size <span class="number">8</span> --lr <span class="number">0.001</span> --source_noise_model impulse,<span class="number">0</span>,<span class="number">95</span> --target_noise_model impulse,<span class="number">0</span>,<span class="number">95</span> --val_noise_model impulse,<span class="number">70</span>,<span class="number">70</span> --loss l0 --output_path impulse_noise</span><br><span class="line"></span><br><span class="line"><span class="comment"># train model using (noise, clean) paris (standard training)</span></span><br><span class="line">python3 train.py --image_dir dataset/<span class="number">291</span> --test_dir dataset/Set14 --image_size <span class="number">128</span> --batch_size <span class="number">8</span> --lr <span class="number">0.001</span> --source_noise_model impulse,<span class="number">0</span>,<span class="number">95</span> --target_noise_model clean --val_noise_model impulse,<span class="number">70</span>,<span class="number">70</span> --loss l0 --output_path impulse_clean</span><br></pre></td></tr></table></figure>
+<p><strong>Model architectures</strong></p>
+<p>With <code>--model unet</code>, UNet model can be trained instead of SRResNet.</p>
+<p><strong>Resume training</strong></p>
+<p>With <code>--weight path/to/weight/file</code>, training can be resumed with trained weights.</p>
+<p>The detailed options are:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">optional arguments:</span><br><span class="line">  -h, --help            show this help message and exit</span><br><span class="line">  --image_dir IMAGE_DIR</span><br><span class="line">                        test image dir (default: None)</span><br><span class="line">  --model MODEL         model architecture (&#x27;srresnet&#x27; or &#x27;unet&#x27;) (default:</span><br><span class="line">                        srresnet)</span><br><span class="line">  --weight_file WEIGHT_FILE</span><br><span class="line">                        trained weight file (default: None)</span><br><span class="line">  --test_noise_model TEST_NOISE_MODEL</span><br><span class="line">                        noise model for test images (default: gaussian,25,25)</span><br><span class="line">  --output_dir OUTPUT_DIR</span><br><span class="line">                        if set, save resulting images otherwise show result</span><br><span class="line">                        using imshow (default: None)</span><br></pre></td></tr></table></figure>
+<p>This script adds noise using <code>test_noise_model</code> to each image in <code>image_dir</code> and performs denoising. If you want to perform denoising to already noisy images, use <code>--test_noise_model clean</code>.</p>
+<h3 id="Noise-Models"><a href="#Noise-Models" class="headerlink" title="Noise Models"></a>Noise Models</h3><p>Using <code>source_noise_model</code>, <code>target_noise_model</code>, and <code>val_noise_model</code> arguments, arbitrary noise models can be set for source images, target images, and validatoin images respectively. Default values are taken from the experiment in [1].</p>
+<ul>
+<li>Gaussian noise<ul>
+<li>gaussian,min_stddev,max_stddev (e.g. gaussian,0,50)</li>
+</ul>
+</li>
+<li>Clean target<ul>
+<li>clean</li>
+</ul>
+</li>
+<li>Text insertion<ul>
+<li>text,min_occupancy,max_occupancy (e.g. text,0,50)</li>
+</ul>
+</li>
+<li>Random-valued impulse noise<ul>
+<li>impulse,min_occupancy,max_occupancy (e.g. impulse,0,50)</li>
+</ul>
+</li>
+</ul>
+<p>You can see how these noise models work by:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 noise_model.py --noise_model text,0,95</span><br></pre></td></tr></table></figure>
+<h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><h4 id="Plot-training-history"><a href="#Plot-training-history" class="headerlink" title="Plot training history"></a>Plot training history</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 plot_history.py --input1 gaussian --input2 clean</span><br></pre></td></tr></table></figure>
+<h4 id="Gaussian-noise"><a href="#Gaussian-noise" class="headerlink" title="Gaussian noise"></a>Gaussian noise</h4><center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/2020/11/20/DQy9zj.png" width="60%" height="60%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Gaussian noise</div>
+</center>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/2020/11/20/DQcFaV.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Denoising result by clean target model (left to right: original, degraded image, denoised image)</div>
+</center>
+
+<p>From the above result, I confirm that we can train denoising model using noisy targets but it is not comparable to the model trained using clean targets. If UNet is used, the result becomes 29.67 (noisy targets) vs. 30.14 (clean targets).</p>
+<h4 id="Text-insertion"><a href="#Text-insertion" class="headerlink" title="Text insertion"></a>Text insertion</h4><center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/2020/11/20/DQyDmt.png" width="60%" height="60%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Text insertion</div>
+</center>
+
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/2020/11/20/DQRpKH.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Denoising result by clean target model</div>
+</center>
+
+
+
+<h4 id="Random-valued-impulse-noise"><a href="#Random-valued-impulse-noise" class="headerlink" title="Random-valued impulse noise"></a>Random-valued impulse noise</h4><center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/2020/11/20/DQyxn1.png" width="60%" height="60%">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;"> Random-valued impulse noise</div>
+</center>
+
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/2020/11/20/DQRZRS.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Denoising result by clean target model</div>
+</center>
+
+<h4 id="Check-denoising-result"><a href="#Check-denoising-result" class="headerlink" title="Check denoising result"></a>Check denoising result</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 test_model.py --weight_file [trained_model_path] --image_dir dataset/Set14</span><br></pre></td></tr></table></figure>
+<h2 id="De-watermarking"><a href="#De-watermarking" class="headerlink" title="De-watermarking"></a>De-watermarking</h2><p>Once you have the model, you can use it to remove the watermark. We use the following command:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test_model.py --weight_file watermark-model-file-names.hdf5  --image_dir inputdir --output_dir outputdir</span><br></pre></td></tr></table></figure>
+<p>Replace the <em>watermark-model-file-names.hdf5</em> with the actual file name, put the watermarked image in the <em>inputdir</em> and execute the command. After removing the watermark the picture will lie quietly in the <em>outputdir</em> directory.</p>
+<p><strong>Watermarking effect:</strong> Here is the result of 9 hours of training on the 1050ti, which may be a little unclean, but in theory a basic level of usability can be reached after 20 hours of training (original image on the left, watermarking image on the right). </p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/2020/11/20/DQozDS.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">de-watermark sample</div>
+</center>
+
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/2020/11/20/DQTCNj.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">de-watermark sample</div>
+</center>
+
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@main/blog/2020/11/20/DQTk3q.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">de-watermark sample</div>
+</center>
+
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p>[1] J. Lehtinen, J. Munkberg, J. Hasselgren, S. Laine, T. Karras, M. Aittala, T. Aila, “Noise2Noise: Learning Image Restoration without Clean Data,” in Proc. of ICML, 2018.</p>
+<p>[2] J. Kim, J. K. Lee, and K. M. Lee, “Accurate Image Super-Resolution Using Very Deep Convolutional Networks,” in Proc. of CVPR, 2016.</p>
+<p>[3] X.-J. Mao, C. Shen, and Y.-B. Yang, “Image Restoration Using Convolutional Auto-Encoders with Symmetric Skip Connections,” in Proc. of NIPS, 2016.</p>
+<p>[4] C. Ledig, et al., “Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network,” in Proc. of CVPR, 2017.</p>
+<p>[5] O. Ronneberger, P. Fischer, and T. Brox, “U-Net: Convolutional Networks for Biomedical Image Segmentation,” in MICCAI, 2015.</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.shimmerjordan.eu.org/2020/11/08/WatermarkRemoval/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Project/" rel="tag">Project</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/12/03/Java-HashMap/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            In-depth analysis of Java-HashMap
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/11/06/MLAComparison/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Comparison between Machine Learning Algorithms</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "StYfTMDp78X0EltFR16ve2q5-gzGzoHsz",
+    app_key: "G4RPxRpXG6RwdfpnJefOSnyy",
+    path: window.location.pathname,
+    avatar: "wavatar",
+    placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+   
+<!-- minivaline评论 -->
+<div id="mvcomments-box">
+  <div id="mvcomments"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/minivaline@latest"></script>
+<script>
+    new MiniValine(Object.assign({"enable":true,"mode":"DesertsP","placeholder":"Write a Comment","math":true,"md":true,"enableQQ":true,"NoRecordIP":false,"visitor":true,"maxNest":6,"pageSize":6,"adminEmailMd5":"de8a7aa53d07e6b6bceb45c64027763d","tagMeta":["管理员","小伙伴","访客"],"master":["de8a7aa53d07e6b6bceb45c64027763d"],"friends":["b5bd5d836c7a0091aa8473e79ed4c25e","adb7d1cd192658a55c0ad22a3309cecf","3ce1e6c77b4910f1871106cb30dc62b0","cfce8dc43725cc14ffcd9fb4892d5bfc"],"lang":null,"emoticonUrl":["https://cdn.jsdelivr.net/npm/alus@latest","https://cdn.jsdelivr.net/gh/MiniValine/qq@latest","https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest","https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest","https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest","https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest"]}, {
+	  el: '#mvcomments',
+    }));
+  const infoEle = document.querySelector('#mvcomments .info');
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+      infoEle.childNodes.forEach(function (item) {
+          item.parentNode.removeChild(item);
+      });
+  }
+</script>
+<style>
+	#mvcomments-box {
+		padding: 5px 30px;
+	}
+	@media screen and (max-width: 800px) {
+		#mvcomments-box {
+		  padding: 5px 0px;
+		}
+	}
+	.darkmode .MiniValine *{
+		color: #f1f1f1!important;
+	}
+	.darkmode .commentTrigger{
+		background-color: #403e3e !important;
+	  }
+	.darkmode .MiniValine .vpage .more{
+		background: #21232F
+	}
+	.darkmode img{
+		filter: brightness(30%)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before{
+		background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after{
+		background: rgba(0,0,0,0.9)
+	}
+	.darkmode .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre{
+		background: #282c34
+		border: 1px solid #282c34
+	}
+	.darkmode .MiniValine .vinputs-area .textarea-wrapper textarea{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper input{
+		color: #000;
+	}
+	.darkmode .MiniValine .vinputs-area .vextra-area .vsmile-icons{
+		background: transparent;
+	}
+	.darkmode .MiniValine .vinputs-wrap{
+		border-color: #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-wrap:hover{
+		border: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper{
+		border-bottom: 1px dashed #b2b2b5;
+	}
+	.darkmode .MiniValine .vinputs-area .auth-section .input-wrapper:hover{
+		border-bottom: 1px dashed #2196f3;
+	}
+	.darkmode .MiniValine .vbtn{
+		background-color: transparent!important;
+	}
+	.darkmode .MiniValine .vbtn:hover{
+		border: 1px dashed #2196f3;
+	}
+</style>
+
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2024
+        <i class="ri-heart-fill heart_icon"></i> 鞠桥丹-QIAODAN JU
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279035150&amp;web_id=1279035150'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="丛烨-shimmerjordan"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Catalogue</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">Tags</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E9%9A%8F%E7%AC%94/">Essay</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">Friends</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/01/18/about">About</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯蓝莓汁吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+  </div>
+</body>
+
+</html>
