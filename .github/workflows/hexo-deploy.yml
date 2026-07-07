@@ -2,29 +2,42 @@ name: deploying Hexo project to GitHub pages
 on:
   push:
     branches:
-      - backup # master 分支有 push 行为时就触发这个 action
+      - backup # push 到 backup(源码分支) 时触发构建并发布到 master
 
 env:
   TZ: Asia/Shanghai
+
+permissions:
+  contents: write # 允许用内置 GITHUB_TOKEN 推送到 master
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Check the current timezone database
+      - name: Checkout source (backup)
+        uses: actions/checkout@v4
+        with:
+          ref: backup
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build (hexo generate)
         run: |
-          ls /usr/share/zoneinfo
-          echo "---"
-          date
-          echo "---"
+          npx hexo clean
+          npx hexo generate
 
-      - name: Checkout
-        uses: actions/checkout@master
-
-      - name: Build and Deploy
-        uses: shimmerjordan/hexo-deploy-github-pages-action@master # 使用专门部署 Hexo 到 GitHub pages 的 action
-        env:
-          PERSONAL_TOKEN: ${{ secrets.HEXO_DEPLOY }} # secret 名
-          PUBLISH_REPOSITORY: shimmerjordan/shimmerjordan.github.io # 公共仓库，格式：GitHub 用户名/仓库名
-          BRANCH: master # 分支，填 gh-pages 就行
-          PUBLISH_DIR: ./public # 部署 public 目录下的文件
+      - name: Deploy public/ to master
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: master
+          user_name: shimmerjordan
+          user_email: shimmerjordan@foxmail.com
+          full_commit_message: 'Build and Deploy from Github Actions'
