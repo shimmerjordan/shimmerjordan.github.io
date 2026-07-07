@@ -133,7 +133,7 @@ var _hmt = _hmt || [];
 <li>线性变换=旋转+缩放+切变</li>
 </ul>
 <span id="more"></span> 
-<h1 id="齐次坐标系"><a href="#齐次坐标系" class="headerlink" title="齐次坐标系"></a>齐次坐标系</h1><p>n维的点/向量，用$[n+1 \times 1]$的列向量表示：$\begin{pmatrix} n+1 \\ n \\ \vdots \\ 1 \; or \; 0\end{pmatrix}$，其中最后一个维度0表示向量，1表示点。这样就可以保证向量的平移不变性，以及以下性质：</p>
+<h1 id="齐次坐标系"><a href="#齐次坐标系" class="headerlink" title="齐次坐标系"></a>齐次坐标系</h1><p>n维的点/向量，用$[n+1 \times 1]$的列向量表示：$\begin{pmatrix} n+1 \ n \ \vdots \ 1 \; or \; 0\end{pmatrix}$，其中最后一个维度0表示向量，1表示点。这样就可以保证向量的平移不变性，以及以下性质：</p>
 <blockquote>
 <p>Valid operation if w-coordinate of result is 1 or 0 </p>
 <ul>
@@ -143,7 +143,7 @@ var _hmt = _hmt || [];
 <li>point + point = mid point</li>
 </ul>
 </blockquote>
-<p>最后一行引用了这个性质：$\begin{pmatrix} x \\ y \\ w\end{pmatrix}$ is the 2D point $\begin{pmatrix} x/w \\ y/w \\ 1\end{pmatrix}$</p>
+<p>最后一行引用了这个性质：$\begin{pmatrix} x \ y \ w\end{pmatrix}$ is the 2D point $\begin{pmatrix} x/w \ y/w \ 1\end{pmatrix}$</p>
 <ul>
 <li>变换用$[n+1 \times n+1]$的矩阵左乘来表示，可以做矩阵的分解和压缩。变换顺序是从向量/点开始从右往左；</li>
 <li>多个变换可以组合起来变成一个矩阵→加速计算</li>
@@ -175,9 +175,9 @@ var _hmt = _hmt || [];
 </blockquote>
 <p>我们看到的画面由摄像机捕捉，摄像机参数决定了我们在屏幕上看到的东西，这一步可以将世界坐标系转换到摄像机坐标系。<br>这个变换一般是先平移到原点，再旋转对齐$z$轴再旋转对其$x$轴，旋转矩阵可以从逆矩阵（从对齐的情况逆旋转到当前位置）推导：</p>
 <ul>
-<li>写作：$M_{view}=R_{view}T_{view}$</li>
-<li>平移到原点的$T_{view}=\left(\begin{array}{ccc} 1 &amp; 0 &amp; 0 &amp; -x_e \\ 0 &amp; 1 &amp; 0 &amp; -y_e \\0 &amp; 0 &amp; 1 &amp; -z_{e}\\ 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right)$</li>
-<li>在旋转阶段先考虑逆旋转：$R^{-1}_{view}=\left(\begin{array}{ccc} x_{\hat{g} \times \hat{t}} &amp; x_t &amp; x_{-g} &amp; 0 \\ y_{\hat{g} \times \hat{t}} &amp; y_t &amp; y_{-g} &amp; 0 \\ z_{\hat{g} \times \hat{t}} &amp; z_t &amp; z_{-g} &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right)$</li>
+<li>写作：$M<em>{view}=R</em>{view}T_{view}$</li>
+<li>平移到原点的$T<em>{view}=\left(\begin{array}{ccc} 1 &amp; 0 &amp; 0 &amp; -x_e \ 0 &amp; 1 &amp; 0 &amp; -y_e \0 &amp; 0 &amp; 1 &amp; -z</em>{e}\ 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right)$</li>
+<li>在旋转阶段先考虑逆旋转：$R^{-1}<em>{view}=\left(\begin{array}{ccc} x</em>{\hat{g} \times \hat{t}} &amp; x<em>t &amp; x</em>{-g} &amp; 0 \ y<em>{\hat{g} \times \hat{t}} &amp; y_t &amp; y</em>{-g} &amp; 0 \ z<em>{\hat{g} \times \hat{t}} &amp; z_t &amp; z</em>{-g} &amp; 0\ 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right)$</li>
 <li>因为$R^{-1}_{view}$是正交矩阵，因此逆矩阵就是其转置，very easy</li>
 </ul>
 <blockquote>
@@ -197,12 +197,12 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>可以在n平面左侧想象存在一个点光源，这样就可以更方便理解为什么远平面更大</p>
 </blockquote>
-<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529111149680.png" alt="cdn by https://gcore.jsdelivr.net"><br>根据相似三角形法则可以很轻松地找到这样的关系：$y^{\prime}=\frac{n}{z}y$  ,  $x^{\prime}=\frac{n}{z}x$<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529112017170.png" alt="cdn by https://gcore.jsdelivr.net"><br>进一步的，我们可以在齐次坐标系中得到这样的关系：<br>$\left(\begin{array}{c} x \\ y \\ z \\1 \end{array}\right) \Rightarrow \left(\begin{array}{c} \frac{nx}{z} \\ \frac{ny}{z} \\ unknown \\1 \end{array}\right) \overset{multi.\; by \;z}{==} \left(\begin{array}{c} nx \\ ny \\ still \; unknown \\ z \end{array}\right)$，这就可以得到$M_{persp-&gt;ortho}=\left(\begin{array}{ccc} n &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; n &amp; 0 &amp; 0 \\ ? &amp; ? &amp; ? &amp; ?\\ 0 &amp; 0 &amp; 1 &amp; 0 \end{array}\right)$<br>那么这个第三行怎么推导呢，可以利用：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529111149680.png" alt="cdn by https://gcore.jsdelivr.net"><br>根据相似三角形法则可以很轻松地找到这样的关系：$y^{\prime}=\frac{n}{z}y$  ,  $x^{\prime}=\frac{n}{z}x$<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529112017170.png" alt="cdn by https://gcore.jsdelivr.net"><br>进一步的，我们可以在齐次坐标系中得到这样的关系：<br>$\left(\begin{array}{c} x \ y \ z \1 \end{array}\right) \Rightarrow \left(\begin{array}{c} \frac{nx}{z} \ \frac{ny}{z} \ unknown \1 \end{array}\right) \overset{multi.\; by \;z}{==} \left(\begin{array}{c} nx \ ny \ still \; unknown \ z \end{array}\right)$，这就可以得到$M_{persp-&gt;ortho}=\left(\begin{array}{ccc} n &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; n &amp; 0 &amp; 0 \ ? &amp; ? &amp; ? &amp; ?\ 0 &amp; 0 &amp; 1 &amp; 0 \end{array}\right)$<br>那么这个第三行怎么推导呢，可以利用：</p>
 <ul>
-<li>近平面$z$轴始终为$n$：$\left(\begin{array}{c} x \\ y \\ n \\1 \end{array}\right) \Rightarrow \left(\begin{array}{c} x \\y\\ n \\1 \end{array}\right) \overset{multi.\; by \;n}{==} \left(\begin{array}{c} nx \\ ny \\ n^2 \\ n \end{array}\right)$，确定为$(0\; 0\; A\; B)\left(\begin{array}{c} x \\ y \\ n \\1 \end{array}\right)=n^2$这样前面为$0$的结构（与$x$, $y$无关），也即$An+B=n^2$</li>
-<li>远平面中心点$\left(\begin{array}{c} 0 \\ 0 \\ f \\1 \end{array}\right) \Rightarrow \left(\begin{array}{c} 0 \\0 \\ f \\1 \end{array}\right)==\left(\begin{array}{c} 0 \\ 0 \\ f^2 \\ f \end{array}\right)$，确定$Af+B=f^2$</li>
+<li>近平面$z$轴始终为$n$：$\left(\begin{array}{c} x \ y \ n \1 \end{array}\right) \Rightarrow \left(\begin{array}{c} x \y\ n \1 \end{array}\right) \overset{multi.\; by \;n}{==} \left(\begin{array}{c} nx \ ny \ n^2 \ n \end{array}\right)$，确定为$(0\; 0\; A\; B)\left(\begin{array}{c} x \ y \ n \1 \end{array}\right)=n^2$这样前面为$0$的结构（与$x$, $y$无关），也即$An+B=n^2$</li>
+<li>远平面中心点$\left(\begin{array}{c} 0 \ 0 \ f \1 \end{array}\right) \Rightarrow \left(\begin{array}{c} 0 \0 \ f \1 \end{array}\right)==\left(\begin{array}{c} 0 \ 0 \ f^2 \ f \end{array}\right)$，确定$Af+B=f^2$</li>
 </ul>
-<p>进一步可以得到$M_{persp-&gt;ortho}$了，其中第三行是$(0,\; 0,\; n+f,\; -nf)$，最终可以知道$M_{persp}=M_{ortho}M_{persp-&gt;ortho}$</p>
+<p>进一步可以得到$M<em>{persp-&gt;ortho}$了，其中第三行是$(0,\; 0,\; n+f,\; -nf)$，最终可以知道$M</em>{persp}=M<em>{ortho}M</em>{persp-&gt;ortho}$</p>
 <h4 id="fovY和aspect-ratio"><a href="#fovY和aspect-ratio" class="headerlink" title="fovY和aspect ratio"></a>fovY和aspect ratio</h4><ul>
 <li>fovY：field-of-view 垂直可视角度</li>
 <li>aspect ratio：宽高比<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529145252467.png" alt="cdn by https://gcore.jsdelivr.net"><br>再根据下图，可以比较容易地写出：$\tan{\frac{fovY}{2}}=\frac{t}{\left|n \right|}$，$aspect=\frac{r}{t}$</li>
@@ -444,7 +444,7 @@ var _hmt = _hmt || [];
     <ul>
       <li>
         Copyrights &copy;
-        2019-2024
+        2019-2026
         <i class="ri-heart-fill heart_icon"></i> 鞠桥丹-QIAODAN JU
       </li>
     </ul>

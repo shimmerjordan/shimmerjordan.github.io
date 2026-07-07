@@ -6,7 +6,7 @@
   <link href="https://blog.shimmerjordan.eu.org/atom.xml" rel="self"/>
   
   <link href="https://blog.shimmerjordan.eu.org/"/>
-  <updated>2024-08-25T03:46:16.000Z</updated>
+  <updated>2026-07-07T07:21:48.478Z</updated>
   <id>https://blog.shimmerjordan.eu.org/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ECS + Cloudflare + NAS/客户端 FRP 内网穿透部署文档</title>
+    <link href="https://blog.shimmerjordan.eu.org/2026/07/07/ecs-cloudflare-nas-frp/"/>
+    <id>https://blog.shimmerjordan.eu.org/2026/07/07/ecs-cloudflare-nas-frp/</id>
+    <published>2026-07-07T07:30:00.000Z</published>
+    <updated>2026-07-07T07:21:48.478Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本文档记录基于云 ECS（3M 带宽，未备案）搭建的 frp 内网穿透 + Cloudflare Tunnel 架构。因域名未做 ICP 备案，凡是走 HTTP/HTTPS 域名访问的服务，必须通过 Cloudflare Tunnel 中转，否则会被云厂商的备案检测拦截（直接暴露 vhost 端口会返回 Non-compliance ICP Filing 拦截页）。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Network" scheme="https://blog.shimmerjordan.eu.org/categories/Network/"/>
+    
+    
+    <category term="NAS" scheme="https://blog.shimmerjordan.eu.org/tags/NAS/"/>
+    
+    <category term="frp" scheme="https://blog.shimmerjordan.eu.org/tags/frp/"/>
+    
+    <category term="Cloudflare" scheme="https://blog.shimmerjordan.eu.org/tags/Cloudflare/"/>
+    
+    <category term="内网穿透" scheme="https://blog.shimmerjordan.eu.org/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    
+    <category term="tutorial" scheme="https://blog.shimmerjordan.eu.org/tags/tutorial/"/>
+    
+  </entry>
+  
+  <entry>
     <title>AssetBundle浅析</title>
     <link href="https://blog.shimmerjordan.eu.org/2024/08/23/assetbundle-intro/"/>
     <id>https://blog.shimmerjordan.eu.org/2024/08/23/assetbundle-intro/</id>
     <published>2024-08-23T11:30:12.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.472Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;strong&gt;AssetBundle系统提供了一种压缩文件的格式，可以把一个到多个文件进行索引和序列化。&lt;/strong&gt;&lt;/p&gt;
@@ -43,7 +72,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2024/08/22/unity-asset-resources/"/>
     <id>https://blog.shimmerjordan.eu.org/2024/08/22/unity-asset-resources/</id>
     <published>2024-08-22T11:30:12.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.478Z</updated>
     
     
     <summary type="html">&lt;p&gt;Unity工程（空工程）包含&lt;code&gt;Assets&lt;/code&gt;, &lt;code&gt;Library&lt;/code&gt;, &lt;code&gt;Packages&lt;/code&gt;, &lt;code&gt;ProjectSettings&lt;/code&gt;，其作用分别是：&lt;/p&gt;
@@ -70,7 +99,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2024/07/22/games101-lec10-12/"/>
     <id>https://blog.shimmerjordan.eu.org/2024/07/22/games101-lec10-12/</id>
     <published>2024-07-22T05:41:34.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.473Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;几何的表达方式&quot;&gt;&lt;a href=&quot;#几何的表达方式&quot; class=&quot;headerlink&quot; title=&quot;几何的表达方式&quot;&gt;&lt;/a&gt;几何的表达方式&lt;/h1&gt;&lt;h2 id=&quot;Implicit-隐式几何&quot;&gt;&lt;a href=&quot;#Implicit-隐式几何&quot; class=&quot;headerlink&quot; title=&quot;Implicit 隐式几何&quot;&gt;&lt;/a&gt;Implicit 隐式几何&lt;/h2&gt;&lt;ul&gt;
@@ -95,7 +124,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2024/06/28/games101-lec7-9/"/>
     <id>https://blog.shimmerjordan.eu.org/2024/06/28/games101-lec7-9/</id>
     <published>2024-06-28T09:41:34.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.473Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -121,7 +150,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2024/06/28/games101-lec5-6/"/>
     <id>https://blog.shimmerjordan.eu.org/2024/06/28/games101-lec5-6/</id>
     <published>2024-06-28T05:41:34.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.473Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;After-MVP&quot;&gt;&lt;a href=&quot;#After-MVP&quot; class=&quot;headerlink&quot; title=&quot;After MVP&quot;&gt;&lt;/a&gt;After MVP&lt;/h1&gt;&lt;blockquote&gt;
@@ -145,7 +174,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2024/06/28/games101-lec3-4/"/>
     <id>https://blog.shimmerjordan.eu.org/2024/06/28/games101-lec3-4/</id>
     <published>2024-06-28T04:41:34.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.473Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;基础变换（仿射变换）：旋转、缩放、切变、平移&quot;&gt;&lt;a href=&quot;#基础变换（仿射变换）：旋转、缩放、切变、平移&quot; class=&quot;headerlink&quot; title=&quot;基础变换（仿射变换）：旋转、缩放、切变、平移&quot;&gt;&lt;/a&gt;基础变换（仿射变换）：旋转、缩放、切变、平移&lt;/h1&gt;&lt;ul&gt;
@@ -170,7 +199,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2024/01/20/qnap_change_datadir/"/>
     <id>https://blog.shimmerjordan.eu.org/2024/01/20/qnap_change_datadir/</id>
     <published>2024-01-20T03:48:00.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.475Z</updated>
     
     
     <summary type="html">&lt;p&gt;威联通QNAP装了MariaDB，部署了chevereto项目打算做私人图床，但MariaDB默认安装位置和数据存档位置都是系统盘，我给系统盘分配的空间空间不大，因此需要将数据存档位置迁移到其它数据卷。但苦于QNAP系统和传统ubuntu不一样，因此网上大部分教程都不适用。自己摸索出来可行的方案做个记录以免遗忘。&lt;/p&gt;</summary>
@@ -193,7 +222,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2024/01/17/web4memo/"/>
     <id>https://blog.shimmerjordan.eu.org/2024/01/17/web4memo/</id>
     <published>2024-01-17T12:48:00.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.478Z</updated>
     
     
     <summary type="html">&lt;p&gt;记录一些自用 &amp;amp; 公开的资源站/备用链接&lt;/p&gt;</summary>
@@ -212,7 +241,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2024/01/17/vscode4android/"/>
     <id>https://blog.shimmerjordan.eu.org/2024/01/17/vscode4android/</id>
     <published>2024-01-17T11:48:00.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.478Z</updated>
     
     
     <summary type="html">&lt;p&gt;无意发现鸿蒙4可以在连接显示器的时候启用电脑模式，如果可以运行生产力软件——Visual Studio Code那就完美了。拾人牙慧实施了一些方案，发现截至20240117还是这种本地Termex+proot+vscode_server(pacman)的后端结合via浏览器全屏操作的前端方案较为舒适且坑少。&lt;/p&gt;</summary>
@@ -233,7 +262,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2023/11/28/kpalyerWithCloudFile/"/>
     <id>https://blog.shimmerjordan.eu.org/2023/11/28/kpalyerWithCloudFile/</id>
     <published>2023-11-28T05:48:00.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.472Z</updated>
     
     
     <summary type="html">&lt;p&gt;在Linux主机（NAS、软路由等）上部署无人值守的24h推流直播服务，利用Alist，NFS等服务挂载自动挂载云盘资源。&lt;/p&gt;
@@ -259,7 +288,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2023/04/09/B860AV21-Tutorial/"/>
     <id>https://blog.shimmerjordan.eu.org/2023/04/09/B860AV21-Tutorial/</id>
     <published>2023-04-09T02:28:12.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.479Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;What-We-Do&quot;&gt;&lt;a href=&quot;#What-We-Do&quot; class=&quot;headerlink&quot; title=&quot;What We Do&quot;&gt;&lt;/a&gt;What We Do&lt;/h1&gt;&lt;p&gt;利用机顶盒的低能耗、低价格以及高性能的特点，刷入各种固件，使其应用在各种场景：&lt;/p&gt;
@@ -290,7 +319,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2023/01/09/GS3101-bridge/"/>
     <id>https://blog.shimmerjordan.eu.org/2023/01/09/GS3101-bridge/</id>
     <published>2023-01-09T06:28:12.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.473Z</updated>
     
     
     <summary type="html">&lt;p&gt;家里移动融合套餐的宽带用的光猫型号是GS3101，用面板后的账户密码登录发现权限几乎为零，本来改桥接要做什么也不好明说，为了避免麻烦就没找客服，这里记录一下自己折腾改桥接的方法。并且小记一下忘了拨号账户密码的解决方案。&lt;/p&gt;</summary>
@@ -309,7 +338,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2023/01/07/soft-routing-setup/"/>
     <id>https://blog.shimmerjordan.eu.org/2023/01/07/soft-routing-setup/</id>
     <published>2023-01-07T13:28:12.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.479Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -339,7 +368,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2022/07/08/url-visit/"/>
     <id>https://blog.shimmerjordan.eu.org/2022/07/08/url-visit/</id>
     <published>2022-07-07T21:38:12.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.479Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;流程概览&quot;&gt;&lt;a href=&quot;#流程概览&quot; class=&quot;headerlink&quot; title=&quot;流程概览&quot;&gt;&lt;/a&gt;流程概览&lt;/h1&gt;&lt;p&gt;对于这一个过程应该有一个大概的骨架，然后再是回忆里面的具体细节。总体流程如下，每一部分细节后面补充：&lt;/p&gt;
@@ -374,7 +403,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2022/07/07/SpringBoot-CORS/"/>
     <id>https://blog.shimmerjordan.eu.org/2022/07/07/SpringBoot-CORS/</id>
     <published>2022-07-07T07:38:12.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.477Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;一、为什么会出现跨域问题&quot;&gt;&lt;a href=&quot;#一、为什么会出现跨域问题&quot; class=&quot;headerlink&quot; title=&quot;一、为什么会出现跨域问题&quot;&gt;&lt;/a&gt;一、为什么会出现跨域问题&lt;/h1&gt;&lt;p&gt;出于浏览器的同源策略限制。同源策略（Sameoriginpolicy）是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。可以说Web是构建在同源策略基础之上的，浏览器只是针对同源策略的一种实现。同源策略会阻止一个域的javascript脚本和另外一个域的内容进行交互。所谓同源（即指在同一个域）就是两个页面具有相同的协议（protocol），主机（host）和端口号（port）&lt;/p&gt;</summary>
@@ -395,7 +424,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-2/"/>
     <id>https://blog.shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-2/</id>
     <published>2022-07-03T13:36:12.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.477Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;SpringBoot2笔记下篇&quot;&gt;&lt;a href=&quot;#SpringBoot2笔记下篇&quot; class=&quot;headerlink&quot; title=&quot;SpringBoot2笔记下篇&quot;&gt;&lt;/a&gt;SpringBoot2笔记下篇&lt;/h1&gt;&lt;p&gt;接SpringBoot2扎记上篇内容&lt;/p&gt;</summary>
@@ -416,7 +445,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-1/"/>
     <id>https://blog.shimmerjordan.eu.org/2022/07/03/Spring-boot-dict-1/</id>
     <published>2022-07-03T12:36:12.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.477Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;SpringBoot2笔记上篇&quot;&gt;&lt;a href=&quot;#SpringBoot2笔记上篇&quot; class=&quot;headerlink&quot; title=&quot;SpringBoot2笔记上篇&quot;&gt;&lt;/a&gt;SpringBoot2笔记上篇&lt;/h1&gt;&lt;h1 id=&quot;基础入门-SpringBoot2&quot;&gt;&lt;a href=&quot;#基础入门-SpringBoot2&quot; class=&quot;headerlink&quot; title=&quot;基础入门-SpringBoot2&quot;&gt;&lt;/a&gt;基础入门-SpringBoot2&lt;/h1&gt;&lt;ol&gt;
@@ -454,7 +483,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2022/07/02/Mybatis-dict/"/>
     <id>https://blog.shimmerjordan.eu.org/2022/07/02/Mybatis-dict/</id>
     <published>2022-07-02T12:36:12.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.475Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;Mybatis简介&quot;&gt;&lt;a href=&quot;#Mybatis简介&quot; class=&quot;headerlink&quot; title=&quot;Mybatis简介&quot;&gt;&lt;/a&gt;Mybatis简介&lt;/h1&gt;&lt;h2 id=&quot;MyBatis历史&quot;&gt;&lt;a href=&quot;#MyBatis历史&quot; class=&quot;headerlink&quot; title=&quot;MyBatis历史&quot;&gt;&lt;/a&gt;MyBatis历史&lt;/h2&gt;&lt;ul&gt;
@@ -482,7 +511,7 @@
     <link href="https://blog.shimmerjordan.eu.org/2022/07/02/Spring-dict/"/>
     <id>https://blog.shimmerjordan.eu.org/2022/07/02/Spring-dict/</id>
     <published>2022-07-02T06:36:12.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
+    <updated>2026-07-07T07:21:48.478Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;一、SpringMVC简介&quot;&gt;&lt;a href=&quot;#一、SpringMVC简介&quot; class=&quot;headerlink&quot; title=&quot;一、SpringMVC简介&quot;&gt;&lt;/a&gt;一、SpringMVC简介&lt;/h1&gt;&lt;h3 id=&quot;1、什么是MVC&quot;&gt;&lt;a href=&quot;#1、什么是MVC&quot; class=&quot;headerlink&quot; title=&quot;1、什么是MVC&quot;&gt;&lt;/a&gt;1、什么是MVC&lt;/h3&gt;&lt;p&gt;MVC是一种软件架构的思想，将软件按照模型、视图、控制器来划分&lt;/p&gt;
@@ -506,27 +535,6 @@
     <category term="SpringMVC" scheme="https://blog.shimmerjordan.eu.org/tags/SpringMVC/"/>
     
     <category term="SSM" scheme="https://blog.shimmerjordan.eu.org/tags/SSM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Geforce Now 配置指北</title>
-    <link href="https://blog.shimmerjordan.eu.org/2022/06/30/geforce-now-setup/"/>
-    <id>https://blog.shimmerjordan.eu.org/2022/06/30/geforce-now-setup/</id>
-    <published>2022-06-30T14:38:12.000Z</published>
-    <updated>2024-08-25T03:46:16.000Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;Geforce Now，一个姣好的云游戏平台解决方案&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="新手指北" scheme="https://blog.shimmerjordan.eu.org/categories/%E6%96%B0%E6%89%8B%E6%8C%87%E5%8C%97/"/>
-    
-    
-    <category term="随笔" scheme="https://blog.shimmerjordan.eu.org/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   

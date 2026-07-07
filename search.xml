@@ -40,6 +40,219 @@
       </tags>
   </entry>
   <entry>
+    <title>ECS + Cloudflare + NAS/客户端 FRP 内网穿透部署文档</title>
+    <url>/2026/07/07/ecs-cloudflare-nas-frp/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>本文档记录基于云 ECS（3M 带宽，未备案）搭建的 frp 内网穿透 + Cloudflare Tunnel 架构。因域名未做 ICP 备案，凡是走 HTTP/HTTPS 域名访问的服务，必须通过 Cloudflare Tunnel 中转，否则会被云厂商的备案检测拦截（直接暴露 vhost 端口会返回 Non-compliance ICP Filing 拦截页）。</p>
+</blockquote>
+<span id="more"></span>
+<blockquote>
+<p>📌 文中所有公网 IP、域名、隧道名/ID、密码、认证令牌、密钥均已用 <code>&lt;占位符&gt;</code> 替换，部署时请替换为你自己的真实值。</p>
+</blockquote>
+<h2 id="🔑-可自定义参数总览（所有配置文件中出现的值，统一在这里改）"><a href="#🔑-可自定义参数总览（所有配置文件中出现的值，统一在这里改）" class="headerlink" title="🔑 可自定义参数总览（所有配置文件中出现的值，统一在这里改）"></a>🔑 可自定义参数总览（所有配置文件中出现的值，统一在这里改）</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>当前值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ECS 公网 IP</td>
+<td><code>&lt;ECS_PUBLIC_IP&gt;</code></td>
+<td>换 ECS 要改这里</td>
+</tr>
+<tr>
+<td>根域名</td>
+<td><code>&lt;YOUR_DOMAIN&gt;</code></td>
+<td>frps 的 subDomainHost</td>
+</tr>
+<tr>
+<td>frps 主端口(TCP)</td>
+<td><code>17000</code></td>
+<td>frpc 连接用，自定义端口，别用默认 7000</td>
+</tr>
+<tr>
+<td>vhost HTTP 端口</td>
+<td><code>17080</code></td>
+<td>域名 HTTP 访问用</td>
+</tr>
+<tr>
+<td>vhost HTTPS 端口</td>
+<td><code>17443</code></td>
+<td>域名 HTTPS 访问用（当前主要靠 Cloudflare Tunnel 转发到 17080，17443 暂未启用）</td>
+</tr>
+<tr>
+<td>frps Dashboard 端口</td>
+<td><code>17500</code></td>
+<td>仅供管理查看，安全组只放行自己 IP</td>
+</tr>
+<tr>
+<td>Dashboard 账号</td>
+<td><code>admin</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Dashboard 密码</td>
+<td><code>&lt;DASHBOARD_PASSWORD&gt;</code></td>
+<td>建议用随机字符串</td>
+</tr>
+<tr>
+<td>frp 认证令牌 auth.token</td>
+<td><code>&lt;AUTH_TOKEN&gt;</code></td>
+<td>建议用 <code>openssl rand -base64 32</code> 生成</td>
+</tr>
+<tr>
+<td>Cloudflare 隧道名</td>
+<td><code>&lt;TUNNEL_NAME&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Cloudflare 隧道 ID</td>
+<td><code>&lt;TUNNEL_ID&gt;</code></td>
+<td>创建隧道后生成</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="一、ECS-端：安装官方最新版-frps"><a href="#一、ECS-端：安装官方最新版-frps" class="headerlink" title="一、ECS 端：安装官方最新版 frps"></a>一、ECS 端：安装官方最新版 frps</h2><blockquote>
+<p>之前用某面板内置的旧版 frp fork，xtcp 打洞协议不完整，已卸载，改用官方最新二进制，版本对齐、协议最新，原生支持 xtcp。</p>
+</blockquote>
+<h3 id="1-下载安装"><a href="#1-下载安装" class="headerlink" title="1. 下载安装"></a>1. 下载安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt</span><br><span class="line">sudo wget https://github.com/fatedier/frp/releases/download/v0.69.1/frp_0.69.1_linux_amd64.tar.gz</span><br><span class="line">sudo tar -zxvf frp_0.69.1_linux_amd64.tar.gz</span><br><span class="line">sudo <span class="built_in">mv</span> frp_0.69.1_linux_amd64 frps_new</span><br><span class="line"><span class="built_in">cd</span> frps_new</span><br></pre></td></tr></table></figure>
+<h3 id="2-写-frps-toml"><a href="#2-写-frps-toml" class="headerlink" title="2. 写 frps.toml"></a>2. 写 frps.toml</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">tee</span> /opt/frps_new/frps.toml &gt; /dev/null &lt;&lt; <span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">bindPort = 17000</span><br><span class="line"></span><br><span class="line">auth.method = <span class="string">&quot;token&quot;</span></span><br><span class="line">auth.token = <span class="string">&#x27;&lt;AUTH_TOKEN&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line">transport.tcpMux = <span class="literal">true</span></span><br><span class="line">transport.heartbeatTimeout = 300</span><br><span class="line"></span><br><span class="line">subDomainHost = <span class="string">&quot;&lt;YOUR_DOMAIN&gt;&quot;</span></span><br><span class="line">vhostHTTPPort = 17080</span><br><span class="line">vhostHTTPSPort = 17443</span><br><span class="line"></span><br><span class="line">webServer.addr = <span class="string">&quot;0.0.0.0&quot;</span></span><br><span class="line">webServer.port = 17500</span><br><span class="line">webServer.user = <span class="string">&quot;admin&quot;</span></span><br><span class="line">webServer.password = <span class="string">&quot;&lt;DASHBOARD_PASSWORD&gt;&quot;</span></span><br><span class="line"></span><br><span class="line">log.to = <span class="string">&quot;/opt/frps_new/frps.log&quot;</span></span><br><span class="line">log.level = <span class="string">&quot;info&quot;</span></span><br><span class="line">log.maxDays = 7</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>⚠️ 注意：新版官方 frp <strong>没有</strong>类似老版本 <code>bind_udp_port</code> 的单独 UDP 打洞端口配置字段。xtcp 打洞在新版 frps 里是默认内置支持的，不需要额外绑定 UDP 端口，直接用上面这份标准配置即可。</p>
+</blockquote>
+<p>先校验配置文件语法（强烈建议每次改完都跑一下，能在启动前就发现字段名拼写错误）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/opt/frps_new/frps verify -c /opt/frps_new/frps.toml</span><br></pre></td></tr></table></figure>
+<h3 id="3-systemd-常驻"><a href="#3-systemd-常驻" class="headerlink" title="3. systemd 常驻"></a>3. systemd 常驻</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">tee</span> /etc/systemd/system/frps-new.service &gt; /dev/null &lt;&lt; <span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=frp server (official latest)</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">ExecStart=/opt/frps_new/frps -c /opt/frps_new/frps.toml</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=5</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> frps-new</span><br><span class="line">sudo systemctl start frps-new</span><br><span class="line">sudo systemctl status frps-new</span><br></pre></td></tr></table></figure>
+<h3 id="4-安全组（云-ECS-控制台-→-安全组-→-入方向规则）"><a href="#4-安全组（云-ECS-控制台-→-安全组-→-入方向规则）" class="headerlink" title="4. 安全组（云 ECS 控制台 → 安全组 → 入方向规则）"></a>4. 安全组（云 ECS 控制台 → 安全组 → 入方向规则）</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>端口</th>
+<th>协议</th>
+<th>授权对象</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>17000</td>
+<td>TCP</td>
+<td>0.0.0.0/0</td>
+<td>frpc 连接</td>
+</tr>
+<tr>
+<td>17080</td>
+<td>TCP</td>
+<td>0.0.0.0/0</td>
+<td>vhost HTTP</td>
+</tr>
+<tr>
+<td>17443</td>
+<td>TCP</td>
+<td>0.0.0.0/0</td>
+<td>vhost HTTPS（预留）</td>
+</tr>
+<tr>
+<td>17500</td>
+<td>TCP</td>
+<td>仅自己公网 IP</td>
+<td>Dashboard，不对外网开放</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>xtcp 打洞不需要额外开 UDP 端口（新版本已确认不需要单独绑定）。</p>
+</blockquote>
+<h3 id="5-验证"><a href="#5-验证" class="headerlink" title="5. 验证"></a>5. 验证</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ss -tlnp | grep -E <span class="string">&#x27;17000|17080|17443|17500&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>浏览器打开 <code>http://&lt;ECS_PUBLIC_IP&gt;:17500</code>，账号密码登录，能看到 Dashboard 即成功。</p>
+<hr>
+<h2 id="二、ECS-端：Cloudflare-Tunnel（解决未备案域名被拦截问题）"><a href="#二、ECS-端：Cloudflare-Tunnel（解决未备案域名被拦截问题）" class="headerlink" title="二、ECS 端：Cloudflare Tunnel（解决未备案域名被拦截问题）"></a>二、ECS 端：Cloudflare Tunnel（解决未备案域名被拦截问题）</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>国内云服务商会在网络层检测 HTTP 请求的 Host 头（或 HTTPS 的 SNI），域名未备案直接返回拦截页，<strong>且这个检测不区分端口</strong>，任何直接暴露给公网的 vhost 端口都会被拦。Cloudflare Tunnel 让 ECS <strong>主动连出去</strong>，不再有公网直接入站的 HTTP 请求，从而绕开这层检测。</p>
+<blockquote>
+<p>注意：这解决的是云厂商自动检测层面的技术限制，不代表法规意义上不需要备案，自行评估使用范围和风险。</p>
+</blockquote>
+<h3 id="1-安装-cloudflared（Ubuntu-24-04）"><a href="#1-安装-cloudflared（Ubuntu-24-04）" class="headerlink" title="1. 安装 cloudflared（Ubuntu 24.04）"></a>1. 安装 cloudflared（Ubuntu 24.04）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt</span><br><span class="line">sudo wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb</span><br><span class="line">sudo apt install ./cloudflared-linux-amd64.deb</span><br><span class="line">cloudflared --version</span><br></pre></td></tr></table></figure>
+<h3 id="2-登录授权"><a href="#2-登录授权" class="headerlink" title="2. 登录授权"></a>2. 登录授权</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cloudflared tunnel login</span><br></pre></td></tr></table></figure>
+<p>复制输出的链接，在<strong>自己电脑</strong>的浏览器打开，登录 Cloudflare 账号，选择 <code>&lt;YOUR_DOMAIN&gt;</code> 完成授权。</p>
+<h3 id="3-创建隧道"><a href="#3-创建隧道" class="headerlink" title="3. 创建隧道"></a>3. 创建隧道</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cloudflared tunnel create &lt;TUNNEL_NAME&gt;</span><br></pre></td></tr></table></figure>
+<p>记下输出的隧道 ID。如果忘记记录，后续可用以下命令查询：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cloudflared tunnel list</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">cloudflared tunnel info &lt;TUNNEL_NAME&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="4-写隧道配置文件"><a href="#4-写隧道配置文件" class="headerlink" title="4. 写隧道配置文件"></a>4. 写隧道配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> -p /etc/cloudflared</span><br><span class="line"></span><br><span class="line">sudo <span class="built_in">tee</span> /etc/cloudflared/config.yml &gt; /dev/null &lt;&lt; <span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">tunnel: &lt;TUNNEL_ID&gt;</span><br><span class="line">credentials-file: /root/.cloudflared/&lt;TUNNEL_ID&gt;.json</span><br><span class="line"></span><br><span class="line">ingress:</span><br><span class="line">  - hostname: app.&lt;YOUR_DOMAIN&gt;</span><br><span class="line">    service: http://localhost:17080</span><br><span class="line">  - hostname: nas-fs.&lt;YOUR_DOMAIN&gt;</span><br><span class="line">    service: http://localhost:17080</span><br><span class="line">  - service: http_status:404</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>💡 <strong>每新增一个走域名访问的服务，就在 <code>ingress</code> 列表里加一条 <code>hostname</code> 规则</strong>（放在最后的 <code>http_status:404</code> 兜底规则之上）。多个域名可以共用同一个 <code>service: http://localhost:17080</code>，因为 frps 是靠请求的 Host 头做子域名路由分发的，不需要给每个域名单独开端口。</p>
+<p>⚠️ 不要在 ingress 规则里加 <code>originRequest.httpHostHeader</code> 硬编码某个固定域名 —— 一旦硬编码，所有请求的 Host 头都会被强制改写成那一个域名，导致多域名互相冲突。默认不写这项，cloudflared 会原样传递用户实际访问的域名，vhost 路由才能正常按子域名分发。</p>
+</blockquote>
+<h3 id="5-添加-DNS-路由（每个域名都要单独加一次）"><a href="#5-添加-DNS-路由（每个域名都要单独加一次）" class="headerlink" title="5. 添加 DNS 路由（每个域名都要单独加一次）"></a>5. 添加 DNS 路由（每个域名都要单独加一次）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cloudflared tunnel route dns &lt;TUNNEL_NAME&gt; app.&lt;YOUR_DOMAIN&gt;</span><br><span class="line">cloudflared tunnel route dns &lt;TUNNEL_NAME&gt; nas-fs.&lt;YOUR_DOMAIN&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果某个域名之前手动加过 Cloudflare 的 A 记录，执行这条命令前先去 Cloudflare 后台把那条 A 记录删掉，避免和自动生成的 CNAME 记录冲突。</p>
+</blockquote>
+<h3 id="6-注册为系统服务（必须做，否则隧道只在手动运行时才有效）"><a href="#6-注册为系统服务（必须做，否则隧道只在手动运行时才有效）" class="headerlink" title="6. 注册为系统服务（必须做，否则隧道只在手动运行时才有效）"></a>6. 注册为系统服务（必须做，否则隧道只在手动运行时才有效）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo cloudflared service install</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl start cloudflared</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> cloudflared</span><br><span class="line">sudo systemctl status cloudflared</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>⚠️ <strong>踩坑记录</strong>：曾经只手动执行过 <code>cloudflared tunnel run</code>，忘记执行 <code>service install</code>，导致关闭终端后隧道断开，访问报 <strong>Error 1033</strong>（Cloudflare 边缘找不到任何活跃连接）。务必确认 <code>systemctl status cloudflared</code> 显示 <code>active (running)</code>。</p>
+</blockquote>
+<h3 id="7-验证"><a href="#7-验证" class="headerlink" title="7. 验证"></a>7. 验证</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo journalctl -u cloudflared -f</span><br></pre></td></tr></table></figure>
+<p>浏览器访问对应域名，能打通说明隧道生效。</p>
+<hr>
+<h2 id="三、NAS（QNAP，x86-64，有-Container-Station）端配置"><a href="#三、NAS（QNAP，x86-64，有-Container-Station）端配置" class="headerlink" title="三、NAS（QNAP，x86_64，有 Container Station）端配置"></a>三、NAS（QNAP，x86_64，有 Container Station）端配置</h2><h3 id="场景一：域名访问，不需要客户端（如-File-Station）"><a href="#场景一：域名访问，不需要客户端（如-File-Station）" class="headerlink" title="场景一：域名访问，不需要客户端（如 File Station）"></a>场景一：域名访问，不需要客户端（如 File Station）</h3><h4 id="1-建目录、写配置文件"><a href="#1-建目录、写配置文件" class="headerlink" title="1. 建目录、写配置文件"></a>1. 建目录、写配置文件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /share/Web/frp</span><br><span class="line"><span class="built_in">cat</span> &gt; /share/Web/frp/frpc.toml &lt;&lt; <span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">serverAddr = <span class="string">&quot;&lt;ECS_PUBLIC_IP&gt;&quot;</span></span><br><span class="line">serverPort = 17000</span><br><span class="line"></span><br><span class="line">auth.method = <span class="string">&quot;token&quot;</span></span><br><span class="line">auth.token = <span class="string">&#x27;&lt;AUTH_TOKEN&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line">transport.tcpMux = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;nas-filestation-http&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;http&quot;</span></span><br><span class="line">localIP = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">localPort = 5000</span><br><span class="line">subdomain = <span class="string">&quot;nas-fs&quot;</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>localIP = &quot;127.0.0.1&quot;</code> 的前提是容器用 <strong>host 网络模式</strong>，容器内的 127.0.0.1 就是 NAS 本机。</p>
+</blockquote>
+<h4 id="2-Docker-运行（host-网络，常驻）"><a href="#2-Docker-运行（host-网络，常驻）" class="headerlink" title="2. Docker 运行（host 网络，常驻）"></a>2. Docker 运行（host 网络，常驻）</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name frpc-nas \</span><br><span class="line">  --network host \</span><br><span class="line">  --restart always \</span><br><span class="line">  -v /share/Web/frp/frpc.toml:/etc/frp/frpc.toml \</span><br><span class="line">  fatedier/frpc:v0.69.1 \</span><br><span class="line">  -c /etc/frp/frpc.toml</span><br></pre></td></tr></table></figure>
+<h4 id="3-验证"><a href="#3-验证" class="headerlink" title="3. 验证"></a>3. 验证</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker ps | grep frpc-nas</span><br><span class="line">docker logs -f frpc-nas</span><br></pre></td></tr></table></figure>
+<p>看到 <code>login to server success</code> 和 <code>[nas-filestation-http] start proxy success</code> 即成功。然后别忘了回到 ECS，在 Cloudflare Tunnel 的 <code>config.yml</code> 里加上这个新域名的 <code>ingress</code> 规则 + 执行 <code>route dns</code>（见第二章第 4、5 步）。</p>
+<hr>
+<h3 id="场景二：同一个端口，同时支持-STCP-和-XTCP（自动优先直连，失败兜底中转）"><a href="#场景二：同一个端口，同时支持-STCP-和-XTCP（自动优先直连，失败兜底中转）" class="headerlink" title="场景二：同一个端口，同时支持 STCP 和 XTCP（自动优先直连，失败兜底中转）"></a>场景二：同一个端口，同时支持 STCP 和 XTCP（自动优先直连，失败兜底中转）</h3><p>适用于：追求低延迟直连（xtcp），但网络环境不确定能否打洞成功，需要自动兜底（stcp）的服务。</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>frp 里 xtcp 和 stcp 是两个完全独立的 proxy 类型，<strong>没有自动退化机制</strong> —— 除非显式使用新版本的 <code>fallbackTo</code> 字段。做法是：同一个 <code>localPort</code>，在 frpc 配置里注册<strong>两条独立的 proxy</strong>（一条 xtcp、一条 stcp），共用同一个 <code>secretKey</code>；访问端(visitor)也配两条 visitor，并在 xtcp 的 visitor 里通过 <code>fallbackTo</code> 指向 stcp 的 visitor，设置超时时间，打洞失败自动切换。</p>
+<h4 id="NAS-端（frpc-toml，以某个自建-API-服务为例，端口自定义为-lt-NAS-API-PORT-gt-）"><a href="#NAS-端（frpc-toml，以某个自建-API-服务为例，端口自定义为-lt-NAS-API-PORT-gt-）" class="headerlink" title="NAS 端（frpc.toml，以某个自建 API 服务为例，端口自定义为 &lt;NAS_API_PORT&gt;）"></a>NAS 端（frpc.toml，以某个自建 API 服务为例，端口自定义为 <code>&lt;NAS_API_PORT&gt;</code>）</h4><figure class="highlight toml"><table><tr><td class="code"><pre><span class="line"><span class="attr">serverAddr</span> = <span class="string">&quot;&lt;ECS_PUBLIC_IP&gt;&quot;</span></span><br><span class="line"><span class="attr">serverPort</span> = <span class="number">17000</span></span><br><span class="line"></span><br><span class="line"><span class="attr">auth.method</span> = <span class="string">&quot;token&quot;</span></span><br><span class="line"><span class="attr">auth.token</span> = <span class="string">&#x27;&lt;AUTH_TOKEN&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">transport.tcpMux</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;nas-api-xtcp&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;xtcp&quot;</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">localPort</span> = &lt;NAS_API_PORT&gt;</span><br><span class="line"><span class="attr">secretKey</span> = <span class="string">&quot;&lt;SECRET_KEY，建议用 openssl rand -hex 16 生成&gt;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;nas-api-stcp&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;stcp&quot;</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">localPort</span> = &lt;NAS_API_PORT&gt;</span><br><span class="line"><span class="attr">secretKey</span> = <span class="string">&quot;&lt;与上面 xtcp 那条完全一致的密钥&gt;&quot;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>两条 proxy 的 <code>secretKey</code> <strong>必须一致</strong>，这样客户端只需要记一个密钥即可访问两种模式。<code>name</code> 必须不同（一个 <code>-xtcp</code> 结尾、一个 <code>-stcp</code> 结尾，便于区分）。</p>
+</blockquote>
+<h4 id="客户端（Windows-其他访问方，frpc-toml）"><a href="#客户端（Windows-其他访问方，frpc-toml）" class="headerlink" title="客户端（Windows/其他访问方，frpc.toml）"></a>客户端（Windows/其他访问方，frpc.toml）</h4><figure class="highlight toml"><table><tr><td class="code"><pre><span class="line"><span class="attr">serverAddr</span> = <span class="string">&quot;&lt;ECS_PUBLIC_IP&gt;&quot;</span></span><br><span class="line"><span class="attr">serverPort</span> = <span class="number">17000</span></span><br><span class="line"></span><br><span class="line"><span class="attr">auth.method</span> = <span class="string">&quot;token&quot;</span></span><br><span class="line"><span class="attr">auth.token</span> = <span class="string">&#x27;&lt;AUTH_TOKEN&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">transport.tcpMux</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[visitors]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;nas-api-stcp-visitor&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;stcp&quot;</span></span><br><span class="line"><span class="attr">serverName</span> = <span class="string">&quot;nas-api-stcp&quot;</span></span><br><span class="line"><span class="attr">secretKey</span> = <span class="string">&quot;&lt;与NAS端一致的密钥&gt;&quot;</span></span><br><span class="line"><span class="attr">bindAddr</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">bindPort</span> = &lt;本地占位端口，如 <span class="number">6071</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="section">[[visitors]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;nas-api-xtcp-visitor&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;xtcp&quot;</span></span><br><span class="line"><span class="attr">serverName</span> = <span class="string">&quot;nas-api-xtcp&quot;</span></span><br><span class="line"><span class="attr">secretKey</span> = <span class="string">&quot;&lt;与NAS端一致的密钥&gt;&quot;</span></span><br><span class="line"><span class="attr">bindAddr</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">bindPort</span> = &lt;本地实际访问端口，如 <span class="number">6070</span>&gt;</span><br><span class="line"><span class="attr">fallbackTo</span> = <span class="string">&quot;nas-api-stcp-visitor&quot;</span></span><br><span class="line"><span class="attr">fallbackTimeoutMs</span> = <span class="number">3000</span></span><br></pre></td></tr></table></figure>
+<p><strong>使用方式</strong>：访问方始终用 <code>http://127.0.0.1:&lt;xtcp的bindPort&gt;</code>（如 <code>6070</code>）。如果打洞在 <code>fallbackTimeoutMs</code> 时间内成功，走真正直连，不占用 ECS 带宽；如果失败，自动切到 stcp 中转，同一个地址无缝兜底，使用体感上无区别。<code>&lt;stcp的bindPort&gt;</code>（如 <code>6071</code>）是内部占位，不需要手动访问。</p>
+<blockquote>
+<p>⚠️ <code>fallbackTo</code> 填的是<strong>同配置文件里另一个 visitor 的 name</strong>，不是 NAS 端 proxy 的 name。</p>
+</blockquote>
+<hr>
+<h2 id="四、客户端（Windows）配置与常驻"><a href="#四、客户端（Windows）配置与常驻" class="headerlink" title="四、客户端（Windows）配置与常驻"></a>四、客户端（Windows）配置与常驻</h2><h3 id="1-frpc-toml-示例（以某主机的-8787-服务-stcp-访问为例）"><a href="#1-frpc-toml-示例（以某主机的-8787-服务-stcp-访问为例）" class="headerlink" title="1. frpc.toml 示例（以某主机的 8787 服务 stcp 访问为例）"></a>1. frpc.toml 示例（以某主机的 8787 服务 stcp 访问为例）</h3><figure class="highlight toml"><table><tr><td class="code"><pre><span class="line"><span class="attr">serverAddr</span> = <span class="string">&quot;&lt;ECS_PUBLIC_IP&gt;&quot;</span></span><br><span class="line"><span class="attr">serverPort</span> = <span class="number">17000</span></span><br><span class="line"></span><br><span class="line"><span class="attr">auth.method</span> = <span class="string">&quot;token&quot;</span></span><br><span class="line"><span class="attr">auth.token</span> = <span class="string">&#x27;&lt;AUTH_TOKEN&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">transport.tcpMux</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[visitors]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;host-8787-visitor&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;stcp&quot;</span></span><br><span class="line"><span class="attr">serverName</span> = <span class="string">&quot;host-8787-stcp&quot;</span></span><br><span class="line"><span class="attr">secretKey</span> = <span class="string">&quot;&lt;SECRET_KEY&gt;&quot;</span></span><br><span class="line"><span class="attr">bindAddr</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">bindPort</span> = <span class="number">6060</span></span><br></pre></td></tr></table></figure>
+<p>访问方式：<code>http://127.0.0.1:6060</code></p>
+<h3 id="2-简易启动方式：批处理脚本（适合个人电脑，登录后手动-自动跑一次）"><a href="#2-简易启动方式：批处理脚本（适合个人电脑，登录后手动-自动跑一次）" class="headerlink" title="2. 简易启动方式：批处理脚本（适合个人电脑，登录后手动/自动跑一次）"></a>2. 简易启动方式：批处理脚本（适合个人电脑，登录后手动/自动跑一次）</h3><p>新建 <code>start-frpc.bat</code>（路径按实际安装位置调整）：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">@echo off</span><br><span class="line">cd /d D:\dev-tools\frp_0.69.1_windows_amd64</span><br><span class="line">start /min frpc.exe -c frpc.toml</span><br></pre></td></tr></table></figure>
+<p>开机自动运行（需要用户登录桌面后才会触发）：</p>
+<ol>
+<li><code>Win + R</code> 输入 <code>shell:startup</code>（或手动进入 <code>%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup</code>）</li>
+<li>把 <code>start-frpc.bat</code> 的<strong>快捷方式</strong>拖进这个文件夹</li>
+</ol>
+<p>配套的停止脚本 <code>stop-frpc.bat</code>：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">@echo off</span><br><span class="line">taskkill /IM frpc.exe /F</span><br></pre></td></tr></table></figure>
+<h3 id="3-更可靠的方式：注册为-Windows-系统服务（NSSM，不依赖用户登录，系统启动即运行）"><a href="#3-更可靠的方式：注册为-Windows-系统服务（NSSM，不依赖用户登录，系统启动即运行）" class="headerlink" title="3. 更可靠的方式：注册为 Windows 系统服务（NSSM，不依赖用户登录，系统启动即运行）"></a>3. 更可靠的方式：注册为 Windows 系统服务（NSSM，不依赖用户登录，系统启动即运行）</h3><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 下载 nssm(如果没有)</span></span><br><span class="line"><span class="built_in">Invoke-WebRequest</span> <span class="literal">-Uri</span> <span class="string">&quot;https://nssm.cc/release/nssm-2.24.zip&quot;</span> <span class="literal">-OutFile</span> <span class="string">&quot;nssm.zip&quot;</span></span><br><span class="line"><span class="built_in">Expand-Archive</span> <span class="literal">-Path</span> <span class="string">&quot;nssm.zip&quot;</span> <span class="literal">-DestinationPath</span> <span class="string">&quot;.&quot;</span></span><br><span class="line"><span class="built_in">copy</span> .\nssm<span class="literal">-2</span>.<span class="number">24</span>\win64\nssm.exe .\nssm.exe</span><br><span class="line"></span><br><span class="line"><span class="comment"># 注册服务</span></span><br><span class="line">.\nssm.exe install FrpcClient</span><br><span class="line"><span class="comment"># 弹出界面填:</span></span><br><span class="line"><span class="comment"># Path: &lt;frpc.exe完整路径&gt;</span></span><br><span class="line"><span class="comment"># Startup directory: &lt;frpc所在目录&gt;</span></span><br><span class="line"><span class="comment"># Arguments: -c &lt;frpc.toml完整路径&gt;</span></span><br><span class="line"><span class="comment"># Details标签: Startup type 选 Automatic</span></span><br><span class="line"></span><br><span class="line">.\nssm.exe <span class="built_in">start</span> FrpcClient</span><br></pre></td></tr></table></figure>
+<p>验证开机自启：重启电脑，不手动操作，直接访问对应的 <code>127.0.0.1:端口</code>，能打开即生效。</p>
+<hr>
+<h2 id="五、已知限制与注意事项"><a href="#五、已知限制与注意事项" class="headerlink" title="五、已知限制与注意事项"></a>五、已知限制与注意事项</h2><ol>
+<li><strong>带宽瓶颈</strong>：ECS 是 3M 带宽，凡是走 http/vhost、stcp 这类需要中转的模式，流量都要经过 ECS，受这 3M 限制（理论峰值约 375KB/s）。纯文字类 API 请求完全不受影响，但大文件传输（如 NAS File Station 下载大文件）会明显受限。真正能绕开带宽限制的只有 <strong>xtcp 打洞成功后的直连</strong>。</li>
+<li><strong>xtcp 不保证成功</strong>：如果任一端处于对称型 NAT（常见于部分公司网络、移动网络），打洞会失败，此时必须靠 <code>fallbackTo</code> 兜底 stcp，或者本身就该用 stcp。</li>
+<li><strong>认证令牌含特殊字符</strong>：<code>auth.token</code> 若含反引号、竖线等符号，写入配置文件时，务必用 <code>sudo tee ... &lt;&lt; &#39;EOF&#39; ... EOF</code> 这种整体写入的方式，避免用 <code>nano</code> 手动输入或简单 echo 导致换行错乱（曾经因此触发 <code>toml: literal strings cannot have new lines</code> 报错）。</li>
+<li><strong>未备案域名的 HTTP 访问，必须走 Cloudflare Tunnel</strong>，不能直接把 vhost 端口暴露在安全组里给公网直连，否则会被云厂商拦截返回 ICP 备案提示页。</li>
+<li><strong>frps 配置字段名以官方最新 TOML 文档为准</strong>，不要套用老版本 ini 格式的字段名（如 <code>bind_udp_port</code> 在新版本已不存在，新版本的 xtcp 打洞不需要单独绑定 UDP 端口）。改配置后建议先跑 <code>frps verify -c frps.toml</code> 校验语法再重启服务。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Network</category>
+      </categories>
+      <tags>
+        <tag>NAS</tag>
+        <tag>frp</tag>
+        <tag>Cloudflare</tag>
+        <tag>内网穿透</tag>
+        <tag>tutorial</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AssetBundle浅析</title>
     <url>/2024/08/23/assetbundle-intro/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>AssetBundle系统提供了一种压缩文件的格式，可以把一个到多个文件进行索引和序列化。</strong></p>
@@ -418,7 +631,7 @@
 <blockquote>
 <p>你可以在这个牛逼的网站<a href="https://acko.net/">Hackery, Math &amp; Design — Acko.net</a>找到这个牛逼的动画<a href="https://acko.net/files/fullfrontal/fullfrontal/wdcode/online.html">Making things with Maths (acko.net)</a>（Youtube视频的16:00)</p>
 </blockquote>
-<p>如果写出来的代数表达式就是：<script type="math/tex">\left\{ \begin{aligned} b_0^{1}(t)=(1-t)b_0+tb_{1} \\ b_1^{1}(t)=(1-t)b_1+tb_{2}  \\ b_0^{2}(t)=(1-t)b_0^{1}+tb_{1}^{1} \end{aligned} \right. \Rightarrow b_{0}^{2}(t)=(1-t)^{2}b_0+2t(1-t)b_{1}+t^{2}b_2</script><br>更通用的，如果有$n+1$个控制点，我们可以得到一个$n$阶的Bézier曲线：<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240703205522229.png" alt="github pic"><br>其中Bernstein多项式为：$B_i^{n}(t)=\begin{pmatrix} n \\ i \end{pmatrix} t^{i}(1-t)^{n-i}$，其实就是描述多项分布的多项式：<img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240703210139297.png" alt="github pic"><br>我们通过定义这样一个与时间$t$有关的多项式来对不同的控制点进行插值，以此形成新的在曲线上的点。可以发现有以下性质：</p>
+<p>如果写出来的代数表达式就是：<script type="math/tex">\left\{ \begin{aligned} b_0^{1}(t)=(1-t)b_0+tb_{1} \\ b_1^{1}(t)=(1-t)b_1+tb_{2}  \\ b_0^{2}(t)=(1-t)b_0^{1}+tb_{1}^{1} \end{aligned} \right. \Rightarrow b_{0}^{2}(t)=(1-t)^{2}b_0+2t(1-t)b_{1}+t^{2}b_2</script><br>更通用的，如果有$n+1$个控制点，我们可以得到一个$n$阶的Bézier曲线：<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240703205522229.png" alt="github pic"><br>其中Bernstein多项式为：$B_i^{n}(t)=\begin{pmatrix} n \ i \end{pmatrix} t^{i}(1-t)^{n-i}$，其实就是描述多项分布的多项式：<img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240703210139297.png" alt="github pic"><br>我们通过定义这样一个与时间$t$有关的多项式来对不同的控制点进行插值，以此形成新的在曲线上的点。可以发现有以下性质：</p>
 <ul>
 <li>过起点和终点：$b(0)=b_0$;  $b(1)=b_3$</li>
 <li>对于三次（四个控制点）曲线：$b^{\prime}(0)=3(b_1-b_0)$; $b^{\prime}(1)=3(b_3-b_2)$</li>
@@ -432,7 +645,7 @@
 <li>例如常用的三阶：Piecewise cubic Bézier（每段四个控制点）</li>
 <li>保证光滑（切线不突变）：内部控制点前后的切线点共线<ul>
 <li>$C^0$连续是无断点：$a_n=b_0$</li>
-<li>$C^1$连是无突变（导数连续）：$a_n=b_0=\frac{1}{2}(a_{n-1}+b_1)$<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240709163022692.png" alt="github pic"></li>
+<li>$C^1$连是无突变（导数连续）：$a<em>n=b_0=\frac{1}{2}(a</em>{n-1}+b_1)$<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec10~12%20几何/image-20240709163022692.png" alt="github pic"></li>
 </ul>
 </li>
 </ul>
@@ -548,10 +761,10 @@
 <li>$p$的作用：虽然说两个向量点乘可以判断彼此夹角大小，但$\cos{\alpha}$的容忍度太高，即使是有$45\textdegree$的夹角，也有很大的$\cos{\alpha}$值。以$p$次方来放大这种夹角敏感度。一般控制在100~200，控制高光的大小，可以参考下图<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240626165130764.png" alt="image-20240626165130764.png (1221×765) (gitee.com)"></li>
 </ul>
 <h3 id="Ambient-Term-环境光"><a href="#Ambient-Term-环境光" class="headerlink" title="Ambient Term 环境光"></a>Ambient Term 环境光</h3><ul>
-<li>近似看待成常数，用来保证不是全黑，上色&amp;提亮：$L_a=k_{a}I_{a}$</li>
+<li>近似看待成常数，用来保证不是全黑，上色&amp;提亮：$L<em>a=k</em>{a}I_{a}$</li>
 <li>但这仅仅是一种approximate，或者说是fake的，具体的涉及到全局光照的内容，比较复杂，后面再说</li>
 </ul>
-<h3 id="整体效果"><a href="#整体效果" class="headerlink" title="整体效果"></a>整体效果</h3><p>将前面说的Ambient、Diffuse、Specular相加就是Blinn-Phong反射模型的最终结果：<br>$\begin{aligned} L &amp;=L_{a}+L_{d}+L_{s} \\ &amp;=k_{a} I_{a}+k_{d}\left(I / r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{l})+k_{s}\left(I / r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{h})^{p} \end{aligned}$<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240626170018669.png" alt="image-20240626170018669.png (1223×380) (gitee.com)"></p>
+<h3 id="整体效果"><a href="#整体效果" class="headerlink" title="整体效果"></a>整体效果</h3><p>将前面说的Ambient、Diffuse、Specular相加就是Blinn-Phong反射模型的最终结果：<br>$\begin{aligned} L &amp;=L<em>{a}+L</em>{d}+L<em>{s} \ &amp;=k</em>{a} I<em>{a}+k</em>{d}\left(I / r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{l})+k_{s}\left(I / r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{h})^{p} \end{aligned}$<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240626170018669.png" alt="image-20240626170018669.png (1223×380) (gitee.com)"></p>
 <h1 id="Shading-Frequencies-着色频率"><a href="#Shading-Frequencies-着色频率" class="headerlink" title="Shading Frequencies 着色频率"></a>Shading Frequencies 着色频率</h1><ul>
 <li>Flat shading：每个<strong>三角形</strong>的法线是一样的，shading一次获得颜色值。但效果不会很好的，可以说是十分抽象了</li>
 <li>Gouraud Shading：每个<strong>顶点</strong>做一次Shading，中间对颜色值插值</li>
@@ -562,7 +775,7 @@
 </li>
 </ul>
 <p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240626175046538.png" alt="image-20240626175046538.png (1124×796) (gitee.com)"><br>但我们可以看到随着几何模型越来越复杂（定义的vertices越多），Flat的方式似乎也并不会在肉眼上有什么效果差距，计算量还小</p>
-<h2 id="顶点法线的计算方法"><a href="#顶点法线的计算方法" class="headerlink" title="顶点法线的计算方法"></a>顶点法线的计算方法</h2><p>相邻面的法线求“平均”，或许我们还可以给各个面根据其面积等因素赋予一个权值，使得这种“平均”更合理：<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627194718263.png" alt="image-20240627194718263.png (438×401) (gitee.com)"><br>$N_v=\frac{\sum_{i}N_{i}}{\Vert \sum_{i}N_{i}\Vert}$，其中$N_i$就已经是赋予了单位向量权值（长度）的面法线向量</p>
+<h2 id="顶点法线的计算方法"><a href="#顶点法线的计算方法" class="headerlink" title="顶点法线的计算方法"></a>顶点法线的计算方法</h2><p>相邻面的法线求“平均”，或许我们还可以给各个面根据其面积等因素赋予一个权值，使得这种“平均”更合理：<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec7-9-Shading/image-20240627194718263.png" alt="image-20240627194718263.png (438×401) (gitee.com)"><br>$N<em>v=\frac{\sum</em>{i}N<em>{i}}{\Vert \sum</em>{i}N_{i}\Vert}$，其中$N_i$就已经是赋予了单位向量权值（长度）的面法线向量</p>
 <ul>
 <li>Barycentric interpolation：后面会介绍这种向量插值方式（记得normalization）</li>
 </ul>
@@ -634,7 +847,7 @@
 <h2 id="Barycentric-coordinates-重心坐标→插值"><a href="#Barycentric-coordinates-重心坐标→插值" class="headerlink" title="Barycentric coordinates 重心坐标→插值"></a>Barycentric coordinates 重心坐标→插值</h2><blockquote>
 <p>三角形的三个顶点有各自不同的属性，插值所做的是让三角形内部<strong>平滑过渡</strong>三个不同属性。这种插值可以对任意一种属性进行操作</p>
 </blockquote>
-<p>三角形三个顶点的坐标和内部某点坐标的关系：$\begin{array}{r} (x, y)=\alpha A+\beta B+\gamma C \\ \alpha+\beta+\gamma=1 \end{array}$，这样我们就可以用$(\alpha, \beta, \gamma)$表示这一点，其中三数都非负。可以利用这个关系做其它属性的插值<br>我们可以利用面积比来计算系数：<br>$\begin{aligned} \alpha &amp;=\frac{-\left(x-x_{B}\right)\left(y_{C}-y_{B}\right)+\left(y-y_{B}\right)\left(x_{C}-x_{B}\right)}{-\left(x_{A}-x_{B}\right)\left(y_{C}-y_{B}\right)+\left(y_{A}-y_{B}\right)\left(x_{C}-x_{B}\right)} \\ \beta &amp;=\frac{-\left(x-x_{C}\right)\left(y_{A}-y_{C}\right)+\left(y-y_{C}\right)\left(x_{A}-x_{C}\right)}{-\left(x_{B}-x_{C}\right)\left(y_{A}-y_{C}\right)+\left(y_{B}-y_{C}\right)\left(x_{A}-x_{C}\right)} \\ \gamma &amp;=1-\alpha-\beta \end{aligned}$<br>对于三角形重心，系数均为$1/3$。既然原理都知道，那就没必要非要记住这个复杂的公式。<br>但有个问题：<strong>barycentric coordinates are not invariant under projection!</strong> 投影前后的重心坐标可能会变化，所以需要在<strong>对应时间</strong>计算对应的重心坐标来做插值，不能随意复用！</p>
+<p>三角形三个顶点的坐标和内部某点坐标的关系：$\begin{array}{r} (x, y)=\alpha A+\beta B+\gamma C \ \alpha+\beta+\gamma=1 \end{array}$，这样我们就可以用$(\alpha, \beta, \gamma)$表示这一点，其中三数都非负。可以利用这个关系做其它属性的插值<br>我们可以利用面积比来计算系数：<br>$\begin{aligned} \alpha &amp;=\frac{-\left(x-x<em>{B}\right)\left(y</em>{C}-y<em>{B}\right)+\left(y-y</em>{B}\right)\left(x<em>{C}-x</em>{B}\right)}{-\left(x<em>{A}-x</em>{B}\right)\left(y<em>{C}-y</em>{B}\right)+\left(y<em>{A}-y</em>{B}\right)\left(x<em>{C}-x</em>{B}\right)} \ \beta &amp;=\frac{-\left(x-x<em>{C}\right)\left(y</em>{A}-y<em>{C}\right)+\left(y-y</em>{C}\right)\left(x<em>{A}-x</em>{C}\right)}{-\left(x<em>{B}-x</em>{C}\right)\left(y<em>{A}-y</em>{C}\right)+\left(y<em>{B}-y</em>{C}\right)\left(x<em>{A}-x</em>{C}\right)} \ \gamma &amp;=1-\alpha-\beta \end{aligned}$<br>对于三角形重心，系数均为$1/3$。既然原理都知道，那就没必要非要记住这个复杂的公式。<br>但有个问题：<strong>barycentric coordinates are not invariant under projection!</strong> 投影前后的重心坐标可能会变化，所以需要在<strong>对应时间</strong>计算对应的重心坐标来做插值，不能随意复用！</p>
 <p>例如z-buffer：对投影三角形中某个点需要逆计算出其在三维的物理坐标做插值然后投影回二维（所以建议针对三维空间的物体先做三维空间的插值再投影）</p>
 <h2 id="Texture-queries-Applying-Textures"><a href="#Texture-queries-Applying-Textures" class="headerlink" title="Texture queries : Applying Textures"></a>Texture queries : Applying Textures</h2><p>像素在三角形内→计算对应uv→取纹理对应颜色值→设置</p>
 <h3 id="问题1-Texture-Magnification-纹理太小怎么办-→-插值"><a href="#问题1-Texture-Magnification-纹理太小怎么办-→-插值" class="headerlink" title="问题1: Texture Magnification 纹理太小怎么办 → 插值"></a>问题1: Texture Magnification 纹理太小怎么办 → 插值</h3><blockquote>
@@ -731,7 +944,7 @@
 </ul>
 <ol>
 <li>原本的法线$n(p)=(0,1)$竖直向上，在定义的凹凸贴图上可以先计算切线再求法线：新$p$点的切线（导数）为$dp = c \cdot [h(p+1) - h(p)]$，进一步得出法线（逆时针旋转$90\degree$）得到$n(p)=(-dp,1).normalized()$</li>
-<li>三维空间中原始点$n(p)=(0,0,1)$，其切线：$\frac{dp}{du}= c_{1}\cdot [h(u+1)-h(u)]$，$\frac{dp}{dv}= c_{2}\cdot [h(v+1)-h(v)]$，再旋转后得到$n=(-\frac{dp}{du},-\frac{dp}{dv},1)$<ul>
+<li>三维空间中原始点$n(p)=(0,0,1)$，其切线：$\frac{dp}{du}= c<em>{1}\cdot [h(u+1)-h(u)]$，$\frac{dp}{dv}= c</em>{2}\cdot [h(v+1)-h(v)]$，再旋转后得到$n=(-\frac{dp}{du},-\frac{dp}{dv},1)$<ul>
 <li>在这里我们可以将$p$点附近定义为一个<em>局部坐标系</em>，使得其法线方向始终是$(0,0,1)$，随后再将这个坐标变换到世界坐标中。</li>
 </ul>
 </li>
@@ -823,7 +1036,7 @@
 </blockquote>
 <p>屏幕由像素点（可以暂时理解为一个小方块）构成，是离散的，二维的。像素由RGB的混合有了颜色</p>
 <span id="more"></span>
-<h2 id="Canonical-Cube"><a href="#Canonical-Cube" class="headerlink" title="Canonical Cube"></a>Canonical Cube</h2><p>先不考虑$z$的关联，需要通过<em>视口变换</em>将平面$\left[-1,\; 1\right]^2$转为$[0, weight] \times [0, height]$：$M_{viewport}=\left(\begin{array}{ccc} \frac{width}{2} &amp; 0 &amp; 0 &amp; \frac{width}{2} \\ 0 &amp; \frac{height}{2} &amp; 0 &amp; \frac{height}{2} \\ 0 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right)$，这样就可以在投影之后同时将左下角定义为$(0,\; 0)$</p>
+<h2 id="Canonical-Cube"><a href="#Canonical-Cube" class="headerlink" title="Canonical Cube"></a>Canonical Cube</h2><p>先不考虑$z$的关联，需要通过<em>视口变换</em>将平面$\left[-1,\; 1\right]^2$转为$[0, weight] \times [0, height]$：$M_{viewport}=\left(\begin{array}{ccc} \frac{width}{2} &amp; 0 &amp; 0 &amp; \frac{width}{2} \ 0 &amp; \frac{height}{2} &amp; 0 &amp; \frac{height}{2} \ 0 &amp; 0 &amp; 1 &amp; 0\ 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right)$，这样就可以在投影之后同时将左下角定义为$(0,\; 0)$</p>
 <h1 id="光栅"><a href="#光栅" class="headerlink" title="光栅"></a>光栅</h1><h2 id="显示设备"><a href="#显示设备" class="headerlink" title="显示设备"></a>显示设备</h2><ul>
 <li>示波器：通过偏移电子成像在感光平面；采用隔行扫描降低成像工作量，但容易出现画面撕裂</li>
 <li>现代屏幕：将内存/显存的一部分区域显示到屏幕上</li>
@@ -962,7 +1175,7 @@
 <li>线性变换=旋转+缩放+切变</li>
 </ul>
 <span id="more"></span> 
-<h1 id="齐次坐标系"><a href="#齐次坐标系" class="headerlink" title="齐次坐标系"></a>齐次坐标系</h1><p>n维的点/向量，用$[n+1 \times 1]$的列向量表示：$\begin{pmatrix} n+1 \\ n \\ \vdots \\ 1 \; or \; 0\end{pmatrix}$，其中最后一个维度0表示向量，1表示点。这样就可以保证向量的平移不变性，以及以下性质：</p>
+<h1 id="齐次坐标系"><a href="#齐次坐标系" class="headerlink" title="齐次坐标系"></a>齐次坐标系</h1><p>n维的点/向量，用$[n+1 \times 1]$的列向量表示：$\begin{pmatrix} n+1 \ n \ \vdots \ 1 \; or \; 0\end{pmatrix}$，其中最后一个维度0表示向量，1表示点。这样就可以保证向量的平移不变性，以及以下性质：</p>
 <blockquote>
 <p>Valid operation if w-coordinate of result is 1 or 0 </p>
 <ul>
@@ -972,7 +1185,7 @@
 <li>point + point = mid point</li>
 </ul>
 </blockquote>
-<p>最后一行引用了这个性质：$\begin{pmatrix} x \\ y \\ w\end{pmatrix}$ is the 2D point $\begin{pmatrix} x/w \\ y/w \\ 1\end{pmatrix}$</p>
+<p>最后一行引用了这个性质：$\begin{pmatrix} x \ y \ w\end{pmatrix}$ is the 2D point $\begin{pmatrix} x/w \ y/w \ 1\end{pmatrix}$</p>
 <ul>
 <li>变换用$[n+1 \times n+1]$的矩阵左乘来表示，可以做矩阵的分解和压缩。变换顺序是从向量/点开始从右往左；</li>
 <li>多个变换可以组合起来变成一个矩阵→加速计算</li>
@@ -1004,9 +1217,9 @@
 </blockquote>
 <p>我们看到的画面由摄像机捕捉，摄像机参数决定了我们在屏幕上看到的东西，这一步可以将世界坐标系转换到摄像机坐标系。<br>这个变换一般是先平移到原点，再旋转对齐$z$轴再旋转对其$x$轴，旋转矩阵可以从逆矩阵（从对齐的情况逆旋转到当前位置）推导：</p>
 <ul>
-<li>写作：$M_{view}=R_{view}T_{view}$</li>
-<li>平移到原点的$T_{view}=\left(\begin{array}{ccc} 1 &amp; 0 &amp; 0 &amp; -x_e \\ 0 &amp; 1 &amp; 0 &amp; -y_e \\0 &amp; 0 &amp; 1 &amp; -z_{e}\\ 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right)$</li>
-<li>在旋转阶段先考虑逆旋转：$R^{-1}_{view}=\left(\begin{array}{ccc} x_{\hat{g} \times \hat{t}} &amp; x_t &amp; x_{-g} &amp; 0 \\ y_{\hat{g} \times \hat{t}} &amp; y_t &amp; y_{-g} &amp; 0 \\ z_{\hat{g} \times \hat{t}} &amp; z_t &amp; z_{-g} &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right)$</li>
+<li>写作：$M<em>{view}=R</em>{view}T_{view}$</li>
+<li>平移到原点的$T<em>{view}=\left(\begin{array}{ccc} 1 &amp; 0 &amp; 0 &amp; -x_e \ 0 &amp; 1 &amp; 0 &amp; -y_e \0 &amp; 0 &amp; 1 &amp; -z</em>{e}\ 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right)$</li>
+<li>在旋转阶段先考虑逆旋转：$R^{-1}<em>{view}=\left(\begin{array}{ccc} x</em>{\hat{g} \times \hat{t}} &amp; x<em>t &amp; x</em>{-g} &amp; 0 \ y<em>{\hat{g} \times \hat{t}} &amp; y_t &amp; y</em>{-g} &amp; 0 \ z<em>{\hat{g} \times \hat{t}} &amp; z_t &amp; z</em>{-g} &amp; 0\ 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right)$</li>
 <li>因为$R^{-1}_{view}$是正交矩阵，因此逆矩阵就是其转置，very easy</li>
 </ul>
 <blockquote>
@@ -1026,12 +1239,12 @@
 <blockquote>
 <p>可以在n平面左侧想象存在一个点光源，这样就可以更方便理解为什么远平面更大</p>
 </blockquote>
-<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529111149680.png" alt="cdn by https://gcore.jsdelivr.net"><br>根据相似三角形法则可以很轻松地找到这样的关系：$y^{\prime}=\frac{n}{z}y$  ,  $x^{\prime}=\frac{n}{z}x$<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529112017170.png" alt="cdn by https://gcore.jsdelivr.net"><br>进一步的，我们可以在齐次坐标系中得到这样的关系：<br>$\left(\begin{array}{c} x \\ y \\ z \\1 \end{array}\right) \Rightarrow \left(\begin{array}{c} \frac{nx}{z} \\ \frac{ny}{z} \\ unknown \\1 \end{array}\right) \overset{multi.\; by \;z}{==} \left(\begin{array}{c} nx \\ ny \\ still \; unknown \\ z \end{array}\right)$，这就可以得到$M_{persp-&gt;ortho}=\left(\begin{array}{ccc} n &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; n &amp; 0 &amp; 0 \\ ? &amp; ? &amp; ? &amp; ?\\ 0 &amp; 0 &amp; 1 &amp; 0 \end{array}\right)$<br>那么这个第三行怎么推导呢，可以利用：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529111149680.png" alt="cdn by https://gcore.jsdelivr.net"><br>根据相似三角形法则可以很轻松地找到这样的关系：$y^{\prime}=\frac{n}{z}y$  ,  $x^{\prime}=\frac{n}{z}x$<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529112017170.png" alt="cdn by https://gcore.jsdelivr.net"><br>进一步的，我们可以在齐次坐标系中得到这样的关系：<br>$\left(\begin{array}{c} x \ y \ z \1 \end{array}\right) \Rightarrow \left(\begin{array}{c} \frac{nx}{z} \ \frac{ny}{z} \ unknown \1 \end{array}\right) \overset{multi.\; by \;z}{==} \left(\begin{array}{c} nx \ ny \ still \; unknown \ z \end{array}\right)$，这就可以得到$M_{persp-&gt;ortho}=\left(\begin{array}{ccc} n &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; n &amp; 0 &amp; 0 \ ? &amp; ? &amp; ? &amp; ?\ 0 &amp; 0 &amp; 1 &amp; 0 \end{array}\right)$<br>那么这个第三行怎么推导呢，可以利用：</p>
 <ul>
-<li>近平面$z$轴始终为$n$：$\left(\begin{array}{c} x \\ y \\ n \\1 \end{array}\right) \Rightarrow \left(\begin{array}{c} x \\y\\ n \\1 \end{array}\right) \overset{multi.\; by \;n}{==} \left(\begin{array}{c} nx \\ ny \\ n^2 \\ n \end{array}\right)$，确定为$(0\; 0\; A\; B)\left(\begin{array}{c} x \\ y \\ n \\1 \end{array}\right)=n^2$这样前面为$0$的结构（与$x$, $y$无关），也即$An+B=n^2$</li>
-<li>远平面中心点$\left(\begin{array}{c} 0 \\ 0 \\ f \\1 \end{array}\right) \Rightarrow \left(\begin{array}{c} 0 \\0 \\ f \\1 \end{array}\right)==\left(\begin{array}{c} 0 \\ 0 \\ f^2 \\ f \end{array}\right)$，确定$Af+B=f^2$</li>
+<li>近平面$z$轴始终为$n$：$\left(\begin{array}{c} x \ y \ n \1 \end{array}\right) \Rightarrow \left(\begin{array}{c} x \y\ n \1 \end{array}\right) \overset{multi.\; by \;n}{==} \left(\begin{array}{c} nx \ ny \ n^2 \ n \end{array}\right)$，确定为$(0\; 0\; A\; B)\left(\begin{array}{c} x \ y \ n \1 \end{array}\right)=n^2$这样前面为$0$的结构（与$x$, $y$无关），也即$An+B=n^2$</li>
+<li>远平面中心点$\left(\begin{array}{c} 0 \ 0 \ f \1 \end{array}\right) \Rightarrow \left(\begin{array}{c} 0 \0 \ f \1 \end{array}\right)==\left(\begin{array}{c} 0 \ 0 \ f^2 \ f \end{array}\right)$，确定$Af+B=f^2$</li>
 </ul>
-<p>进一步可以得到$M_{persp-&gt;ortho}$了，其中第三行是$(0,\; 0,\; n+f,\; -nf)$，最终可以知道$M_{persp}=M_{ortho}M_{persp-&gt;ortho}$</p>
+<p>进一步可以得到$M<em>{persp-&gt;ortho}$了，其中第三行是$(0,\; 0,\; n+f,\; -nf)$，最终可以知道$M</em>{persp}=M<em>{ortho}M</em>{persp-&gt;ortho}$</p>
 <h4 id="fovY和aspect-ratio"><a href="#fovY和aspect-ratio" class="headerlink" title="fovY和aspect ratio"></a>fovY和aspect ratio</h4><ul>
 <li>fovY：field-of-view 垂直可视角度</li>
 <li>aspect ratio：宽高比<br><img src="https://gcore.jsdelivr.net/gh/shimmerjordan/pic_bed@obsidian-assets/Lec3-4-%E5%9F%BA%E7%A1%80%E5%8F%98%E6%8D%A2/image-20240529145252467.png" alt="cdn by https://gcore.jsdelivr.net"><br>再根据下图，可以比较容易地写出：$\tan{\frac{fovY}{2}}=\frac{t}{\left|n \right|}$，$aspect=\frac{r}{t}$</li>
@@ -7103,7 +7316,7 @@
 </center>
 
 <p><strong>算法实现</strong></p>
-<p>我们简单处理增量序列：增量序列$d = \{n/2,n/4,n/8, \cdots, 1\}$，$n$为要排序数的个数。</p>
+<p>我们简单处理增量序列：增量序列$d = {n/2,n/4,n/8, \cdots, 1}$，$n$为要排序数的个数。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">shellInsertSort</span>(<span class="params">target, dk</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(dk, <span class="built_in">len</span>(target)):</span><br><span class="line">        <span class="keyword">if</span> target[i] &lt; target[i-dk]:</span><br><span class="line">            j = i-dk</span><br><span class="line">            temp = target[i]</span><br><span class="line">            target[i] = target[i-dk]</span><br><span class="line">            <span class="keyword">while</span> temp &lt; target[j]:</span><br><span class="line">                target[j+dk] = target[j]</span><br><span class="line">                j -= dk</span><br><span class="line">                <span class="keyword">if</span> j &lt; <span class="number">0</span>: <span class="keyword">break</span></span><br><span class="line">            target[j+dk] = temp</span><br><span class="line">    <span class="keyword">return</span> target</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">shellSort</span>(<span class="params">target</span>):</span><br><span class="line">    dk = <span class="built_in">len</span>(target) // <span class="number">2</span></span><br><span class="line">    <span class="keyword">while</span> dk &gt;= <span class="number">1</span>:</span><br><span class="line">        shellInsertSort(target, dk)</span><br><span class="line">        dk //= <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> target</span><br><span class="line"></span><br><span class="line">target = [<span class="number">3</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">print</span>(shellSort(target))</span><br></pre></td></tr></table></figure>
 <p><strong>复杂度</strong>：希尔排序时效分析很难，关键码的比较次数与记录移动次数依赖于增量因子序列$d$的选取，特定情况下可以准确估算出关键码的比较次数和记录的移动次数。目前还没有人给出选取最好的增量因子序列的方法。增量因子序列可以有各种取法，有取奇数的，也有取质数的，但需要注意：增量因子中除$1$外没有公因子，且最后一个增量因子必须为$1$。希尔排序方法是一个<strong>不稳定的排序方法</strong>。</p>
 <h1 id="选择排序—简单选择排序"><a href="#选择排序—简单选择排序" class="headerlink" title="选择排序—简单选择排序"></a>选择排序—简单选择排序</h1><p><strong>基本思想</strong></p>
@@ -8125,9 +8338,9 @@ min\{dp(n-coin)+1|coin \in coins \}, \quad n>0
 <h1 id="3-Remove-dead-links-regularly"><a href="#3-Remove-dead-links-regularly" class="headerlink" title="3. Remove dead links regularly"></a>3. Remove dead links regularly</h1><p><a href="https://www.google.com/webmasters/tools/removals">https://www.google.com/webmasters/tools/removals</a></p>
 ]]></content>
       <tags>
-        <tag>reference</tag>
         <tag>Web deployment</tag>
         <tag>git</tag>
+        <tag>reference</tag>
       </tags>
   </entry>
   <entry>
@@ -8351,9 +8564,9 @@ min\{dp(n-coin)+1|coin \in coins \}, \quad n>0
         <category>新手指北</category>
       </categories>
       <tags>
+        <tag>tutorial</tag>
         <tag>Cloud Serve</tag>
         <tag>Hexo</tag>
-        <tag>tutorial</tag>
       </tags>
   </entry>
   <entry>

@@ -132,7 +132,7 @@ var _hmt = _hmt || [];
 </blockquote>
 <p>屏幕由像素点（可以暂时理解为一个小方块）构成，是离散的，二维的。像素由RGB的混合有了颜色</p>
 <span id="more"></span>
-<h2 id="Canonical-Cube"><a href="#Canonical-Cube" class="headerlink" title="Canonical Cube"></a>Canonical Cube</h2><p>先不考虑$z$的关联，需要通过<em>视口变换</em>将平面$\left[-1,\; 1\right]^2$转为$[0, weight] \times [0, height]$：$M_{viewport}=\left(\begin{array}{ccc} \frac{width}{2} &amp; 0 &amp; 0 &amp; \frac{width}{2} \\ 0 &amp; \frac{height}{2} &amp; 0 &amp; \frac{height}{2} \\ 0 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right)$，这样就可以在投影之后同时将左下角定义为$(0,\; 0)$</p>
+<h2 id="Canonical-Cube"><a href="#Canonical-Cube" class="headerlink" title="Canonical Cube"></a>Canonical Cube</h2><p>先不考虑$z$的关联，需要通过<em>视口变换</em>将平面$\left[-1,\; 1\right]^2$转为$[0, weight] \times [0, height]$：$M_{viewport}=\left(\begin{array}{ccc} \frac{width}{2} &amp; 0 &amp; 0 &amp; \frac{width}{2} \ 0 &amp; \frac{height}{2} &amp; 0 &amp; \frac{height}{2} \ 0 &amp; 0 &amp; 1 &amp; 0\ 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right)$，这样就可以在投影之后同时将左下角定义为$(0,\; 0)$</p>
 <h1 id="光栅"><a href="#光栅" class="headerlink" title="光栅"></a>光栅</h1><h2 id="显示设备"><a href="#显示设备" class="headerlink" title="显示设备"></a>显示设备</h2><ul>
 <li>示波器：通过偏移电子成像在感光平面；采用隔行扫描降低成像工作量，但容易出现画面撕裂</li>
 <li>现代屏幕：将内存/显存的一部分区域显示到屏幕上</li>
@@ -489,7 +489,7 @@ var _hmt = _hmt || [];
     <ul>
       <li>
         Copyrights &copy;
-        2019-2024
+        2019-2026
         <i class="ri-heart-fill heart_icon"></i> 鞠桥丹-QIAODAN JU
       </li>
     </ul>
